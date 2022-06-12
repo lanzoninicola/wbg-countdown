@@ -1,0 +1,33 @@
+{
+  "name": "lanzoni/wbg-countdown",
+  "description": "Wbg Countdown Wordpress Plugin",
+  "homepage": "http://example.com",
+  "license": "",
+  "authors": [
+    {
+      "name": "Nicola Lanzoni",
+      "email": "lanzoni.nicola@gmail.com",
+      "homepage": "http://example.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "WBGCountdown\\PluginCore\\": "./plugin-core",
+      "WBGCountdown\\Interfaces\\": "./interfaces",
+      "WBGCountdown\\Services\\": "./services",
+      "WBGCountdown\\Traits\\": "./traits",
+      "WBGCountdown\\Modules\\Admin\\": "./modules/admin",
+      "WBGCountdown\\Modules\\Api\\": "./modules/api",
+      "WBGCountdown\\Modules\\Api\\Controllers\\": "./modules/api/controllers",
+      "WBGCountdown\\Modules\\Database\\": "./modules/database"
+    },
+    "files": [
+      "./functions/create_menu.php"
+    ]
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^5.4"
+  }
+}
