@@ -3,6 +3,7 @@
     [
       "@babel/preset-env",
       {
+        // https://babeljs.io/docs/en/babel-preset-env#modules
         "modules": false
       }
     ],
