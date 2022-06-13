@@ -2,6 +2,8 @@
 
 namespace WBGCountdown\Modules\Api;
 
+use WBGCountdown\Modules\Api\Factories\ControllersFactory;
+
 /**
  * The class will create the custom REST API end-point for the countdown.
  *
@@ -48,11 +50,11 @@ class Routes {
         ),
         "/countdown-settings/(?P<id>\d+)" => array(
             'GET'  => array(
-                'callback'   => array( 'CountdownSettingsController', 'findById' ),
+                'callback'   => array( 'CountdownsSettingsController', 'findById' ),
                 'capability' => 'public',
             ),
             'POST' => array(
-                'callback'   => array( 'CountdownSettingsController', 'save' ),
+                'callback'   => array( 'CountdownsSettingsController', 'save' ),
                 'capability' => 'public',
             ),
         ),
@@ -87,9 +89,9 @@ class Routes {
      */
     public function get_callback( string $class_name, string $callback ) {
 
-        $class_name = "WBGCountdown\\Modules\\Api\\Controllers\\{$class_name}";
+        $object = ControllersFactory::get_instance_by_class_name( $class_name );
 
-        return array( $class_name, $callback );
+        return array( $object, $callback );
     }
 
     /**

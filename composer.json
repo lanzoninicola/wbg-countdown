@@ -20,7 +20,9 @@
       "WBGCountdown\\Traits\\": "./traits",
       "WBGCountdown\\Modules\\Admin\\": "./modules/admin",
       "WBGCountdown\\Modules\\Api\\": "./modules/api",
+      "WBGCountdown\\Modules\\Api\\Factories\\": "./modules/api/factories",
       "WBGCountdown\\Modules\\Api\\Controllers\\": "./modules/api/controllers",
+      "WBGCountdown\\Modules\\Api\\Repositories\\": "./modules/api/repositories",
       "WBGCountdown\\Modules\\Database\\": "./modules/database"
     },
     "files": [

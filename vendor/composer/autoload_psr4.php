@@ -10,6 +10,8 @@ return array(
     'WBGCountdown\\Services\\' => array($baseDir . '/services'),
     'WBGCountdown\\PluginCore\\' => array($baseDir . '/plugin-core'),
     'WBGCountdown\\Modules\\Database\\' => array($baseDir . '/modules/database'),
+    'WBGCountdown\\Modules\\Api\\Repositories\\' => array($baseDir . '/modules/api/repositories'),
+    'WBGCountdown\\Modules\\Api\\Factories\\' => array($baseDir . '/modules/api/factories'),
     'WBGCountdown\\Modules\\Api\\Controllers\\' => array($baseDir . '/modules/api/controllers'),
     'WBGCountdown\\Modules\\Api\\' => array($baseDir . '/modules/api'),
     'WBGCountdown\\Modules\\Admin\\' => array($baseDir . '/modules/admin'),

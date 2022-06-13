@@ -2,13 +2,20 @@
 
 namespace WBGCountdown\Services;
 
-abstract class DatabaseService {
+abstract class DatabaseQueryService {
 
     /**
      * Prefix assigned to the plugin database table
      * @var string
      */
     protected $tables_prefix = null;
+
+    /**
+     * The name of table without prefixes.
+     *
+     * @var string
+     */
+    protected $table_name = null;
 
     /**
      * Returns the table name following the Wordpress standards adding the base prefix and the custom prefix.
@@ -64,7 +71,7 @@ abstract class DatabaseService {
      *
      * @return void
      */
-    public function drop_table( string $table_name ) {
+    protected function drop_table( string $table_name ) {
         global $wpdb;
 
         $table_name = $this->get_table_name( $table_name );
@@ -72,6 +79,64 @@ abstract class DatabaseService {
         $sql = "DROP TABLE IF EXISTS `{$table_name}`;";
 
         $wpdb->query( $sql );
+    }
+
+    /**
+     * Update a row.
+     *
+     * @return bool True if the operation finished with success, false some error occured.
+     */
+    protected function update_row( string $table_name, array $data, array $where ): bool {
+
+        global $wpdb;
+
+        $table_name = $this->get_table_name( $table_name );
+
+        return $wpdb->update(
+            $table_name,
+            $data,
+            $where
+        );
+
+    }
+
+    /**
+     * Insert a row.
+     *
+     * @return array array( 'id' => id_generated, 'result' => result ) .
+     */
+    protected function insert_row( string $table_name, array $data ): array{
+
+        global $wpdb;
+
+        $table_name = $this->get_table_name( $table_name );
+
+        $result = $wpdb->insert(
+            $table_name,
+            $data
+        );
+
+        $id_generated = $wpdb->insert_id;
+
+        return array( 'id' => $id_generated, 'result' => $result );
+    }
+
+    /**
+     * Delete a row.
+     *
+     * @return bool True if the operation finished with success, false some error occured.
+     */
+    protected function delete_row( string $table_name, array $where ): bool {
+
+        global $wpdb;
+
+        $table_name = $this->get_table_name( $table_name );
+
+        return $wpdb->delete(
+            $table_name,
+            $where
+        );
+
     }
 
 }

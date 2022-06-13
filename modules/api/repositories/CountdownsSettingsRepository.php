@@ -1,41 +1,33 @@
 <?php
 
-namespace WBGCountdown\Modules\Api\Controllers;
+namespace WBGCountdown\Modules\Api\Repositories;
 
-use WBGCountdown\Modules\Api\Repositories\CountdownsRepository;
-
-class CountdownsController {
-
-    public $repository;
+class CountdownsSettingsRepository {
 
     /**
      * Singleton instance.
      *
-     * @var CountdownsController
+     * @var CountdownsSettingsRepository
      */
     protected static $instance = null;
 
     /**
      * Instantiate the singleton.
      *
-     * @return CountdownsController
+     * @return CountdownsSettingsRepository
      */
-    public static function get_instance( $repository ) {
+    public static function get_instance() {
 
         if ( is_null( self::$instance ) ) {
-            self::$instance = new CountdownsController( $repository );
+            self::$instance = new CountdownsSettingsRepository();
         }
 
         return self::$instance;
     }
 
-    public function __construct( CountdownsRepository $repository ) {
-        $this->repository = $repository;
-    }
-
     public function findAll() {
 
-        return rest_ensure_response( $this->repository->findAll() );
+        return 'urra from repository';
     }
 
     public function findById( $id ) {
