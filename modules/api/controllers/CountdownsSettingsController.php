@@ -18,7 +18,7 @@ class CountdownsSettingsController {
      */
     public static function get_instance( $repository ) {
 
-        if ( is_null( self::$instance ) ) {
+        if ( self::$instance === null ) {
             self::$instance = new CountdownsSettingsController( $repository );
         }
 

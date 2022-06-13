@@ -2,7 +2,16 @@
 
 namespace WBGCountdown\Modules\Api\Repositories;
 
+use WBGCountdown\Modules\Database\CountdownsQueryService;
+
 class CountdownsRepository {
+
+    /**
+     * Query service.
+     *
+     * @var CountdownsQueryService
+     */
+    private $query_service;
 
     /**
      * Singleton instance.
@@ -16,39 +25,39 @@ class CountdownsRepository {
      *
      * @return CountdownsRepository
      */
-    public static function get_instance() {
+    public static function get_instance( CountdownsQueryService $query_service ) {
 
-        if ( is_null( self::$instance ) ) {
-            self::$instance = new CountdownsRepository();
+        if (  self::$instance === null ) {
+            self::$instance = new CountdownsRepository( $query_service );
         }
 
         return self::$instance;
     }
 
+    public function __construct( CountdownsQueryService $query_service ) {
+        $this->query_service = $query_service;
+    }
+
     public function findAll() {
 
-        return 'urra from repository';
+        return $this->query_service->getAll();
     }
 
     public function findById( $id ) {
         return 'findbyid';
     }
 
-    public function save( $id ) {
+    public function create( $data ) {
 
-        return 'save';
-    }
-
-    public function delete( $id ) {
-        return 'delete';
-    }
-
-    public function create( $id ) {
         return 'create';
     }
 
     public function update( $id ) {
         return 'update';
+    }
+
+    public function delete( $id ) {
+        return 'delete';
     }
 
 }

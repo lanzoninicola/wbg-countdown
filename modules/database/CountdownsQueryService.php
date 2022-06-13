@@ -9,7 +9,7 @@ class CountdownsQueryService extends DatabaseQueryService {
 
     public $tables_prefix = 'wbg';
 
-    private $table_name = 'countdowns';
+    protected $table_name = 'countdowns';
 
     /**
      * Singleton instance.
@@ -25,7 +25,7 @@ class CountdownsQueryService extends DatabaseQueryService {
      */
     public static function get_instance() {
 
-        if ( is_null( self::$instance ) ) {
+        if ( self::$instance === null ) {
             self::$instance = new CountdownsQueryService();
         }
 
@@ -60,12 +60,18 @@ class CountdownsQueryService extends DatabaseQueryService {
                 PRIMARY KEY  (id)
                 ) $charset_collate;";
 
-        $wpdb->query( $sql );
+        $wpdb->query( $wpdb->prepare( $sql ) );
 
     }
 
-    public function drop() {
-        $this->drop_table( $this->table_name );
+    /**
+     * Drop the table countdowns
+     *
+     * @return boolean
+     */
+    public function drop(): bool {
+
+        return $this->drop_table( $this->table_name );
 
     }
 
@@ -107,15 +113,20 @@ class CountdownsQueryService extends DatabaseQueryService {
     /**
      * Get a record from the table countdowns.
      * @param integer $id
-     * @return Countdown
+     * @return array|null The record found, null if not found.
      */
-    public function get( int $id ) {
+    public function getById( int $id ): ?array{
 
-        global $wpdb;
+        return $this->get_row( $this->table_name, array( 'id' => $id ) );
+    }
 
-        $table_name = $this->get_table_name( $this->table_name );
+    /**
+     * Get all records from the table countdowns.
+     * @return array The records found.
+     */
+    public function getAll(): array{
 
-        $sql = "SELECT * FROM {$table_name} WHERE id = %d";
+        return $this->get_all_rows( $this->table_name );
     }
 
 }

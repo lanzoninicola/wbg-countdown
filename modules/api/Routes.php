@@ -33,8 +33,12 @@ class Routes {
      */
     private $routes = array(
         'countdowns'                      => array(
-            'GET' => array(
+            'GET'  => array(
                 'callback'   => array( 'CountdownsController', 'findAll' ),
+                'capability' => 'public',
+            ),
+            'POST' => array(
+                'callback'   => array( 'CountdownsController', 'create' ),
                 'capability' => 'public',
             ),
         ),
@@ -44,7 +48,7 @@ class Routes {
                 'capability' => 'public',
             ),
             'POST' => array(
-                'callback'   => array( 'CountdownsController', 'save' ),
+                'callback'   => array( 'CountdownsController', 'update' ),
                 'capability' => 'public',
             ),
         ),
@@ -54,7 +58,7 @@ class Routes {
                 'capability' => 'public',
             ),
             'POST' => array(
-                'callback'   => array( 'CountdownsSettingsController', 'save' ),
+                'callback'   => array( 'CountdownsSettingsController', 'update' ),
                 'capability' => 'public',
             ),
         ),

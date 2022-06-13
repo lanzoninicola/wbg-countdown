@@ -6,6 +6,11 @@ use WBGCountdown\Modules\Api\Repositories\CountdownsRepository;
 
 class CountdownsController {
 
+    /**
+     * Repository
+     *
+     * @var CountdownsRepository
+     */
     public $repository;
 
     /**
@@ -20,9 +25,9 @@ class CountdownsController {
      *
      * @return CountdownsController
      */
-    public static function get_instance( $repository ) {
+    public static function get_instance( CountdownsRepository $repository ) {
 
-        if ( is_null( self::$instance ) ) {
+        if ( self::$instance === null ) {
             self::$instance = new CountdownsController( $repository );
         }
 
@@ -42,7 +47,9 @@ class CountdownsController {
         return 'findbyid';
     }
 
-    public function save( $id ) {
+    public function save( $request ) {
+
+        var_dump( $request['name'] );
 
         return 'save';
     }

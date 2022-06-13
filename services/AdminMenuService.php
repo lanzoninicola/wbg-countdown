@@ -32,7 +32,7 @@ class AdminMenuService {
      */
     public static function get_instance() {
 
-        if ( is_null( self::$instance ) ) {
+        if ( self::$instance === null ) {
             self::$instance = new AdminMenuService();
         }
 

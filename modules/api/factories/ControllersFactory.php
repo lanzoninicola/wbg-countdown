@@ -4,8 +4,6 @@ namespace WBGCountdown\Modules\Api\Factories;
 
 use WBGCountdown\Modules\Api\Controllers\CountdownsController;
 use WBGCountdown\Modules\Api\Controllers\CountdownsSettingsController;
-use WBGCountdown\Modules\Api\Repositories\CountdownsRepository;
-use WBGCountdown\Modules\Api\Repositories\CountdownsSettingsRepository;
 
 class ControllersFactory {
 
@@ -28,12 +26,12 @@ class ControllersFactory {
     }
 
     public static function get_countdowns_controller(): CountdownsController {
-        $repository = CountdownsRepository::get_instance();
+        $repository = RepositoriesFactory::get_countdowns_repository();
         return CountdownsController::get_instance( $repository );
     }
 
     public static function get_countdowns_settings_controller(): CountdownsSettingsController {
-        $repository = CountdownsSettingsRepository::get_instance();
+        $repository = RepositoriesFactory::get_countdowns_settings_repository();
         return CountdownsSettingsController::get_instance( $repository );
     }
 

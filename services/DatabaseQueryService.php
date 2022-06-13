@@ -53,7 +53,7 @@ abstract class DatabaseQueryService {
 
         $table_name = $this->get_table_name( $table_name );
 
-        return $wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) === $table_name;
+        return $wpdb->get_var( $wpdb->prepare( "SHOW TABLES LIKE %s", $table_name ) ) === $table_name;
     }
 
     /**
@@ -69,16 +69,16 @@ abstract class DatabaseQueryService {
     /**
      * Drop table if exists.
      *
-     * @return void
+     * @return bool
      */
-    protected function drop_table( string $table_name ) {
+    protected function drop_table( string $table_name ): bool {
         global $wpdb;
 
         $table_name = $this->get_table_name( $table_name );
 
         $sql = "DROP TABLE IF EXISTS `{$table_name}`;";
 
-        $wpdb->query( $sql );
+        return $wpdb->query( $wpdb->prepare( $sql ) );
     }
 
     /**
@@ -135,6 +135,41 @@ abstract class DatabaseQueryService {
         return $wpdb->delete(
             $table_name,
             $where
+        );
+
+    }
+
+    /**
+     * Get a row.
+     *
+     * @return array|null
+     */
+    protected function get_row( string $table_name, array $where ): ?array{
+
+        global $wpdb;
+
+        $table_name = $this->get_table_name( $table_name );
+
+        return $wpdb->get_row(
+            $wpdb->prepare( "SELECT * FROM {$table_name} WHERE %s", $where ),
+            ARRAY_A
+        );
+    }
+
+    /**
+     * Get all rows.
+     *
+     * @return array
+     */
+    protected function get_all_rows( string $table_name ): array{
+
+        global $wpdb;
+
+        $table_name = $this->get_table_name( $table_name );
+
+        return $wpdb->get_results(
+            $wpdb->prepare( "SELECT * FROM {$table_name}" ),
+            ARRAY_A
         );
 
     }
