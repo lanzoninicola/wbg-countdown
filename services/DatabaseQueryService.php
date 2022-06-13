@@ -76,9 +76,7 @@ abstract class DatabaseQueryService {
 
         $table_name = $this->get_table_name( $table_name );
 
-        $sql = "DROP TABLE IF EXISTS `{$table_name}`;";
-
-        return $wpdb->query( $wpdb->prepare( $sql ) );
+        return $wpdb->query( $wpdb->prepare( "DROP TABLE IF EXISTS `%s`;", $table_name ) );
     }
 
     /**
@@ -151,7 +149,7 @@ abstract class DatabaseQueryService {
         $table_name = $this->get_table_name( $table_name );
 
         return $wpdb->get_row(
-            $wpdb->prepare( "SELECT * FROM {$table_name} WHERE %s", $where ),
+            $wpdb->prepare( "SELECT * FROM %s WHERE %s", $table_name, $where ),
             ARRAY_A
         );
     }
@@ -168,7 +166,7 @@ abstract class DatabaseQueryService {
         $table_name = $this->get_table_name( $table_name );
 
         return $wpdb->get_results(
-            $wpdb->prepare( "SELECT * FROM {$table_name}" ),
+            $wpdb->prepare( "SELECT * FROM %s", $table_name ),
             ARRAY_A
         );
 
