@@ -19,7 +19,6 @@ class ComposerStaticInit1839a578bc4d9982c7ac16da4e541d6f
             'WBGCountdown\\Traits\\' => 20,
             'WBGCountdown\\Services\\' => 22,
             'WBGCountdown\\PluginCore\\' => 24,
-            'WBGCountdown\\Modules\\Database\\' => 30,
             'WBGCountdown\\Modules\\Api\\Repositories\\' => 38,
             'WBGCountdown\\Modules\\Api\\Models\\' => 32,
             'WBGCountdown\\Modules\\Api\\Factories\\' => 35,
@@ -28,6 +27,7 @@ class ComposerStaticInit1839a578bc4d9982c7ac16da4e541d6f
             'WBGCountdown\\Modules\\Api\\' => 25,
             'WBGCountdown\\Modules\\Admin\\' => 27,
             'WBGCountdown\\Interfaces\\' => 24,
+            'WBGCountdown\\Inc\\' => 17,
         ),
         'S' => 
         array (
@@ -49,10 +49,6 @@ class ComposerStaticInit1839a578bc4d9982c7ac16da4e541d6f
         'WBGCountdown\\PluginCore\\' => 
         array (
             0 => __DIR__ . '/../..' . '/plugin-core',
-        ),
-        'WBGCountdown\\Modules\\Database\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/modules/database',
         ),
         'WBGCountdown\\Modules\\Api\\Repositories\\' => 
         array (
@@ -85,6 +81,10 @@ class ComposerStaticInit1839a578bc4d9982c7ac16da4e541d6f
         'WBGCountdown\\Interfaces\\' => 
         array (
             0 => __DIR__ . '/../..' . '/interfaces',
+        ),
+        'WBGCountdown\\Inc\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/inc',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (

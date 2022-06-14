@@ -2,7 +2,7 @@
 
 namespace WBGCountdown\Modules\Api\Controllers;
 
-use WBGCountdown\Modules\Api\Dtos\NewCountdownDTO;
+use WBGCountdown\Inc\DatabaseError;
 use WBGCountdown\Modules\Api\Repositories\CountdownsRepository;
 
 class CountdownsController {
@@ -39,9 +39,95 @@ class CountdownsController {
         $this->repository = $repository;
     }
 
+    public function create( \WP_REST_Request $request ) {
+
+        $name_param        = $request->get_param( 'name' );
+        $description_param = $request->get_param( 'description' );
+
+        if ( empty( $name_param ) || $name_param === null ) {
+            return new \WP_Error( 'missing_parameters', 'Missing Name parameter', array( 'status' => 400 ) );
+        }
+
+        if ( empty( $description_param ) || $description_param === null ) {
+            return new \WP_Error( 'missing_parameters', 'Missing Description parameters', array( 'status' => 400 ) );
+        }
+
+        $new_countdown = array(
+            'name'        => sanitize_text_field( $name_param ),
+            'description' => sanitize_text_field( $description_param ),
+        );
+
+        $result = $this->repository->insert( $new_countdown );
+
+        if ( $result instanceof DatabaseError ) {
+            return new \WP_Error( $result->get_code(), $result->get_data(), array( 'status' => 500 ) );
+        }
+
+        return rest_ensure_response( $result->get_data() );
+    }
+
+    public function update( \WP_REST_Request $request ) {
+        $countdown_id = absint( $request->get_param( 'id' ) );
+
+        if ( !is_numeric( $countdown_id ) ) {
+            return new \WP_Error( 'rest_invalid_param',
+                __( 'Invalid countdown id.', 'wbg-countdown' ),
+                array( 'status' => 400 ) );
+        }
+
+        $name_param        = $request->get_param( 'name' );
+        $description_param = $request->get_param( 'description' );
+
+        if ( empty( $name_param ) || $name_param === null ) {
+            return new \WP_Error( 'missing_parameters', 'Missing Name parameter', array( 'status' => 400 ) );
+        }
+
+        if ( empty( $description_param ) || $description_param === null ) {
+            return new \WP_Error( 'missing_parameters', 'Missing Description parameters', array( 'status' => 400 ) );
+        }
+
+        $next_countdown = array(
+            'name'        => sanitize_text_field( $name_param ),
+            'description' => sanitize_text_field( $description_param ),
+        );
+
+        $result = $this->repository->update( $next_countdown, $countdown_id );
+
+        if ( $result instanceof DatabaseError ) {
+            return new \WP_Error( $result->get_code(), $result->get_data(), array( 'status' => 500 ) );
+        }
+
+        return rest_ensure_response( $result->get_data() );
+    }
+
+    public function delete( \WP_REST_Request $request ) {
+        $countdown_id = absint( $request->get_param( 'id' ) );
+
+        if ( !is_numeric( $countdown_id ) ) {
+            return new \WP_Error( 'rest_invalid_param',
+                __( 'Invalid countdown id.', 'wbg-countdown' ),
+                array( 'status' => 400 ) );
+        }
+
+        $result = $this->repository->delete( $countdown_id );
+
+        if ( $result instanceof DatabaseError ) {
+            return new \WP_Error( $result->get_code(), $result->get_data(), array( 'status' => 500 ) );
+        }
+
+        return rest_ensure_response( $result->get_data() );
+
+    }
+
     public function find_all() {
 
-        return rest_ensure_response( $this->repository->find_all() );
+        $result = $this->repository->find_all();
+
+        if ( $result instanceof DatabaseError ) {
+            return new \WP_Error( $result->get_code(), $result->get_data(), array( 'status' => 500 ) );
+        }
+
+        return rest_ensure_response( $result->get_data() );
     }
 
     public function find_by_id( \WP_REST_Request $request ) {
@@ -49,35 +135,21 @@ class CountdownsController {
         $countdown_id = absint( $request->get_param( 'id' ) );
 
         if ( !is_numeric( $countdown_id ) ) {
-            return rest_ensure_response(
-                new \WP_Error( 'rest_invalid_param',
-                    __( 'Invalid countdown id.', 'wbg-countdown' ),
-                    array( 'status' => 400 ) )
-            );
+            return new \WP_Error(
+                'rest_invalid_param',
+                __( 'Invalid countdown id.',
+                    'wbg-countdown' ),
+                array( 'status' => 400 ) );
         }
 
-        return rest_ensure_response( $this->repository->find_by_id( $countdown_id ) );
-    }
+        $result = $this->repository->find_by_id( $countdown_id );
 
-    // TODO: handling response
-    public function create( \WP_REST_Request $request ) {
+        if ( $result instanceof DatabaseError ) {
+            return new \WP_Error( $result->get_code(), $result->get_data(), array( 'status' => 500 ) );
+        }
 
-        $dto = new NewCountdownDTO(
-            $request->get_param( 'name' ),
-            $request->get_param( 'description' )
-        );
+        return rest_ensure_response( $result->get_data() );
 
-        $result = $this->repository->insert( $dto );
-
-        return rest_ensure_response( $result );
-    }
-
-    public function update( $id ) {
-        return 'update';
-    }
-
-    public function delete( $id ) {
-        return 'delete';
     }
 
 }

@@ -43,12 +43,16 @@ class Routes {
             ),
         ),
         "/countdowns/(?P<id>\d+)"         => array(
-            'GET'  => array(
+            'GET'    => array(
                 'callback'   => array( 'CountdownsController', 'find_by_id' ),
                 'capability' => 'public',
             ),
-            'POST' => array(
+            'POST'   => array(
                 'callback'   => array( 'CountdownsController', 'update' ),
+                'capability' => 'public',
+            ),
+            'DELETE' => array(
+                'callback'   => array( 'CountdownsController', 'delete' ),
                 'capability' => 'public',
             ),
         ),
@@ -58,6 +62,10 @@ class Routes {
                 'capability' => 'public',
             ),
             'POST' => array(
+                'callback'   => array( 'CountdownsSettingsController', 'create' ),
+                'capability' => 'public',
+            ),
+            'PUT'  => array(
                 'callback'   => array( 'CountdownsSettingsController', 'update' ),
                 'capability' => 'public',
             ),

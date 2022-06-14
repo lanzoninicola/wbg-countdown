@@ -20,7 +20,7 @@ class ControllersFactory {
         }
 
         if ( 'CountdownsSettingsController' === $class_name ) {
-            return self::get_countdowns_controller();
+            return self::get_countdowns_settings_controller();
         }
 
     }

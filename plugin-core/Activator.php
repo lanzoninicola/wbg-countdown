@@ -2,8 +2,7 @@
 
 namespace WBGCountdown\PluginCore;
 
-use WBGCountdown\Modules\Database\CountdownsQueryService;
-use WBGCountdown\Modules\Database\CountdownsSettingsQueryService;
+use WBGCountdown\Modules\Api\Factories\RepositoriesFactory;
 
 /**
  * Fired during plugin activation.
@@ -28,11 +27,11 @@ class Activator {
      */
     public static function activate() {
 
-        $countdowns_query_service = CountdownsQueryService::get_instance();
-        $countdowns_query_service->create_table();
+        $countdown_repository = RepositoriesFactory::get_countdowns_repository();
+        $countdown_repository->create_table();
 
-        $countdowns_settings_query_service = CountdownsSettingsQueryService::get_instance();
-        $countdowns_settings_query_service->create_table();
+        $countdown_settings_repository = RepositoriesFactory::get_countdowns_settings_repository();
+        $countdown_settings_repository->create_table();
 
     }
 

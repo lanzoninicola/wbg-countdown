@@ -2,36 +2,31 @@
 
 namespace WBGCountdown\Services;
 
-abstract class DatabaseQueryService {
+use WBGCountdown\Inc\DatabaseError;
+use WBGCountdown\Inc\DatabaseResponse;
+
+class DatabaseQueryService {
 
     /**
      * Prefix assigned to the plugin database table
      * @var string
      */
-    protected $tables_prefix = null;
+    private $tables_prefix = null;
 
     /**
      * The name of table without prefixes.
      *
      * @var string
      */
-    protected $table_name = null;
+    private $table_name = null;
 
     /**
-     * Returns the table name following the Wordpress standards adding the base prefix and the custom prefix.
+     * Set the prefix choosed for the tables
      *
-     * @param string $table_name The table name (choose a name without prefixes).
-     * @return mixed
-     * @throws \Exception If a custom prefix is not set.
+     * @return void
      */
-    protected function get_table_name( string $desired_table_name ) {
-        global $wpdb;
-
-        if ( !$this->tables_prefix ) {
-            throw new \Exception( 'Tables prefix not set. Add a property called "tables_prefix" in your class and define a prefix' );
-        }
-
-        return "{$wpdb->base_prefix}{$this->tables_prefix}_{$desired_table_name}";
+    public function set_tables_prefix( string $desired_tables_prefix ): void {
+        $this->tables_prefix = $desired_tables_prefix;
     }
 
     /**
@@ -39,8 +34,35 @@ abstract class DatabaseQueryService {
      *
      * @return string
      */
-    public function get_tables_prefix() {
+    public function get_tables_prefix(): string {
         return $this->tables_prefix;
+    }
+
+    /**
+     * Let the DatabaseQueryService object know the table name where to operate.
+     *
+     * @param string $table_name The table name (choose a name without prefixes).
+     * @return void
+     * @throws \Exception If a custom prefix is not set.
+     */
+    public function set_table_name( string $desired_table_name ): void {
+        global $wpdb;
+
+        if ( !$this->tables_prefix ) {
+            throw new \Exception( 'Tables prefix not set. Set the prefix first with the "set_tables_prefix" method.' );
+        }
+
+        $this->table_name = "{$wpdb->base_prefix}{$this->tables_prefix}_{$desired_table_name}";
+
+    }
+
+    /**
+     * Returns the table_name with prefixes.
+     *
+     * @return string
+     */
+    public function get_table_name() {
+        return $this->table_name;
     }
 
     /**
@@ -48,12 +70,10 @@ abstract class DatabaseQueryService {
      *
      * @return boolean
      */
-    public function table_exists( string $table_name ) {
+    public function table_exists(): bool {
         global $wpdb;
 
-        $table_name = $this->get_table_name( $table_name );
-
-        return $wpdb->get_var( $wpdb->prepare( "SHOW TABLES LIKE %s", $table_name ) ) === $table_name;
+        return $wpdb->get_var( $wpdb->prepare( "SHOW TABLES LIKE %s", $this->table_name ) ) === $this->table_name;
     }
 
     /**
@@ -61,9 +81,21 @@ abstract class DatabaseQueryService {
      *
      * @return string
      */
-    public function get_charset_collate() {
+    public function get_charset_collate(): string {
         global $wpdb;
         return $wpdb->get_charset_collate();
+    }
+
+    /**
+     * Create the table.
+     *
+     * @return boolean
+     */
+    public function create_table( string $sql ): bool {
+
+        global $wpdb;
+
+        return $wpdb->query( $sql );
     }
 
     /**
@@ -71,104 +103,175 @@ abstract class DatabaseQueryService {
      *
      * @return bool
      */
-    protected function drop_table( string $table_name ): bool {
+    public function drop_table(): bool {
         global $wpdb;
 
-        $table_name = $this->get_table_name( $table_name );
-
-        return $wpdb->query( $wpdb->prepare( "DROP TABLE IF EXISTS `%s`;", $table_name ) );
-    }
-
-    /**
-     * Update a row.
-     *
-     * @return bool True if the operation finished with success, false some error occured.
-     */
-    protected function update_row( string $table_name, array $data, array $where ): bool {
-
-        global $wpdb;
-
-        $table_name = $this->get_table_name( $table_name );
-
-        return $wpdb->update(
-            $table_name,
-            $data,
-            $where
-        );
-
+        return $wpdb->query( $wpdb->prepare( "DROP TABLE IF EXISTS `%s`;", $this->table_name ) );
     }
 
     /**
      * Insert a row.
      *
-     * @return array array( 'id' => id_generated, 'result' => result ) .
+     * Use the identity operator (===) to check for errors: (e.g., false === $result),
+     * and whether any rows were affected (e.g., 0 === $result).
+     *
+     * @return DatabaseSuccess|DatabaseError
      */
-    protected function insert_row( string $table_name, array $data ): array{
+    public function insert_row( array $data ) {
 
         global $wpdb;
 
-        $table_name = $this->get_table_name( $table_name );
-
         $result = $wpdb->insert(
-            $table_name,
+            $this->table_name,
             $data
         );
 
         $id_generated = $wpdb->insert_id;
 
-        return array( 'id' => $id_generated, 'result' => $result );
+        /**
+         * query returns an error
+         */
+
+        if ( $result === false ) {
+            return DatabaseResponse::error( 'Insert operation failed. Query returns an error.' );
+        }
+
+        /**
+         * no rows were affected
+         */
+
+        if ( $result === 0 ) {
+            return DatabaseResponse::error( 'No rows were affected.' );
+        }
+
+        return DatabaseResponse::success( array( 'id' => $id_generated ) );
+
+    }
+
+    /**
+     * Update a row.
+     *
+     * @return DatabaseSuccess|DatabaseError
+     */
+    public function update_row( array $data, array $where ) {
+
+        global $wpdb;
+
+        $result = $wpdb->update(
+            $this->table_name,
+            $data,
+            $where
+        );
+
+        /**
+         * query returns an error
+         */
+
+        if ( $result === false ) {
+            return DatabaseResponse::error( 'Update operation failed. Query returns an error.' );
+        }
+
+        /**
+         * no rows were affected
+         */
+
+        if ( $result === 0 ) {
+            return DatabaseResponse::warning( 'No rows were affected.' );
+        }
+
+        return DatabaseResponse::success();
+
     }
 
     /**
      * Delete a row.
      *
-     * @return bool True if the operation finished with success, false some error occured.
+     * @return DatabaseSuccess|DatabaseError
      */
-    protected function delete_row( string $table_name, array $where ): bool {
+    public function delete_row( array $where ) {
 
         global $wpdb;
 
-        $table_name = $this->get_table_name( $table_name );
-
-        return $wpdb->delete(
-            $table_name,
+        $result = $wpdb->delete(
+            $this->table_name,
             $where
         );
+
+        /**
+         * query returns an error
+         */
+
+        if ( $result === false ) {
+            return DatabaseResponse::error( 'Delete operation failed. Query returns an error.' );
+        }
+
+        /**
+         * no rows were affected
+         */
+
+        if ( $result === 0 ) {
+            return DatabaseResponse::error( 'No rows were affected.' );
+        }
+
+        return DatabaseResponse::success();
 
     }
 
     /**
      * Get a row.
      *
-     * @return array|null
+     * Returns null if no result is found,
+     *
+     * @return DatabaseSuccess|DatabaseError
      */
-    protected function get_row( string $table_name, string $where ): ?array{
+    public function get_row( string $where ) {
 
         global $wpdb;
 
-        $table_name = $this->get_table_name( $table_name );
+        $table_name = $this->table_name;
 
-        return $wpdb->get_row(
+        $result = $wpdb->get_row(
             $wpdb->prepare( "SELECT * FROM `$table_name` WHERE $where" ),
             ARRAY_A
         );
+
+        /**
+         * query returns an error
+         */
+
+        if ( $result === false ) {
+            return DatabaseResponse::error( 'Get a row operation failed. Query returns an error.' );
+        }
+
+        return DatabaseResponse::success( $result );
+
     }
 
     /**
      * Get all rows.
      *
-     * @return array
+     * @return DatabaseSuccess|DatabaseError
      */
-    protected function get_all_rows( string $table_name ): array{
+    public function get_all_rows() {
 
         global $wpdb;
 
-        $table_name = $this->get_table_name( $table_name );
+        $table_name = $this->table_name;
 
-        return $wpdb->get_results(
+        $result = $wpdb->get_results(
             $wpdb->prepare( "SELECT * FROM `$table_name`" ),
             ARRAY_A
         );
+
+        /**
+         * query returns an error
+         */
+
+        if ( $result === false ) {
+            return DatabaseResponse::error( 'Get all rows operation failed. Query returns an error.' );
+        }
+
+        return DatabaseResponse::success( $result );
 
     }
 
