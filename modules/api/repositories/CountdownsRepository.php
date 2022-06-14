@@ -2,6 +2,8 @@
 
 namespace WBGCountdown\Modules\Api\Repositories;
 
+use WBGCountdown\Modules\Api\Dtos\NewCountdownDTO;
+use WBGCountdown\Modules\Api\Models\CountdownModel;
 use WBGCountdown\Modules\Database\CountdownsQueryService;
 
 class CountdownsRepository {
@@ -27,7 +29,7 @@ class CountdownsRepository {
      */
     public static function get_instance( CountdownsQueryService $query_service ) {
 
-        if (  self::$instance === null ) {
+        if ( self::$instance === null ) {
             self::$instance = new CountdownsRepository( $query_service );
         }
 
@@ -38,18 +40,32 @@ class CountdownsRepository {
         $this->query_service = $query_service;
     }
 
-    public function findAll() {
+    public function create_table() {
 
-        return $this->query_service->getAll();
     }
 
-    public function findById( $id ) {
-        return 'findbyid';
+    public function find_all() {
+
+        return $this->query_service->get_all();
     }
 
-    public function create( $data ) {
+    public function find_by_id( $id ) {
 
-        return 'create';
+        return $this->query_service->get_by_id( $id );
+    }
+
+    /**
+     * Create the model and insert a record in the table countdowns.
+     *
+     * @param NewCountdownDTO $data
+     * @return array array( 'id' => id_generated, 'result' => result ) .
+     */
+    public function insert( NewCountdownDTO $data ): array{
+
+        $countdown = new CountdownModel( 0, $data->get_name(), $data->get_description() );
+
+        return $this->query_service->insert( $countdown );
+
     }
 
     public function update( $id ) {

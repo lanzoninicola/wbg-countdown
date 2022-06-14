@@ -2,7 +2,7 @@
 
 namespace WBGCountdown\Modules\Database;
 
-use WBGCountdown\Modules\Api\Models\CountdownSettings;
+use WBGCountdown\Modules\Api\Models\CountdownSettingsModel;
 use WBGCountdown\Services\DatabaseQueryService;
 
 class CountdownsSettingsQueryService extends DatabaseQueryService {
@@ -64,7 +64,7 @@ class CountdownsSettingsQueryService extends DatabaseQueryService {
                 -- INDEX countdown_id_idx (countdown_id ASC) VISIBLE,
                 ) $charset_collate;";
 
-        $wpdb->query( $wpdb->prepare( $sql ) );
+        $wpdb->query( $sql );
 
     }
 
@@ -83,10 +83,10 @@ class CountdownsSettingsQueryService extends DatabaseQueryService {
      * Update a record in the table countdowns.
      *
      * @param integer $id
-     * @param CountdownSettings $countdown_settings The countdown object updated.
+     * @param CountdownSettingsModel $countdown_settings The countdown object updated.
      * @return bool True if the operation finished with success, false some error occured.
      */
-    public function update( int $id, CountdownSettings $countdown_settings ): bool {
+    public function update( int $id, CountdownSettingsModel $countdown_settings ): bool {
 
         return $this->update_row( $this->table_name, $countdown_settings->to_array( array( 'id' ) ), array( 'id' => $id ) );
 
@@ -94,10 +94,10 @@ class CountdownsSettingsQueryService extends DatabaseQueryService {
 
     /**
      * Insert a record in the table countdowns.
-     * @param CountdownSettings $countdown_settings
+     * @param CountdownSettingsModel $countdown_settings
      * @return array array( 'id' => id_generated, 'result' => result ) .
      */
-    public function insert( CountdownSettings $countdown_settings ): array{
+    public function insert( CountdownSettingsModel $countdown_settings ): array{
 
         return $this->insert_row( $this->table_name, $countdown_settings->to_array( array( 'id' ) ) );
 
@@ -119,7 +119,7 @@ class CountdownsSettingsQueryService extends DatabaseQueryService {
      * @param integer $id
      * @return array|null The record found, null if not found.
      */
-    public function getById( int $id ): ?array{
+    public function get_by_id( int $id ): ?array{
 
         return $this->get_row( $this->table_name, array( 'id' => $id ) );
     }
@@ -128,7 +128,7 @@ class CountdownsSettingsQueryService extends DatabaseQueryService {
      * Get all records from the table countdowns.
      * @return array The records found.
      */
-    public function getAll(): array{
+    public function get_all(): array{
 
         return $this->get_all_rows( $this->table_name );
     }

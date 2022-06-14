@@ -38,13 +38,13 @@ class CountdownsSettingsRepository {
         $this->query_service = $query_service;
     }
 
-    public function findAll() {
+    public function find_all() {
 
         return 'urra from repository';
     }
 
-    public function findById( $id ) {
-        return $this->query_service->getById( $id );
+    public function find_by_id( $id ) {
+        return $this->query_service->get_by_id( $id );
     }
 
     public function create( $id ) {

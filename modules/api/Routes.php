@@ -34,7 +34,7 @@ class Routes {
     private $routes = array(
         'countdowns'                      => array(
             'GET'  => array(
-                'callback'   => array( 'CountdownsController', 'findAll' ),
+                'callback'   => array( 'CountdownsController', 'find_all' ),
                 'capability' => 'public',
             ),
             'POST' => array(
@@ -44,7 +44,7 @@ class Routes {
         ),
         "/countdowns/(?P<id>\d+)"         => array(
             'GET'  => array(
-                'callback'   => array( 'CountdownsController', 'findById' ),
+                'callback'   => array( 'CountdownsController', 'find_by_id' ),
                 'capability' => 'public',
             ),
             'POST' => array(
@@ -54,7 +54,7 @@ class Routes {
         ),
         "/countdown-settings/(?P<id>\d+)" => array(
             'GET'  => array(
-                'callback'   => array( 'CountdownsSettingsController', 'findById' ),
+                'callback'   => array( 'CountdownsSettingsController', 'find_by_id' ),
                 'capability' => 'public',
             ),
             'POST' => array(

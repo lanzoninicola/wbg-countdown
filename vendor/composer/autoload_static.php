@@ -21,7 +21,9 @@ class ComposerStaticInit1839a578bc4d9982c7ac16da4e541d6f
             'WBGCountdown\\PluginCore\\' => 24,
             'WBGCountdown\\Modules\\Database\\' => 30,
             'WBGCountdown\\Modules\\Api\\Repositories\\' => 38,
+            'WBGCountdown\\Modules\\Api\\Models\\' => 32,
             'WBGCountdown\\Modules\\Api\\Factories\\' => 35,
+            'WBGCountdown\\Modules\\Api\\Dtos\\' => 30,
             'WBGCountdown\\Modules\\Api\\Controllers\\' => 37,
             'WBGCountdown\\Modules\\Api\\' => 25,
             'WBGCountdown\\Modules\\Admin\\' => 27,
@@ -56,9 +58,17 @@ class ComposerStaticInit1839a578bc4d9982c7ac16da4e541d6f
         array (
             0 => __DIR__ . '/../..' . '/modules/api/repositories',
         ),
+        'WBGCountdown\\Modules\\Api\\Models\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/modules/api/models',
+        ),
         'WBGCountdown\\Modules\\Api\\Factories\\' => 
         array (
             0 => __DIR__ . '/../..' . '/modules/api/factories',
+        ),
+        'WBGCountdown\\Modules\\Api\\Dtos\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/modules/api/dtos',
         ),
         'WBGCountdown\\Modules\\Api\\Controllers\\' => 
         array (

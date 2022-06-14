@@ -142,14 +142,14 @@ abstract class DatabaseQueryService {
      *
      * @return array|null
      */
-    protected function get_row( string $table_name, array $where ): ?array{
+    protected function get_row( string $table_name, string $where ): ?array{
 
         global $wpdb;
 
         $table_name = $this->get_table_name( $table_name );
 
         return $wpdb->get_row(
-            $wpdb->prepare( "SELECT * FROM %s WHERE %s", $table_name, $where ),
+            $wpdb->prepare( "SELECT * FROM `$table_name` WHERE $where" ),
             ARRAY_A
         );
     }
@@ -166,7 +166,7 @@ abstract class DatabaseQueryService {
         $table_name = $this->get_table_name( $table_name );
 
         return $wpdb->get_results(
-            $wpdb->prepare( "SELECT * FROM %s", $table_name ),
+            $wpdb->prepare( "SELECT * FROM `$table_name`" ),
             ARRAY_A
         );
 

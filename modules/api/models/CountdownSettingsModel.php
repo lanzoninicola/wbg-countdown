@@ -2,7 +2,7 @@
 
 namespace WBGCountdown\Modules\Api\Models;
 
-class CountdownSettings extends BaseModel {
+class CountdownSettingsModel extends BaseModel {
 
     private int $id;
 
@@ -10,16 +10,27 @@ class CountdownSettings extends BaseModel {
 
     private string $settings;
 
-    private \DateTime $created_date;
+    private \DateTime $created_at;
 
-    private \DateTime $updated_date;
+    private \DateTime $updated_at;
 
-    public function __construct( int $id, int $countdown_id, string $settings, \DateTime $created_date, \DateTime $updated_date ) {
+    public function __construct( int $id, int $countdown_id, string $settings, ?\DateTime $created_at = null, ?\DateTime $updated_at = null ) {
         $this->id           = $id;
         $this->countdown_id = $countdown_id;
         $this->settings     = $settings;
-        $this->created_date = $created_date;
-        $this->updated_date = $updated_date;
+
+        if ( $created_at === null ) {
+            $this->created_at = new \DateTime();
+        } else {
+            $this->created_at = $created_at;
+        }
+
+        if ( $updated_at === null ) {
+            $this->updated_at = new \DateTime();
+        } else {
+            $this->updated_at = $updated_at;
+        }
+
     }
 
     public function get_id(): int {
@@ -35,11 +46,11 @@ class CountdownSettings extends BaseModel {
     }
 
     public function get_created_date(): \DateTime {
-        return $this->created_date;
+        return $this->created_at;
     }
 
     public function get_updated_date(): \DateTime {
-        return $this->updated_date;
+        return $this->updated_at;
     }
 
     public function set_countdown_id( int $countdown_id ): void {
@@ -50,8 +61,8 @@ class CountdownSettings extends BaseModel {
         $this->settings = $settings;
     }
 
-    public function set_created_date( \DateTime $created_date ): void {
-        $this->created_date = $created_date;
+    public function set_created_date( \DateTime $created_at ): void {
+        $this->created_at = $created_at;
     }
 
     public function to_array( array $exclude_fields = array() ): array{
@@ -60,8 +71,8 @@ class CountdownSettings extends BaseModel {
             'id'           => $this->id,
             'countdown_id' => $this->countdown_id,
             'settings'     => $this->settings,
-            'created_date' => $this->created_date->format( 'Y-m-d H:i:s' ),
-            'updated_date' => $this->updated_date->format( 'Y-m-d H:i:s' ),
+            'created_at'   => $this->created_at->format( 'Y-m-d H:i:s' ),
+            'updated_at'   => $this->updated_at->format( 'Y-m-d H:i:s' ),
         );
 
         if ( !empty( $exclude_fields ) ) {
@@ -76,13 +87,13 @@ class CountdownSettings extends BaseModel {
 
     }
 
-    public static function from_array( array $array ): CountdownSettings {
-        return new CountdownSettings(
+    public static function from_array( array $array ): CountdownSettingsModel {
+        return new CountdownSettingsModel(
             $array['id'],
             $array['countdown_id'],
             $array['settings'],
-            $array['created_date'],
-            $array['updated_date']
+            $array['created_at'],
+            $array['updated_at']
         );
     }
 

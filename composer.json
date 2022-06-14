@@ -23,6 +23,8 @@
       "WBGCountdown\\Modules\\Api\\Factories\\": "./modules/api/factories",
       "WBGCountdown\\Modules\\Api\\Controllers\\": "./modules/api/controllers",
       "WBGCountdown\\Modules\\Api\\Repositories\\": "./modules/api/repositories",
+      "WBGCountdown\\Modules\\Api\\Models\\": "./modules/api/models",
+      "WBGCountdown\\Modules\\Api\\Dtos\\": "./modules/api/dtos",
       "WBGCountdown\\Modules\\Database\\": "./modules/database"
     },
     "files": [

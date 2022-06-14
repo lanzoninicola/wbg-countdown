@@ -2,7 +2,7 @@
 
 namespace WBGCountdown\Modules\Database;
 
-use WBGCountdown\Modules\Api\Models\Countdown;
+use WBGCountdown\Modules\Api\Models\CountdownModel;
 use WBGCountdown\Services\DatabaseQueryService;
 
 class CountdownsQueryService extends DatabaseQueryService {
@@ -60,7 +60,7 @@ class CountdownsQueryService extends DatabaseQueryService {
                 PRIMARY KEY  (id)
                 ) $charset_collate;";
 
-        $wpdb->query( $wpdb->prepare( $sql ) );
+        $wpdb->query( $sql );
 
     }
 
@@ -79,10 +79,10 @@ class CountdownsQueryService extends DatabaseQueryService {
      * Update a record in the table countdowns.
      *
      * @param integer $id
-     * @param Countdown $countdown The countdown object updated.
+     * @param CountdownModel $countdown The countdown object updated.
      * @return bool True if the operation finished with success, false some error occured.
      */
-    public function update( int $id, Countdown $countdown ): bool {
+    public function update( int $id, CountdownModel $countdown ): bool {
 
         return $this->update_row( $this->table_name, $countdown->to_array( array( 'id' ) ), array( 'id' => $id ) );
 
@@ -90,10 +90,10 @@ class CountdownsQueryService extends DatabaseQueryService {
 
     /**
      * Insert a record in the table countdowns.
-     * @param Countdown $countdown
+     * @param CountdownModel $countdown
      * @return array array( 'id' => id_generated, 'result' => result ) .
      */
-    public function insert( Countdown $countdown ): array{
+    public function insert( CountdownModel $countdown ): array{
 
         return $this->insert_row( $this->table_name, $countdown->to_array( array( 'id' ) ) );
 
@@ -115,16 +115,16 @@ class CountdownsQueryService extends DatabaseQueryService {
      * @param integer $id
      * @return array|null The record found, null if not found.
      */
-    public function getById( int $id ): ?array{
+    public function get_by_id( int $id ): ?array{
 
-        return $this->get_row( $this->table_name, array( 'id' => $id ) );
+        return $this->get_row( $this->table_name, "id = {$id};" );
     }
 
     /**
      * Get all records from the table countdowns.
      * @return array The records found.
      */
-    public function getAll(): array{
+    public function get_all(): array{
 
         return $this->get_all_rows( $this->table_name );
     }

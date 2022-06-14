@@ -25,11 +25,11 @@ class CountdownsSettingsController {
         return self::$instance;
     }
 
-    public function findAll() {
+    public function find_all() {
         return 'findall';
     }
 
-    public function findById( $id ) {
+    public function find_by_id( $id ) {
         return 'findbyid';
     }
 

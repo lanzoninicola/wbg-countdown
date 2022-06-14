@@ -2,6 +2,7 @@
 
 namespace WBGCountdown\Modules\Api\Controllers;
 
+use WBGCountdown\Modules\Api\Dtos\NewCountdownDTO;
 use WBGCountdown\Modules\Api\Repositories\CountdownsRepository;
 
 class CountdownsController {
@@ -38,32 +39,45 @@ class CountdownsController {
         $this->repository = $repository;
     }
 
-    public function findAll() {
+    public function find_all() {
 
-        return rest_ensure_response( $this->repository->findAll() );
+        return rest_ensure_response( $this->repository->find_all() );
     }
 
-    public function findById( $id ) {
-        return 'findbyid';
+    public function find_by_id( \WP_REST_Request $request ) {
+
+        $countdown_id = absint( $request->get_param( 'id' ) );
+
+        if ( !is_numeric( $countdown_id ) ) {
+            return rest_ensure_response(
+                new \WP_Error( 'rest_invalid_param',
+                    __( 'Invalid countdown id.', 'wbg-countdown' ),
+                    array( 'status' => 400 ) )
+            );
+        }
+
+        return rest_ensure_response( $this->repository->find_by_id( $countdown_id ) );
     }
 
-    public function save( $request ) {
+    // TODO: handling response
+    public function create( \WP_REST_Request $request ) {
 
-        var_dump( $request['name'] );
+        $dto = new NewCountdownDTO(
+            $request->get_param( 'name' ),
+            $request->get_param( 'description' )
+        );
 
-        return 'save';
-    }
+        $result = $this->repository->insert( $dto );
 
-    public function delete( $id ) {
-        return 'delete';
-    }
-
-    public function create( $id ) {
-        return 'create';
+        return rest_ensure_response( $result );
     }
 
     public function update( $id ) {
         return 'update';
+    }
+
+    public function delete( $id ) {
+        return 'delete';
     }
 
 }
