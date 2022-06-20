@@ -4,38 +4,50 @@ namespace WBGCountdown\Inc;
 
 class DatabaseResponse {
 
-    public static function error( $data = null ): DatabaseError {
+    public static function error( $error_data = array( 'data' => null, 'message' => '' ) ): DatabaseError {
 
         $error = new DatabaseError();
 
-        if ( !empty( $data ) ) {
-            $error->set_data( $data );
+        if ( $error_data['message'] !== null ) {
+            $error->set_message( $error_data['message'] );
+        }
+
+        if ( $error_data['data'] !== null ) {
+            $error->set_data( $error_data['data'] );
         }
 
         return $error;
 
     }
 
-    public static function warning( $data = null ): DatabaseError {
-
-        $error = new DatabaseError();
-
-        $error->set_code( 'database_warning' );
-
-        if ( !empty( $data ) ) {
-            $error->set_data( $data );
-        }
-
-        return $error;
-
-    }
-
-    public static function success( $data = null ): DatabaseSuccess {
+    public static function warning( $warning_data = array( 'data' => null, 'message' => '' ) ): DatabaseSuccess {
 
         $success = new DatabaseSuccess();
 
-        if ( !empty( $data ) ) {
-            $success->set_data( $data );
+        $success->set_code( 'warning' );
+
+        if ( $warning_data['message'] !== null ) {
+            $success->set_message( $warning_data['message'] );
+        }
+
+        if ( $warning_data['data'] !== null ) {
+            $success->set_data( $warning_data['data'] );
+        }
+
+        return $success;
+
+    }
+
+    public static function success( $success_data = array( 'data' => null, 'message' => '' ) ): DatabaseSuccess {
+
+        $success = new DatabaseSuccess();
+
+        if ( $success_data['message'] !== null ) {
+            $success->set_message( $success_data['message'] );
+        }
+
+        if ( $success_data['data'] !== null ) {
+            $success->set_data( $success_data['data'] );
         }
 
         return $success;

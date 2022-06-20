@@ -21,13 +21,7 @@
  *
  * @author     Lanzoni Nicola <lanzoni.nicola@gmail.com>
  */
-class Wbg_Countdown_Shortcode {
-
-    private function load_dependencies() {
-
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'shortcode/includes/class-wbg-countdown-bar.php';
-
-    }
+class CountdownShortcode {
 
     /**
      * Register the stylesheets for the public-facing side of the site.
@@ -36,7 +30,7 @@ class Wbg_Countdown_Shortcode {
      */
     public function enqueue_styles() {
 
-        wp_enqueue_style( WBG_COUNTDOWN_PLUGIN_NAME, plugin_dir_url( __FILE__ ) . 'css/wbg-countdown-public.css', array(), $this->version, 'all' );
+        // wp_enqueue_style( WBG_COUNTDOWN_PLUGIN_NAME, plugin_dir_url( __FILE__ ) . 'css/wbg-countdown-public.css', array(), $this->version, 'all' );
 
     }
 

@@ -18,9 +18,13 @@
   "dependencies": {
     "@fontsource/inter": "^4.5.10",
     "dayjs": "^1.11.3",
+    "i18next": "^21.8.9",
+    "i18next-browser-languagedetector": "^6.1.4",
     "react": "^18.1.0",
     "react-colorful": "^5.5.1",
     "react-dom": "^18.1.0",
+    "react-i18next": "^11.17.2",
+    "react-icons": "^4.4.0",
     "use-context-selector": "^1.4.1"
   },
   "devDependencies": {

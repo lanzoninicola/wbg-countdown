@@ -9,6 +9,7 @@ return array(
     'WBGCountdown\\Traits\\' => array($baseDir . '/traits'),
     'WBGCountdown\\Services\\' => array($baseDir . '/services'),
     'WBGCountdown\\PluginCore\\' => array($baseDir . '/plugin-core'),
+    'WBGCountdown\\Modules\\Public\\' => array($baseDir . '/modules/public'),
     'WBGCountdown\\Modules\\Api\\Repositories\\' => array($baseDir . '/modules/api/repositories'),
     'WBGCountdown\\Modules\\Api\\Models\\' => array($baseDir . '/modules/api/models'),
     'WBGCountdown\\Modules\\Api\\Factories\\' => array($baseDir . '/modules/api/factories'),

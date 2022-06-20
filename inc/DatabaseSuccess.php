@@ -11,7 +11,7 @@ class DatabaseSuccess {
     private $data;
 
     public function __construct() {
-        $this->code    = 'database_success';
+        $this->code    = 'success';
         $this->message = 'Database success';
         $this->data    = array(
             'status' => 200,
@@ -41,6 +41,14 @@ class DatabaseSuccess {
     public function set_data( $data ): void {
         $this->data['payload'] = $data;
 
+    }
+
+    public function to_array(): array{
+        return array(
+            'code'    => $this->code,
+            'message' => $this->message,
+            'data'    => $this->data,
+        );
     }
 
 }

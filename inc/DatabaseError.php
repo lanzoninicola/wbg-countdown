@@ -11,7 +11,7 @@ class DatabaseError {
     private $data;
 
     public function __construct() {
-        $this->code    = 'database_error';
+        $this->code    = 'error';
         $this->message = 'Database error';
         $this->data    = array(
             'status' => 500,
@@ -42,4 +42,11 @@ class DatabaseError {
         $this->data['payload'] = $data;
     }
 
+    public function to_array(): array{
+        return array(
+            'code'    => $this->code,
+            'message' => $this->message,
+            'data'    => $this->data,
+        );
+    }
 }

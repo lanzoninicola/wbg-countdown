@@ -63,7 +63,7 @@ class CountdownsController {
             return new \WP_Error( $result->get_code(), $result->get_data(), array( 'status' => 500 ) );
         }
 
-        return rest_ensure_response( $result->get_data() );
+        return rest_ensure_response( $result->to_array() );
     }
 
     public function update( \WP_REST_Request $request ) {
@@ -97,7 +97,7 @@ class CountdownsController {
             return new \WP_Error( $result->get_code(), $result->get_data(), array( 'status' => 500 ) );
         }
 
-        return rest_ensure_response( $result->get_data() );
+        return rest_ensure_response( $result->to_array() );
     }
 
     public function delete( \WP_REST_Request $request ) {
@@ -115,7 +115,7 @@ class CountdownsController {
             return new \WP_Error( $result->get_code(), $result->get_data(), array( 'status' => 500 ) );
         }
 
-        return rest_ensure_response( $result->get_data() );
+        return rest_ensure_response( $result->to_array() );
 
     }
 
@@ -127,7 +127,7 @@ class CountdownsController {
             return new \WP_Error( $result->get_code(), $result->get_data(), array( 'status' => 500 ) );
         }
 
-        return rest_ensure_response( $result->get_data() );
+        return rest_ensure_response( $result->to_array() );
     }
 
     public function find_by_id( \WP_REST_Request $request ) {
@@ -148,7 +148,7 @@ class CountdownsController {
             return new \WP_Error( $result->get_code(), $result->get_data(), array( 'status' => 500 ) );
         }
 
-        return rest_ensure_response( $result->get_data() );
+        return rest_ensure_response( $result->to_array() );
 
     }
 

@@ -133,18 +133,30 @@ class DatabaseQueryService {
          */
 
         if ( $result === false ) {
-            return DatabaseResponse::error( 'Insert operation failed. Query returns an error.' );
+            return DatabaseResponse::error(
+                array(
+                    'message' => 'Insert operation failed. Query returns an error.',
+                )
+            );
         }
 
         /**
          * no rows were affected
          */
 
-        if ( $result === 0 ) {
-            return DatabaseResponse::error( 'No rows were affected.' );
+        if ( is_array( $result ) && count( $result ) === 0 ) {
+            return DatabaseResponse::warning(
+                array(
+                    'message' => 'No rows were affected' )
+            );
         }
 
-        return DatabaseResponse::success( array( 'id' => $id_generated ) );
+        return DatabaseResponse::success(
+            array(
+                'message' => 'Row inserted successfully.',
+                'data'    => array( 'id' => $id_generated ),
+            )
+        );
 
     }
 
@@ -168,15 +180,22 @@ class DatabaseQueryService {
          */
 
         if ( $result === false ) {
-            return DatabaseResponse::error( 'Update operation failed. Query returns an error.' );
+            return DatabaseResponse::error(
+                array(
+                    'message' => 'Update operation failed. Query returns an error.',
+                )
+            );
         }
 
         /**
          * no rows were affected
          */
 
-        if ( $result === 0 ) {
-            return DatabaseResponse::warning( 'No rows were affected.' );
+        if ( is_array( $result ) && count( $result ) === 0 ) {
+            return DatabaseResponse::warning(
+                array(
+                    'message' => 'No rows were affected' )
+            );
         }
 
         return DatabaseResponse::success();
@@ -202,15 +221,22 @@ class DatabaseQueryService {
          */
 
         if ( $result === false ) {
-            return DatabaseResponse::error( 'Delete operation failed. Query returns an error.' );
+            return DatabaseResponse::error(
+                array(
+                    'message' => 'Delete operation failed. Query returns an error.',
+                )
+            );
         }
 
         /**
          * no rows were affected
          */
 
-        if ( $result === 0 ) {
-            return DatabaseResponse::error( 'No rows were affected.' );
+        if ( is_array( $result ) && count( $result ) === 0 ) {
+            return DatabaseResponse::warning(
+                array(
+                    'message' => 'No rows were affected' )
+            );
         }
 
         return DatabaseResponse::success();
@@ -240,10 +266,28 @@ class DatabaseQueryService {
          */
 
         if ( $result === false ) {
-            return DatabaseResponse::error( 'Get a row operation failed. Query returns an error.' );
+            return DatabaseResponse::error(
+                array(
+                    'message' => 'Get all rows operation failed. Query returns an error.',
+                )
+            );
         }
 
-        return DatabaseResponse::success( $result );
+        /**
+         * no rows were affected
+         */
+
+        if ( is_array( $result ) && count( $result ) === 0 ) {
+            return DatabaseResponse::warning(
+                array(
+                    'message' => 'No rows founds',
+                )
+            );
+        }
+
+        return DatabaseResponse::success(
+            array( 'data' => $result )
+        );
 
     }
 
@@ -268,10 +312,28 @@ class DatabaseQueryService {
          */
 
         if ( $result === false ) {
-            return DatabaseResponse::error( 'Get all rows operation failed. Query returns an error.' );
+            return DatabaseResponse::error(
+                array(
+                    'message' => 'Get all rows operation failed. Query returns an error.',
+                )
+            );
         }
 
-        return DatabaseResponse::success( $result );
+        /**
+         * no rows were affected
+         */
+
+        if ( is_array( $result ) && count( $result ) === 0 ) {
+            return DatabaseResponse::warning(
+                array(
+                    'data'    => array(),
+                    'message' => 'No rows founds' )
+            );
+        }
+
+        return DatabaseResponse::success(
+            array( 'data' => $result )
+        );
 
     }
 

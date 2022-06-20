@@ -25,7 +25,8 @@
       "WBGCountdown\\Modules\\Api\\Controllers\\": "./modules/api/controllers",
       "WBGCountdown\\Modules\\Api\\Repositories\\": "./modules/api/repositories",
       "WBGCountdown\\Modules\\Api\\Models\\": "./modules/api/models",
-      "WBGCountdown\\Modules\\Api\\Dtos\\": "./modules/api/dtos"
+      "WBGCountdown\\Modules\\Api\\Dtos\\": "./modules/api/dtos",
+      "WBGCountdown\\Modules\\Public\\": "./modules/public"
     },
     "files": [
       "./functions/create_menu.php"

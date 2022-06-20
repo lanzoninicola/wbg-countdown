@@ -3,8 +3,11 @@ import ReactDOM from "react-dom";
 import App from "./App";
 
 document.addEventListener("DOMContentLoaded", function () {
-  var element = document.getElementById("wbg-countdown-public");
+  var element = document.getElementById("wbg-countdown-shortcode");
   if (typeof element !== "undefined" && element !== null) {
-    ReactDOM.render(<App />, document.getElementById("wbg-countdown-public"));
+    ReactDOM.render(
+      <App />,
+      document.getElementById("wbg-countdown-shortcode")
+    );
   }
 });

@@ -14,6 +14,7 @@ use WBGCountdown\Modules\Api\Factories\ControllersFactory;
  * @since      1.0.0
  */
 
+//TODO: handling wp-nonce
 class Routes {
 
     /**
@@ -32,7 +33,7 @@ class Routes {
      * The routes list.
      */
     private $routes = array(
-        'countdowns'                      => array(
+        'countdowns'                                 => array(
             'GET'  => array(
                 'callback'   => array( 'CountdownsController', 'find_all' ),
                 'capability' => 'public',
@@ -42,7 +43,7 @@ class Routes {
                 'capability' => 'public',
             ),
         ),
-        "/countdowns/(?P<id>\d+)"         => array(
+        "/countdowns/(?P<id>\d+)"                    => array(
             'GET'    => array(
                 'callback'   => array( 'CountdownsController', 'find_by_id' ),
                 'capability' => 'public',
@@ -56,7 +57,8 @@ class Routes {
                 'capability' => 'public',
             ),
         ),
-        "/countdown-settings/(?P<id>\d+)" => array(
+        "/countdowns/(?P<id>\d+)/countdown-settings" => array(
+            // "/countdown-settings/(?P<id>\d+)" => array(
             'GET'  => array(
                 'callback'   => array( 'CountdownsSettingsController', 'find_by_id' ),
                 'capability' => 'public',
