@@ -28,6 +28,10 @@ const config = {
         test: /\.(scss|css)$/i,
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
+      },
     ],
   },
 };
@@ -35,10 +39,7 @@ const config = {
 const configPublic = Object.assign({}, config, {
   name: "configPublic",
   entry: {
-    bundle: [
-      path.resolve(__dirname, "./modules/public/src/index.tsx"),
-      path.resolve(__dirname, "./modules/shortcode/src/index.tsx"),
-    ],
+    bundle: [path.resolve(__dirname, "./modules/shortcode/src/index.tsx")],
   },
   output: {
     filename: "[name].js",

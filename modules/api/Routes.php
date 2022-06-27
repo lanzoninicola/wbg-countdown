@@ -58,7 +58,6 @@ class Routes {
             ),
         ),
         "/countdowns/(?P<id>\d+)/countdown-settings" => array(
-            // "/countdown-settings/(?P<id>\d+)" => array(
             'GET'    => array(
                 'callback'   => array( 'CountdownsSettingsController', 'find_by_id' ),
                 'capability' => 'public',

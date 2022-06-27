@@ -1,0 +1,19 @@
+{
+  "title": {
+    "text": "Countdown to New Year",
+    "fontFamily": "Poppins",
+    "fontWeight": "400",
+    "fontSize": 24,
+    "fontColor": "#000000"
+  },
+  "timer": {
+    "unitsShown": ["dd", "hh", "mm", "ss"],
+    "digitFontFamily": "Inter",
+    "digitFontWeight": "400",
+    "digitFontSize": 48,
+    "digitFontColor": "#000000",
+    "lastUnitColor": "#e10b0b",
+    "labelFontFamily": "Inter",
+    "labelFontWeight": "400"
+  }
+}

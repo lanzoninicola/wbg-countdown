@@ -20,9 +20,14 @@ class Settings {
      */
     public function add_menu() {
 
-        create_submenu( 'wbg-countdown', 'Settings', 'wbg-countdown-settings', array(
-            'page_title' => 'Settings',
-        ) );
+        create_submenu(
+            'wbg-countdown',
+            'Templates',
+            'wbg-countdown-templates',
+            array(
+                'page_title' => 'Templates',
+            )
+        );
 
     }
 
@@ -32,9 +37,6 @@ class Settings {
      * @since    1.0.0
      */
     public function enqueue_styles() {
-
-        // wp_enqueue_style( WBG_COUNTDOWN_PLUGIN_NAME, plugin_dir_url( __FILE__ ) . 'css/admin.css', array(), $this->version, 'all' );
-
     }
 
     /**
@@ -44,7 +46,13 @@ class Settings {
      */
     public function enqueue_scripts() {
 
-        wp_enqueue_script( WBG_COUNTDOWN_PLUGIN_NAME, WBG_COUNTDOWN_PLUGIN_BASE_URL_PATH . 'dist/admin/bundle.js', array(), $this->version, true );
+        wp_enqueue_script(
+            WBG_COUNTDOWN_PLUGIN_NAME,
+            WBG_COUNTDOWN_PLUGIN_BASE_URL_PATH . 'dist/admin/bundle.js',
+            array(),
+            $this->version,
+            true
+        );
 
     }
 
