@@ -1,8 +1,8 @@
 <?php
 
-namespace WBGCountdown\Functions {
+namespace Clockdown\Functions {
 
-    use WBGCountdown\Services\AdminMenuService;
+    use Clockdown\Services\AdminMenuService;
 
     function create_menu( string $label, string $slug, array $options = array() ) {
         $admin_menu = AdminMenuService::get_instance();

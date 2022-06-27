@@ -1,9 +1,9 @@
 <?php
 
-namespace WBGCountdown\Modules\Api\Controllers;
+namespace Clockdown\Modules\Api\Controllers;
 
-use WBGCountdown\Inc\DatabaseError;
-use WBGCountdown\Modules\Api\Repositories\CountdownsSettingsRepository;
+use Clockdown\Inc\DatabaseError;
+use Clockdown\Modules\Api\Repositories\CountdownsSettingsRepository;
 
 class CountdownsSettingsController {
 
@@ -67,7 +67,7 @@ class CountdownsSettingsController {
 
         if ( !is_numeric( $countdown_id ) ) {
             return new \WP_Error( 'rest_invalid_param',
-                __( 'Invalid countdown id.', 'wbg-countdown' ),
+                __( 'Invalid countdown id.', 'clockdown' ),
                 array( 'status' => 400 ) );
         }
 
@@ -97,7 +97,7 @@ class CountdownsSettingsController {
 
         if ( !is_numeric( $countdown_id ) ) {
             return new \WP_Error( 'rest_invalid_param',
-                __( 'Invalid countdown id.', 'wbg-countdown' ),
+                __( 'Invalid countdown id.', 'clockdown' ),
                 array( 'status' => 400 ) );
         }
 
@@ -119,7 +119,7 @@ class CountdownsSettingsController {
             return new \WP_Error(
                 'rest_invalid_param',
                 __( 'Invalid countdown id.',
-                    'wbg-countdown' ),
+                    'clockdown' ),
                 array( 'status' => 400 ) );
         }
 

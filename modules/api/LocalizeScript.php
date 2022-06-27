@@ -1,6 +1,6 @@
 <?php
 
-namespace WBGCountdown\Modules\Api;
+namespace Clockdown\Modules\Api;
 
 /**
  * The class will create the custom rest API end-point for the countdown.
@@ -21,7 +21,7 @@ class LocalizeScript {
      */
     public function enqueue_scripts() {
 
-        wp_localize_script( WBG_COUNTDOWN_PLUGIN_NAME, 'wbg_countdown_admin_ajax', array(
+        wp_localize_script( CLOCKDOWN_PLUGIN_NAME, 'wbg_countdown_admin_ajax', array(
             'apiURL' => admin_url( 'admin-ajax.php' ),
             'nonce'  => wp_create_nonce( 'wbg_countdown_admin_ajax_nonce' ),
         ) );

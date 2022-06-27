@@ -1,8 +1,8 @@
 <?php
 
-namespace WBGCountdown\Modules\Api\Repositories;
+namespace Clockdown\Modules\Api\Repositories;
 
-use WBGCountdown\Services\DatabaseQueryService;
+use Clockdown\Services\DatabaseQueryService;
 
 class CountdownsSettingsRepository {
 

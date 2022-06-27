@@ -1,8 +1,8 @@
 <?php
 
-namespace WBGCountdown\Modules\Api;
+namespace Clockdown\Modules\Api;
 
-use WBGCountdown\Modules\Api\Factories\ControllersFactory;
+use Clockdown\Modules\Api\Factories\ControllersFactory;
 
 /**
  * The class will create the custom REST API end-point for the countdown.
@@ -20,7 +20,7 @@ class Routes {
     /**
      * The is root path of each route.
      */
-    private $root_path = 'wbg-countdown';
+    private $root_path = 'clockdown';
 
     /**
      * Version of the API, format v<number> (eg. v1, v2, v3, ...)

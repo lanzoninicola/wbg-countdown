@@ -1,6 +1,6 @@
 <?php
 
-namespace WBGCountdown\PluginCore;
+namespace Clockdown\PluginCore;
 
 /**
  * Register all actions and filters for the plugin.

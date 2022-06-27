@@ -1,9 +1,9 @@
 <?php
 
-namespace WBGCountdown\Services;
+namespace Clockdown\Services;
 
-use WBGCountdown\Inc\DatabaseError;
-use WBGCountdown\Inc\DatabaseResponse;
+use Clockdown\Inc\DatabaseError;
+use Clockdown\Inc\DatabaseResponse;
 
 class DatabaseQueryService {
 

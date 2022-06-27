@@ -1,6 +1,6 @@
 <?php
 
-namespace WBGCountdown\Modules\Api\Models;
+namespace Clockdown\Modules\Api\Models;
 
 class CountdownModel extends BaseModel {
 

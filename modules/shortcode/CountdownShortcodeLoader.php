@@ -1,6 +1,6 @@
 <?php
 
-namespace WBGCountdown\Modules\Shortcode;
+namespace Clockdown\Modules\Shortcode;
 
 /**
  * The public-facing functionality of the plugin.
@@ -32,7 +32,7 @@ class CountdownShortcodeLoader {
      */
     public function enqueue_styles() {
 
-        // wp_enqueue_style( WBG_COUNTDOWN_PLUGIN_NAME, plugin_dir_url( __FILE__ ) . 'css/wbg-countdown-public.css', array(), $this->version, 'all' );
+        // wp_enqueue_style( CLOCKDOWN_PLUGIN_NAME, plugin_dir_url( __FILE__ ) . 'css/clockdown-public.css', array(), $this->version, 'all' );
 
     }
 
@@ -43,7 +43,7 @@ class CountdownShortcodeLoader {
      */
     public function enqueue_scripts() {
 
-        wp_enqueue_script( WBG_COUNTDOWN_PLUGIN_NAME, WBG_COUNTDOWN_PLUGIN_BASE_URL_PATH . 'dist/public/bundle.js', array(), $this->version, true );
+        wp_enqueue_script( CLOCKDOWN_PLUGIN_NAME, CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'dist/public/bundle.js', array(), $this->version, true );
 
     }
 

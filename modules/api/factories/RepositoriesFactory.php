@@ -1,10 +1,10 @@
 <?php
 
-namespace WBGCountdown\Modules\Api\Factories;
+namespace Clockdown\Modules\Api\Factories;
 
-use WBGCountdown\Modules\Api\Repositories\CountdownsRepository;
-use WBGCountdown\Modules\Api\Repositories\CountdownsSettingsRepository;
-use WBGCountdown\Services\DatabaseQueryService;
+use Clockdown\Modules\Api\Repositories\CountdownsRepository;
+use Clockdown\Modules\Api\Repositories\CountdownsSettingsRepository;
+use Clockdown\Services\DatabaseQueryService;
 
 class RepositoriesFactory {
 

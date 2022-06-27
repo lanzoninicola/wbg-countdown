@@ -1,8 +1,8 @@
 <?php
 
-namespace WBGCountdown\Services;
+namespace Clockdown\Services;
 
-use WBGCountdown\Interfaces\LoggerService;
+use Clockdown\Interfaces\LoggerService;
 
 class WooLoggerServive implements LoggerService {
 

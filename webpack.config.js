@@ -50,7 +50,7 @@ const configPublic = Object.assign({}, config, {
 const configAdmin = Object.assign({}, config, {
   name: "configAdmin",
   entry: {
-    bundle: "./modules/admin/settings/src/index.tsx",
+    bundle: "./modules/admin/templates/src/index.tsx",
   },
   output: {
     filename: "[name].js",

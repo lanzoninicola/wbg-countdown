@@ -1,9 +1,9 @@
 <?php
 
-namespace WBGCountdown\Modules\Api\Repositories;
+namespace Clockdown\Modules\Api\Repositories;
 
-use WBGCountdown\Inc\DatabaseError;
-use WBGCountdown\Services\DatabaseQueryService;
+use Clockdown\Inc\DatabaseError;
+use Clockdown\Services\DatabaseQueryService;
 
 class CountdownsRepository {
 

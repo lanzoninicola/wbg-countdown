@@ -1,9 +1,9 @@
 <?php
 
-namespace WBGCountdown\Modules\Api\Factories;
+namespace Clockdown\Modules\Api\Factories;
 
-use WBGCountdown\Modules\Api\Controllers\CountdownsController;
-use WBGCountdown\Modules\Api\Controllers\CountdownsSettingsController;
+use Clockdown\Modules\Api\Controllers\CountdownsController;
+use Clockdown\Modules\Api\Controllers\CountdownsSettingsController;
 
 class ControllersFactory {
 

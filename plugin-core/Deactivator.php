@@ -1,6 +1,6 @@
 <?php
 
-namespace WBGCountdown\PluginCore;
+namespace Clockdown\PluginCore;
 
 /**
  * Fired during plugin deactivation

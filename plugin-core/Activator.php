@@ -1,8 +1,8 @@
 <?php
 
-namespace WBGCountdown\PluginCore;
+namespace Clockdown\PluginCore;
 
-use WBGCountdown\Modules\Api\Factories\RepositoriesFactory;
+use Clockdown\Modules\Api\Factories\RepositoriesFactory;
 
 /**
  * Fired during plugin activation.

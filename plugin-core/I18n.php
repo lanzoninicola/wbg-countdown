@@ -1,6 +1,6 @@
 <?php
 
-namespace WBGCountdown\PluginCore;
+namespace Clockdown\PluginCore;
 
 /**
  * Define the internationalization functionality.
@@ -25,7 +25,7 @@ class I18n {
     public function load_plugin_textdomain() {
 
         load_plugin_textdomain(
-            WBG_COUNTDOWN_TEXT_DOMAIN,
+            CLOCKDOWN_TEXT_DOMAIN,
             false,
             dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
         );

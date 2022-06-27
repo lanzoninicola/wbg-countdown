@@ -1,8 +1,8 @@
 <?php
 
-namespace WBGCountdown\PluginCore;
+namespace Clockdown\PluginCore;
 
-use WBGCountdown\Modules\Database\CountdownDatabase;
+use Clockdown\Modules\Database\CountdownDatabase;
 
 class Uninstaller {
 

@@ -7,10 +7,10 @@ import "@fontsource/inter/600.css";
 import CountdownProvider from "./countdown-provider/countdown-provider";
 
 document.addEventListener("DOMContentLoaded", function () {
-  const element = document.getElementById("wbg-countdown");
+  const element = document.getElementById("clockdown");
 
   if (typeof element !== "undefined" && element !== null) {
-    ReactDOM.createRoot(document.getElementById("wbg-countdown")!).render(
+    ReactDOM.createRoot(document.getElementById("clockdown")!).render(
       <ChakraProvider theme={theme}>
         <CountdownProvider>
           <App />

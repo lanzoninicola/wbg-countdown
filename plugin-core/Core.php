@@ -1,13 +1,13 @@
 <?php
 
-namespace WBGCountdown\PluginCore;
+namespace Clockdown\PluginCore;
 
-use function WBGCountdown\Functions\create_menu;
-use WBGCountdown\Modules\Admin\Settings;
-use WBGCountdown\Modules\Api\LocalizeScript;
-use WBGCountdown\Modules\Api\Routes;
-use WBGCountdown\PluginCore\I18n;
-use WBGCountdown\PluginCore\Loader;
+use Clockdown\Modules\Admin\Templates;
+use Clockdown\Modules\Api\LocalizeScript;
+use Clockdown\Modules\Api\Routes;
+use Clockdown\PluginCore\I18n;
+use Clockdown\PluginCore\Loader;
+use function Clockdown\Functions\create_menu;
 
 /**
  * The core plugin class.
@@ -64,7 +64,7 @@ class Core {
      *
      */
     public function add_plugin_menu() {
-        create_menu( 'Countdown', 'wbg-countdown' );
+        create_menu( 'Clockdown', 'clockdown' );
     }
 
     /**
@@ -93,9 +93,9 @@ class Core {
      */
     private function define_admin_hooks() {
 
-        $settings = new Settings();
-        $this->loader->add_action( 'admin_menu', $settings, 'add_menu' );
-        $this->loader->add_action( 'admin_enqueue_scripts', $settings, 'enqueue_scripts' );
+        $templates = new Templates();
+        $this->loader->add_action( 'admin_menu', $templates, 'add_menu' );
+        $this->loader->add_action( 'admin_enqueue_scripts', $templates, 'enqueue_scripts' );
         // $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 
         $countdown_api = new LocalizeScript();

@@ -12,7 +12,7 @@ import CountdownProvider from "./countdown-provider/countdown-provider";
 
 document.addEventListener("DOMContentLoaded", function () {
   const shortcodes: NodeListOf<Element> = document.querySelectorAll(
-    ".wbg-countdown-shortcode"
+    ".clockdown-shortcode"
   );
 
   // for each shortcode node attach create react app
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (id) {
       ReactDOM.createRoot(
-        document.querySelector(`.wbg-countdown-shortcode[data-id="${id}"]`)!
+        document.querySelector(`.clockdown-shortcode[data-id="${id}"]`)!
       ).render(
         <React.StrictMode>
           <ChakraProvider>

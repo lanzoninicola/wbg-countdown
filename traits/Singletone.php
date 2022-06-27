@@ -1,6 +1,6 @@
 <?php
 
-namespace WBGCountdown\Traits;
+namespace Clockdown\Traits;
 
 trait Singleton {
     /**

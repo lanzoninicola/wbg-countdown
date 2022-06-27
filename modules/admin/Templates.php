@@ -1,11 +1,11 @@
 <?php
 
-namespace WBGCountdown\Modules\Admin;
+namespace Clockdown\Modules\Admin;
 
-use function WBGCountdown\Functions\create_submenu;
+use function Clockdown\Functions\create_submenu;
 
 /**
- * The class that represents the Settings Page.
+ * The class that represents the Templates Page.
  *
  * @package    Wbg_Countdown
  * @subpackage Wbg_Countdown/admin
@@ -14,16 +14,16 @@ use function WBGCountdown\Functions\create_submenu;
  * @since      1.0.0
  */
 
-class Settings {
+class Templates {
     /**
      *  Add the menu item in the admin menu
      */
     public function add_menu() {
 
         create_submenu(
-            'wbg-countdown',
+            'clockdown',
             'Templates',
-            'wbg-countdown-templates',
+            'clockdown-templates',
             array(
                 'page_title' => 'Templates',
             )
@@ -47,8 +47,8 @@ class Settings {
     public function enqueue_scripts() {
 
         wp_enqueue_script(
-            WBG_COUNTDOWN_PLUGIN_NAME,
-            WBG_COUNTDOWN_PLUGIN_BASE_URL_PATH . 'dist/admin/bundle.js',
+            CLOCKDOWN_PLUGIN_NAME,
+            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'dist/admin/bundle.js',
             array(),
             $this->version,
             true

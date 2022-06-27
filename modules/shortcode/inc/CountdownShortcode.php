@@ -1,6 +1,6 @@
 <?php
 
-namespace WBGCountdown\Modules\Shortcode\Inc;
+namespace Clockdown\Modules\Shortcode\Inc;
 
 class CountdownShortcode {
 
@@ -27,7 +27,7 @@ class CountdownShortcode {
      */
     public static function shortcode_wrapper(
         $wrapper = array(
-            'class'  => 'wbg-countdown',
+            'class'  => 'clockdown',
             'before' => null,
             'after'  => null,
         )
@@ -35,7 +35,7 @@ class CountdownShortcode {
         ob_start();
 
         // @codingStandardsIgnoreStart
-        echo empty( $wrapper['before'] ) ? '<div id="wbg-countdown-shortcode" class="wbg-countdown">' : $wrapper['before'];
+        echo empty( $wrapper['before'] ) ? '<div id="clockdown-shortcode" class="clockdown">' : $wrapper['before'];
         echo empty( $wrapper['after'] ) ? '</div>' : $wrapper['after'];
         // @codingStandardsIgnoreEnd
 

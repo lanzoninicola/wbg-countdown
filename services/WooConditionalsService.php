@@ -1,6 +1,6 @@
 <?php
 
-namespace WBGCountdown\Services;
+namespace Clockdown\Services;
 
 class WooConditionalsService {
 
