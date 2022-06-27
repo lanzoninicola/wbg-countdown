@@ -277,7 +277,7 @@ class DatabaseQueryService {
          * no rows were affected
          */
 
-        if ( is_array( $result ) && count( $result ) === 0 ) {
+        if ( is_array( $result ) && count( $result ) === 0 || $result === null ) {
             return DatabaseResponse::warning(
                 array(
                     'message' => 'No rows founds',
