@@ -19,15 +19,14 @@
       "Clockdown\\Services\\": "./services",
       "Clockdown\\Traits\\": "./traits",
       "Clockdown\\Inc\\": "./inc",
-      "Clockdown\\Modules\\Admin\\": "./modules/admin",
+      "Clockdown\\Modules\\TemplatesEditor\\": "./modules/templates-editor",
+      "Clockdown\\Modules\\CountdownWidget\\": "./modules/countdown-widget",
       "Clockdown\\Modules\\Api\\": "./modules/api",
       "Clockdown\\Modules\\Api\\Factories\\": "./modules/api/factories",
       "Clockdown\\Modules\\Api\\Controllers\\": "./modules/api/controllers",
       "Clockdown\\Modules\\Api\\Repositories\\": "./modules/api/repositories",
       "Clockdown\\Modules\\Api\\Models\\": "./modules/api/models",
-      "Clockdown\\Modules\\Api\\Dtos\\": "./modules/api/dtos",
-      "Clockdown\\Modules\\Shortcode\\": "./modules/shortcode",
-      "Clockdown\\Modules\\Shortcode\\Inc\\": "./modules/shortcode/inc"
+      "Clockdown\\Modules\\Api\\Dtos\\": "./modules/api/dtos"
     },
     "files": [
       "./functions/create_menu.php"

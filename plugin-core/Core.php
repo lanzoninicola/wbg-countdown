@@ -2,9 +2,11 @@
 
 namespace Clockdown\PluginCore;
 
-use Clockdown\Modules\Admin\Templates;
-use Clockdown\Modules\Api\LocalizeScript;
+use Clockdown\Modules\Api\LocalizeScript as RestApiLocalizeScript;
 use Clockdown\Modules\Api\Routes;
+use Clockdown\Modules\CountdownWidget\Loader as CountdownWidgetLoader;
+use Clockdown\Modules\CountdownWidget\Shortcode as CountdownWidgetShortcode;
+use Clockdown\Modules\TemplatesEditor\Loader as TemplatesEditorLoader;
 use Clockdown\PluginCore\I18n;
 use Clockdown\PluginCore\Loader;
 use function Clockdown\Functions\create_menu;
@@ -93,12 +95,12 @@ class Core {
      */
     private function define_admin_hooks() {
 
-        $templates = new Templates();
+        $templates = new TemplatesEditorLoader();
         $this->loader->add_action( 'admin_menu', $templates, 'add_menu' );
         $this->loader->add_action( 'admin_enqueue_scripts', $templates, 'enqueue_scripts' );
-        // $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+        $this->loader->add_action( 'admin_enqueue_scripts', $templates, 'enqueue_styles' );
 
-        $countdown_api = new LocalizeScript();
+        $countdown_api = new RestApiLocalizeScript();
         $this->loader->add_action( 'admin_enqueue_scripts', $countdown_api, 'enqueue_scripts' );
 
         $routes = new Routes();
@@ -115,16 +117,10 @@ class Core {
      */
     private function define_public_hooks() {
 
-// $plugin_public = new Wbg_Countdown_Public( $this->get_plugin_name(), $this->get_version() );
+        $widget_loader = new CountdownWidgetLoader();
+        $this->loader->add_action( 'wp_enqueue_scripts', $widget_loader, 'enqueue_scripts' );
 
-// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-
-// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-
-// $shortcode = new Wbg_Countdown_Shortcode( $this->get_plugin_name(), $this->get_version() );
-
-// $this->loader->add_action( 'wp_enqueue_scripts', $shortcode, 'enqueue_styles' );
-        // $this->loader->add_action( 'wp_enqueue_scripts', $shortcode, 'enqueue_scripts' );
+        new CountdownWidgetShortcode();
 
     }
 

@@ -16,15 +16,14 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
             'Clockdown\\Traits\\' => 17,
             'Clockdown\\Services\\' => 19,
             'Clockdown\\PluginCore\\' => 21,
-            'Clockdown\\Modules\\Shortcode\\Inc\\' => 32,
-            'Clockdown\\Modules\\Shortcode\\' => 28,
+            'Clockdown\\Modules\\TemplatesEditor\\' => 34,
+            'Clockdown\\Modules\\CountdownWidget\\' => 34,
             'Clockdown\\Modules\\Api\\Repositories\\' => 35,
             'Clockdown\\Modules\\Api\\Models\\' => 29,
             'Clockdown\\Modules\\Api\\Factories\\' => 32,
             'Clockdown\\Modules\\Api\\Dtos\\' => 27,
             'Clockdown\\Modules\\Api\\Controllers\\' => 34,
             'Clockdown\\Modules\\Api\\' => 22,
-            'Clockdown\\Modules\\Admin\\' => 24,
             'Clockdown\\Interfaces\\' => 21,
             'Clockdown\\Inc\\' => 14,
         ),
@@ -43,13 +42,13 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
         array (
             0 => __DIR__ . '/../..' . '/plugin-core',
         ),
-        'Clockdown\\Modules\\Shortcode\\Inc\\' => 
+        'Clockdown\\Modules\\TemplatesEditor\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/modules/shortcode/inc',
+            0 => __DIR__ . '/../..' . '/modules/templates-editor',
         ),
-        'Clockdown\\Modules\\Shortcode\\' => 
+        'Clockdown\\Modules\\CountdownWidget\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/modules/shortcode',
+            0 => __DIR__ . '/../..' . '/modules/countdown-widget',
         ),
         'Clockdown\\Modules\\Api\\Repositories\\' => 
         array (
@@ -74,10 +73,6 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
         'Clockdown\\Modules\\Api\\' => 
         array (
             0 => __DIR__ . '/../..' . '/modules/api',
-        ),
-        'Clockdown\\Modules\\Admin\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/modules/admin',
         ),
         'Clockdown\\Interfaces\\' => 
         array (
