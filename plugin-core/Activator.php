@@ -9,8 +9,8 @@ use Clockdown\Modules\Api\Factories\RepositoriesFactory;
  *
  * This class defines all code necessary to run during the plugin's activation.
  *
- * @package    Wbg_Countdown
- * @subpackage Wbg_Countdown/includes
+ * @package    Clockdown
+ * @subpackage Clockdown/includes
  *
  * @author     Lanzoni Nicola <lanzoni.nicola@gmail.com>
  *

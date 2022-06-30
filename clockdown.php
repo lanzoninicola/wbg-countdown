@@ -6,7 +6,7 @@
  * @wordpress-plugin
  * Plugin Name:       Clockdown
  * Plugin URI:        https://lanzoninicola.com.br
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       The countdown timer heats the sense of urgency and scarcity, forcing the users as quickly as possible to make a purchase decision. Set the end date, customize it, put the widget in your e-commerce pages and your timer is ready.
  * Version:           1.0.0
  * Author:            Lanzoni Nicola
  * Author URI:        https://lanzoninicola.com.br

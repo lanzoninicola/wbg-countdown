@@ -5,8 +5,8 @@ namespace Clockdown\Modules\CountdownWidget;
 /**
  * The public-facing functionality of the plugin.
  *
- * @package    Wbg_Countdown
- * @subpackage Wbg_Countdown/public
+ * @package    Clockdown
+ * @subpackage Clockdown/public
  *
  * @link       https://lanzoninicola.com.br
  * @since      1.0.0
@@ -18,8 +18,8 @@ namespace Clockdown\Modules\CountdownWidget;
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the public-facing stylesheet and JavaScript.
  *
- * @package    Wbg_Countdown
- * @subpackage Wbg_Countdown/public
+ * @package    Clockdown
+ * @subpackage Clockdown/public
  *
  * @author     Lanzoni Nicola <lanzoni.nicola@gmail.com>
  */

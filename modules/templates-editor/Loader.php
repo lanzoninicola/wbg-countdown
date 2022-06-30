@@ -7,8 +7,8 @@ use function Clockdown\Functions\create_submenu;
 /**
  * The class that represents the Templates Page.
  *
- * @package    Wbg_Countdown
- * @subpackage Wbg_Countdown/admin
+ * @package    Clockdown
+ * @subpackage Clockdown/admin
  *
  * @link       https://lanzoninicola.com.br
  * @since      1.0.0
@@ -22,10 +22,10 @@ class Loader {
 
         create_submenu(
             'clockdown',
-            'Templates',
+            __( 'Templates', CLOCKDOWN_TEXT_DOMAIN ),
             'clockdown-templates',
             array(
-                'page_title' => 'Templates',
+                'page_title' => __( 'Templates', CLOCKDOWN_TEXT_DOMAIN ),
             )
         );
 

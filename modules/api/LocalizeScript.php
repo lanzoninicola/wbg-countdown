@@ -5,8 +5,8 @@ namespace Clockdown\Modules\Api;
 /**
  * The class will create the custom rest API end-point for the countdown.
  *
- * @package    Wbg_Countdown
- * @subpackage Wbg_Countdown/admin
+ * @package    Clockdown
+ * @subpackage Clockdown/admin
  *
  * @link       https://lanzoninicola.com.br
  * @since      1.0.0
@@ -21,9 +21,9 @@ class LocalizeScript {
      */
     public function enqueue_scripts() {
 
-        wp_localize_script( CLOCKDOWN_PLUGIN_NAME, 'wbg_countdown_admin_ajax', array(
+        wp_localize_script( CLOCKDOWN_PLUGIN_NAME, 'Clockdown_admin_ajax', array(
             'apiURL' => admin_url( 'admin-ajax.php' ),
-            'nonce'  => wp_create_nonce( 'wbg_countdown_admin_ajax_nonce' ),
+            'nonce'  => wp_create_nonce( 'Clockdown_admin_ajax_nonce' ),
         ) );
     }
 

@@ -8,7 +8,7 @@ namespace Clockdown\PluginCore;
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @package    Wbg_Countdown
+ * @package    Clockdown
  * @subpackage PluginCore\I18n
  *
  * @author     Lanzoni Nicola <lanzoni.nicola@gmail.com>

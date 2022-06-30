@@ -9,8 +9,8 @@ namespace Clockdown\PluginCore;
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Wbg_Countdown
- * @subpackage Wbg_Countdown/includes
+ * @package    Clockdown
+ * @subpackage Clockdown/includes
  *
  * @author     Lanzoni Nicola <lanzoni.nicola@gmail.com>
  */

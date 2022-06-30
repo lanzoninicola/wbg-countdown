@@ -20,8 +20,8 @@ use function Clockdown\Functions\create_menu;
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @package    Wbg_Countdown
- * @subpackage Wbg_Countdown/includes
+ * @package    Clockdown
+ * @subpackage Clockdown/plugin-core
  *
  * @author     Lanzoni Nicola <lanzoni.nicola@gmail.com>
  *
@@ -52,10 +52,8 @@ class Core {
 
         $this->loader = new Loader();
 
-        // Adding the plugin menu to Wordpress admin menu
-        $this->loader->add_action( 'admin_menu', $this, 'add_plugin_menu' );
-
         $this->set_locale();
+
         $this->define_admin_hooks();
         $this->define_public_hooks();
 
@@ -72,7 +70,7 @@ class Core {
     /**
      * Define the locale for this plugin for internationalization.
      *
-     * Uses the Wbg_Countdown_i18n class in order to set the domain and to register the hook
+     * Uses the i18n class in order to set the domain and to register the hook
      * with WordPress.
      *
      * @access   private
@@ -95,14 +93,20 @@ class Core {
      */
     private function define_admin_hooks() {
 
+        // Adding the plugin menu to Wordpress admin menu
+        $this->loader->add_action( 'admin_menu', $this, 'add_plugin_menu' );
+
+        // Adding the assets for the front-end of templates editor
         $templates = new TemplatesEditorLoader();
         $this->loader->add_action( 'admin_menu', $templates, 'add_menu' );
         $this->loader->add_action( 'admin_enqueue_scripts', $templates, 'enqueue_scripts' );
         $this->loader->add_action( 'admin_enqueue_scripts', $templates, 'enqueue_styles' );
 
+        // Adding the JS object with the required data to connect to the plugin REST API
         $countdown_api = new RestApiLocalizeScript();
         $this->loader->add_action( 'admin_enqueue_scripts', $countdown_api, 'enqueue_scripts' );
 
+        // Registring the routes for the rest api
         $routes = new Routes();
         $this->loader->add_action( 'rest_api_init', $routes, 'register_api_endpoints' );
 
@@ -117,6 +121,7 @@ class Core {
      */
     private function define_public_hooks() {
 
+        // Adding the assets for the front-end of Countdown Widget
         $widget_loader = new CountdownWidgetLoader();
         $this->loader->add_action( 'wp_enqueue_scripts', $widget_loader, 'enqueue_scripts' );
 
@@ -138,7 +143,7 @@ class Core {
      *
      * @since     1.0.0
      *
-     * @return Wbg_Countdown_Loader Orchestrates the hooks of the plugin.
+     * @return Clockdown_Loader Orchestrates the hooks of the plugin.
      */
     public function get_loader() {
         return $this->loader;

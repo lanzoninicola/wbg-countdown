@@ -5,8 +5,8 @@ namespace Clockdown\PluginCore;
 /**
  * Fired during plugin deactivation
  *
- * @package    Wbg_Countdown
- * @subpackage Wbg_Countdown/includes
+ * @package    Clockdown
+ * @subpackage Clockdown/includes
  *
  * @link       https://lanzoninicola.com.br
  * @since      1.0.0
@@ -17,8 +17,8 @@ namespace Clockdown\PluginCore;
  *
  * This class defines all code necessary to run during the plugin's deactivation.
  *
- * @package    Wbg_Countdown
- * @subpackage Wbg_Countdown/includes
+ * @package    Clockdown
+ * @subpackage Clockdown/includes
  *
  * @author     Lanzoni Nicola <lanzoni.nicola@gmail.com>
  *

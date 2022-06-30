@@ -1,5 +1,5 @@
 const esEs = {
-  it: {
+  es: {
     translation: {
       global: {
         yes: "sí",
@@ -37,7 +37,7 @@ const esEs = {
         edit: "Editar",
       },
       countdowns: {
-        title: "Countdowns",
+        title: "Contadores",
         table: {
           id: "ID",
           name: "Nombre",

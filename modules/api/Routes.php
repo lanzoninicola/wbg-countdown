@@ -7,8 +7,8 @@ use Clockdown\Modules\Api\Factories\ControllersFactory;
 /**
  * The class will create the custom REST API end-point for the countdown.
  *
- * @package    Wbg_Countdown
- * @subpackage Wbg_Countdown/admin
+ * @package    Clockdown
+ * @subpackage Clockdown/admin
  *
  * @link       https://lanzoninicola.com.br
  * @since      1.0.0

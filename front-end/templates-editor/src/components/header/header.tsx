@@ -16,6 +16,8 @@ import LanguagesBar from "../language-bar/languages-bar";
 const lngs: Languages = {
   en: { nativeName: "English" },
   pt: { nativeName: "Português" },
+  es: { nativeName: "Español" },
+  it: { nativeName: "Italiano" },
 };
 
 export default function Header() {
