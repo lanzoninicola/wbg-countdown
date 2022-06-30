@@ -2,7 +2,7 @@ import { Box, VStack } from "@chakra-ui/react";
 
 import useCurrentTokenSelector from "../../countdown-provider/hooks/app/useCurrentTokenSelector";
 import CountdownWidget from "../../countdown-widget/countdown-widget";
-import pattern from "./assets/imgs/tiny-checkers.svg";
+import pattern from "./assets/imgs/tiny-checkers.png";
 import BreakpointInfoMessage from "./components/breakpoint-info-message/breakpoint-info-message";
 import BreakpointsBar from "./components/breakpoints-bar/breakpoints-bar";
 import PreviewWrapper from "./components/preview-wrapper/preview-wrapper";
@@ -19,6 +19,7 @@ export default function EditorPreview() {
         p="5rem"
         borderRadius={"xl"}
         boxShadow={"sm"}
+        position="relative"
       >
         <PreviewWrapper currentToken={currentToken}>
           <CountdownWidget />

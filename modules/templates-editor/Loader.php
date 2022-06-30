@@ -45,6 +45,13 @@ class Loader {
             $this->version,
         );
 
+        wp_enqueue_style(
+            CLOCKDOWN_PLUGIN_NAME,
+            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/templates-editor/assets/editor2.css',
+            array(),
+            $this->version,
+        );
+
     }
 
     /**
