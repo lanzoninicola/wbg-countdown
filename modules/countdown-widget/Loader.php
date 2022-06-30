@@ -43,7 +43,7 @@ class Loader {
 
         wp_enqueue_script(
             CLOCKDOWN_PLUGIN_NAME . '-public',
-            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/shortcode/assets/shortcode.js',
+            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/shortcode/assets/index.js',
             $this->version,
             false
         );

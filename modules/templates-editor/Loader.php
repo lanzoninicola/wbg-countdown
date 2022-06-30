@@ -40,14 +40,7 @@ class Loader {
 
         wp_enqueue_style(
             CLOCKDOWN_PLUGIN_NAME,
-            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/templates-editor/assets/editor.css',
-            array(),
-            $this->version,
-        );
-
-        wp_enqueue_style(
-            CLOCKDOWN_PLUGIN_NAME,
-            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/templates-editor/assets/editor2.css',
+            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/templates-editor/assets/index.css',
             array(),
             $this->version,
         );
@@ -63,7 +56,7 @@ class Loader {
 
         wp_enqueue_script(
             CLOCKDOWN_PLUGIN_NAME,
-            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/templates-editor/assets/editor.js',
+            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/templates-editor/assets/index.js',
             array(),
             $this->version,
             false
