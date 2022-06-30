@@ -3,6 +3,8 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import ptBR from "./locale/pt-br";
 import enUS from "./locale/en-us";
+import esEs from "./locale/es-es";
+import itIT from "./locale/it-it";
 
 i18n
   // detect user language
@@ -21,6 +23,8 @@ i18n
     resources: {
       ...enUS,
       ...ptBR,
+      ...esEs,
+      ...itIT,
     },
   });
 
