@@ -45,14 +45,13 @@ export default function useThemeTitleSelector() {
   function setFontSize(size: number) {
     const nextState = { ...title, fontSize };
 
-    if (runtimeEnv === "wordpress") {
-      nextState.fontSize[currentToken] = withImportant(withUnit(size));
-      setTitle(nextState);
-      return;
-    }
-
+    // if (runtimeEnv === "wordpress") {
+    //   nextState.fontSize[currentToken] = withImportant(withUnit(size));
+    //   setTitle(nextState);
+    // } else {
     nextState.fontSize[currentToken] = withUnit(size);
     setTitle(nextState);
+    // }
   }
 
   function setFontColor(fontColor: string) {

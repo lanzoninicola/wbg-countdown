@@ -3,9 +3,11 @@ import React from "react";
 
 import useAppContext from "../../../countdown-provider/hooks/app/useAppContext";
 import useCurrentTokenSelector from "../../../countdown-provider/hooks/app/useCurrentTokenSelector";
+import useImportantCSS from "../../../countdown-provider/hooks/theme/useImportantProp";
 import useThemeTitleSelector from "../../../countdown-provider/hooks/theme/useThemeTitleSelector";
+import withImportant from "../../../countdown-provider/utils/withImportant";
 
-// TODO: custom unit size for the fontSize
+// TODO: way to refactor due added logic to the component
 
 function CounterTitle() {
   const {
@@ -17,17 +19,25 @@ function CounterTitle() {
     fontWeight,
   } = useThemeTitleSelector();
 
-  const { isEditorMode } = useAppContext();
+  const { isEditorMode, runtimeEnv } = useAppContext();
   const { currentToken } = useCurrentTokenSelector();
+  const [ff, fs, fsc, fw, fc] = useImportantCSS(
+    runtimeEnv === "wordpress",
+    fontFamily,
+    fontSize[currentToken],
+    fontSizeChackraUI,
+    fontWeight,
+    fontColor
+  );
 
   return (
     <>
       <Heading
         as="h2"
-        fontFamily={fontFamily}
-        fontSize={isEditorMode ? fontSize[currentToken] : fontSizeChackraUI}
-        color={fontColor}
-        fontWeight={fontWeight}
+        fontFamily={ff}
+        fontSize={isEditorMode ? fs : fsc}
+        color={fc}
+        fontWeight={fw}
       >
         {text}
       </Heading>

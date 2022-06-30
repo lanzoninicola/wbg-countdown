@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "dev:sync": "copyfiles ./src/countdown-*/**/*.* ../countdown-widget/",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build --emptyOutDir",
     "preview": "vite preview"
   },
   "dependencies": {

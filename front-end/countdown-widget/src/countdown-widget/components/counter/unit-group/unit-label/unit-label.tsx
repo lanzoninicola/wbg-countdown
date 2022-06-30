@@ -2,7 +2,9 @@ import { Text } from "@chakra-ui/react";
 import useAppContext from "../../../../../countdown-provider/hooks/app/useAppContext";
 
 import useCurrentTokenSelector from "../../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
+import useImportantCSS from "../../../../../countdown-provider/hooks/theme/useImportantProp";
 import { ThemeUnitLabelWithChackraUIFontSize } from "../../../../../countdown-provider/hooks/theme/useThemeTimer";
+import withImportant from "../../../../../countdown-provider/utils/withImportant";
 
 interface UnitLabelProps {
   label: string;
@@ -18,20 +20,26 @@ export default function UnitLabel({
   theme,
   ...props
 }: UnitLabelProps) {
-  const { isEditorMode } = useAppContext();
+  const { isEditorMode, runtimeEnv } = useAppContext();
   const { currentToken } = useCurrentTokenSelector();
+  const [ff, fs, fsc, fw, lfc, luc] = useImportantCSS(
+    runtimeEnv === "wordpress",
+    theme.labelFontFamily,
+    theme.labelFontSize[currentToken],
+    theme.labelFontSizeChackraUI,
+    theme.labelFontWeight,
+    theme.labelFontColor,
+    theme.lastUnitColor
+  );
 
   return (
     <Text
       as="span"
-      fontSize={
-        isEditorMode
-          ? theme.labelFontSize[currentToken]
-          : theme.labelFontSizeChackraUI
-      }
-      fontWeight={theme.labelFontWeight}
-      fontFamily={theme.labelFontFamily}
-      color={isLastDigit ? theme.lastUnitColor : theme.labelFontColor}
+      fontSize={isEditorMode ? fs : fsc}
+      fontWeight={fw}
+      fontFamily={ff}
+      color={isLastDigit ? luc : lfc}
+      lineHeight={1.1}
       {...props}
     >
       {label}

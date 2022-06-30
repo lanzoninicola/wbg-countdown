@@ -1,9 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-const outJsFilename = "shortcode.js";
-const outCssFilename = "shortcode.css";
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
@@ -11,7 +8,7 @@ export default defineConfig({
     outDir: "../../public/shortcode",
     rollupOptions: {
       output: {
-        entryFileNames: `assets/${outJsFilename}`,
+        entryFileNames: `assets/[name].js`,
         // this got rid of the hash on style.css
         assetFileNames: (assetInfo) => {
           let extType = assetInfo.name.split(".").at(1);
@@ -19,12 +16,14 @@ export default defineConfig({
             const type = "img";
             return `assets/${type}/[name].[ext]`;
           }
-          if (/woff2|woff/i.test(extType)) {
-            const type = "fonts";
-            return `assets/${type}/[name].[extname]`;
-          }
+          // https://stackoverflow.com/questions/69744253/vite-build-always-using-static-paths
+          // do not use this for fonts, breaks the source path in @font-face css
+          // if (/woff2|woff/i.test(extType)) {
+          //   const type = "fonts";
+          //   return `assets/${type}/[name].[extname]`;
+          // }
 
-          return `assets/${outCssFilename}`;
+          return `assets/[name].[ext]`;
         },
       },
     },
