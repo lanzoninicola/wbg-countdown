@@ -14,19 +14,20 @@
   "require": {},
   "autoload": {
     "psr-4": {
-      "Clockdown\\PluginCore\\": "./plugin-core",
-      "Clockdown\\Interfaces\\": "./interfaces",
+      "Clockdown\\Backend\\PluginCore\\": "./backend/plugin-core",
+      "Clockdown\\Backend\\App\\Interfaces\\": "./backend/app/interfaces",
       "Clockdown\\Services\\": "./services",
       "Clockdown\\Traits\\": "./traits",
-      "Clockdown\\Inc\\": "./inc",
-      "Clockdown\\Modules\\TemplatesEditor\\": "./modules/templates-editor",
-      "Clockdown\\Modules\\CountdownWidget\\": "./modules/countdown-widget",
-      "Clockdown\\Modules\\Api\\": "./modules/api",
-      "Clockdown\\Modules\\Api\\Factories\\": "./modules/api/factories",
-      "Clockdown\\Modules\\Api\\Controllers\\": "./modules/api/controllers",
-      "Clockdown\\Modules\\Api\\Repositories\\": "./modules/api/repositories",
-      "Clockdown\\Modules\\Api\\Models\\": "./modules/api/models",
-      "Clockdown\\Modules\\Api\\Dtos\\": "./modules/api/dtos"
+      "Clockdown\\Common\\": "./common",
+      "Clockdown\\Backend\\App\\Functions\\": "./backend/app/functions",
+      "Clockdown\\Backend\\Modules\\TemplatesEditor\\": "./backend/modules/templates-editor",
+      "Clockdown\\Backend\\Modules\\CountdownWidget\\": "./backend/modules/countdown-widget",
+      "Clockdown\\Backend\\Modules\\Api\\": "./backend/modules/api",
+      "Clockdown\\Backend\\Modules\\Api\\Factories\\": "./backend/modules/api/factories",
+      "Clockdown\\Backend\\Modules\\Api\\Controllers\\": "./backend/modules/api/controllers",
+      "Clockdown\\Backend\\Modules\\Api\\Repositories\\": "./backend/modules/api/repositories",
+      "Clockdown\\Backend\\Modules\\Api\\Models\\": "./backend/modules/api/models",
+      "Clockdown\\Backend\\Modules\\Api\\Dtos\\": "./backend/modules/api/dtos"
     },
     "files": [
       "./functions/create_menu.php"

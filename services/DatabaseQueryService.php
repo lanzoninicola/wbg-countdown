@@ -2,8 +2,8 @@
 
 namespace Clockdown\Services;
 
-use Clockdown\Inc\DatabaseError;
-use Clockdown\Inc\DatabaseResponse;
+use Clockdown\Common\DatabaseError;
+use Clockdown\Common\DatabaseResponse;
 
 class DatabaseQueryService {
 

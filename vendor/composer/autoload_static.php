@@ -15,17 +15,18 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
         array (
             'Clockdown\\Traits\\' => 17,
             'Clockdown\\Services\\' => 19,
-            'Clockdown\\PluginCore\\' => 21,
-            'Clockdown\\Modules\\TemplatesEditor\\' => 34,
-            'Clockdown\\Modules\\CountdownWidget\\' => 34,
-            'Clockdown\\Modules\\Api\\Repositories\\' => 35,
-            'Clockdown\\Modules\\Api\\Models\\' => 29,
-            'Clockdown\\Modules\\Api\\Factories\\' => 32,
-            'Clockdown\\Modules\\Api\\Dtos\\' => 27,
-            'Clockdown\\Modules\\Api\\Controllers\\' => 34,
-            'Clockdown\\Modules\\Api\\' => 22,
             'Clockdown\\Interfaces\\' => 21,
-            'Clockdown\\Inc\\' => 14,
+            'Clockdown\\Common\\' => 17,
+            'Clockdown\\Backend\\PluginCore\\' => 29,
+            'Clockdown\\Backend\\Modules\\TemplatesEditor\\' => 42,
+            'Clockdown\\Backend\\Modules\\CountdownWidget\\' => 42,
+            'Clockdown\\Backend\\Modules\\Api\\Repositories\\' => 43,
+            'Clockdown\\Backend\\Modules\\Api\\Models\\' => 37,
+            'Clockdown\\Backend\\Modules\\Api\\Factories\\' => 40,
+            'Clockdown\\Backend\\Modules\\Api\\Dtos\\' => 35,
+            'Clockdown\\Backend\\Modules\\Api\\Controllers\\' => 42,
+            'Clockdown\\Backend\\Modules\\Api\\' => 30,
+            'Clockdown\\Backend\\App\\Functions\\' => 32,
         ),
     );
 
@@ -38,49 +39,53 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
         array (
             0 => __DIR__ . '/../..' . '/services',
         ),
-        'Clockdown\\PluginCore\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/plugin-core',
-        ),
-        'Clockdown\\Modules\\TemplatesEditor\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/modules/templates-editor',
-        ),
-        'Clockdown\\Modules\\CountdownWidget\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/modules/countdown-widget',
-        ),
-        'Clockdown\\Modules\\Api\\Repositories\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/modules/api/repositories',
-        ),
-        'Clockdown\\Modules\\Api\\Models\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/modules/api/models',
-        ),
-        'Clockdown\\Modules\\Api\\Factories\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/modules/api/factories',
-        ),
-        'Clockdown\\Modules\\Api\\Dtos\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/modules/api/dtos',
-        ),
-        'Clockdown\\Modules\\Api\\Controllers\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/modules/api/controllers',
-        ),
-        'Clockdown\\Modules\\Api\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/modules/api',
-        ),
         'Clockdown\\Interfaces\\' => 
         array (
             0 => __DIR__ . '/../..' . '/interfaces',
         ),
-        'Clockdown\\Inc\\' => 
+        'Clockdown\\Common\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/inc',
+            0 => __DIR__ . '/../..' . '/common',
+        ),
+        'Clockdown\\Backend\\PluginCore\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/plugin-core',
+        ),
+        'Clockdown\\Backend\\Modules\\TemplatesEditor\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/modules/templates-editor',
+        ),
+        'Clockdown\\Backend\\Modules\\CountdownWidget\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/modules/countdown-widget',
+        ),
+        'Clockdown\\Backend\\Modules\\Api\\Repositories\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/modules/api/repositories',
+        ),
+        'Clockdown\\Backend\\Modules\\Api\\Models\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/modules/api/models',
+        ),
+        'Clockdown\\Backend\\Modules\\Api\\Factories\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/modules/api/factories',
+        ),
+        'Clockdown\\Backend\\Modules\\Api\\Dtos\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/modules/api/dtos',
+        ),
+        'Clockdown\\Backend\\Modules\\Api\\Controllers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/modules/api/controllers',
+        ),
+        'Clockdown\\Backend\\Modules\\Api\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/modules/api',
+        ),
+        'Clockdown\\Backend\\App\\Functions\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/app/functions',
         ),
     );
 

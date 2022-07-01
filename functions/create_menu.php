@@ -1,6 +1,6 @@
 <?php
 
-namespace Clockdown\Functions {
+namespace Clockdown\Backend\App\Functions {
 
     use Clockdown\Services\AdminMenuService;
 

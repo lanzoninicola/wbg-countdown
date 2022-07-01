@@ -34,10 +34,10 @@ if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
     require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 }
 
-use Clockdown\PluginCore\Activator;
-use Clockdown\PluginCore\Core;
-use Clockdown\PluginCore\Deactivator;
-use Clockdown\PluginCore\Uninstaller;
+use Clockdown\Backend\PluginCore\Activator;
+use Clockdown\Backend\PluginCore\Core;
+use Clockdown\Backend\PluginCore\Deactivator;
+use Clockdown\Backend\PluginCore\Uninstaller;
 
 /**
  * Currently plugin version.
