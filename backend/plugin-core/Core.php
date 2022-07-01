@@ -9,6 +9,7 @@ use Clockdown\Backend\Modules\TemplatesEditor\Loader as TemplatesEditorLoader;
 use Clockdown\Backend\PluginCore\I18n;
 use Clockdown\Backend\PluginCore\Loader;
 use Clockdown\Services\ScriptLocalizerService;
+use function Clockdown\Backend\App\Functions\add_menu;
 
 /**
  * The core plugin class.
@@ -66,7 +67,7 @@ class Core {
      *
      */
     public function add_plugin_menu() {
-        // create_menu( 'Clockdown', 'clockdown' );
+        add_menu( 'Clockdown', 'clockdown' );
     }
 
     /**

@@ -1,8 +1,8 @@
 <?php
 
-namespace Clockdown\Common;
+namespace Clockdown\Backend\App\Common;
 
-class DatabaseSuccess {
+class DatabaseError {
 
     private $code;
 
@@ -11,10 +11,10 @@ class DatabaseSuccess {
     private $data;
 
     public function __construct() {
-        $this->code    = 'success';
-        $this->message = 'Database success';
+        $this->code    = 'error';
+        $this->message = 'Database error';
         $this->data    = array(
-            'status' => 200,
+            'status' => 500,
         );
     }
 
@@ -40,7 +40,6 @@ class DatabaseSuccess {
 
     public function set_data( $data ): void {
         $this->data['payload'] = $data;
-
     }
 
     public function to_array(): array{
@@ -50,5 +49,4 @@ class DatabaseSuccess {
             'data'    => $this->data,
         );
     }
-
 }

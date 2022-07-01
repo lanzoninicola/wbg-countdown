@@ -15,11 +15,10 @@
   "autoload": {
     "psr-4": {
       "Clockdown\\Backend\\PluginCore\\": "./backend/plugin-core",
-      "Clockdown\\Backend\\App\\Interfaces\\": "./backend/app/interfaces",
+      "Clockdown\\Interfaces\\": "./backend/app/interfaces",
       "Clockdown\\Services\\": "./services",
       "Clockdown\\Traits\\": "./traits",
-      "Clockdown\\Common\\": "./common",
-      "Clockdown\\Backend\\App\\Functions\\": "./backend/app/functions",
+      "Clockdown\\Backend\\App\\Common\\": "./backend/app/common",
       "Clockdown\\Backend\\Modules\\TemplatesEditor\\": "./backend/modules/templates-editor",
       "Clockdown\\Backend\\Modules\\CountdownWidget\\": "./backend/modules/countdown-widget",
       "Clockdown\\Backend\\Modules\\Api\\": "./backend/modules/api",
@@ -30,7 +29,7 @@
       "Clockdown\\Backend\\Modules\\Api\\Dtos\\": "./backend/modules/api/dtos"
     },
     "files": [
-      "./functions/create_menu.php"
+      "./backend/app/functions/admin_menu.php"
     ]
   },
   "require-dev": {

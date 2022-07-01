@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'e9146769acb701f4db6dfc049a2af759' => $baseDir . '/functions/create_menu.php',
+    '0269d8cc425e52e7c5a9fdf65f65b92e' => $baseDir . '/backend/app/functions/admin_menu.php',
 );

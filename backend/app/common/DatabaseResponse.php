@@ -1,6 +1,6 @@
 <?php
 
-namespace Clockdown\Common;
+namespace Clockdown\Backend\App\Common;
 
 class DatabaseResponse {
 

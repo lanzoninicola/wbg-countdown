@@ -2,8 +2,6 @@
 
 namespace Clockdown\Backend\Modules\TemplatesEditor;
 
-use function Clockdown\Backend\App\Functions\create_submenu;
-
 /**
  * The class that represents the Templates Page.
  *
@@ -20,20 +18,10 @@ class Loader {
 
     private $style_version = '0.0.1';
 
-    /**
-     *  Add the menu item in the admin menu
-     */
     public function add_menu() {
 
-        create_submenu(
-            'clockdown',
-            __( 'Templates', CLOCKDOWN_TEXT_DOMAIN ),
-            'clockdown-templates',
-            array(
-                'page_title' => __( 'Templates', CLOCKDOWN_TEXT_DOMAIN ),
-            )
-        );
-
+        $templates_editor = new TemplatesEditor();
+        $templates_editor->add_menu();
     }
 
     /**

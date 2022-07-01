@@ -2,8 +2,8 @@
 
 namespace Clockdown\Backend\Modules\Api\Controllers;
 
+use Clockdown\Backend\App\Common\DatabaseError;
 use Clockdown\Backend\Modules\Api\Repositories\CountdownsRepository;
-use Clockdown\Common\DatabaseError;
 
 class CountdownsController {
 

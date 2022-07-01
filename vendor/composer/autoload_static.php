@@ -7,7 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
 {
     public static $files = array (
-        'e9146769acb701f4db6dfc049a2af759' => __DIR__ . '/../..' . '/functions/create_menu.php',
+        '0269d8cc425e52e7c5a9fdf65f65b92e' => __DIR__ . '/../..' . '/backend/app/functions/admin_menu.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -16,7 +16,6 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
             'Clockdown\\Traits\\' => 17,
             'Clockdown\\Services\\' => 19,
             'Clockdown\\Interfaces\\' => 21,
-            'Clockdown\\Common\\' => 17,
             'Clockdown\\Backend\\PluginCore\\' => 29,
             'Clockdown\\Backend\\Modules\\TemplatesEditor\\' => 42,
             'Clockdown\\Backend\\Modules\\CountdownWidget\\' => 42,
@@ -26,7 +25,7 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
             'Clockdown\\Backend\\Modules\\Api\\Dtos\\' => 35,
             'Clockdown\\Backend\\Modules\\Api\\Controllers\\' => 42,
             'Clockdown\\Backend\\Modules\\Api\\' => 30,
-            'Clockdown\\Backend\\App\\Functions\\' => 32,
+            'Clockdown\\Backend\\App\\Common\\' => 29,
         ),
     );
 
@@ -41,11 +40,7 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
         ),
         'Clockdown\\Interfaces\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/interfaces',
-        ),
-        'Clockdown\\Common\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/common',
+            0 => __DIR__ . '/../..' . '/backend/app/interfaces',
         ),
         'Clockdown\\Backend\\PluginCore\\' => 
         array (
@@ -83,9 +78,9 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
         array (
             0 => __DIR__ . '/../..' . '/backend/modules/api',
         ),
-        'Clockdown\\Backend\\App\\Functions\\' => 
+        'Clockdown\\Backend\\App\\Common\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/backend/app/functions',
+            0 => __DIR__ . '/../..' . '/backend/app/common',
         ),
     );
 
