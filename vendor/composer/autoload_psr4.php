@@ -6,7 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Clockdown\\Traits\\' => array($baseDir . '/traits'),
     'Clockdown\\Services\\' => array($baseDir . '/services'),
     'Clockdown\\Interfaces\\' => array($baseDir . '/backend/app/interfaces'),
     'Clockdown\\Backend\\PluginCore\\' => array($baseDir . '/backend/plugin-core'),
@@ -18,5 +17,6 @@ return array(
     'Clockdown\\Backend\\Modules\\Api\\Dtos\\' => array($baseDir . '/backend/modules/api/dtos'),
     'Clockdown\\Backend\\Modules\\Api\\Controllers\\' => array($baseDir . '/backend/modules/api/controllers'),
     'Clockdown\\Backend\\Modules\\Api\\' => array($baseDir . '/backend/modules/api'),
+    'Clockdown\\Backend\\App\\Traits\\' => array($baseDir . '/backend/app/traits'),
     'Clockdown\\Backend\\App\\Common\\' => array($baseDir . '/backend/app/common'),
 );

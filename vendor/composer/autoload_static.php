@@ -13,7 +13,6 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
     public static $prefixLengthsPsr4 = array (
         'C' => 
         array (
-            'Clockdown\\Traits\\' => 17,
             'Clockdown\\Services\\' => 19,
             'Clockdown\\Interfaces\\' => 21,
             'Clockdown\\Backend\\PluginCore\\' => 29,
@@ -25,15 +24,12 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
             'Clockdown\\Backend\\Modules\\Api\\Dtos\\' => 35,
             'Clockdown\\Backend\\Modules\\Api\\Controllers\\' => 42,
             'Clockdown\\Backend\\Modules\\Api\\' => 30,
+            'Clockdown\\Backend\\App\\Traits\\' => 29,
             'Clockdown\\Backend\\App\\Common\\' => 29,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Clockdown\\Traits\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/traits',
-        ),
         'Clockdown\\Services\\' => 
         array (
             0 => __DIR__ . '/../..' . '/services',
@@ -77,6 +73,10 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
         'Clockdown\\Backend\\Modules\\Api\\' => 
         array (
             0 => __DIR__ . '/../..' . '/backend/modules/api',
+        ),
+        'Clockdown\\Backend\\App\\Traits\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/app/traits',
         ),
         'Clockdown\\Backend\\App\\Common\\' => 
         array (

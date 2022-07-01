@@ -17,7 +17,7 @@
       "Clockdown\\Backend\\PluginCore\\": "./backend/plugin-core",
       "Clockdown\\Interfaces\\": "./backend/app/interfaces",
       "Clockdown\\Services\\": "./services",
-      "Clockdown\\Traits\\": "./traits",
+      "Clockdown\\Backend\\App\\Traits\\": "./backend/app/traits",
       "Clockdown\\Backend\\App\\Common\\": "./backend/app/common",
       "Clockdown\\Backend\\Modules\\TemplatesEditor\\": "./backend/modules/templates-editor",
       "Clockdown\\Backend\\Modules\\CountdownWidget\\": "./backend/modules/countdown-widget",
