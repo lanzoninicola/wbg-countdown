@@ -2,13 +2,13 @@
 
 namespace Clockdown\Backend\PluginCore;
 
+use Clockdown\Backend\App\Services\ScriptLocalizerService;
 use Clockdown\Backend\Modules\Api\Routes;
 use Clockdown\Backend\Modules\CountdownWidget\Loader as CountdownWidgetLoader;
 use Clockdown\Backend\Modules\CountdownWidget\Shortcode as CountdownWidgetShortcode;
 use Clockdown\Backend\Modules\TemplatesEditor\Loader as TemplatesEditorLoader;
 use Clockdown\Backend\PluginCore\I18n;
 use Clockdown\Backend\PluginCore\Loader;
-use Clockdown\Services\ScriptLocalizerService;
 use function Clockdown\Backend\App\Functions\add_menu;
 
 /**

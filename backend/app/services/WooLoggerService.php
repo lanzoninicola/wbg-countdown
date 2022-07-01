@@ -1,6 +1,6 @@
 <?php
 
-namespace Clockdown\Services;
+namespace Clockdown\Backend\App\Services;
 
 use Clockdown\Backend\App\Interfaces\LoggerService;
 

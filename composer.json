@@ -16,7 +16,7 @@
     "psr-4": {
       "Clockdown\\Backend\\PluginCore\\": "./backend/plugin-core",
       "Clockdown\\Backend\\App\\Interfaces\\": "./backend/app/interfaces",
-      "Clockdown\\Services\\": "./services",
+      "Clockdown\\Backend\\App\\Services\\": "./backend/app/services",
       "Clockdown\\Backend\\App\\Traits\\": "./backend/app/traits",
       "Clockdown\\Backend\\App\\Common\\": "./backend/app/common",
       "Clockdown\\Backend\\Modules\\TemplatesEditor\\": "./backend/modules/templates-editor",

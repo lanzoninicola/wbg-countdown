@@ -1,6 +1,6 @@
 <?php
 
-namespace Clockdown\Services;
+namespace Clockdown\Backend\App\Services;
 
 /**
  * The class responsible for localize the script.

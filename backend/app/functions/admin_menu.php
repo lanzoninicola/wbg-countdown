@@ -2,7 +2,7 @@
 
 namespace Clockdown\Backend\App\Functions {
 
-    use Clockdown\Services\AdminMenuService;
+    use Clockdown\Backend\App\Services\AdminMenuService;
 
     function add_menu( string $label, string $slug, array $options = array() ) {
         $admin_menu = AdminMenuService::get_instance();

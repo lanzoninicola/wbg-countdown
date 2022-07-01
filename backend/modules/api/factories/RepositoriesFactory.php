@@ -2,9 +2,9 @@
 
 namespace Clockdown\Backend\Modules\Api\Factories;
 
+use Clockdown\Backend\App\Services\DatabaseQueryService;
 use Clockdown\Backend\Modules\Api\Repositories\CountdownsRepository;
 use Clockdown\Backend\Modules\Api\Repositories\CountdownsSettingsRepository;
-use Clockdown\Services\DatabaseQueryService;
 
 class RepositoriesFactory {
 
