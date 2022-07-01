@@ -15,7 +15,7 @@
   "autoload": {
     "psr-4": {
       "Clockdown\\Backend\\PluginCore\\": "./backend/plugin-core",
-      "Clockdown\\Interfaces\\": "./backend/app/interfaces",
+      "Clockdown\\Backend\\App\\Interfaces\\": "./backend/app/interfaces",
       "Clockdown\\Services\\": "./services",
       "Clockdown\\Backend\\App\\Traits\\": "./backend/app/traits",
       "Clockdown\\Backend\\App\\Common\\": "./backend/app/common",

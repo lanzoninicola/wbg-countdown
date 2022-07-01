@@ -14,7 +14,6 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
         'C' => 
         array (
             'Clockdown\\Services\\' => 19,
-            'Clockdown\\Interfaces\\' => 21,
             'Clockdown\\Backend\\PluginCore\\' => 29,
             'Clockdown\\Backend\\Modules\\TemplatesEditor\\' => 42,
             'Clockdown\\Backend\\Modules\\CountdownWidget\\' => 42,
@@ -25,6 +24,7 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
             'Clockdown\\Backend\\Modules\\Api\\Controllers\\' => 42,
             'Clockdown\\Backend\\Modules\\Api\\' => 30,
             'Clockdown\\Backend\\App\\Traits\\' => 29,
+            'Clockdown\\Backend\\App\\Interfaces\\' => 33,
             'Clockdown\\Backend\\App\\Common\\' => 29,
         ),
     );
@@ -33,10 +33,6 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
         'Clockdown\\Services\\' => 
         array (
             0 => __DIR__ . '/../..' . '/services',
-        ),
-        'Clockdown\\Interfaces\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/backend/app/interfaces',
         ),
         'Clockdown\\Backend\\PluginCore\\' => 
         array (
@@ -77,6 +73,10 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
         'Clockdown\\Backend\\App\\Traits\\' => 
         array (
             0 => __DIR__ . '/../..' . '/backend/app/traits',
+        ),
+        'Clockdown\\Backend\\App\\Interfaces\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/app/interfaces',
         ),
         'Clockdown\\Backend\\App\\Common\\' => 
         array (

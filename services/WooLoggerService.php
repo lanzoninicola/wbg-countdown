@@ -2,7 +2,7 @@
 
 namespace Clockdown\Services;
 
-use Clockdown\Interfaces\LoggerService;
+use Clockdown\Backend\App\Interfaces\LoggerService;
 
 class WooLoggerServive implements LoggerService {
 

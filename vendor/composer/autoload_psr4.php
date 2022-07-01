@@ -7,7 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Clockdown\\Services\\' => array($baseDir . '/services'),
-    'Clockdown\\Interfaces\\' => array($baseDir . '/backend/app/interfaces'),
     'Clockdown\\Backend\\PluginCore\\' => array($baseDir . '/backend/plugin-core'),
     'Clockdown\\Backend\\Modules\\TemplatesEditor\\' => array($baseDir . '/backend/modules/templates-editor'),
     'Clockdown\\Backend\\Modules\\CountdownWidget\\' => array($baseDir . '/backend/modules/countdown-widget'),
@@ -18,5 +17,6 @@ return array(
     'Clockdown\\Backend\\Modules\\Api\\Controllers\\' => array($baseDir . '/backend/modules/api/controllers'),
     'Clockdown\\Backend\\Modules\\Api\\' => array($baseDir . '/backend/modules/api'),
     'Clockdown\\Backend\\App\\Traits\\' => array($baseDir . '/backend/app/traits'),
+    'Clockdown\\Backend\\App\\Interfaces\\' => array($baseDir . '/backend/app/interfaces'),
     'Clockdown\\Backend\\App\\Common\\' => array($baseDir . '/backend/app/common'),
 );
