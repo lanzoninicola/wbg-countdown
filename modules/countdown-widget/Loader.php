@@ -25,6 +25,10 @@ namespace Clockdown\Modules\CountdownWidget;
  */
 class Loader {
 
+    private $script_version = '0.0.1';
+
+    private $style_version = '0.0.1';
+
     /**
      * Register the stylesheets for the public-facing side of the site.
      *
@@ -44,7 +48,7 @@ class Loader {
         wp_enqueue_script(
             CLOCKDOWN_PLUGIN_NAME . '-public',
             CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/shortcode/assets/index.js',
-            $this->version,
+            $this->script_version,
             false
         );
 

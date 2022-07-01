@@ -6,6 +6,13 @@ import enUS from "./locale/en-us";
 import esEs from "./locale/es-es";
 import itIT from "./locale/it-it";
 
+const env = process.env.NODE_ENV;
+const isDev = env === "development";
+
+// the default language from wordpress configuration
+// @ts-ignore
+const wordpressLocale = appLocalized.language.substring(0, 2);
+
 i18n
   // detect user language
   // learn more: https://github.com/i18next/i18next-browser-languageDetector
@@ -15,7 +22,8 @@ i18n
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
-    debug: true,
+    debug: false,
+    lng: isDev ? "en" : wordpressLocale ? wordpressLocale : "en",
     fallbackLng: "en",
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default

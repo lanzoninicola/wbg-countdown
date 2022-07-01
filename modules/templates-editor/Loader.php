@@ -15,6 +15,11 @@ use function Clockdown\Functions\create_submenu;
  */
 
 class Loader {
+
+    private $script_version = '0.0.1';
+
+    private $style_version = '0.0.1';
+
     /**
      *  Add the menu item in the admin menu
      */
@@ -42,7 +47,7 @@ class Loader {
             CLOCKDOWN_PLUGIN_NAME,
             CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/templates-editor/assets/index.css',
             array(),
-            $this->version,
+            $this->style_version,
         );
 
     }
@@ -58,7 +63,7 @@ class Loader {
             CLOCKDOWN_PLUGIN_NAME,
             CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/templates-editor/assets/index.js',
             array(),
-            $this->version,
+            $this->script_version,
             false
         );
 

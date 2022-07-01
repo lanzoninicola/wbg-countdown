@@ -2,13 +2,13 @@
 
 namespace Clockdown\PluginCore;
 
-use Clockdown\Modules\Api\LocalizeScript as RestApiLocalizeScript;
 use Clockdown\Modules\Api\Routes;
 use Clockdown\Modules\CountdownWidget\Loader as CountdownWidgetLoader;
 use Clockdown\Modules\CountdownWidget\Shortcode as CountdownWidgetShortcode;
 use Clockdown\Modules\TemplatesEditor\Loader as TemplatesEditorLoader;
 use Clockdown\PluginCore\I18n;
 use Clockdown\PluginCore\Loader;
+use Clockdown\Services\ScriptLocalizerService;
 use function Clockdown\Functions\create_menu;
 
 /**
@@ -57,6 +57,9 @@ class Core {
         $this->define_admin_hooks();
         $this->define_public_hooks();
 
+        // this must be run after the "define_*_hooks"
+        $this->localize_scripts();
+
     }
 
     /**
@@ -81,6 +84,7 @@ class Core {
         $plugin_i18n = new I18n();
 
         $this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+        $this->loader->add_action( 'admin_enqueue_scripts', $plugin_i18n, 'enqueue_scripts' );
 
     }
 
@@ -101,10 +105,6 @@ class Core {
         $this->loader->add_action( 'admin_menu', $templates, 'add_menu' );
         $this->loader->add_action( 'admin_enqueue_scripts', $templates, 'enqueue_scripts' );
         $this->loader->add_action( 'admin_enqueue_scripts', $templates, 'enqueue_styles' );
-
-        // Adding the JS object with the required data to connect to the plugin REST API
-        $countdown_api = new RestApiLocalizeScript();
-        $this->loader->add_action( 'admin_enqueue_scripts', $countdown_api, 'enqueue_scripts' );
 
         // Registring the routes for the rest api
         $routes = new Routes();
@@ -127,6 +127,25 @@ class Core {
 
         new CountdownWidgetShortcode();
 
+    }
+
+    /**
+     * Define the data to be localized on the frontend html page as Javascript object.
+     *
+     * @return void
+     */
+    private function localize_scripts() {
+
+        $script_localizer = new ScriptLocalizerService();
+
+        $script_localizer->localize(
+            array(
+                'apiURL'   => home_url( '/wp-json' ),
+                'language' => get_locale(),
+            )
+        );
+
+        $this->loader->add_action( 'admin_enqueue_scripts', $script_localizer, 'localize_script' );
     }
 
     /**
