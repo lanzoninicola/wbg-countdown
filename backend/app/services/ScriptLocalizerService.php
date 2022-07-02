@@ -14,7 +14,40 @@ namespace Clockdown\Backend\App\Services;
 
 class ScriptLocalizerService {
 
+    /**
+     * This is the handle name used to localize the script.
+     *
+     * @access   private
+     * @var string - the handle name
+     * @since    1.0.0
+     */
+    private $handle = CLOCKDOWN_PLUGIN_NAME . '-localizer';
+
+    /**
+     * This is the name of Javascript object that will be used to localize the script.
+     * Once the script is localized, it will be accessible as `clockdown_localizer.[props]`.
+     *
+     * @var string
+     */
+    private $object_name = CLOCKDOWN_PLUGIN_NAME . 'Localized';
+
+    /**
+     * This is the cointent of the Javascript object that will be used to localize the script.
+     *
+     * @var array
+     */
     public $l10n = array();
+
+    public function __construct() {
+
+        /**
+         * wp_localize_script works only if the handle used on
+         * wp_enqueue_script() function is the same of
+         * the handle used on wp_register_script()
+         */
+        wp_register_script( $this->handle, '' );
+        wp_enqueue_script( $this->handle );
+    }
 
     /**
      * Register the data to be localized.
@@ -34,8 +67,8 @@ class ScriptLocalizerService {
     public function localize_script() {
 
         wp_localize_script(
-            CLOCKDOWN_PLUGIN_NAME,
-            'appLocalized',
+            $this->handle,
+            $this->object_name,
             array_merge(
                 $this->l10n,
                 array(

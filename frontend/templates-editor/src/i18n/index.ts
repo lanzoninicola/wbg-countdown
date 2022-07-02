@@ -11,7 +11,10 @@ const isDev = env === "development";
 
 // the default language from wordpress configuration
 // @ts-ignore
-const wordpressLocale = appLocalized.language.substring(0, 2);
+const wordpressLocale = isDev
+  ? "en"
+  : // @ts-ignore
+    clockdownLocalized.language.substring(0, 2);
 
 i18n
   // detect user language

@@ -13,6 +13,7 @@ export default defineConfig({
   base: "",
   build: {
     outDir: "../../public/templates-editor",
+    sourcemap: true,
     rollupOptions: {
       output: {
         entryFileNames: `assets/[name].js`,

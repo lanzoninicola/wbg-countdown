@@ -38,6 +38,7 @@ function CounterTitle() {
         fontSize={isEditorMode ? fs : fsc}
         color={fc}
         fontWeight={fw}
+        m={withImportant("0")}
       >
         {text}
       </Heading>

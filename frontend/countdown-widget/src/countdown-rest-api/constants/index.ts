@@ -4,8 +4,8 @@ const BASE_ENDPOINT_URL =
   env === "development"
     ? import.meta.env.VITE_REST_API_BASE_ENDPOINT_URL
     : // @ts-ignore
-      // the appLocalized variable is available only in Wordpress environment and not in dev mode on Vite
-      `${appLocalized.apiURL}/`;
+      // the clockdownLocalized variable is available only in Wordpress environment and not in dev mode on Vite
+      `${clockdownLocalized.apiURL}/`;
 
 const REST_API_VERSION = "clockdown/v1/";
 

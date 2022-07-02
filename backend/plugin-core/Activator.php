@@ -4,6 +4,8 @@ namespace Clockdown\Backend\PluginCore;
 
 use Clockdown\Backend\Modules\Api\Factories\RepositoriesFactory;
 
+// TODO: implement the class. Why the database integration depends on the API module (need refactor)?
+
 /**
  * Fired during plugin activation.
  *

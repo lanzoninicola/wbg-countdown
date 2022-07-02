@@ -106,6 +106,10 @@ class Core {
         $this->loader->add_action( 'admin_enqueue_scripts', $templates, 'enqueue_scripts' );
         $this->loader->add_action( 'admin_enqueue_scripts', $templates, 'enqueue_styles' );
 
+        // This hook fires when the user access to the clockdown settings page
+        // try to deregister the elementor js scripts that cause the conflict with plugin's reactjs code
+        $this->loader->add_action( 'clockdown_page_clockdown-templates', $templates, 'elementor_hack', 1 );
+
         // Registring the routes for the rest api
         $routes = new Routes();
         $this->loader->add_action( 'rest_api_init', $routes, 'register_api_endpoints' );
@@ -131,6 +135,7 @@ class Core {
 
     /**
      * Define the data to be localized on the frontend html page as Javascript object.
+     * Default object name is: ${pluginName}Localized
      *
      * @return void
      */
@@ -146,6 +151,8 @@ class Core {
         );
 
         $this->loader->add_action( 'admin_enqueue_scripts', $script_localizer, 'localize_script' );
+        $this->loader->add_action( 'wp_enqueue_scripts', $script_localizer, 'localize_script' );
+
     }
 
     /**

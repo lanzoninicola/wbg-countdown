@@ -57,4 +57,13 @@ class Loader {
 
     }
 
+    public function elementor_hack() {
+
+        wp_deregister_script( 'elementor-web-cli' );
+        wp_deregister_script( 'elementor-admin-top-bar' );
+        wp_deregister_script( 'elementor-common' );
+        wp_deregister_script( 'elementor-app-loader' );
+        wp_deregister_script( 'elementor-admin' );
+    }
+
 }
