@@ -1,5 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+/** Added prefix CD ("clockdown") to the React object to avoid conflicts with other plugins that might use ReactJS */
+import CDReact from "react";
+/** Added prefix CD ("clockdown") to the React object to avoid conflicts with other plugins that might use ReactJS */
+import CDReactDOM from "react-dom/client";
 import App from "./App";
 import { ChakraProvider } from "@chakra-ui/react";
 import { theme } from "./chackra-ui/theme/theme";
@@ -27,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     env === "development" ? withStrictMode(<ClockdownApp />) : <ClockdownApp />;
 
   if (typeof element !== "undefined" && element !== null) {
-    ReactDOM.createRoot(element!).render(ReactApp);
+    CDReactDOM.createRoot(element!).render(ReactApp);
   }
 });
 
@@ -40,7 +42,7 @@ const ClockdownApp = () => (
 );
 
 const withStrictMode = (children: JSX.Element) => (
-  <React.StrictMode>
+  <CDReact.StrictMode>
     <FakeWrapper>{children}</FakeWrapper>
-  </React.StrictMode>
+  </CDReact.StrictMode>
 );
