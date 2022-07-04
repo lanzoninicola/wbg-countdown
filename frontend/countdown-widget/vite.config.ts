@@ -7,6 +7,7 @@ export default defineConfig({
   base: "",
   build: {
     outDir: "../../public/shortcode",
+    sourcemap: true,
     rollupOptions: {
       output: {
         entryFileNames: `assets/[name].js`,

@@ -128,7 +128,7 @@ class Core {
 
         // Adding the assets for the front-end of Countdown Widget
         $widget_loader = new CountdownWidgetLoader();
-        $this->loader->add_action( 'wp_enqueue_scripts', $widget_loader, 'enqueue_scripts' );
+        $this->loader->add_action( 'wp_enqueue_scripts', $widget_loader, 'enqueue_scripts', 11 );
 
         new CountdownWidgetShortcode();
 
