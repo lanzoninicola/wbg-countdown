@@ -1,16 +1,24 @@
 import { useLayoutEffect, useState } from "react";
 import { StringOrNumber } from "../countdown-widget/types";
 
+const AUTO = "auto";
+
+type AutoOrNumber = StringOrNumber | "auto";
+
 interface UseElementPosition {
-  top: StringOrNumber;
-  left: StringOrNumber;
-  right: StringOrNumber;
-  bottom: StringOrNumber;
+  top: AutoOrNumber;
+  left: AutoOrNumber;
+  right: AutoOrNumber;
+  bottom: AutoOrNumber;
 }
 
 export default function useElementPosition(
-  ref: React.RefObject<HTMLElement>
+  ref: React.RefObject<HTMLElement> | undefined | null
 ): UseElementPosition {
+  if (!ref) {
+    return { top: AUTO, left: AUTO, right: AUTO, bottom: AUTO };
+  }
+
   let { top, left, right, bottom } = getPosition(ref.current);
   let [ElementPosition, setElementPosition] = useState({
     top: top,
@@ -62,8 +70,8 @@ function getOffset(el: HTMLElement) {
   return {
     top: rect.top + winX,
     left: rect.left + winY,
-    bottom: "auto",
-    right: "auto",
+    bottom: AUTO,
+    right: AUTO,
   };
 }
 
@@ -78,8 +86,8 @@ function getPosition(el: HTMLElement | null) {
     return {
       top: offset.top,
       left: offset.left,
-      bottom: "auto",
-      right: "auto",
+      bottom: AUTO,
+      right: AUTO,
     };
   }
 
@@ -101,9 +109,9 @@ function getPosition(el: HTMLElement | null) {
   const winViewportH = win.innerHeight;
   if (el.getBoundingClientRect().top > winViewportH * 0.5) {
     return {
-      top: "auto",
+      top: AUTO,
       left: elLeftPos,
-      right: "auto",
+      right: AUTO,
       bottom: 0,
     };
   }
@@ -111,8 +119,8 @@ function getPosition(el: HTMLElement | null) {
   return {
     top: elTopPos,
     left: elLeftPos,
-    right: "auto",
-    bottom: "auto",
+    right: AUTO,
+    bottom: AUTO,
   };
 }
 

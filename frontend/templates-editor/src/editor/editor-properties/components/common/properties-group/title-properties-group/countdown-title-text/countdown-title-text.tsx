@@ -1,8 +1,8 @@
 import { Input } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import useThemeTitleSelector from "../../../../countdown-provider/hooks/theme/useThemeTitleSelector";
-import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
-import Label from "../../primitives/label/label";
+import useThemeTitleSelector from "../../../../../../../countdown-provider/hooks/theme/useThemeTitleSelector";
+import PropertyWrapper from "../../../../../layout/property-wrapper/property-wrapper";
+import Label from "../../../../../primitives/label/label";
 
 export default function CountdownTitleText() {
   const { t } = useTranslation();
@@ -10,13 +10,13 @@ export default function CountdownTitleText() {
 
   return (
     <PropertyWrapper>
-      <Label>{t("editor.text")}</Label>
+      <Label>{t("editor.propertiesGroup.title.text")}</Label>
       <Input
         size={"xs"}
         type="text"
         title="countdownName"
         name="countdownName"
-        placeholder={t("editor.titlePlaceholder")}
+        placeholder={t("editor.propertiesGroup.title.titlePlaceholder")}
         gridColumn={"2 / -1"}
         value={text}
         onChange={(e) => setText(e.target.value)}

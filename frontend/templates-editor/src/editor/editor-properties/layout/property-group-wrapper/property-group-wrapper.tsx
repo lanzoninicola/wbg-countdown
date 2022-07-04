@@ -1,12 +1,20 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, FlexProps } from "@chakra-ui/react";
+import GroupTitle from "../group-title/group-title";
 
-interface PropertyGroupProps {
-  children: React.ReactNode;
+interface PropertyGroupWrapperProps extends FlexProps {
+  showGroupTitle?: boolean;
+  title?: string;
 }
 
-export default function PropertyGroupWrapper({ children }: PropertyGroupProps) {
+export default function PropertyGroupWrapper({
+  children,
+  showGroupTitle = true,
+  title,
+  ...props
+}: PropertyGroupWrapperProps) {
   return (
-    <Flex flexDirection={"column"} gap=".5rem">
+    <Flex flexDirection={"column"} gap=".5rem" {...props}>
+      {showGroupTitle && <GroupTitle>{title}</GroupTitle>}
       {children}
     </Flex>
   );

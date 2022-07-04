@@ -1,7 +1,7 @@
 import { useState } from "react";
-import ColorPicker from "../../primitives/color-picker/color-picker";
-import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
-import Label from "../../primitives/label/label";
+import ColorPicker from "../../../primitives/color-picker/color-picker";
+import PropertyWrapper from "../../../layout/property-wrapper/property-wrapper";
+import Label from "../../../primitives/label/label";
 
 interface FontColorProps {
   label: string;

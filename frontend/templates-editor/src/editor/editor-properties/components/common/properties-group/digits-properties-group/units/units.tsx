@@ -8,8 +8,8 @@ import {
   useCheckboxGroup,
 } from "@chakra-ui/react";
 
-import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
-import Label from "../../primitives/label/label";
+import PropertyWrapper from "../../../../../layout/property-wrapper/property-wrapper";
+import Label from "../../../../../primitives/label/label";
 import { useTranslation } from "react-i18next";
 
 // TODO: lot of logics in this component

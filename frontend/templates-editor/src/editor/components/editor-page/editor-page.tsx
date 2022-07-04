@@ -1,17 +1,14 @@
-import { Box, HStack, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 import useEditorSettings from "../../../countdown-widget/hooks/useEditorSettings";
 import { CountdownModel } from "../../../countdown-widget/types";
 import EditorPreview from "../../editor-preview/editor-preview";
+import EditorPropertiesFloat from "../../editor-properties/components/editor-properties-float/editor-properties-float";
 import TargetDate from "../../editor-properties/components/target-date/target-date";
 import TimezonePicker from "../../editor-properties/components/timezone/timezone-picker";
-import EditorProperties from "../../editor-properties/editor-properties";
 import BoxRadiusLg from "../../layout/box-radius-lg/box-radius-lg";
 import CenterContent from "../../layout/center-content/center-content";
 import EditorWrapper from "../../layout/editor-wrapper/editor-wrapper";
-import LeftSidebar from "../../layout/left-sidebar/left-sidebar";
-import RightSidebar from "../../layout/right-sidebar/right-sidebar";
 import EditorSkeleton from "../editor-skeleton.tsx/editor-skeleton";
 
 interface EditorPageProps {
@@ -31,9 +28,7 @@ export default function EditorPage({ currentCountdown }: EditorPageProps) {
         <EditorSkeleton />
       ) : (
         <EditorWrapper>
-          <LeftSidebar>
-            <EditorProperties />
-          </LeftSidebar>
+          <EditorPropertiesFloat />
           <CenterContent>
             <BoxRadiusLg bg={"gray.200"}>
               <TargetDate size="sm" />

@@ -3,17 +3,18 @@ import { useContextSelector } from "use-context-selector";
 import { withUnit } from "../../../countdown-widget-typography/countdown-widget-typography";
 import { CountdownContext } from "../../context/countdown-context";
 import { ChackraUIResponsiveValuesWithUnit } from "../../types/theme/responsive";
-import withImportant from "../../utils/withImportant";
+import { ThemeTitleContextData } from "../../types/theme/title";
 import useCurrentTokenSelector from "../app/useCurrentTokenSelector";
-import useRuntimeEnvSelector from "../app/useRuntimeEnvSelector";
 
 /**
  * Hook that let works with the single item of the "Title" state.
  */
 export default function useThemeTitleSelector() {
   const { currentToken } = useCurrentTokenSelector();
-  const { runtimeEnv } = useRuntimeEnvSelector();
-  const title = useContextSelector(CountdownContext, (ctx) => ctx?.theme.title);
+  const title: ThemeTitleContextData = useContextSelector(
+    CountdownContext,
+    (ctx) => ctx?.theme.title
+  );
 
   const setTitle = useContextSelector(
     CountdownContext,

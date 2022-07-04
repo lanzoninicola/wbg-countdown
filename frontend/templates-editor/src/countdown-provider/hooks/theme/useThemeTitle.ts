@@ -1,5 +1,5 @@
 import { ChackraUIResponsiveValuesWithUnit } from "../../types/theme/responsive";
-import ThemeTitleContextData from "../../types/theme/title";
+import { ThemeTitleContextData } from "../../types/theme/title";
 import useThemeTitleSelector from "./useThemeTitleSelector";
 
 interface UseThemeTitle extends Omit<ThemeTitleContextData, "text"> {

@@ -106,9 +106,10 @@ class Core {
         $this->loader->add_action( 'admin_enqueue_scripts', $templates, 'enqueue_scripts' );
         $this->loader->add_action( 'admin_enqueue_scripts', $templates, 'enqueue_styles' );
 
-        // This hook fires when the user access to the clockdown settings page
+        // This hook fires when the user access to the clockdown settings page in the admin area
+        // the handle name is "{parent-slug}_page_{slug}"
         // try to deregister the elementor js scripts that cause the conflict with plugin's reactjs code
-        $this->loader->add_action( 'clockdown_page_clockdown-templates', $templates, 'elementor_hack', 1 );
+        $this->loader->add_action( 'clockdown_page_clockdown-templates', $templates, 'deregister_script', 1 );
 
         // Registring the routes for the rest api
         $routes = new Routes();

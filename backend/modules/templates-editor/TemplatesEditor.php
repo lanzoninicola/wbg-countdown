@@ -11,6 +11,9 @@ class TemplatesEditor {
      */
     public function add_menu() {
 
+        // Pay attention to change this configuration
+        // An action is attached to deregister Elementor scripts
+        // Core class row 112
         add_submenu(
             'clockdown',
             __( 'Templates', CLOCKDOWN_TEXT_DOMAIN ),

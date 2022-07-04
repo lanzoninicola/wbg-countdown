@@ -1,5 +1,5 @@
 import { ThemeTimerContextData } from "./timer";
-import ThemeTitleContextData from "./title";
+import { ThemeTitleContextData } from "./title";
 
 export type ThemeContext = ThemeStateData & ThemeStateSetter;
 

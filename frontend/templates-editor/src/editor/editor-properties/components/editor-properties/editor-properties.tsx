@@ -2,18 +2,18 @@ import { Box, Divider } from "@chakra-ui/react";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
-import useCurrentTokenSelector from "../../countdown-provider/hooks/app/useCurrentTokenSelector";
-import useThemeTimerSelector from "../../countdown-provider/hooks/theme/useThemeTimerSelector";
-import useThemeTitleSelector from "../../countdown-provider/hooks/theme/useThemeTitleSelector";
-import CountdownTitleText from "./components/countdown-title-text/countdown-title-text";
-import FontColor from "./components/font-color/font-color";
-import FontFamily from "./components/font-family/font-family";
-import FontSize from "./components/font-size/font-size";
-import SeparatorChar from "./components/separator-char/separator-char";
-import ShowSeparator from "./components/show-separator/show-separator";
-import UnitsLanguages from "./components/units-languages/units-languages";
-import GroupTitle from "./layout/group-title/group-title";
-import PropertyGroupWrapper from "./layout/property-group-wrapper/property-group-wrapper";
+import useCurrentTokenSelector from "../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
+import useThemeTimerSelector from "../../../../countdown-provider/hooks/theme/useThemeTimerSelector";
+import useThemeTitleSelector from "../../../../countdown-provider/hooks/theme/useThemeTitleSelector";
+import CountdownTitleText from "../common/properties-group/title-properties-group/countdown-title-text/countdown-title-text";
+import FontColor from "../common/font-color/font-color";
+import FontFamily from "../common/font-family/font-family";
+import FontSize from "../common/font-size/font-size";
+import SeparatorChar from "../common/properties-group/separator-properties-group/separator-char/separator-char";
+import ShowSeparator from "../common/properties-group/separator-properties-group/show-separator/show-separator";
+import UnitsLanguages from "../common/properties-group/digit-label-properties-group/units-languages/units-languages";
+import GroupTitle from "../../layout/group-title/group-title";
+import PropertyGroupWrapper from "../../layout/property-group-wrapper/property-group-wrapper";
 
 export default function EditorProperties() {
   const { t } = useTranslation();

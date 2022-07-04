@@ -57,7 +57,7 @@ class Loader {
 
     }
 
-    public function elementor_hack() {
+    public function deregister_script() {
 
         wp_deregister_script( 'elementor-web-cli' );
         wp_deregister_script( 'elementor-admin-top-bar' );

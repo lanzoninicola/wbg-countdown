@@ -1,26 +1,28 @@
 import { ChackraUIResponsiveValuesWithUnit } from "../../types/theme/responsive";
 import {
-  ThemeUnitDigit,
+  ThemeDigitsContextData,
   ThemeUnitsShown,
-  ThemeUnitLabel,
-  ThemeSeparator,
+  ThemeDigitsContextData,
+  ThemeSeparatorContextData,
   ThemeTimerContextData,
 } from "../../types/theme/timer";
 import useThemeTimerSelector from "./useThemeTimerSelector";
 
-export interface ThemeUnitDigitWithChackraUIFontSize extends ThemeUnitDigit {
+export interface ThemeDigitsContextDataWithChackraUIFontSize
+  extends ThemeDigitsContextData {
   digitFontSizeChackraUI: ChackraUIResponsiveValuesWithUnit;
 }
 
-export interface ThemeUnitLabelWithChackraUIFontSize extends ThemeUnitLabel {
+export interface ThemeDigitsContextDataWithChackraUIFontSize
+  extends ThemeDigitsContextData {
   labelFontSizeChackraUI: ChackraUIResponsiveValuesWithUnit;
 }
 
 type UseThemeTimer =
   | ThemeUnitsShown
-  | ThemeSeparator
-  | ThemeUnitDigitWithChackraUIFontSize
-  | ThemeUnitLabelWithChackraUIFontSize
+  | ThemeSeparatorContextData
+  | ThemeDigitsContextDataWithChackraUIFontSize
+  | ThemeDigitsContextDataWithChackraUIFontSize
   | ThemeTimerContextData;
 
 type ThemeTimerSlice =
@@ -36,13 +38,13 @@ type ThemeTimerSlice =
  * @returns
  */
 function useThemeTimer(slice: "unitsShown"): ThemeUnitsShown;
-function useThemeTimer(slice: "unit-separator"): ThemeSeparator;
+function useThemeTimer(slice: "unit-separator"): ThemeSeparatorContextData;
 function useThemeTimer(
   slice: "unit-digit"
-): ThemeUnitDigitWithChackraUIFontSize;
+): ThemeDigitsContextDataWithChackraUIFontSize;
 function useThemeTimer(
   slice: "unit-label"
-): ThemeUnitLabelWithChackraUIFontSize;
+): ThemeDigitsContextDataWithChackraUIFontSize;
 function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
   const {
     unitsShown,

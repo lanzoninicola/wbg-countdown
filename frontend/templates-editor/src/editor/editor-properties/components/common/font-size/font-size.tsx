@@ -1,7 +1,7 @@
 import { Box, Text } from "@chakra-ui/react";
-import SliderMarkTemplate from "../../primitives/slider-mark-template/slider-mark-template";
-import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
-import Label from "../../primitives/label/label";
+import SliderMarkTemplate from "../../../primitives/slider-mark-template/slider-mark-template";
+import PropertyWrapper from "../../../layout/property-wrapper/property-wrapper";
+import Label from "../../../primitives/label/label";
 
 interface FontSizeProps {
   label: string;

@@ -1,8 +1,8 @@
 import { Input } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
-import Label from "../../primitives/label/label";
+import PropertyWrapper from "../../../../../layout/property-wrapper/property-wrapper";
+import Label from "../../../../../primitives/label/label";
 
 interface SeparatorCharProps {
   showSeparator: boolean;
@@ -19,7 +19,9 @@ export default function SeparatorChar({
 
   return (
     <PropertyWrapper>
-      <Label htmlFor="separatorChar">{t("editor.separator.label")}</Label>
+      <Label htmlFor="separatorChar">
+        {t("editor.propertiesGroup.separator.separatorCharLabel")}
+      </Label>
       <Input
         id="separatorChar"
         name="separatorChar"
@@ -28,7 +30,9 @@ export default function SeparatorChar({
         onChange={(e) => {
           onChangeSeparatorChar(e.target.value);
         }}
-        aria-label={t("editor.separator.ariaLabel")}
+        aria-label={t(
+          "editor.propertiesGroup.separator.separatorCharAriaLabel"
+        )}
         isDisabled={showSeparator === false}
         value={separatorChar}
         className="theme-font"

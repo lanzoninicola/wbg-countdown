@@ -1,20 +1,21 @@
-import {
-  ComponentWithAs,
-  forwardRef,
-  HStack,
-  StackProps,
-} from "@chakra-ui/react";
+import { Flex, forwardRef, StackProps } from "@chakra-ui/react";
 
 interface BoxRadiusLgProps extends StackProps {
   children: React.ReactNode;
+  direction?: "row" | "column";
+  spacing?: number;
 }
 
 const BoxRadiusLg = forwardRef(
-  ({ children, ...props }: BoxRadiusLgProps, ref) => {
+  (
+    { children, direction = "row", spacing, ...props }: BoxRadiusLgProps,
+    ref
+  ) => {
     return (
-      <HStack
+      <Flex
+        direction={direction}
         ref={ref}
-        spacing={4}
+        gap={spacing || 4}
         borderRadius={"lg"}
         boxShadow={"lg"}
         paddingBlock=".5rem"
@@ -24,7 +25,7 @@ const BoxRadiusLg = forwardRef(
         {...props}
       >
         {children}
-      </HStack>
+      </Flex>
     );
   }
 );
