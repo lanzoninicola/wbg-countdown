@@ -1,9 +1,9 @@
 import { ResponsiveValue } from "./responsive";
 
 export type ThemeTimerContextData = ThemeUnitsShown &
-  ThemeSeparator &
-  ThemeUnitDigit &
-  ThemeUnitLabel;
+  ThemeSeparatorContextData &
+  ThemeDigitsContextData &
+  ThemeDigitsLabelContextData;
 
 export interface ThemeUnitsShown {
   /** The unit visible in the timer ['dd', 'hh', 'mm', 'ss'] */
@@ -17,14 +17,19 @@ export type DaysUnit = "dd";
 
 export type TimeUnits = DaysUnit | HoursUnit | MinutesUnit | SecondsUnit;
 
-export interface ThemeSeparator {
+export interface ThemeSeparatorContextData {
   /** Show the separator */
   showSeparator: boolean;
   /** The separator character */
   separatorChar: string;
 }
 
-export interface ThemeUnitDigit {
+export interface ThemeSeparatorContextSetter {
+  setShowSeparator: (showSeparator: boolean) => void;
+  setSeparatorChar: (separatorChar: string) => void;
+}
+
+export interface ThemeDigitsContextData {
   /** The font family of the digit text */
   digitFontFamily: string;
   /** The font weight of the digit text */
@@ -37,7 +42,15 @@ export interface ThemeUnitDigit {
   lastUnitColor: string;
 }
 
-export interface ThemeUnitLabel {
+export interface ThemeDigitsContextSetter {
+  setDigitFontFamily: (digitFontFamily: string) => void;
+  setDigitFontWeight: (digitFontWeight: string) => void;
+  setDigitFontSize: (digitFontSize: number) => void;
+  setDigitFontColor: (digitFontColor: string) => void;
+  setLastUnitColor: (lastUnitColor: string) => void;
+}
+
+export interface ThemeDigitsLabelContextData {
   /** The font family of the digit label */
   labelFontFamily: string;
   /** The font weight of the digit label */
@@ -48,4 +61,12 @@ export interface ThemeUnitLabel {
   labelFontColor: string;
   /** The color of the last unit of timer text */
   lastUnitColor: string;
+}
+
+export interface ThemeDigitsLabelContextSetter {
+  setLabelFontFamily: (labelFontFamily: string) => void;
+  setLabelFontWeight: (labelFontWeight: string) => void;
+  setLabelFontSize: (labelFontSize: number) => void;
+  setLabelFontColor: (labelFontColor: string) => void;
+  setLastUnitColor: (lastUnitColor: string) => void;
 }

@@ -3,7 +3,7 @@ import { ResponsiveValue } from "./responsive";
 export type ThemeTimerContextData = ThemeUnitsShown &
   ThemeSeparatorContextData &
   ThemeDigitsContextData &
-  ThemeDigitsContextData;
+  ThemeDigitsLabelContextData;
 
 export interface ThemeUnitsShown {
   /** The unit visible in the timer ['dd', 'hh', 'mm', 'ss'] */

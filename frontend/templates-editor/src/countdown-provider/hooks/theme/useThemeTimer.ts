@@ -41,7 +41,9 @@ type ThemeTimerSlice =
 function useThemeTimer(slice: "unitsShown"): ThemeUnitsShown;
 function useThemeTimer(slice: "unit-separator"): ThemeSeparatorContextData;
 function useThemeTimer(slice: "unit-digit"): ThemeDigitsContextDataWithChackra;
-function useThemeTimer(slice: "unit-label"): ThemeDigitsContextDataWithChackra;
+function useThemeTimer(
+  slice: "unit-label"
+): ThemeDigitsLabelContextDataWithChackra;
 function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
   const {
     unitsShown,

@@ -3,14 +3,14 @@ import { Text } from "@chakra-ui/react";
 import useAppContext from "../../../../../countdown-provider/hooks/app/useAppContext";
 import useCurrentTokenSelector from "../../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
 import useImportantCSS from "../../../../../countdown-provider/hooks/theme/useImportantProp";
-import { ThemeDigitsContextDataWithChackraUIFontSize } from "../../../../../countdown-provider/hooks/theme/useThemeTimer";
+import { ThemeDigitsContextDataWithChackra } from "../../../../../countdown-provider/hooks/theme/useThemeTimer";
 import { StringOrNumber } from "../../../../types";
 
 interface DigitProps {
   value: StringOrNumber;
   isDanger?: boolean;
   isLastDigit?: boolean;
-  theme: ThemeDigitsContextDataWithChackraUIFontSize;
+  theme: ThemeDigitsContextDataWithChackra;
   [key: string]: any;
 }
 

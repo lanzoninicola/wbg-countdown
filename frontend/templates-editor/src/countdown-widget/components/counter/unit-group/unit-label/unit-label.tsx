@@ -3,14 +3,13 @@ import useAppContext from "../../../../../countdown-provider/hooks/app/useAppCon
 
 import useCurrentTokenSelector from "../../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
 import useImportantCSS from "../../../../../countdown-provider/hooks/theme/useImportantProp";
-import { ThemeDigitsContextDataWithChackraUIFontSize } from "../../../../../countdown-provider/hooks/theme/useThemeTimer";
-import withImportant from "../../../../../countdown-provider/utils/withImportant";
+import { ThemeDigitsLabelContextDataWithChackra } from "../../../../../countdown-provider/hooks/theme/useThemeTimer";
 
 interface UnitLabelProps {
   label: string;
   isDanger?: boolean;
   isLastDigit?: boolean;
-  theme: ThemeDigitsContextDataWithChackraUIFontSize;
+  theme: ThemeDigitsLabelContextDataWithChackra;
   [key: string]: any;
 }
 
