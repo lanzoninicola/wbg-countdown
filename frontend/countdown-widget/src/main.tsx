@@ -1,10 +1,12 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, theme } from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import CountdownProvider from "./countdown-provider/countdown-provider";
 
 const env = process.env.NODE_ENV;
+
+console.log(env);
 
 /**
  *
@@ -13,28 +15,17 @@ const env = process.env.NODE_ENV;
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-  // const iFrameNode: HTMLIFrameElement = document.createElement("iframe");
-  // iFrameNode.setAttribute("data-role", "clockdown-iframe");
-
-  // get body
-  // const body = document.querySelector("body");
-  // body && body.appendChild(iFrameNode);
-
   if (env === "development") {
     const shortcodeID = "64";
 
-    const shortcodeNode = document.createElement("div");
-    shortcodeNode.classList.add("clockdown-shortcode");
-    shortcodeNode.setAttribute("data-id", shortcodeID);
+    const iFrameNode: HTMLIFrameElement = document.createElement("iframe");
+    iFrameNode.setAttribute("data-role", "clockdown-iframe");
+    iFrameNode.setAttribute("data-id", `${shortcodeID}`);
 
-    // append countdown shortcode wrapper to body
-    const body = document.querySelector("body");
-    body && body.appendChild(shortcodeNode);
+    document.body.appendChild(iFrameNode);
   }
 
-  // const shortcodes: NodeListOf<Element> = document.querySelectorAll(
-  //   ".clockdown-shortcode"
-  // );
+  console.log(document.querySelectorAll("[data-emotion]"));
 
   const shortcodeIframes: NodeListOf<HTMLIFrameElement> =
     document.querySelectorAll('iframe[data-role="clockdown-iframe"]');
@@ -43,8 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
   shortcodeIframes.forEach((shortcode) => {
     // get the shortcode id from the iframe attribute
     const shortcodeID = shortcode.getAttribute("data-id");
-
-    console.log("shortcodeID", shortcodeID);
 
     // create the shortcode div node
     const d = shortcode.contentWindow?.document;
@@ -57,13 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // append to the iframe body the shortcode node
     d.body.appendChild(shortcodeNode);
-
-    console.log("shortcodeNode", d);
-
-    // const id = shortcode.getAttribute("data-id");
-    // const element = document.querySelector(
-    //   `.clockdown-shortcode[data-id="${id}"]`
-    // );
 
     if (shortcodeID) {
       ReactDOM.createRoot(shortcodeNode!).render(
