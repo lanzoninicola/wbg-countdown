@@ -36,6 +36,13 @@ class Loader {
      */
     public function enqueue_styles() {
 
+        wp_enqueue_style(
+            'countdown-widget-style',
+            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/shortcode/assets/index.css',
+            array(),
+            $this->style_version,
+        );
+
     }
 
     /**

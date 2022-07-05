@@ -1,5 +1,3 @@
-import { Text } from "@chakra-ui/react";
-
 import useAppContext from "../../../../../countdown-provider/hooks/app/useAppContext";
 import useCurrentTokenSelector from "../../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
 import useImportantCSS from "../../../../../countdown-provider/hooks/theme/useImportantProp";
@@ -24,30 +22,30 @@ export default function Digit({
   const { isEditorMode, runtimeEnv } = useAppContext();
   const { currentToken } = useCurrentTokenSelector();
 
-  const [ff, fs, fsc, fw, dfc, luc] = useImportantCSS(
-    runtimeEnv === "wordpress",
-    theme.digitFontFamily,
-    theme.digitFontSize[currentToken],
-    theme.digitFontSizeChackraUI,
-    theme.digitFontWeight,
-    theme.digitFontColor,
-    theme.lastUnitColor
-  );
+  // const [ff, fs, fsc, fw, dfc, luc] = useImportantCSS(
+  //   runtimeEnv === "wordpress",
+  //   theme.digitFontFamily,
+  //   theme.digitFontSize[currentToken],
+  //   theme.digitFontSizeChackraUI,
+  //   theme.digitFontWeight,
+  //   theme.digitFontColor,
+  //   theme.lastUnitColor
+  // );
 
   return (
-    <Text
-      as="span"
-      fontSize={isEditorMode ? fs : fsc}
-      fontWeight={fw}
-      fontFamily={ff}
-      color={isLastDigit ? luc : dfc}
-      lineHeight={1.1}
-      css={{
+    <span
+      // fontSize={isEditorMode ? fs : fsc}
+      style={{
+        fontSize: "52px",
+        fontFamily: theme.digitFontFamily,
+        fontWeight: theme.digitFontWeight,
+        color: isLastDigit ? theme.lastUnitColor : theme.digitFontColor,
+        lineHeight: 1.1,
+        gridArea: props.gridArea,
         textRendering: "optimizeSpeed",
       }}
-      {...props}
     >
       {value}
-    </Text>
+    </span>
   );
 }

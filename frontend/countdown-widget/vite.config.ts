@@ -9,6 +9,7 @@ export default defineConfig({
     outDir: "../../public/shortcode",
     sourcemap: true,
     rollupOptions: {
+      external: ["framer-motion"],
       output: {
         entryFileNames: `assets/[name].js`,
         // this got rid of the hash on style.css

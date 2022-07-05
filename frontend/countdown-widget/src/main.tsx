@@ -1,6 +1,5 @@
-import { Box, ChakraProvider } from "@chakra-ui/react";
-import React from "react";
-import ReactDOM from "react-dom/client";
+import DCReact from "react";
+import DCReactDOM from "react-dom/client";
 import App from "./App";
 import CountdownProvider from "./countdown-provider/countdown-provider";
 
@@ -38,16 +37,14 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
     if (id) {
-      ReactDOM.createRoot(element!).render(
-        <React.StrictMode>
-          <Box as="iframe">
-            <ChakraProvider>
-              <CountdownProvider current={id} runtimeEnvironment="wordpress">
-                <App current={id} />
-              </CountdownProvider>
-            </ChakraProvider>
-          </Box>
-        </React.StrictMode>
+      DCReactDOM.createRoot(element!).render(
+        <DCReact.StrictMode>
+          {/* <ChakraProvider> */}
+          <CountdownProvider current={id} runtimeEnvironment="wordpress">
+            <App current={id} />
+          </CountdownProvider>
+          {/* </ChakraProvider> */}
+        </DCReact.StrictMode>
       );
     }
   });

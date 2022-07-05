@@ -1,4 +1,3 @@
-import { VStack } from "@chakra-ui/react";
 import useThemeTimerSelector from "../countdown-provider/hooks/theme/useThemeTimerSelector";
 import useThemeTitleSelector from "../countdown-provider/hooks/theme/useThemeTitleSelector";
 import { GoogleFontsLinkTag } from "../countdown-widget-typography/countdown-widget-typography";
