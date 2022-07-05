@@ -100,7 +100,7 @@ class AdminMenuService {
      */
     public function page_wrapper() {
 
-        $html = sprintf( '<div id="%s" class="wrap"></div>', $this->slug );
+        $html = sprintf( '<div id="%s"></div>', $this->slug );
         echo wp_kses_post( $html );
 
     }
