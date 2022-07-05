@@ -1,7 +1,5 @@
 const env = process.env.NODE_ENV;
 
-console.log(import.meta.env.VITE_REST_API_BASE_ENDPOINT_URL);
-
 const BASE_ENDPOINT_URL =
   env === "development"
     ? import.meta.env.VITE_REST_API_BASE_ENDPOINT_URL
