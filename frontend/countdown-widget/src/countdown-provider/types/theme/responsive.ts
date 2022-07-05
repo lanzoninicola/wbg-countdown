@@ -1,6 +1,6 @@
-export type Tokens = "sm" | "md" | "lg" | string;
+export type ChakraToken = "sm" | "md" | "lg";
 
-export type ResponsiveValue = { [token in Tokens]: string };
+export type ResponsiveValue = { [token in ChakraToken]: string };
 
 /** Standard ChakraUI format for responsive values. Eg. ['1rem','1rem','1rem'] */
-export type ChackraUIResponsiveValuesWithUnit = string[];
+export type ChakraResponsiveValuesWithUnit = string[];

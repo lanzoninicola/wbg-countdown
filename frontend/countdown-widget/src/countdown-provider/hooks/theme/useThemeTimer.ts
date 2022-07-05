@@ -1,4 +1,4 @@
-import { ChackraUIResponsiveValuesWithUnit } from "../../types/theme/responsive";
+import { ChakraResponsiveValuesWithUnit } from "../../types/theme/responsive";
 import {
   ThemeDigitsContextData,
   ThemeUnitsShown,
@@ -11,12 +11,12 @@ import useThemeTimerSelector from "./useThemeTimerSelector";
 
 export interface ThemeDigitsContextDataWithChackra
   extends ThemeDigitsContextData {
-  digitFontSizeChackraUI: ChackraUIResponsiveValuesWithUnit;
+  digitFontSizeChakra: ChakraResponsiveValuesWithUnit;
 }
 
 export interface ThemeDigitsLabelContextDataWithChackra
   extends ThemeDigitsLabelContextData {
-  labelFontSizeChackraUI: ChackraUIResponsiveValuesWithUnit;
+  labelFontSizeChakra: ChakraResponsiveValuesWithUnit;
 }
 
 type UseThemeTimer =
@@ -52,13 +52,13 @@ function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
     digitFontFamily,
     digitFontWeight,
     digitFontSize,
-    digitFontSizeChackraUI,
+    digitFontSizeChakra,
     digitFontColor,
     lastUnitColor,
     labelFontFamily,
     labelFontWeight,
     labelFontSize,
-    labelFontSizeChackraUI,
+    labelFontSizeChakra,
     labelFontColor,
   } = useThemeTimerSelector();
 
@@ -78,7 +78,7 @@ function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
       digitFontFamily,
       digitFontWeight,
       digitFontSize,
-      digitFontSizeChackraUI,
+      digitFontSizeChakra,
       digitFontColor,
       lastUnitColor,
     };
@@ -89,7 +89,7 @@ function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
       labelFontFamily,
       labelFontWeight,
       labelFontSize,
-      labelFontSizeChackraUI,
+      labelFontSizeChakra,
       labelFontColor,
       lastUnitColor,
     };
@@ -102,13 +102,13 @@ function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
     digitFontFamily,
     digitFontWeight,
     digitFontSize,
-    digitFontSizeChackraUI,
+    digitFontSizeChakra,
     digitFontColor,
     lastUnitColor,
     labelFontFamily,
     labelFontWeight,
     labelFontSize,
-    labelFontSizeChackraUI,
+    labelFontSizeChakra,
     labelFontColor,
   };
 }

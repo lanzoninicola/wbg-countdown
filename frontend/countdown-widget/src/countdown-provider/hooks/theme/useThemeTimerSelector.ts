@@ -2,7 +2,7 @@ import { useContextSelector } from "use-context-selector";
 import { withUnit } from "../../../countdown-widget-typography/countdown-widget-typography";
 import { CountdownContext } from "../../context/countdown-context";
 
-import { ChackraUIResponsiveValuesWithUnit } from "../../types/theme/responsive";
+import { ChakraResponsiveValuesWithUnit } from "../../types/theme/responsive";
 import { TimeUnits } from "../../types/theme/timer";
 import useCurrentTokenSelector from "../app/useCurrentTokenSelector";
 
@@ -33,10 +33,10 @@ export default function useThemeTimerSelector() {
     unitsShown,
   } = timer;
 
-  const digitFontSizeChackraUI: ChackraUIResponsiveValuesWithUnit =
+  const digitFontSizeChakra: ChakraResponsiveValuesWithUnit =
     Object.values(digitFontSize);
 
-  const labelFontSizeChackraUI: ChackraUIResponsiveValuesWithUnit =
+  const labelFontSizeChakra: ChakraResponsiveValuesWithUnit =
     Object.values(labelFontSize);
 
   function setUnitsShown(unitsShown: TimeUnits[]) {
@@ -100,13 +100,13 @@ export default function useThemeTimerSelector() {
     digitFontFamily,
     digitFontWeight,
     digitFontSize,
-    digitFontSizeChackraUI,
+    digitFontSizeChakra,
     digitFontColor,
     lastUnitColor,
     labelFontFamily,
     labelFontWeight,
     labelFontSize,
-    labelFontSizeChackraUI,
+    labelFontSizeChakra,
     labelFontColor,
     setUnitsShown,
     setShowSeparator,
