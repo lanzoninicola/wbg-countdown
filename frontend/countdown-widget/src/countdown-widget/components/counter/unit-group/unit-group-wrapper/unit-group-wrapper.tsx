@@ -1,18 +1,9 @@
-import { Grid } from "@chakra-ui/react";
+import "./unit-group-wrapper.css";
 
 interface UnitGroupWrapperProps {
   children: React.ReactNode;
 }
 
 export default function UnitGroupWrapper({ children }: UnitGroupWrapperProps) {
-  return (
-    <Grid
-      gridTemplateAreas='"digit separator"
-    "label empty"'
-      alignItems={"center"}
-      justifyItems={"center"}
-    >
-      {children}
-    </Grid>
-  );
+  return <div className="unit-group-wrapper">{children}</div>;
 }

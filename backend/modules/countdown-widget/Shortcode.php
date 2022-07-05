@@ -37,7 +37,7 @@ class Shortcode {
         ob_start();
 
         // @codingStandardsIgnoreStart
-        echo empty( $wrapper['before'] ) ? '<div class="clockdown-shortcode" data-id="' . $atts["id"] . '">' : $wrapper['before'];
+        echo empty( $wrapper['before'] ) ? '<div data-role="clockdown-shortcode" data-id="' . $atts["id"] . '">' : $wrapper['before'];
         echo empty( $wrapper['after'] ) ? '</div>' : $wrapper['after'];
         // @codingStandardsIgnoreEnd
 

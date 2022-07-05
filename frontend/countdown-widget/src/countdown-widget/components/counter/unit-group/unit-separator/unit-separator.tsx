@@ -1,5 +1,3 @@
-import { Text } from "@chakra-ui/react";
-
 interface UnitSeparatorProps {
   separatorText: string;
   [key: string]: any;
@@ -10,8 +8,13 @@ export default function UnitSeparator({
   ...props
 }: UnitSeparatorProps) {
   return (
-    <Text as="span" {...props} marginInline="1rem">
+    <span
+      style={{
+        marginInline: "1rem",
+        gridArea: props.gridArea,
+      }}
+    >
       {separatorText}
-    </Text>
+    </span>
   );
 }

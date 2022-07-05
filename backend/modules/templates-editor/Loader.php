@@ -32,7 +32,7 @@ class Loader {
     public function enqueue_styles() {
 
         wp_enqueue_style(
-            CLOCKDOWN_PLUGIN_NAME,
+            'templates-editor-style',
             CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/templates-editor/assets/index.css',
             array(),
             $this->style_version,
@@ -48,7 +48,7 @@ class Loader {
     public function enqueue_scripts() {
 
         wp_enqueue_script(
-            CLOCKDOWN_PLUGIN_NAME,
+            'templates-editor-script',
             CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/templates-editor/assets/index.js',
             array(),
             $this->script_version,

@@ -1,4 +1,3 @@
-import { VStack } from "@chakra-ui/react";
 import { useLayoutEffect, useState } from "react";
 
 import useAppContext from "../../../countdown-provider/hooks/app/useAppContext";
@@ -7,6 +6,7 @@ import useCountdown from "../../hooks/useCountdown";
 import CounterTitle from "../counter-title/counter-title";
 import Counter from "../counter/counter";
 import TimerSkeleton from "../timer-skeleton/timer-skeleton";
+import "./countdown-timer.css";
 
 // TODO: add padToZeros settings
 
@@ -43,7 +43,7 @@ const CountdownTimer = () => {
       {isLoading ? (
         <TimerSkeleton />
       ) : (
-        <VStack className="countdown" p="1rem" bg="white" w={"max-content"}>
+        <div className="vstack countdown">
           <CounterTitle />
           <Counter
             days={days}
@@ -51,7 +51,7 @@ const CountdownTimer = () => {
             minutes={minutes}
             seconds={seconds}
           />
-        </VStack>
+        </div>
       )}
     </>
   );
