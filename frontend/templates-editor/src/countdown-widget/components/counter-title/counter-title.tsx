@@ -1,49 +1,30 @@
-import { Heading } from "@chakra-ui/react";
 import React from "react";
 
 import useAppContext from "../../../countdown-provider/hooks/app/useAppContext";
 import useCurrentTokenSelector from "../../../countdown-provider/hooks/app/useCurrentTokenSelector";
-import useImportantCSS from "../../../countdown-provider/hooks/theme/useImportantProp";
 import useThemeTitleSelector from "../../../countdown-provider/hooks/theme/useThemeTitleSelector";
-import withImportant from "../../../countdown-provider/utils/withImportant";
+import useChakraBreakpoint from "../../hooks/useChakraBreakpoint";
 
 // TODO: way to refactor due added logic to the component
 
 function CounterTitle() {
-  const {
-    text,
-    fontColor,
-    fontFamily,
-    fontSize,
-    fontSizeChackraUI,
-    fontWeight,
-  } = useThemeTitleSelector();
+  const { text, fontColor, fontFamily, fontSize, fontWeight } =
+    useThemeTitleSelector();
 
-  const { isEditorMode, runtimeEnv } = useAppContext();
-  const { currentToken } = useCurrentTokenSelector();
-  const [ff, fs, fsc, fw, fc] = useImportantCSS(
-    runtimeEnv === "wordpress",
-    fontFamily,
-    fontSize[currentToken],
-    fontSizeChackraUI,
-    fontWeight,
-    fontColor
-  );
+  const viewportToken = useChakraBreakpoint();
 
-  return (
-    <>
-      <Heading
-        as="h2"
-        fontFamily={ff}
-        fontSize={isEditorMode ? fs : fsc}
-        color={fc}
-        fontWeight={fw}
-        m={withImportant("0")}
-      >
-        {text}
-      </Heading>
-    </>
-  );
+  const { isEditorMode } = useAppContext();
+  const { currentToken: editorToken } = useCurrentTokenSelector();
+
+  const style = {
+    fontFamily: fontFamily,
+    fontSize: isEditorMode ? fontSize[editorToken] : fontSize[viewportToken],
+    color: fontColor,
+    fontWeight: fontWeight,
+    margin: 0,
+  };
+
+  return <h2 style={style}>{text}</h2>;
 }
 
 const areEqual = () => true;

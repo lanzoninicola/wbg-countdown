@@ -3,44 +3,28 @@ import React from "react";
 import useAppContext from "../../../countdown-provider/hooks/app/useAppContext";
 import useCurrentTokenSelector from "../../../countdown-provider/hooks/app/useCurrentTokenSelector";
 import useThemeTitleSelector from "../../../countdown-provider/hooks/theme/useThemeTitleSelector";
+import useChakraBreakpoint from "../../hooks/useChakraBreakpoint";
 
 // TODO: way to refactor due added logic to the component
 
 function CounterTitle() {
-  const {
-    text,
-    fontColor,
-    fontFamily,
-    fontSize,
-    fontSizeChackraUI,
-    fontWeight,
-  } = useThemeTitleSelector();
+  const { text, fontColor, fontFamily, fontSize, fontWeight } =
+    useThemeTitleSelector();
 
-  const { isEditorMode, runtimeEnv } = useAppContext();
-  const { currentToken } = useCurrentTokenSelector();
-  // const [ff, fs, fsc, fw, fc] = useImportantCSS(
-  //   runtimeEnv === "wordpress",
-  //   fontFamily,
-  //   fontSize[currentToken],
-  //   fontSizeChackraUI,
-  //   fontWeight,
-  //   fontColor
-  // );
+  const viewportToken = useChakraBreakpoint();
+
+  const { isEditorMode } = useAppContext();
+  const { currentToken: editorToken } = useCurrentTokenSelector();
 
   const style = {
     fontFamily: fontFamily,
-    // fontSize: isEditorMode ? fontSize[currentToken] : fontSizeChackraUI,
-    fontSize: "52px",
+    fontSize: isEditorMode ? fontSize[editorToken] : fontSize[viewportToken],
     color: fontColor,
     fontWeight: fontWeight,
     margin: 0,
   };
 
-  return (
-    <>
-      <h2 style={style}>{text}</h2>
-    </>
-  );
+  return <h2 style={style}>{text}</h2>;
 }
 
 const areEqual = () => true;

@@ -1,14 +1,14 @@
 import { Badge, Box, Flex } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import { Tokens } from "../../../../../countdown-provider/types/theme/responsive";
+import { ChakraToken } from "../../../../../countdown-provider/types/theme/responsive";
 import DEFAULT_BREAKPOINTS from "../../../constants/default-breakpoints";
 
-interface DisplaySizeBar {
-  currentToken: Tokens;
+interface DisplaySizeBarProps {
+  currentToken: ChakraToken;
 }
 
-export default function DisplaySizeBar({ currentToken }: DisplaySizeBar) {
+export default function DisplaySizeBar({ currentToken }: DisplaySizeBarProps) {
   const { t } = useTranslation();
   return (
     <Flex

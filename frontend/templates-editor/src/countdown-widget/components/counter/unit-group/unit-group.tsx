@@ -37,7 +37,6 @@ function UnitGroup({ label, value, isDanger, isLastDigit }: UnitGroupProps) {
       {!isLastDigit && separatorTheme.showSeparator && (
         <UnitSeparator
           gridArea={"separator"}
-          theme={digitTheme}
           separatorText={separatorTheme.separatorChar}
         />
       )}

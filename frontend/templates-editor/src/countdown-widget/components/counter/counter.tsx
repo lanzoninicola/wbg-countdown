@@ -1,7 +1,7 @@
-import { HStack } from "@chakra-ui/react";
 import useWidgetTranslation from "../../../countdown-widget-i18n/hooks/useWidgetTranslation";
 import { RemainingTime } from "../../types";
 import UnitGroup from "./unit-group/unit-group";
+import "./counter.css";
 
 export default function Counter({
   days,
@@ -17,7 +17,7 @@ export default function Counter({
   // TODO: check isDanger
 
   return (
-    <HStack>
+    <div className="hstack">
       <UnitGroup label={days === 1 ? tw("day") : tw("days")} value={days} />
       <UnitGroup label={hours === 1 ? tw("hour") : tw("hours")} value={hours} />
       <UnitGroup
@@ -29,6 +29,6 @@ export default function Counter({
         value={seconds}
         isLastDigit={true}
       />
-    </HStack>
+    </div>
   );
 }

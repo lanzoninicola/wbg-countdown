@@ -1,7 +1,4 @@
-import {
-  ChackraUIResponsiveValuesWithUnit,
-  ResponsiveValue,
-} from "./responsive";
+import { ChakraResponsiveValuesWithUnit, ResponsiveValue } from "./responsive";
 
 export interface ThemeTitleContextData {
   /** The text used for the countdown title */
@@ -26,5 +23,5 @@ export interface ThemeTitleContextSetter {
 
 export interface ThemeTitleContextDataWithChackra
   extends ThemeTitleContextData {
-  fontSizeChackraUI: ChackraUIResponsiveValuesWithUnit;
+  fontSizeChakra: ChakraResponsiveValuesWithUnit;
 }

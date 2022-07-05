@@ -1,8 +1,7 @@
 import useAppContext from "../../../../../countdown-provider/hooks/app/useAppContext";
-
 import useCurrentTokenSelector from "../../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
-import useImportantCSS from "../../../../../countdown-provider/hooks/theme/useImportantProp";
 import { ThemeDigitsLabelContextDataWithChackra } from "../../../../../countdown-provider/hooks/theme/useThemeTimer";
+import useChakraBreakpoint from "../../../../hooks/useChakraBreakpoint";
 
 interface UnitLabelProps {
   label: string;
@@ -18,23 +17,16 @@ export default function UnitLabel({
   theme,
   ...props
 }: UnitLabelProps) {
-  const { isEditorMode, runtimeEnv } = useAppContext();
-  const { currentToken } = useCurrentTokenSelector();
-  // const [ff, fs, fsc, fw, lfc, luc] = useImportantCSS(
-  //   runtimeEnv === "wordpress",
-  //   theme.labelFontFamily,
-  //   theme.labelFontSize[currentToken],
-  //   theme.labelFontSizeChackraUI,
-  //   theme.labelFontWeight,
-  //   theme.labelFontColor,
-  //   theme.lastUnitColor
-  // );
+  const viewportToken = useChakraBreakpoint();
+  const { isEditorMode } = useAppContext();
+  const { currentToken: editorToken } = useCurrentTokenSelector();
 
   return (
     <span
-      // fontSize={isEditoMode ? fs : fsc}
       style={{
-        fontSize: "52px",
+        fontSize: isEditorMode
+          ? theme.labelFontSize[editorToken]
+          : theme.labelFontSize[viewportToken],
         fontFamily: theme.labelFontFamily,
         fontWeight: theme.labelFontWeight,
         color: isLastDigit ? theme.lastUnitColor : theme.labelFontColor,

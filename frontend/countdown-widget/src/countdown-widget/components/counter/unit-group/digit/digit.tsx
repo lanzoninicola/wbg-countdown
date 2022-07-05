@@ -2,6 +2,7 @@ import useAppContext from "../../../../../countdown-provider/hooks/app/useAppCon
 import useCurrentTokenSelector from "../../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
 import useImportantCSS from "../../../../../countdown-provider/hooks/theme/useImportantProp";
 import { ThemeDigitsContextDataWithChackra } from "../../../../../countdown-provider/hooks/theme/useThemeTimer";
+import useChakraBreakpoint from "../../../../hooks/useChakraBreakpoint";
 import { StringOrNumber } from "../../../../types";
 
 interface DigitProps {
@@ -19,24 +20,16 @@ export default function Digit({
   theme,
   ...props
 }: DigitProps) {
-  const { isEditorMode, runtimeEnv } = useAppContext();
-  const { currentToken } = useCurrentTokenSelector();
-
-  // const [ff, fs, fsc, fw, dfc, luc] = useImportantCSS(
-  //   runtimeEnv === "wordpress",
-  //   theme.digitFontFamily,
-  //   theme.digitFontSize[currentToken],
-  //   theme.digitFontSizeChackraUI,
-  //   theme.digitFontWeight,
-  //   theme.digitFontColor,
-  //   theme.lastUnitColor
-  // );
+  const viewportToken = useChakraBreakpoint();
+  const { isEditorMode } = useAppContext();
+  const { currentToken: editorToken } = useCurrentTokenSelector();
 
   return (
     <span
-      // fontSize={isEditorMode ? fs : fsc}
       style={{
-        fontSize: "52px",
+        fontSize: isEditorMode
+          ? theme.digitFontSize[editorToken]
+          : theme.digitFontSize[viewportToken],
         fontFamily: theme.digitFontFamily,
         fontWeight: theme.digitFontWeight,
         color: isLastDigit ? theme.lastUnitColor : theme.digitFontColor,

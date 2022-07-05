@@ -1,13 +1,13 @@
 import { Flex, FlexProps, forwardRef, VStack } from "@chakra-ui/react";
 
-import { Tokens } from "../../../../countdown-provider/types/theme/responsive";
+import { ChakraToken } from "../../../../countdown-provider/types/theme/responsive";
 import useCustomScrollbar from "../../../../hooks/useCustomScrollbar";
 import DEFAULT_BREAKPOINTS from "../../constants/default-breakpoints";
 import DisplaySizeBar from "./display-size-bar/display-size-bar";
 
 interface PreviewWrapperProps extends FlexProps {
   children: React.ReactNode;
-  currentToken: Tokens;
+  currentToken: ChakraToken;
 }
 
 const PreviewWrapper = forwardRef(

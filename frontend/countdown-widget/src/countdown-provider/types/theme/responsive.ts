@@ -1,4 +1,4 @@
-export type Tokens = "sm" | "md" | "lg";
+export type Tokens = "sm" | "md" | "lg" | string;
 
 export type ResponsiveValue = { [token in Tokens]: string };
 
