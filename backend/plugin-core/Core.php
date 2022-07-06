@@ -104,7 +104,7 @@ class Core {
         $templates = new TemplatesEditorLoader();
         $this->loader->add_action( 'admin_menu', $templates, 'add_menu' );
         $this->loader->add_action( 'admin_enqueue_scripts', $templates, 'enqueue_scripts' );
-        $this->loader->add_action( 'admin_enqueue_scripts', $templates, 'enqueue_styles' );
+        $this->loader->add_action( 'admin_enqueue_scripts', $templates, 'enqueue_styles', 11 );
 
         // This hook fires when the user access to the clockdown settings page in the admin area
         // the handle name is "{parent-slug}_page_{slug}"
