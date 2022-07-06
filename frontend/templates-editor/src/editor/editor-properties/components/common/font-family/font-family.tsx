@@ -36,6 +36,8 @@ export default function FontFamily({
     setShowDialog(!showDialog);
   };
 
+  console.log(pickerFontFamily, fontFamily);
+
   return (
     <PropertyWrapper>
       <Label>{label}</Label>
@@ -47,7 +49,7 @@ export default function FontFamily({
         onClick={() => setShowDialog(!showDialog)}
         lineHeight="1"
       >
-        {fontFamily ? `${fontFamily} (${fontWeight})` : "Select font"}
+        {pickerFontFamily ? `${pickerFontFamily}` : "Select font"}
       </Button>
       {showDialog && (
         <DialogWrapper callerRef={ref} onCloseDialog={onCloseDialog}>

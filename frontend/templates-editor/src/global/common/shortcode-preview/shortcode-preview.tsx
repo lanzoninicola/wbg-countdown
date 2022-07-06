@@ -16,19 +16,19 @@ import { useRef, useState } from "react";
 
 import { CountdownModel } from "../../../countdown-widget/types";
 import { useTranslation } from "react-i18next";
-import ButtonShortcode from "../../countdowns-table/primitives/button-shortcode/button-shortcode";
+import ButtonShortcode from "./button-shortcode/button-shortcode";
 
 interface ModalShortcodeProps {
-  countdown: CountdownModel;
+  countdownId: CountdownModel["id"];
 }
 
-export default function ModalShortcode({ countdown }: ModalShortcodeProps) {
+export default function ShortcodePreview({ countdownId }: ModalShortcodeProps) {
   const { t } = useTranslation();
   const [isCopied, setIsCopied] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
-  const shortcodeText = `[clockdown id="${countdown.id}"]`;
+  const shortcodeText = `[clockdown id="${countdownId}"]`;
 
   function copyShortcode() {
     window.navigator.clipboard.writeText(shortcodeText).then(() => {

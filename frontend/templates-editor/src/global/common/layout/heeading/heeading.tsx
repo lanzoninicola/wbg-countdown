@@ -1,5 +1,3 @@
-import "../../../style/global.css";
-
 import { forwardRef, Heading, HeadingProps } from "@chakra-ui/react";
 
 const Heeading = forwardRef(({ children, ...props }: HeadingProps, ref) => {

@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 
 import { CountdownModel } from "../../../countdown-widget/types";
 import ButtonDelete from "../../countdowns-table/primitives/button-delete/button-delete";
-import Teext from "../../../components/layout/teext/teext";
+import Teext from "../../../global/common/layout/teext/teext";
 import { remove as removeCountdown } from "../../../countdown-rest-api/services/countdowns";
 import { useSWRConfig } from "swr";
 import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdown-rest-api/constants/countdowns/endpoints";

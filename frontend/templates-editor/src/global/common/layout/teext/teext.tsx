@@ -1,5 +1,4 @@
 import { forwardRef, Text, TextProps } from "@chakra-ui/react";
-import "../../../style/global.css";
 
 const Teext = forwardRef(({ children, ...props }: TextProps, ref) => {
   return (

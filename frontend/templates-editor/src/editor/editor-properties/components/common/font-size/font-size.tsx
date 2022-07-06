@@ -28,8 +28,6 @@ export default function FontSize({
     fontSizeChanged[currentToken]
   );
 
-  console.log(fontSizeChanged, currentToken, fontSize);
-
   function onChangeSize(size: number) {
     onChangeFontSize(currentToken, size);
     setFontSize(size);

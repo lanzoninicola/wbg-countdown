@@ -6,9 +6,9 @@ import useAppContext from "../../../../countdown-provider/hooks/app/useAppContex
 import { CountdownModel } from "../../../../countdown-widget/types";
 import DeleteModal from "../../../components/modal-delete-countdown/modal-delete-countdown";
 import ModalEditCountdown from "../../../components/modal-edit-countdown/modal-edit-countdown";
-import ModalShortcode from "../../../components/modal-shortcode/modal-shortcode";
+import ShortcodePreview from "../../../../global/common/shortcode-preview/shortcode-preview";
 import ButtonSettings from "../../primitives/button-settings/button-settings";
-import ButtonShortcode from "../../primitives/button-shortcode/button-shortcode";
+import ButtonShortcode from "../../../../global/common/shortcode-preview/button-shortcode/button-shortcode";
 import TableCellText from "../../primitives/table-cell-text/table-cell-text";
 
 interface TableRowProps {
@@ -37,7 +37,7 @@ export default function TableRow({ countdown }: TableRowProps) {
         <TableCellText>{description ? description : "..."}</TableCellText>
       </Td>
       <Td>
-        <ModalShortcode countdown={countdown} />
+        <ShortcodePreview countdownId={countdown.id} />
       </Td>
       <Td>
         <HStack>

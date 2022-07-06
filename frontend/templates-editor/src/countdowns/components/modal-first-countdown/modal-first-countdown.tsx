@@ -12,7 +12,7 @@ import {
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import Teext from "../../../components/layout/teext/teext";
+import Teext from "../../../global/common/layout/teext/teext";
 import ModalNewCountdown from "../modal-new-countdown/modal-new-countdown";
 
 export default function ModalFirstCountdown() {

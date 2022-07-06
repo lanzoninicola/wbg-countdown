@@ -1,6 +1,6 @@
 import { Th, Tr } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import Heeading from "../../../../components/layout/heeading/heeading";
+import Heeading from "../../../../global/common/layout/heeading/heeading";
 
 export default function TableHeaders({
   columnNames,

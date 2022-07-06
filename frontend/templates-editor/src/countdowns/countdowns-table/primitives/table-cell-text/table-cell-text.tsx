@@ -1,5 +1,5 @@
 import { forwardRef, TextProps } from "@chakra-ui/react";
-import Teext from "../../../../components/layout/teext/teext";
+import Teext from "../../../../global/common/layout/teext/teext";
 
 const TableCellText = forwardRef(({ children, ...props }: TextProps, ref) => {
   return (

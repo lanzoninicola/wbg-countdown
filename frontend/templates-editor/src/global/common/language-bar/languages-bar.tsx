@@ -2,9 +2,9 @@ import { background, Box, HStack, List, ListItem } from "@chakra-ui/react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Languages } from "../../i18n/types";
+import { Languages } from "../../../i18n/types";
 import Teext from "../layout/teext/teext";
-import ButtonLanguage from "./primitives/button-language/button-language";
+import ButtonLanguage from "./button-language/button-language";
 
 interface LanguagesBarProps {
   languages: Languages;

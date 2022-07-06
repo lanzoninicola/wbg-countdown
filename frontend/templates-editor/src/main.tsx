@@ -5,6 +5,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { theme } from "./chackra-ui/theme/theme";
 import CountdownProvider from "./countdown-provider/countdown-provider";
 import FakeWrapper from "./FakeWrapper";
+import "./style/global.css";
 
 const env = process.env.NODE_ENV;
 

@@ -9,8 +9,9 @@ import EditorSave from "../../editor/components/editor-save/editor-save";
 import ButtonClose from "../../editor/layout/button-close/button-close";
 import { Languages } from "../../i18n/types";
 import useAppContextReset from "../../countdown-provider/hooks/app/useAppContextReset";
-import Logo from "../logo/logo";
-import LanguagesBar from "../language-bar/languages-bar";
+import Logo from "../common/logo/logo";
+import LanguagesBar from "../common/language-bar/languages-bar";
+import ShortcodePreview from "../common/shortcode-preview/shortcode-preview";
 
 //TODO: detect language from Wordpress
 const lngs: Languages = {
@@ -40,7 +41,14 @@ export default function Header() {
       <Box>
         <HStack justifyContent={"space-between"}>
           <LanguagesBar languages={lngs} />
-          {isEditorShown && <EditorSave currentCountdown={currentCountdown} />}
+          <HStack spacing={4}>
+            {isEditorShown && (
+              <ShortcodePreview countdownId={currentCountdown} />
+            )}
+            {isEditorShown && (
+              <EditorSave currentCountdown={currentCountdown} />
+            )}
+          </HStack>
         </HStack>
       </Box>
       <Flex justifyContent={"flex-end"}>

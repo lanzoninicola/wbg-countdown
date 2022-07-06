@@ -1,7 +1,7 @@
 import { HStack, IconButton } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
-import Teext from "../../../../components/layout/teext/teext";
+import Teext from "../../../../global/common/layout/teext/teext";
 import PageChangeButton from "../page-change-button/page-change-button";
 
 interface PaginationControlsProps {
