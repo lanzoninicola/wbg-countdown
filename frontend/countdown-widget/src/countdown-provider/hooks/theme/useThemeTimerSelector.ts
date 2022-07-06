@@ -1,16 +1,20 @@
 import { useContextSelector } from "use-context-selector";
-import { withUnit } from "../../../countdown-widget-typography/countdown-widget-typography";
-import { CountdownContext } from "../../context/countdown-context";
 
-import { ChakraResponsiveValuesWithUnit } from "../../types/theme/responsive";
-import { TimeUnits } from "../../types/theme/timer";
-import useCurrentTokenSelector from "../app/useCurrentTokenSelector";
+import { CountdownContext } from "../../context/countdown-context";
+import { ChakraToken } from "../../types/theme/responsive";
+import {
+  ThemeTimerContextData,
+  ThemeTimerContextSetter,
+  TimeUnits,
+} from "../../types/theme/timer";
+
+export type UseThemeTimerSelector = ThemeTimerContextData &
+  ThemeTimerContextSetter;
 
 /**
  * Hook that let works with the single item of the "Timer" state.
  */
-export default function useThemeTimerSelector() {
-  const { currentToken } = useCurrentTokenSelector();
+export default function useThemeTimerSelector(): UseThemeTimerSelector {
   const timer = useContextSelector(CountdownContext, (ctx) => ctx?.theme.timer);
 
   const setTimer = useContextSelector(
@@ -33,12 +37,6 @@ export default function useThemeTimerSelector() {
     unitsShown,
   } = timer;
 
-  const digitFontSizeChakra: ChakraResponsiveValuesWithUnit =
-    Object.values(digitFontSize);
-
-  const labelFontSizeChakra: ChakraResponsiveValuesWithUnit =
-    Object.values(labelFontSize);
-
   function setUnitsShown(unitsShown: TimeUnits[]) {
     setTimer({ ...timer, unitsShown });
   }
@@ -59,10 +57,10 @@ export default function useThemeTimerSelector() {
     setTimer({ ...timer, digitFontWeight });
   }
 
-  function setDigitFontSize(size: number) {
+  function setDigitFontSize(token: ChakraToken, size: number) {
     const nextState = { ...timer, digitFontSize };
 
-    nextState.digitFontSize[currentToken] = withUnit(size);
+    nextState.digitFontSize[token] = size;
     setTimer(nextState);
   }
 
@@ -82,10 +80,10 @@ export default function useThemeTimerSelector() {
     setTimer({ ...timer, labelFontWeight });
   }
 
-  function setLabelFontSize(size: number) {
+  function setLabelFontSize(token: ChakraToken, size: number) {
     const nextState = { ...timer, labelFontSize };
 
-    nextState.labelFontSize[currentToken] = withUnit(size);
+    nextState.labelFontSize[token] = size;
     setTimer(nextState);
   }
 
@@ -100,13 +98,11 @@ export default function useThemeTimerSelector() {
     digitFontFamily,
     digitFontWeight,
     digitFontSize,
-    digitFontSizeChakra,
     digitFontColor,
     lastUnitColor,
     labelFontFamily,
     labelFontWeight,
     labelFontSize,
-    labelFontSizeChakra,
     labelFontColor,
     setUnitsShown,
     setShowSeparator,

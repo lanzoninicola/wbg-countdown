@@ -37,8 +37,8 @@ export default function EditorProperties() {
 
         <FontSize
           label={t("editor.textSize")}
-          fontSizeSelected={title.fontSize[currentToken]}
-          onFontSizeSelected={title.setFontSize}
+          fontSizeChanged={title.fontSize[currentToken]}
+          onChangeFontSize={title.setFontSize}
         />
         <FontColor
           label={t("editor.textColor")}
@@ -86,8 +86,8 @@ export default function EditorProperties() {
         />
         <FontSize
           label={t("editor.digitsSize")}
-          fontSizeSelected={timer.digitFontSize[currentToken]}
-          onFontSizeSelected={timer.setDigitFontSize}
+          fontSizeChanged={timer.digitFontSize[currentToken]}
+          onChangeFontSize={timer.setDigitFontSize}
         />
         <FontColor
           label={t("editor.digitsColor")}
@@ -108,8 +108,8 @@ export default function EditorProperties() {
         />
         <FontSize
           label={t("editor.labelSize")}
-          fontSizeSelected={timer.labelFontSize[currentToken]}
-          onFontSizeSelected={timer.setLabelFontSize}
+          fontSizeChanged={timer.labelFontSize[currentToken]}
+          onChangeFontSize={timer.setLabelFontSize}
           max={3}
         />
         <FontColor

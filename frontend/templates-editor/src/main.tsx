@@ -9,9 +9,7 @@ import FakeWrapper from "./FakeWrapper";
 const env = process.env.NODE_ENV;
 
 if (env === "development") {
-  console.log("document", document);
   const clockdownNode = document.createElement("div");
-  console.log("after document.createElement");
   clockdownNode.id = "clockdown";
 
   // get body

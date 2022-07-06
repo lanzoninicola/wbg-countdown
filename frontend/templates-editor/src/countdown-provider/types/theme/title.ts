@@ -1,4 +1,4 @@
-import { ChakraResponsiveValuesWithUnit, ResponsiveValue } from "./responsive";
+import { ChakraToken, ResponsiveValue } from "./responsive";
 
 export interface ThemeTitleContextData {
   /** The text used for the countdown title */
@@ -17,11 +17,6 @@ export interface ThemeTitleContextSetter {
   setText: (text: string) => void;
   setFontFamily: (fontFamily: string) => void;
   setFontWeight: (fontWeight: string) => void;
-  setFontSize: (size: number) => void;
+  setFontSize: (token: ChakraToken, size: number) => void;
   setFontColor: (fontColor: string) => void;
-}
-
-export interface ThemeTitleContextDataWithChackra
-  extends ThemeTitleContextData {
-  fontSizeChakra: ChakraResponsiveValuesWithUnit;
 }

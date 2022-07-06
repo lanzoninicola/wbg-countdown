@@ -1,15 +1,13 @@
 import { useTranslation } from "react-i18next";
 
-import useCurrentTokenSelector from "../../../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
 import {
   ThemeDigitsContextData,
   ThemeDigitsContextSetter,
 } from "../../../../../../countdown-provider/types/theme/timer";
-
+import PropertyGroupWrapper from "../../../../layout/property-group-wrapper/property-group-wrapper";
 import FontColor from "../../font-color/font-color";
 import FontFamily from "../../font-family/font-family";
 import FontSize from "../../font-size/font-size";
-import PropertyGroupWrapper from "../../../../layout/property-group-wrapper/property-group-wrapper";
 
 interface DigitsPropertiesGroupProps {
   themeDigits: ThemeDigitsContextData & ThemeDigitsContextSetter;
@@ -23,7 +21,16 @@ export default function DigitsPropertiesGroup({
   ...props
 }: DigitsPropertiesGroupProps) {
   const { t } = useTranslation();
-  const { currentToken } = useCurrentTokenSelector();
+  const {
+    digitFontColor,
+    digitFontFamily,
+    digitFontSize,
+    digitFontWeight,
+    setDigitFontColor,
+    setDigitFontFamily,
+    setDigitFontSize,
+    setDigitFontWeight,
+  } = themeDigits;
 
   return (
     <PropertyGroupWrapper
@@ -33,20 +40,20 @@ export default function DigitsPropertiesGroup({
     >
       <FontFamily
         label={t("editor.propertiesGroup.digits.digitsFont")}
-        fontFamily={themeDigits.digitFontFamily}
-        fontWeight={themeDigits.digitFontWeight}
-        onSelectFontFamily={themeDigits.setDigitFontFamily}
-        onSelectFontWeight={themeDigits.setDigitFontWeight}
+        fontFamily={digitFontFamily}
+        fontWeight={digitFontWeight}
+        onSelectFontFamily={setDigitFontFamily}
+        onSelectFontWeight={setDigitFontWeight}
       />
       <FontSize
         label={t("editor.propertiesGroup.digits.digitsSize")}
-        fontSizeSelected={themeDigits.digitFontSize[currentToken]}
-        onFontSizeSelected={themeDigits.setDigitFontSize}
+        fontSizeChanged={digitFontSize}
+        onChangeFontSize={setDigitFontSize}
       />
       <FontColor
         label={t("editor.propertiesGroup.digits.digitsColor")}
-        colorSelected={themeDigits.digitFontColor}
-        onColorSelected={themeDigits.setDigitFontColor}
+        colorSelected={digitFontColor}
+        onColorSelected={setDigitFontColor}
       />
     </PropertyGroupWrapper>
   );

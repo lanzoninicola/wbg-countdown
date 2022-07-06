@@ -23,7 +23,6 @@ export default function DigitLabelPropertiesGroup({
   ...props
 }: DigitLabelPropertiesGroupProps) {
   const { t } = useTranslation();
-  const { currentToken } = useCurrentTokenSelector();
 
   return (
     <PropertyGroupWrapper
@@ -41,9 +40,8 @@ export default function DigitLabelPropertiesGroup({
       />
       <FontSize
         label={t("editor.propertiesGroup.digitLabel.labelSize")}
-        fontSizeSelected={themeDigitLabel.labelFontSize[currentToken]}
-        onFontSizeSelected={themeDigitLabel.setLabelFontSize}
-        max={3}
+        fontSizeChanged={themeDigitLabel.labelFontSize}
+        onChangeFontSize={themeDigitLabel.setLabelFontSize}
       />
       <FontColor
         label={t("editor.propertiesGroup.digitLabel.labelColor")}

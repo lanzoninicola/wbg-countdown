@@ -2,19 +2,26 @@ import {
   Box,
   Slider,
   SliderFilledTrack,
+  SliderMark,
   SliderThumb,
   SliderTrack,
   Text,
 } from "@chakra-ui/react";
+import useCurrentTokenSelector from "../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
 
-import { StringOrNumber } from "../../../../countdown-widget/types";
+import { ChakraToken } from "../../../../countdown-provider/types/theme/responsive";
 
 interface SliderMarkTemplateProps {
   min: number;
   max: number;
   step?: number;
-  sliderValue?: StringOrNumber;
-  onSliderChange: (value: number) => void;
+  sliderValue?: number;
+  onChangeSlider: (value: number) => void;
+  /** Shor or not the Slider Mark */
+  showMark?: boolean;
+  /** Value printed on the Slider Mark */
+  sliderMarkValue?: number | undefined;
+  ariaLabel?: string;
 }
 
 export default function SliderMarkTemplate({
@@ -22,19 +29,23 @@ export default function SliderMarkTemplate({
   max,
   step = 1,
   sliderValue,
-  onSliderChange,
+  onChangeSlider,
+  showMark = false,
+  sliderMarkValue,
 }: SliderMarkTemplateProps) {
   return (
     <Slider
       aria-label="slider-ex-6"
-      onChange={onSliderChange}
+      onChange={(value: number) => onChangeSlider(value)}
       min={min}
       max={max}
       step={step}
+      value={sliderValue}
     >
-      {/* <SliderMark
+      {showMark && (
+        <SliderMark
           className="theme-font"
-          value={sliderValue}
+          value={sliderMarkValue || 0}
           fontSize="xs"
           textAlign="center"
           bg="blue.500"
@@ -45,8 +56,9 @@ export default function SliderMarkTemplate({
           w="12"
           top="100%"
         >
-          {sliderValue}
-        </SliderMark> */}
+          {sliderMarkValue}
+        </SliderMark>
+      )}
       <SliderTrack>
         <SliderFilledTrack />
       </SliderTrack>
@@ -58,7 +70,7 @@ export default function SliderMarkTemplate({
             className="theme-font"
             fontWeight={600}
           >
-            {sliderValue}
+            {sliderMarkValue}
           </Text>
         </Box>
       </SliderThumb>

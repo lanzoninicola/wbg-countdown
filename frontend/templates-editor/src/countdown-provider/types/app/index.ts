@@ -1,4 +1,4 @@
-import { ChakraToken } from "../theme/responsive";
+import { ChakraToken, FontsizeUnit } from "../theme/responsive";
 import { CountdownModel } from "../../../countdown-widget/types";
 import { RuntimeEnvironment } from "..";
 
@@ -18,6 +18,8 @@ export interface AppStateData {
   isEditorMode: boolean;
   /** The runtime environment */
   runtimeEnv: RuntimeEnvironment;
+  /** Global unit used for the fontsize */
+  fontSizeUnit: FontsizeUnit;
 }
 
 export interface AppStateSetter {
@@ -27,4 +29,5 @@ export interface AppStateSetter {
   setTimerExpired: (timerExpired: boolean) => void;
   setIsEditorMode: (isEditorMode: boolean) => void;
   setRuntimeEnv: (runtimeEnv: RuntimeEnvironment) => void;
+  setFontSizeUnit: (fontSizeUnit: FontsizeUnit) => void;
 }

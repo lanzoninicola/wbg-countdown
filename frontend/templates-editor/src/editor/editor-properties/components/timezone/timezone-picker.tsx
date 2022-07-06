@@ -31,9 +31,11 @@ export default function TimezonePicker({ size }: TargetTimezoneProps) {
         value={targetTimezone}
         onChange={onChangeTimezone}
         className="theme-font"
-        bg="white"
-        fontSize={"sm"}
-        borderRadius={"md"}
+        fontSize={"sm !important"}
+        borderRadius={"md !important"}
+        bg={"white !important"}
+        borderColor={"unset !important"}
+        border={"unset !important"}
       >
         {TIMEZONES_LIST.map((tz, idx) => {
           return (

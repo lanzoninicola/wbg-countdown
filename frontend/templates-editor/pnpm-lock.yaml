@@ -24,6 +24,7 @@ specifiers:
   framer-motion: ^6.3.16
   i18next: ^21.8.11
   i18next-browser-languagedetector: ^6.1.4
+  mini-css-extract-plugin: ^2.6.1
   react: ^18.0.0
   react-color: ^2.19.3
   react-colorful: ^5.5.1
@@ -43,7 +44,6 @@ specifiers:
   webpack-dev-server: ^4.9.3
 
 dependencies:
-  '@babel/core': 7.18.6
   '@chakra-ui/react': 2.2.1_e5akuette336lq4kgxwkblhzve
   '@emotion/cache': 11.9.3
   '@emotion/react': 11.9.3_4jaruczdv2uxjj3lb2xbkiuci4
@@ -64,6 +64,7 @@ dependencies:
   use-context-selector: 1.4.1_2szjah6qrhd6fr2kgr64p4pjgm
 
 devDependencies:
+  '@babel/core': 7.18.6
   '@babel/plugin-transform-runtime': 7.18.6_@babel+core@7.18.6
   '@babel/preset-env': 7.18.6_@babel+core@7.18.6
   '@babel/preset-react': 7.18.6_@babel+core@7.18.6
@@ -77,6 +78,7 @@ devDependencies:
   cross-env: 7.0.3
   css-loader: 6.7.1_webpack@5.73.0
   file-loader: 6.2.0_webpack@5.73.0
+  mini-css-extract-plugin: 2.6.1_webpack@5.73.0
   style-loader: 3.3.1_webpack@5.73.0
   typescript: 4.7.4
   vite: 2.9.13
@@ -4355,6 +4357,16 @@ packages:
   /mimic-fn/2.1.0:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
     engines: {node: '>=6'}
+    dev: true
+
+  /mini-css-extract-plugin/2.6.1_webpack@5.73.0:
+    resolution: {integrity: sha512-wd+SD57/K6DiV7jIR34P+s3uckTRuQvx0tKPcvjFlrEylk6P4mQ2KSWk1hblj1Kxaqok7LogKOieygXqBczNlg==}
+    engines: {node: '>= 12.13.0'}
+    peerDependencies:
+      webpack: ^5.0.0
+    dependencies:
+      schema-utils: 4.0.0
+      webpack: 5.73.0_webpack-cli@4.10.0
     dev: true
 
   /minimalistic-assert/1.0.1:

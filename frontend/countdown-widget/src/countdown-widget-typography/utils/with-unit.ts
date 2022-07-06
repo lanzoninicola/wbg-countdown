@@ -1,9 +1,7 @@
-/** Appends the unit to a unitless value. Default REM*/
-const withUnit = (
-  unitlessValue: number,
-  options = {
-    unit: "rem",
-  }
-) => `${unitlessValue}${options.unit}`;
+import { FontsizeUnit } from "../../countdown-provider/types/theme/responsive";
+
+/** Appends the unit to a unitless value. */
+const withUnit = (unitlessValue: number, unit: FontsizeUnit) =>
+  `${unitlessValue}${unit}`;
 
 export default withUnit;

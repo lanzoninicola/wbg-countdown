@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FontsizeUnit } from "../countdown-widget-typography/types";
 
 import { CountdownModel } from "../countdown-widget/types";
 import APP_INITIAL_STATE from "./constants/app/initial-state";
@@ -47,6 +48,9 @@ export default function CountdownProvider({
   const [runtimeEnv, setRuntimeEnv] = useState<RuntimeEnvironment>(
     runtimeEnvironment || APP_INITIAL_STATE.runtimeEnv
   );
+  const [fontSizeUnit, setFontSizeUnit] = useState<FontsizeUnit>(
+    APP_INITIAL_STATE.fontSizeUnit
+  );
   const [timerExpired, setTimerExpired] = useState(
     APP_INITIAL_STATE.timerExpired
   );
@@ -77,6 +81,8 @@ export default function CountdownProvider({
           setTimerExpired,
           runtimeEnv,
           setRuntimeEnv,
+          fontSizeUnit,
+          setFontSizeUnit,
         },
         settings: {
           targetDate,

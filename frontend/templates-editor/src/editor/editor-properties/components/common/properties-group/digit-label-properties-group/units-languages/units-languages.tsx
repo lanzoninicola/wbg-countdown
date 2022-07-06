@@ -22,6 +22,7 @@ export default function UnitsLanguages() {
         onChange={(e) =>
           setUnitLabelLanguage(e.target.value as Language["locale"])
         }
+        bg={"white"}
       >
         {LANGUAGES.map((language, idx) => {
           return (

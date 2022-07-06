@@ -1,16 +1,18 @@
 import { useContextSelector } from "use-context-selector";
 
-import { withUnit } from "../../../countdown-widget-typography/countdown-widget-typography";
 import { CountdownContext } from "../../context/countdown-context";
-import { ChakraResponsiveValuesWithUnit } from "../../types/theme/responsive";
-import { ThemeTitleContextData } from "../../types/theme/title";
-import useCurrentTokenSelector from "../app/useCurrentTokenSelector";
+import { ChakraToken } from "../../types/theme/responsive";
+import {
+  ThemeTitleContextData,
+  ThemeTitleContextSetter,
+} from "../../types/theme/title";
+
+type UseThemeTitleSelector = ThemeTitleContextData & ThemeTitleContextSetter;
 
 /**
  * Hook that let works with the single item of the "Title" state.
  */
-export default function useThemeTitleSelector() {
-  const { currentToken } = useCurrentTokenSelector();
+export default function useThemeTitleSelector(): UseThemeTitleSelector {
   const title: ThemeTitleContextData = useContextSelector(
     CountdownContext,
     (ctx) => ctx?.theme.title
@@ -28,9 +30,6 @@ export default function useThemeTitleSelector() {
 
   const { fontColor, fontSize, fontWeight, text } = title;
 
-  const fontSizeChakra: ChakraResponsiveValuesWithUnit =
-    Object.values(fontSize);
-
   function setText(text: string) {
     setTitle({ ...title, text });
   }
@@ -43,10 +42,10 @@ export default function useThemeTitleSelector() {
     setTitle({ ...title, fontWeight });
   }
 
-  function setFontSize(size: number) {
+  function setFontSize(token: ChakraToken, size: number) {
     const nextState = { ...title, fontSize };
 
-    nextState.fontSize[currentToken] = withUnit(size);
+    nextState.fontSize[token] = size;
 
     setTitle(nextState);
   }
@@ -60,7 +59,6 @@ export default function useThemeTitleSelector() {
     fontFamily,
     fontWeight,
     fontSize,
-    fontSizeChakra,
     fontColor,
     setText,
     setFontFamily,

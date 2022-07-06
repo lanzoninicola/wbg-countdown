@@ -1,15 +1,14 @@
 import { useTranslation } from "react-i18next";
 
-import useCurrentTokenSelector from "../../../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
 import {
   ThemeTitleContextData,
   ThemeTitleContextSetter,
 } from "../../../../../../countdown-provider/types/theme/title";
-import CountdownTitleText from "./countdown-title-text/countdown-title-text";
+import PropertyGroupWrapper from "../../../../layout/property-group-wrapper/property-group-wrapper";
 import FontColor from "../../font-color/font-color";
 import FontFamily from "../../font-family/font-family";
 import FontSize from "../../font-size/font-size";
-import PropertyGroupWrapper from "../../../../layout/property-group-wrapper/property-group-wrapper";
+import CountdownTitleText from "./countdown-title-text/countdown-title-text";
 
 interface TitlePropertiesGroupProps {
   themeTitle: ThemeTitleContextData & ThemeTitleContextSetter;
@@ -23,7 +22,8 @@ export default function TitlePropertiesGroup({
   ...props
 }: TitlePropertiesGroupProps) {
   const { t } = useTranslation();
-  const { currentToken } = useCurrentTokenSelector();
+
+  console.log(themeTitle);
 
   return (
     <PropertyGroupWrapper
@@ -41,8 +41,8 @@ export default function TitlePropertiesGroup({
       />
       <FontSize
         label={t("editor.propertiesGroup.title.textSize")}
-        fontSizeSelected={themeTitle.fontSize[currentToken]}
-        onFontSizeSelected={themeTitle.setFontSize}
+        fontSizeChanged={themeTitle.fontSize}
+        onChangeFontSize={themeTitle.setFontSize}
       />
       <FontColor
         label={t("editor.propertiesGroup.title.textColor")}

@@ -1,29 +1,17 @@
-import { ChakraResponsiveValuesWithUnit } from "../../types/theme/responsive";
 import {
   ThemeDigitsContextData,
-  ThemeUnitsShown,
+  ThemeDigitsLabelContextData,
   ThemeSeparatorContextData,
   ThemeTimerContextData,
-  ThemeDigitsLabelContextData,
+  ThemeUnitsShown,
 } from "../../types/theme/timer";
-
 import useThemeTimerSelector from "./useThemeTimerSelector";
-
-export interface ThemeDigitsContextDataWithChackra
-  extends ThemeDigitsContextData {
-  digitFontSizeChakra: ChakraResponsiveValuesWithUnit;
-}
-
-export interface ThemeDigitsLabelContextDataWithChackra
-  extends ThemeDigitsLabelContextData {
-  labelFontSizeChakra: ChakraResponsiveValuesWithUnit;
-}
 
 type UseThemeTimer =
   | ThemeUnitsShown
   | ThemeSeparatorContextData
-  | ThemeDigitsContextDataWithChackra
-  | ThemeDigitsLabelContextDataWithChackra
+  | ThemeDigitsContextData
+  | ThemeDigitsLabelContextData
   | ThemeTimerContextData;
 
 type ThemeTimerSlice =
@@ -40,10 +28,8 @@ type ThemeTimerSlice =
  */
 function useThemeTimer(slice: "unitsShown"): ThemeUnitsShown;
 function useThemeTimer(slice: "unit-separator"): ThemeSeparatorContextData;
-function useThemeTimer(slice: "unit-digit"): ThemeDigitsContextDataWithChackra;
-function useThemeTimer(
-  slice: "unit-label"
-): ThemeDigitsLabelContextDataWithChackra;
+function useThemeTimer(slice: "unit-digit"): ThemeDigitsContextData;
+function useThemeTimer(slice: "unit-label"): ThemeDigitsLabelContextData;
 function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
   const {
     unitsShown,
@@ -52,13 +38,11 @@ function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
     digitFontFamily,
     digitFontWeight,
     digitFontSize,
-    digitFontSizeChakra,
     digitFontColor,
     lastUnitColor,
     labelFontFamily,
     labelFontWeight,
     labelFontSize,
-    labelFontSizeChakra,
     labelFontColor,
   } = useThemeTimerSelector();
 
@@ -78,7 +62,6 @@ function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
       digitFontFamily,
       digitFontWeight,
       digitFontSize,
-      digitFontSizeChakra,
       digitFontColor,
       lastUnitColor,
     };
@@ -89,7 +72,6 @@ function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
       labelFontFamily,
       labelFontWeight,
       labelFontSize,
-      labelFontSizeChakra,
       labelFontColor,
       lastUnitColor,
     };
@@ -102,13 +84,11 @@ function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
     digitFontFamily,
     digitFontWeight,
     digitFontSize,
-    digitFontSizeChakra,
     digitFontColor,
     lastUnitColor,
     labelFontFamily,
     labelFontWeight,
     labelFontSize,
-    labelFontSizeChakra,
     labelFontColor,
   };
 }

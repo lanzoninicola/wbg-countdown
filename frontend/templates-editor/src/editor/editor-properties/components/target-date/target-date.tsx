@@ -32,6 +32,8 @@ export default function TargetDate({ size }: TargetDateProps) {
         value={targetDate}
         bg={"white"}
         borderRadius={"md"}
+        borderColor={"unset !important"}
+        border={"unset !important"}
       />
     </PropertyWrapper>
   );

@@ -6,6 +6,7 @@ const APP_INITIAL_STATE: AppStateData = {
   isEditorMode: false,
   timerExpired: false,
   runtimeEnv: "other",
+  fontSizeUnit: "px",
 };
 
 export default APP_INITIAL_STATE;

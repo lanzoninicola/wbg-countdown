@@ -1,6 +1,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
+// VITE is used only for DEV mode.
+// Due de fact that VITE builds the whole project without using IIFFE and could be colliding with other WP plugins
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],

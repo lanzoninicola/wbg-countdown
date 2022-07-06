@@ -29,7 +29,6 @@ export default function EditorSave({ currentCountdown }: EditorSaveProps) {
   };
 
   function onSave() {
-    console.log(savePayload);
     setIsLoading(true);
     if (currentCountdown) {
       update(currentCountdown, savePayload)

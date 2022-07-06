@@ -1,13 +1,4 @@
-import {
-  Flex,
-  Button,
-  Box,
-  FlexProps,
-  CloseButton,
-  Divider,
-  HStack,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, FlexProps } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
 import useElementPosition from "../../../../hooks/useElementPosition";
@@ -34,6 +25,8 @@ interface DialogWrapperProps {
   borderTopColor?: FlexProps["borderTopColor"];
   /** Childrens */
   children: React.ReactNode;
+  minWidth?: string;
+  minW?: string;
 }
 
 export default function DialogWrapper({
@@ -45,6 +38,8 @@ export default function DialogWrapper({
   offset,
   borderTopColor,
   children,
+  minWidth,
+  minW,
 }: DialogWrapperProps) {
   const { t } = useTranslation();
   let callerPosition = useElementPosition(callerRef);
@@ -66,6 +61,7 @@ export default function DialogWrapper({
         flexDirection={"column"}
         h="max-content"
         maxH="350px"
+        minW={minWidth || minW}
         bg="white"
         position={"absolute"}
         top={topPosition}
