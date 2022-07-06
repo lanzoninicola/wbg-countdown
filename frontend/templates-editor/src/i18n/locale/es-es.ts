@@ -125,6 +125,7 @@ const esEs = {
         },
         preview: {
           tokenBadge: "Tamaño de la pantalla",
+          smallestDisplay: "Pantalla más pequeña",
         },
         separator: {
           label: "Separador",

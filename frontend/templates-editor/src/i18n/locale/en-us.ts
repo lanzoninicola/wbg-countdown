@@ -125,6 +125,7 @@ const enUS = {
         },
         preview: {
           tokenBadge: "Display size:",
+          smallestDisplay: "Smallest display",
         },
       },
     },

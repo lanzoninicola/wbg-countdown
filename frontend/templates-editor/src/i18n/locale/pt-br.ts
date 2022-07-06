@@ -124,7 +124,8 @@ const ptBR = {
           tablet: "dispositivos Tablet.",
         },
         preview: {
-          tokenBadge: "Tamanho do display:",
+          tokenBadge: "Tamanho da tela:",
+          smallestDisplay: "Tela mais pequena",
         },
       },
     },

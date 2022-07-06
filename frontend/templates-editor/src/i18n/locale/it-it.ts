@@ -125,6 +125,7 @@ const itIT = {
         },
         preview: {
           tokenBadge: "Dimensioni del display:",
+          smallestDisplay: "Display più piccolo",
         },
       },
     },

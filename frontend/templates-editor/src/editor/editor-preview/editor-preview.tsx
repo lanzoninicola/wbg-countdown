@@ -5,7 +5,7 @@ import CountdownWidget from "../../countdown-widget/countdown-widget";
 import pattern from "./assets/imgs/tiny-checkers.png";
 import BreakpointInfoMessage from "./components/breakpoint-info-message/breakpoint-info-message";
 import BreakpointsBar from "./components/breakpoints-bar/breakpoints-bar";
-import PreviewWrapper from "./components/preview-wrapper/preview-wrapper";
+import Preview from "./components/preview/preview";
 
 export default function EditorPreview() {
   const { currentToken, setCurrentToken } = useCurrentTokenSelector();
@@ -21,9 +21,9 @@ export default function EditorPreview() {
         boxShadow={"sm"}
         position="relative"
       >
-        <PreviewWrapper currentToken={currentToken}>
+        <Preview currentToken={currentToken}>
           <CountdownWidget />
-        </PreviewWrapper>
+        </Preview>
       </Box>
 
       <VStack spacing={2}>

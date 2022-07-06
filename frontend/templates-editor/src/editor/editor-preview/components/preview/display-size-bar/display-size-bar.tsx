@@ -1,26 +1,39 @@
 import { Badge, Box, Flex } from "@chakra-ui/react";
-import { useTranslation } from "react-i18next";
-
-import { ChakraToken } from "../../../../../countdown-provider/types/theme/responsive";
-import DEFAULT_BREAKPOINTS from "../../../constants/default-breakpoints";
 
 interface DisplaySizeBarProps {
-  currentToken: ChakraToken;
+  /** The width of bar */
+  w: string;
+  /** Text inside the badge */
+  badgeLabel: string;
+  /** The global color if other are undefined */
+  color?: string;
+  /** The color of horizontal line */
+  hLineColor?: string;
+  /** The color of vertical line */
+  vLineColor?: string;
+  /** The color of the badge */
+  badgeColor?: string;
 }
 
-export default function DisplaySizeBar({ currentToken }: DisplaySizeBarProps) {
-  const { t } = useTranslation();
+export default function DisplaySizeBar({
+  w,
+  badgeLabel,
+  color,
+  hLineColor,
+  vLineColor,
+  badgeColor,
+}: DisplaySizeBarProps) {
   return (
     <Flex
-      w="100%"
+      w={w}
       borderLeft={"2px solid"}
       borderRight={"2px solid"}
       h="16px"
       alignItems={"center"}
-      borderColor={"blue.500"}
+      borderColor={vLineColor || color}
       position="relative"
     >
-      <Box w="100%" bg="blue.500" h="2px">
+      <Box w="100%" bg={hLineColor || color} h="2px">
         <Flex
           justifyContent={"center"}
           alignItems="center"
@@ -31,13 +44,13 @@ export default function DisplaySizeBar({ currentToken }: DisplaySizeBarProps) {
           <Badge
             w="max-content"
             borderRadius={"xl"}
-            bg={"blue.500"}
+            bg={badgeColor || color}
             paddingInline={2}
             color="white"
             className="theme-font"
             fontWeight={500}
           >
-            {t("editor.preview.tokenBadge")} {DEFAULT_BREAKPOINTS[currentToken]}
+            {badgeLabel}
           </Badge>
         </Flex>
       </Box>
