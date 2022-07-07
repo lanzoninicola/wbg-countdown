@@ -7,12 +7,7 @@
     "dev:webpack": "cross-env BABEL_ENV=default NODE_ENV=production webpack --watch",
     "dev:sync": "copyfiles ./src/countdown-*/**/*.* ../countdown-widget/",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cross-env BABEL_ENV=default NODE_ENV=production webpack"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run dev:sync && npm run build"
-    }
+    "build": "npm run dev:sync && cross-env BABEL_ENV=default NODE_ENV=production webpack"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.2.1",
