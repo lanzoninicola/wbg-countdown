@@ -9,6 +9,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cross-env BABEL_ENV=default NODE_ENV=production webpack"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run dev:sync && npm run build"
+    }
+  },
   "dependencies": {
     "@chakra-ui/react": "^2.2.1",
     "@emotion/cache": "^11.9.3",
@@ -44,6 +49,8 @@
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "file-loader": "^6.2.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "mini-css-extract-plugin": "^2.6.1",
     "style-loader": "^3.3.1",
     "typescript": "^4.6.3",
