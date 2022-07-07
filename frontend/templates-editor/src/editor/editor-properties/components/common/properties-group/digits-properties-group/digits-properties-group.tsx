@@ -1,22 +1,17 @@
 import { useTranslation } from "react-i18next";
 
-import {
-  ThemeDigitsContextData,
-  ThemeDigitsContextSetter,
-} from "../../../../../../countdown-provider/types/theme/timer";
+import useThemeTimerSelector from "../../../../../../countdown-provider/hooks/theme/useThemeTimerSelector";
 import PropertyGroupWrapper from "../../../../layout/property-group-wrapper/property-group-wrapper";
 import FontColor from "../../font-color/font-color";
 import FontFamily from "../../font-family/font-family";
 import FontSize from "../../font-size/font-size";
 
 interface DigitsPropertiesGroupProps {
-  themeDigits: ThemeDigitsContextData & ThemeDigitsContextSetter;
   showGroupTitle?: boolean;
   [key: string]: any;
 }
 
 export default function DigitsPropertiesGroup({
-  themeDigits,
   showGroupTitle,
   ...props
 }: DigitsPropertiesGroupProps) {
@@ -30,7 +25,7 @@ export default function DigitsPropertiesGroup({
     setDigitFontFamily,
     setDigitFontSize,
     setDigitFontWeight,
-  } = themeDigits;
+  } = useThemeTimerSelector();
 
   return (
     <PropertyGroupWrapper

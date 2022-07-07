@@ -1,9 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import {
-  ThemeTitleContextData,
-  ThemeTitleContextSetter,
-} from "../../../../../../countdown-provider/types/theme/title";
+import useThemeTitleSelector from "../../../../../../countdown-provider/hooks/theme/useThemeTitleSelector";
 import PropertyGroupWrapper from "../../../../layout/property-group-wrapper/property-group-wrapper";
 import FontColor from "../../font-color/font-color";
 import FontFamily from "../../font-family/font-family";
@@ -11,19 +8,16 @@ import FontSize from "../../font-size/font-size";
 import CountdownTitleText from "./countdown-title-text/countdown-title-text";
 
 interface TitlePropertiesGroupProps {
-  themeTitle: ThemeTitleContextData & ThemeTitleContextSetter;
   showGroupTitle?: boolean;
   [key: string]: any;
 }
 
 export default function TitlePropertiesGroup({
-  themeTitle,
   showGroupTitle,
   ...props
 }: TitlePropertiesGroupProps) {
   const { t } = useTranslation();
-
-  console.log(themeTitle);
+  const themeTitle = useThemeTitleSelector();
 
   return (
     <PropertyGroupWrapper

@@ -1,25 +1,22 @@
 import { useTranslation } from "react-i18next";
 
-import {
-  ThemeSeparatorContextData,
-  ThemeSeparatorContextSetter,
-} from "../../../../../../countdown-provider/types/theme/timer";
+import useThemeTimerSelector from "../../../../../../countdown-provider/hooks/theme/useThemeTimerSelector";
 import PropertyGroupWrapper from "../../../../layout/property-group-wrapper/property-group-wrapper";
 import SeparatorChar from "./separator-char/separator-char";
 import ShowSeparator from "./show-separator/show-separator";
 
 interface SeparatorPropertiesGroupProps {
-  themeSeparator: ThemeSeparatorContextData & ThemeSeparatorContextSetter;
   showGroupTitle?: boolean;
   [key: string]: any;
 }
 
 export default function SeparatorPropertiesGroup({
-  themeSeparator,
   showGroupTitle,
   ...props
 }: SeparatorPropertiesGroupProps) {
   const { t } = useTranslation();
+  const { showSeparator, setShowSeparator, separatorChar, setSeparatorChar } =
+    useThemeTimerSelector();
 
   return (
     <PropertyGroupWrapper
@@ -28,13 +25,13 @@ export default function SeparatorPropertiesGroup({
       {...props}
     >
       <ShowSeparator
-        showSeparator={themeSeparator.showSeparator}
-        onChangeShowSeparator={themeSeparator.setShowSeparator}
+        showSeparator={showSeparator}
+        onChangeShowSeparator={setShowSeparator}
       />
       <SeparatorChar
-        showSeparator={themeSeparator.showSeparator}
-        separatorChar={themeSeparator.separatorChar}
-        onChangeSeparatorChar={themeSeparator.setSeparatorChar}
+        showSeparator={showSeparator}
+        separatorChar={separatorChar}
+        onChangeSeparatorChar={setSeparatorChar}
       />
     </PropertyGroupWrapper>
   );
