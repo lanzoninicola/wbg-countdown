@@ -17,17 +17,31 @@ export default function Counter({
   // TODO: check isDanger
 
   return (
-    <div className="hstack">
-      <UnitGroup label={days === 1 ? tw("day") : tw("days")} value={days} />
-      <UnitGroup label={hours === 1 ? tw("hour") : tw("hours")} value={hours} />
+    <div data-role="clockdown-timer-wrapper">
+      <UnitGroup
+        label={days === 1 ? tw("day") : tw("days")}
+        value={days}
+        ariaLabelDigit={tw("numberDays")}
+        ariaLabelDigitLabel={tw("days")}
+      />
+      <UnitGroup
+        label={hours === 1 ? tw("hour") : tw("hours")}
+        value={hours}
+        ariaLabelDigit={tw("numberHours")}
+        ariaLabelDigitLabel={tw("hours")}
+      />
       <UnitGroup
         label={minutes === 1 ? tw("minute") : tw("minutes")}
         value={minutes}
+        ariaLabelDigit={tw("numberMinutes")}
+        ariaLabelDigitLabel={tw("minutes")}
       />
       <UnitGroup
         label={seconds === 1 ? tw("second") : tw("seconds")}
         value={seconds}
         isLastDigit={true}
+        ariaLabelDigit={tw("numberSeconds")}
+        ariaLabelDigitLabel={tw("seconds")}
       />
     </div>
   );

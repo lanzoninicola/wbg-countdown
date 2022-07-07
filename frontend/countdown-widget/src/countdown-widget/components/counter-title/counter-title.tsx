@@ -4,6 +4,7 @@ import useAppContext from "../../../countdown-provider/hooks/app/useAppContext";
 import useCurrentTokenSelector from "../../../countdown-provider/hooks/app/useCurrentTokenSelector";
 import useThemeTitleSelector from "../../../countdown-provider/hooks/theme/useThemeTitleSelector";
 import useChakraBreakpoint from "../../hooks/useChakraBreakpoint";
+import "./counter-title.css";
 
 // TODO: way to refactor due added logic to the component
 
@@ -21,10 +22,13 @@ function CounterTitle() {
     fontSize: isEditorMode ? fontSize[editorToken] : fontSize[viewportToken],
     color: fontColor,
     fontWeight: fontWeight,
-    margin: 0,
   };
 
-  return <h2 style={style}>{text}</h2>;
+  return (
+    <h2 style={style} data-role="clockdown-title" aria-label={text}>
+      {text}
+    </h2>
+  );
 }
 
 const areEqual = () => true;

@@ -3,6 +3,8 @@
 // TODO: ContextReplacementPlugin // date-fns project https://date-fns.org/v2.28.0/docs/webpack
 
 const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 // const BundleAnalyzerPlugin =
 //   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
@@ -15,7 +17,15 @@ const config = {
   resolve: {
     extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
   },
-  // plugins: [new BundleAnalyzerPlugin()],
+  plugins: [
+    // new BundleAnalyzerPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "index.css",
+    }),
+  ],
+  optimization: {
+    minimizer: [new CssMinimizerPlugin()],
+  },
   module: {
     rules: [
       {
@@ -24,9 +34,13 @@ const config = {
         exclude: /node_modules/,
       },
       // loading font from @fontsource npm package
+      // {
+      //   test: /\.(scss|css)$/i,
+      //   use: ["style-loader", "css-loader"],
+      // },
       {
-        test: /\.(scss|css)$/i,
-        use: ["style-loader", "css-loader"],
+        test: /\.(scss|css)$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       // load svg files
       {
@@ -44,7 +58,7 @@ const configPublic = Object.assign({}, config, {
   },
   output: {
     filename: "index.js",
-    path: path.resolve(__dirname, "../../public/shortcode/assets"),
+    path: path.resolve(__dirname, "../../public/clockdown-widget/assets"),
   },
 });
 

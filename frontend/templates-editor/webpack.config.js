@@ -3,6 +3,7 @@
 
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 // const BundleAnalyzerPlugin =
 //   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
@@ -28,6 +29,9 @@ const config = {
       filename: "index.css",
     }),
   ],
+  optimization: {
+    minimizer: [new CssMinimizerPlugin()],
+  },
   module: {
     rules: [
       {

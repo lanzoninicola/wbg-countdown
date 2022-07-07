@@ -36,6 +36,13 @@ class Loader {
      */
     public function enqueue_styles() {
 
+        wp_enqueue_style(
+            'clockdown-widget-style',
+            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.css',
+            array(),
+            $this->style_version,
+        );
+
     }
 
     /**
@@ -46,8 +53,8 @@ class Loader {
     public function enqueue_scripts() {
 
         wp_enqueue_script(
-            'countdown-widget-script-public',
-            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/shortcode/assets/index.js',
+            'clockdown-widget-script-public',
+            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.js',
             $this->script_version,
             false
         );

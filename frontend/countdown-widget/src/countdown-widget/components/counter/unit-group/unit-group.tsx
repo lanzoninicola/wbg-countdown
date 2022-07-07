@@ -12,9 +12,20 @@ interface UnitGroupProps {
   value: StringOrNumber;
   isDanger?: boolean;
   isLastDigit?: boolean;
+  /** aria-label attribute for the digit */
+  ariaLabelDigit: string;
+  /** aria-label attribute for the digit label */
+  ariaLabelDigitLabel: string;
 }
 
-function UnitGroup({ label, value, isDanger, isLastDigit }: UnitGroupProps) {
+function UnitGroup({
+  label,
+  value,
+  isDanger,
+  isLastDigit,
+  ariaLabelDigit,
+  ariaLabelDigitLabel,
+}: UnitGroupProps) {
   const digitTheme = useThemeTimer("unit-digit");
   const labelTheme = useThemeTimer("unit-label");
   const separatorTheme = useThemeTimer("unit-separator");
@@ -27,12 +38,14 @@ function UnitGroup({ label, value, isDanger, isLastDigit }: UnitGroupProps) {
         isDanger={isDanger}
         isLastDigit={isLastDigit}
         theme={digitTheme}
+        ariaLabel={ariaLabelDigit}
       />
       <UnitLabel
         gridArea={"label"}
         label={label}
         isLastDigit={isLastDigit}
         theme={labelTheme}
+        ariaLabel={ariaLabelDigitLabel}
       />
       {!isLastDigit && separatorTheme.showSeparator && (
         <UnitSeparator

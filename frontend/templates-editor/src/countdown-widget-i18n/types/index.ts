@@ -8,14 +8,19 @@ export interface Language {
 export interface WidgetTranslation {
   month: string;
   months: string;
+  numberMonths: string;
   day: string;
   days: string;
+  numberDays: string;
   hour: string;
   hours: string;
+  numberHours: string;
   minute: string;
   minutes: string;
+  numberMinutes: string;
   second: string;
   seconds: string;
+  numberSeconds: string;
 }
 
 /** Records of the units labels translations in singular and plural */

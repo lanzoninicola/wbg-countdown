@@ -1,4 +1,4 @@
-.hstack {
+div[data-role="clockdown-timer-wrapper"] {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
