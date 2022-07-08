@@ -2,7 +2,7 @@
 
 namespace Clockdown\Backend\PluginCore;
 
-use Clockdown\Backend\Modules\Api\Factories\RepositoriesFactory;
+use Clockdown\Backend\Modules\Database\Factories\RepositoriesFactory;
 
 // TODO: implement the class. Why the database integration depends on the API module (need refactor)?
 

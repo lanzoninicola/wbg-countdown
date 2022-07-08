@@ -1,15 +1,14 @@
 <?php
 
-namespace Clockdown\Backend\Modules\Api\Repositories;
+namespace Clockdown\Backend\Modules\Database\Repositories;
 
-use Clockdown\Backend\App\Common\DatabaseError;
 use Clockdown\Backend\App\Services\DatabaseQueryService;
 
-class CountdownsRepository {
+class CountdownsSettingsRepository {
 
     public $tables_prefix = 'wbg';
 
-    private $table_name = 'countdowns';
+    private $table_name = 'countdowns_settings';
 
     /**
      * Query service.
@@ -21,19 +20,19 @@ class CountdownsRepository {
     /**
      * Singleton instance.
      *
-     * @var CountdownsRepository
+     * @var CountdownsSettingsRepository
      */
     protected static $instance = null;
 
     /**
      * Instantiate the singleton.
      *
-     * @return CountdownsRepository
+     * @return CountdownsSettingsRepository
      */
     public static function get_instance( DatabaseQueryService $query_service ) {
 
         if ( self::$instance === null ) {
-            self::$instance = new CountdownsRepository( $query_service );
+            self::$instance = new CountdownsSettingsRepository( $query_service );
         }
 
         return self::$instance;
@@ -57,11 +56,12 @@ class CountdownsRepository {
 
         $sql = "CREATE TABLE `{$table_name}` (
                 id INT NOT NULL AUTO_INCREMENT,
-                name varchar(255) NOT NULL,
-                description varchar(255) NOT NULL,
+                countdown_id varchar(255) NOT NULL,
+                settings LONGTEXT NULL,
                 created_at datetime NULL,
                 updated_at datetime NULL,
                 PRIMARY KEY  (id)
+                -- INDEX countdown_id_idx (countdown_id ASC) VISIBLE,
                 ) $charset_collate;";
 
         return $this->query_service->create_table( $sql );
@@ -69,44 +69,40 @@ class CountdownsRepository {
     }
 
     /**
-     * Create the model and insert a record in the table countdowns.
+     * Insert a record in the table countdowns_settings.
      *
      * @param array $data
      * @return DatabaseSuccess|DatabaseError
      */
     public function insert( array $data ) {
 
-        $countdown = array(
-            'id'          => 0,
-            'name'        => $data['name'],
-            'description' => $data['description'],
-            'created_at'  => date( 'Y-m-d H:i:s' ),
+        $countdown_settings = array(
+            'id'           => 0,
+            'countdown_id' => $data['countdown_id'],
+            'settings'     => $data['settings'],
+            'created_at'   => date( 'Y-m-d H:i:s' ),
         );
 
-        return $this->query_service->insert_row( $countdown );
+        return $this->query_service->insert_row( $countdown_settings );
 
     }
 
     public function update( array $data, int $id ) {
-
         $updated_countdown = array(
-            'name'        => $data['name'],
-            'description' => $data['description'],
-            'updated_at'  => date( 'Y-m-d H:i:s' ),
+            'settings'   => $data['settings'],
+            'updated_at' => date( 'Y-m-d H:i:s' ),
         );
 
-        return $this->query_service->update_row( $updated_countdown, array( 'id' => $id ) );
-
+        return $this->query_service->update_row( $updated_countdown, array( 'countdown_id' => $id ) );
     }
 
     public function delete( int $id ) {
 
-        return $this->query_service->delete_row( array( 'id' => $id ) );
-
+        return $this->query_service->delete_row( array( 'countdown_id' => $id ) );
     }
 
     /**
-     * Get the list of countdowns.
+     * Get the list of countdowns_settings.
      * If found return the DatabaseSuccess object that contains the Countdown model.
      * If not found return the DatabaseError object.
      *
@@ -116,11 +112,10 @@ class CountdownsRepository {
     public function find_all() {
 
         return $this->query_service->get_all_rows();
-
     }
 
     /**
-     * Search a countdown by id.
+     * Search a countdowns_settings by id.
      * If found return the DatabaseSuccess object that contains the Countdown model.
      * If not found return the DatabaseError object.
      *
@@ -129,7 +124,7 @@ class CountdownsRepository {
      */
     public function find_by_id( int $id ) {
 
-        return $this->query_service->get_row( "id = {$id}" );
+        return $this->query_service->get_row( "countdown_id = {$id}" );
 
     }
 

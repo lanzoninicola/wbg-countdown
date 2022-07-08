@@ -1,9 +1,10 @@
 <?php
 
-namespace Clockdown\Backend\Modules\Api\Factories;
+namespace Clockdown\Backend\Modules\API\Factories;
 
 use Clockdown\Backend\Modules\Api\Controllers\CountdownsController;
 use Clockdown\Backend\Modules\Api\Controllers\CountdownsSettingsController;
+use Clockdown\Backend\Modules\Database\Factories\RepositoriesFactory;
 
 class ControllersFactory {
 

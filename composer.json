@@ -21,12 +21,13 @@
       "Clockdown\\Backend\\App\\Common\\": "./backend/app/common",
       "Clockdown\\Backend\\Modules\\TemplatesEditor\\": "./backend/modules/templates-editor",
       "Clockdown\\Backend\\Modules\\CountdownWidget\\": "./backend/modules/countdown-widget",
+      "Clockdown\\Backend\\Modules\\Database\\": "./backend/modules/database",
+      "Clockdown\\Backend\\Modules\\Database\\Factories\\": "./backend/modules/database/factories",
+      "Clockdown\\Backend\\Modules\\Database\\Repositories\\": "./backend/modules/database/repositories",
+      "Clockdown\\Backend\\Modules\\Database\\Models\\": "./backend/modules/database/models",
       "Clockdown\\Backend\\Modules\\Api\\": "./backend/modules/api",
       "Clockdown\\Backend\\Modules\\Api\\Factories\\": "./backend/modules/api/factories",
-      "Clockdown\\Backend\\Modules\\Api\\Controllers\\": "./backend/modules/api/controllers",
-      "Clockdown\\Backend\\Modules\\Api\\Repositories\\": "./backend/modules/api/repositories",
-      "Clockdown\\Backend\\Modules\\Api\\Models\\": "./backend/modules/api/models",
-      "Clockdown\\Backend\\Modules\\Api\\Dtos\\": "./backend/modules/api/dtos"
+      "Clockdown\\Backend\\Modules\\Api\\Controllers\\": "./backend/modules/api/controllers"
     },
     "files": [
       "./backend/app/functions/admin_menu.php"

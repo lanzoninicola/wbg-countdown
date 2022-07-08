@@ -1,10 +1,10 @@
 <?php
 
-namespace Clockdown\Backend\Modules\Api\Factories;
+namespace Clockdown\Backend\Modules\Database\Factories;
 
 use Clockdown\Backend\App\Services\DatabaseQueryService;
-use Clockdown\Backend\Modules\Api\Repositories\CountdownsRepository;
-use Clockdown\Backend\Modules\Api\Repositories\CountdownsSettingsRepository;
+use Clockdown\Backend\Modules\Database\Repositories\CountdownsRepository;
+use Clockdown\Backend\Modules\Database\Repositories\CountdownsSettingsRepository;
 
 class RepositoriesFactory {
 
