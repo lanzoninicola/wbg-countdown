@@ -3,7 +3,6 @@ import { useLayoutEffect, useState } from "react";
 import useAppContext from "../../../countdown-provider/hooks/app/useAppContext";
 import useSettingsContext from "../../../countdown-provider/hooks/settings/useSettingsContext";
 import useCountdown from "../../hooks/useCountdown";
-import CountdownContainer from "../countdown-container/countdown-container";
 import CounterTitle from "../counter-title/counter-title";
 import Counter from "../counter/counter";
 import TimerSkeleton from "../timer-skeleton/timer-skeleton";
@@ -44,7 +43,7 @@ const CountdownTimer = () => {
       {isLoading ? (
         <TimerSkeleton />
       ) : (
-        <CountdownContainer>
+        <>
           <CounterTitle />
           <Counter
             days={days}
@@ -52,7 +51,7 @@ const CountdownTimer = () => {
             minutes={minutes}
             seconds={seconds}
           />
-        </CountdownContainer>
+        </>
       )}
     </>
   );

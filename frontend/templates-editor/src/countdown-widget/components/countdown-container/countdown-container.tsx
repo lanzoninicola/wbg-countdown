@@ -1,14 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import useElementSize from "../../../countdown-provider/hooks/theme/useElementSize";
 import useThemeGlobalSelector from "../../../countdown-provider/hooks/theme/useThemeGlobalSelector";
 
 interface CountdownContainerProps {
   children: React.ReactNode;
-}
-
-interface ContainerSize {
-  width: number;
-  height: number;
 }
 
 export default function CountdownContainer({
