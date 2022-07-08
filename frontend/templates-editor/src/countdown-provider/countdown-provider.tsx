@@ -64,6 +64,7 @@ export default function CountdownProvider({
   const [unitLabelLanguage, setUnitLabelLanguage] = useState(
     SETTINGS_INITIAL_STATE.unitLabelLanguage
   );
+  const [global, setGlobal] = useState(THEME_INITIAL_STATE.global);
   const [title, setTitle] = useState(THEME_INITIAL_STATE.title);
   const [timer, setTimer] = useState(THEME_INITIAL_STATE.timer);
 
@@ -93,6 +94,8 @@ export default function CountdownProvider({
           setUnitLabelLanguage,
         },
         theme: {
+          global,
+          setGlobal,
           title,
           setTitle,
           timer,

@@ -15,7 +15,7 @@ export default function useTheme(): ThemeStateData {
     (ctx) => ctx?.theme
   );
 
-  const { timer, title } = themeContext;
+  const { global, timer, title } = themeContext;
 
   useEffect(() => {
     if (timer === undefined || title === undefined) {
@@ -24,6 +24,7 @@ export default function useTheme(): ThemeStateData {
   }, [timer]);
 
   return {
+    global,
     timer,
     title,
   };

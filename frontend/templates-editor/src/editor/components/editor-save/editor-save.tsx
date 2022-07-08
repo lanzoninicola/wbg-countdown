@@ -1,16 +1,15 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import useSettingsContext from "../../../countdown-provider/hooks/settings/useSettingsContext";
+import useSettings from "../../../countdown-provider/hooks/settings/useSettings";
 import useTheme from "../../../countdown-provider/hooks/theme/useTheme";
+import { update } from "../../../countdown-rest-api/services/editor";
 import {
   CountdownModel,
   CountdownSettingsAndTheme,
 } from "../../../countdown-widget/types";
-import { update } from "../../../countdown-rest-api/services/editor";
 import useNotifications from "../../../hooks/useNotification";
 import ButtonSave from "../../layout/button-save/button-save";
-import useSettings from "../../../countdown-provider/hooks/settings/useSettings";
 
 interface EditorSaveProps {
   currentCountdown: CountdownModel["id"] | null;

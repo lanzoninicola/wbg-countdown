@@ -36,8 +36,6 @@ export default function FontFamily({
     setShowDialog(!showDialog);
   };
 
-  console.log(pickerFontFamily, fontFamily);
-
   return (
     <PropertyWrapper>
       <Label>{label}</Label>
