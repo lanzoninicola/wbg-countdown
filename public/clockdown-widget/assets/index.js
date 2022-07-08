@@ -2905,7 +2905,10 @@ document.addEventListener("DOMContentLoaded", function () {
     body && body.appendChild(shortcodeNode);
   }
 
-  var shortcodeNodes = document.querySelectorAll('[data-role="clockdown-shortcode"]'); // for each shortcode node attach create react app
+  var shortcodeNodes = document.querySelectorAll('[data-role="clockdown-shortcode"]');
+  console.log("shortcodeNodes", shortcodeNodes);
+  console.log("iframes", document.querySelectorAll("iframe"));
+  console.log("document", document); // for each shortcode node attach create react app
 
   shortcodeNodes.forEach(function (shortcodeNode) {
     // get the shortcode id from the iframe attribute
