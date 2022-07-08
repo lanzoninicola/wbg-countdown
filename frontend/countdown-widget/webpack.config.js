@@ -5,6 +5,7 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 // const BundleAnalyzerPlugin =
 //   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
@@ -14,6 +15,7 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
  * ---------------*/
 const config = {
   mode: "production",
+
   resolve: {
     extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
   },
@@ -21,6 +23,10 @@ const config = {
     // new BundleAnalyzerPlugin(),
     new MiniCssExtractPlugin({
       filename: "index.css",
+    }),
+    // let me help copy static files from a folder to the build out folder
+    new CopyWebpackPlugin({
+      patterns: [{ from: "static" }],
     }),
   ],
   optimization: {
