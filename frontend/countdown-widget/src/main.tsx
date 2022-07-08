@@ -7,23 +7,17 @@ const env = process.env.NODE_ENV;
 
 document.addEventListener("DOMContentLoaded", function () {
   if (env === "development") {
-    const shortcodeID = "67";
-
-    const shortcodeNode = document.createElement("div");
-    shortcodeNode.setAttribute("data-role", "clockdown-shortcode");
-    shortcodeNode.setAttribute("data-id", shortcodeID);
-
-    // append countdown shortcode wrapper to body
-    const body = document.querySelector("body");
-    body && body.appendChild(shortcodeNode);
+    createShortcodeNode("67");
   }
-
   const shortcodeNodes: NodeListOf<HTMLDivElement> = document.querySelectorAll(
     '[data-role="clockdown-shortcode"]'
   );
+  renderWithReact(shortcodeNodes);
+});
 
+function renderWithReact(nodes: NodeListOf<HTMLDivElement>) {
   // for each shortcode node attach create react app
-  shortcodeNodes.forEach((shortcodeNode) => {
+  nodes.forEach((shortcodeNode) => {
     // get the shortcode id from the iframe attribute
     const shortcodeID = shortcodeNode.getAttribute("data-id");
 
@@ -40,4 +34,14 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     }
   });
-});
+}
+
+function createShortcodeNode(id: string) {
+  const shortcodeNode = document.createElement("div");
+  shortcodeNode.setAttribute("data-role", "clockdown-shortcode");
+  shortcodeNode.setAttribute("data-id", id);
+
+  // append countdown shortcode wrapper to body
+  const body = document.querySelector("body");
+  body && body.appendChild(shortcodeNode);
+}
