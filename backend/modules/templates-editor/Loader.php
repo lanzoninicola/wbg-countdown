@@ -35,7 +35,7 @@ class Loader {
             'templates-editor-style',
             CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/templates-editor/assets/index.css',
             array(),
-            $this->style_version,
+            $this->style_version
         );
 
     }

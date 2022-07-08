@@ -40,7 +40,7 @@ class Loader {
             'clockdown-widget-style',
             CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.css',
             array(),
-            $this->style_version,
+            $this->style_version
         );
 
     }
