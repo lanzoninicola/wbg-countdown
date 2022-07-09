@@ -119,6 +119,8 @@ class CountdownsSettingsRepository {
      * If found return the DatabaseSuccess object that contains the Countdown model.
      * If not found return the DatabaseError object.
      *
+     * // TODO: the function should be returned the CountdownSettings model if success and DatabaseError if failed. Controllers in the API module should be updated and the Shortcode class
+     *
      * @param int The id of the countdown to find.
      * @return DatabaseSuccess|DatabaseError
      */
