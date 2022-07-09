@@ -2893,24 +2893,22 @@ function CountdownProvider(_ref) {
 
 
 
-var main_env = "production";
-document.addEventListener("DOMContentLoaded", function () {
-  if (main_env === "development") {
-    var shortcodeID = "67";
-    var shortcodeNode = document.createElement("div");
-    shortcodeNode.setAttribute("data-role", "clockdown-shortcode");
-    shortcodeNode.setAttribute("data-id", shortcodeID); // append countdown shortcode wrapper to body
+var main_env = (/* unused pure expression or super */ null && ("production")); // document.addEventListener("DOMContentLoaded", function () {
+//   if (env === "development") {
+//     createShortcodeNode("67");
+//   }
+//   const shortcodeNodes: NodeListOf<HTMLDivElement> = document.querySelectorAll(
+//     '[data-role="clockdown-shortcode"]'
+//   );
+//   renderWithReact(shortcodeNodes);
+// });
 
-    var body = document.querySelector("body");
-    body && body.appendChild(shortcodeNode);
-  }
+var shortcodeNodes = document.querySelectorAll('[data-role="clockdown-shortcode"]');
+renderWithReact(shortcodeNodes);
 
-  var shortcodeNodes = document.querySelectorAll('[data-role="clockdown-shortcode"]');
-  console.log("shortcodeNodes", shortcodeNodes);
-  console.log("iframes", document.querySelectorAll("iframe"));
-  console.log("document", document); // for each shortcode node attach create react app
-
-  shortcodeNodes.forEach(function (shortcodeNode) {
+function renderWithReact(nodes) {
+  // for each shortcode node attach create react app
+  nodes.forEach(function (shortcodeNode) {
     // get the shortcode id from the iframe attribute
     var shortcodeID = shortcodeNode.getAttribute("data-id");
 
@@ -2926,7 +2924,16 @@ document.addEventListener("DOMContentLoaded", function () {
       }));
     }
   });
-});
+}
+
+function createShortcodeNode(id) {
+  var shortcodeNode = document.createElement("div");
+  shortcodeNode.setAttribute("data-role", "clockdown-shortcode");
+  shortcodeNode.setAttribute("data-id", id); // append countdown shortcode wrapper to body
+
+  var body = document.querySelector("body");
+  body && body.appendChild(shortcodeNode);
+}
 })();
 
 /******/ })()

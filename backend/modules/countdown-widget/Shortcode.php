@@ -38,24 +38,12 @@ class Shortcode {
 
         // @codingStandardsIgnoreStart
         echo empty( $wrapper['before'] ) ? '<div data-role="clockdown-shortcode" data-id="' . $atts["id"] . '">' : $wrapper['before'];
-        self::placeholder_template();
         echo empty( $wrapper['after'] ) ? '</div>' : $wrapper['after'];
+
+        echo '<script src="http://localhost/bb-melhor-envio/wp-content/plugins/clockdown/public/clockdown-widget/assets/index.js?ver=6.0"></script>';
         // @codingStandardsIgnoreEnd
 
         return ob_get_clean();
     }
-
-    public static function placeholder_template() {
-
-        $placeholder_url = CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/placeholder.png';
-
-        ?>
-
-        <div data-role="clockdown-placehoder">
-            <img src='<?php echo $placeholder_url ?>' alt="Clockdown Placehoder" width="355px" height="48px">
-        </div>
-
-        <?php
-}
 
 }
