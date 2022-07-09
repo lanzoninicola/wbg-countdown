@@ -14,7 +14,7 @@ namespace Clockdown\Backend\PluginCore;
  *
  * @author     Lanzoni Nicola <lanzoni.nicola@gmail.com>
  */
-class Loader {
+class HooksLoader {
 
     /**
      * The array of actions registered with WordPress.
