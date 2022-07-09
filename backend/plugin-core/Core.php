@@ -4,9 +4,8 @@ namespace Clockdown\Backend\PluginCore;
 
 use Clockdown\Backend\App\Services\ScriptLocalizerService;
 use Clockdown\Backend\Modules\Api\Routes;
-use Clockdown\Backend\Modules\CountdownWidget\Loader as CountdownWidgetLoader;
 use Clockdown\Backend\Modules\CountdownWidget\Shortcode as CountdownWidgetShortcode;
-use Clockdown\Backend\Modules\TemplatesEditor\Loader as TemplatesEditorLoader;
+use Clockdown\Backend\Modules\TemplatesEditor\TemplatesEditor;
 use Clockdown\Backend\PluginCore\I18n;
 use function Clockdown\Backend\App\Functions\add_menu;
 
@@ -39,6 +38,14 @@ class Core {
     protected $hooks_loader;
 
     /**
+     * The enqueuer responsible for adding the JavaScript and CSS files to Wordpress queue.
+     *
+     * @access protected
+     * @var ScriptsEnqueuer $enqueuer Enqueues the JavaScript and CSS files.
+     */
+    protected $scripts_enqueuer;
+
+    /**
      * Define the core functionality of the plugin.
      *
      * Set the plugin name and the plugin version that can be used throughout the plugin.
@@ -49,17 +56,14 @@ class Core {
      */
     public function __construct() {
 
-        $this->hooks_loader = new HooksLoader();
+        $this->hooks_loader     = new HooksLoader();
+        $this->scripts_enqueuer = new ScriptsEnqueuer();
 
         $this->set_locale();
 
+        $this->define_scripts();
         $this->define_admin_hooks();
         $this->define_public_hooks();
-
-        /**
-         *  This must be run after the "define_*_hooks",
-         *  because before you localize script, the script must be enqueued.
-         */
         $this->define_localized_script();
 
     }
@@ -91,6 +95,48 @@ class Core {
     }
 
     /**
+     * Defines all the scripts/styles that will be used in the plugin.
+     *
+     * The benefit of this method is that it allows to define the scripts/styles in a single place,
+     * and controls the version of the scripts/styles.
+     *
+     * @return void
+     */
+    private function define_scripts() {
+
+        $this->scripts_enqueuer->add_admin_style(
+            'templates-editor-style',
+            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/templates-editor/assets/index.css',
+            array(),
+            '1.0.0'
+        );
+
+        $this->scripts_enqueuer->add_admin_script(
+            'templates-editor-script',
+            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/templates-editor/assets/index.js',
+            array(),
+            '1.0.0',
+            false
+        );
+
+        $this->scripts_enqueuer->add_public_style(
+            'clockdown-widget-style',
+            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.css',
+            array(),
+            '1.0.0'
+        );
+
+        $this->scripts_enqueuer->add_public_script(
+            'clockdown-widget-script-public',
+            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.js',
+            array(),
+            '1.0.0',
+            false
+        );
+
+    }
+
+    /**
      * Register all of the hooks related to the admin area functionality
      * of the plugin.
      *
@@ -102,16 +148,9 @@ class Core {
         // Adding the plugin menu to Wordpress admin menu
         $this->hooks_loader->add_action( 'admin_menu', $this, 'add_plugin_menu' );
 
-        // Adding the assets for the front-end of templates editor
-        $templates = new TemplatesEditorLoader();
+        // Adding the menu in the admin area for the templates editor
+        $templates = new TemplatesEditor();
         $this->hooks_loader->add_action( 'admin_menu', $templates, 'add_menu' );
-        $this->hooks_loader->add_action( 'admin_enqueue_scripts', $templates, 'enqueue_scripts' );
-        $this->hooks_loader->add_action( 'admin_enqueue_scripts', $templates, 'enqueue_styles', 11 );
-
-        // This hook fires when the user access to the clockdown settings page in the admin area
-        // the handle name is "{parent-slug}_page_{slug}"
-        // try to deregister the elementor js scripts that cause the conflict with plugin's reactjs code
-        $this->hooks_loader->add_action( 'clockdown_page_clockdown-templates', $templates, 'deregister_script', 1 );
 
         // Registring the routes for the rest api
         $routes = new Routes();
@@ -127,11 +166,6 @@ class Core {
      * @since    1.0.0
      */
     private function define_public_hooks() {
-
-        // Adding the assets for the front-end of Countdown Widget
-        $widget_loader = new CountdownWidgetLoader();
-        $this->hooks_loader->add_action( 'wp_enqueue_scripts', $widget_loader, 'enqueue_scripts' );
-        $this->hooks_loader->add_action( 'wp_enqueue_scripts', $widget_loader, 'enqueue_styles' );
 
         new CountdownWidgetShortcode();
 
@@ -160,11 +194,16 @@ class Core {
     }
 
     /**
-     * Run the loader to execute all of the hooks with WordPress.
+     * Run:
+     * - the scripts enqueuer to execute all of the hooks related to javascript and css files.
+     * - loader to execute all of the hooks with WordPress.
      *
      * @since    1.0.0
      */
     public function run() {
+
+        $this->scripts_enqueuer->run();
+
         $this->hooks_loader->run();
     }
 
