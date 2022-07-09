@@ -26,6 +26,11 @@ class DatabaseSuccess {
         return $this->message;
     }
 
+    /**
+     * Return the payload of the response.
+     *
+     * @return mixed
+     */
     public function get_data() {
         return $this->data['payload'];
     }
