@@ -2,9 +2,10 @@
 
 namespace Clockdown\Backend\PluginCore;
 
+use Clockdown\Backend\App\Common\Shortcode;
 use Clockdown\Backend\App\Services\ScriptLocalizerService;
 use Clockdown\Backend\Modules\Api\Routes;
-use Clockdown\Backend\Modules\CountdownWidget\Shortcode as CountdownWidgetShortcode;
+use Clockdown\Backend\Modules\CountdownWidget\CountdownWidgetShortcode;
 use Clockdown\Backend\Modules\TemplatesEditor\TemplatesEditor;
 use Clockdown\Backend\PluginCore\I18n;
 use function Clockdown\Backend\App\Functions\add_menu;
@@ -118,22 +119,6 @@ class Core {
             '1.0.0',
             false
         );
-
-        $this->scripts_enqueuer->add_public_style(
-            'clockdown-widget-style',
-            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.css',
-            array(),
-            '1.0.0'
-        );
-
-        $this->scripts_enqueuer->add_public_script(
-            'clockdown-widget-script-public',
-            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.js',
-            array(),
-            '1.0.0',
-            false
-        );
-
     }
 
     /**
@@ -167,7 +152,30 @@ class Core {
      */
     private function define_public_hooks() {
 
-        new CountdownWidgetShortcode();
+        // new CountdownWidgetShortcode();
+
+        $widget_shortcode = new Shortcode(
+            'clockdown',
+            function ( $atts ) {
+                CountdownWidgetShortcode::render( $atts );
+            }
+        );
+
+        $widget_shortcode->add_inline_script(
+            array(
+                'id'  => 'clockdown-widget-script',
+                'src' => CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.js',
+                'ver' => '1.0.0',
+            )
+        );
+
+        $widget_shortcode->add_inline_stylesheet(
+            array(
+                'id'   => 'clockdown-widget-style',
+                'href' => CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.css',
+                'ver'  => '1.0.0',
+            )
+        );
 
     }
 
@@ -195,8 +203,8 @@ class Core {
 
     /**
      * Run:
-     * - the scripts enqueuer to execute all of the hooks related to javascript and css files.
-     * - loader to execute all of the hooks with WordPress.
+     * 1. the scripts enqueuer to execute all of the hooks related to javascript and css files.
+     * 2. loader to execute all of the hooks with WordPress.
      *
      * @since    1.0.0
      */
