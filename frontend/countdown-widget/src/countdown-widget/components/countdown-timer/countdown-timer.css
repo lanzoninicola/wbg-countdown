@@ -1,4 +1,4 @@
-.vstack {
+div[data-role="clockdown-container"] {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

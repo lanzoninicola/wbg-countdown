@@ -3,6 +3,12 @@
 import { ThemeStateData } from "../../types/theme";
 
 const THEME_INITIAL_STATE: ThemeStateData = {
+  global: {
+    containerSize: {
+      width: 0,
+      height: 0,
+    },
+  },
   title: {
     text: "Countdown to New Year",
     fontFamily: "Inter",

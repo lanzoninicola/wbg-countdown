@@ -43,7 +43,7 @@ const CountdownTimer = () => {
       {isLoading ? (
         <TimerSkeleton />
       ) : (
-        <div className="vstack countdown">
+        <>
           <CounterTitle />
           <Counter
             days={days}
@@ -51,7 +51,7 @@ const CountdownTimer = () => {
             minutes={minutes}
             seconds={seconds}
           />
-        </div>
+        </>
       )}
     </>
   );
