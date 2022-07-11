@@ -52,45 +52,36 @@ abstract class Shortcode {
     }
 
     /**
-     * Register the information for the <script> tag
-     * that will added under the shortcode html code
+     * Register the information for the script tag that will added under the shortcode html code
      *
      * @param array $inline_script
      * $inline_script = array(
      *    'id'      => '', // the identifier of script tag
      *    'src'     => '', // the source of script tag
-     *    'ver' => '', // the version of script tag
+     *    'ver'     => '', // the version of script tag
      *    'defer'   => false, // the defer attribute of script tag
      *    'async'   => false, // the async attribute of script tag
      * );
      */
-    public function add_inline_script( array $inline_script = array() ) {
+    public function register_script( array $inline_script = array() ) {
 
-        $this->inline_script['id']    = $inline_script['id'];
-        $this->inline_script['src']   = $inline_script['src'];
-        $this->inline_script['ver']   = isset( $inline_script['ver'] ) ? $inline_script['ver'] : '1.0.0';
-        $this->inline_script['defer'] = isset( $inline_script['defer'] ) ? $inline_script['defer'] : false;
-        $this->inline_script['async'] = isset( $inline_script['async'] ) ? $inline_script['async'] : false;
+        $this->inline_script = $inline_script;
     }
 
     /**
-     * Register the information for the <link rel="stylesheet"> tag
-     * that will added above the shortcode html code
+     * Register the information for the link rel="stylesheet" tag that will added above the shortcode html code
      *
      * @param array $inline_stylesheet
      * $inline_stylesheet = array(
      *   'id'      => '', // the identifier of style tag
      *   'href'    => '', // the source of style tag
-     *   'ver' => '', // the version of style tag
+     *   'ver'     => '', // the version of style tag
      *   'media'   => 'all', // the media attribute of style tag
      * );
      */
-    public function add_inline_stylesheet( array $inline_stylesheet = array() ) {
+    public function register_stylesheet( array $inline_stylesheet = array() ) {
 
-        $this->inline_stylesheet['id']    = $inline_stylesheet['id'];
-        $this->inline_stylesheet['href']  = $inline_stylesheet['href'];
-        $this->inline_stylesheet['ver']   = isset( $inline_stylesheet['ver'] ) ? $inline_stylesheet['ver'] : '1.0.0';
-        $this->inline_stylesheet['media'] = 'all';
+        $this->inline_stylesheet = $inline_stylesheet;
     }
 
     /**

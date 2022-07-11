@@ -46,6 +46,14 @@ class Core {
     protected $scripts_enqueuer;
 
     /**
+     *
+     *
+     * @access protected
+     * @var ShortcodesLoader $shortcodes_loader
+     */
+    protected $shortcodes_loader;
+
+    /**
      * Define the core functionality of the plugin.
      *
      * Set the plugin name and the plugin version that can be used throughout the plugin.
@@ -56,11 +64,13 @@ class Core {
      */
     public function __construct() {
 
-        $this->hooks_loader     = new HooksLoader();
-        $this->scripts_enqueuer = new ScriptsEnqueuer();
+        $this->hooks_loader      = new HooksLoader();
+        $this->scripts_enqueuer  = new ScriptsEnqueuer();
+        $this->shortcodes_loader = new ShortcodesLoader();
 
         $this->set_locale();
 
+        $this->define_shortcodes();
         $this->define_scripts();
         $this->define_admin_hooks();
         $this->define_public_hooks();
@@ -95,6 +105,19 @@ class Core {
     }
 
     /**
+     * Adding the shortcodes to Wordpress
+     *
+     */
+    private function define_shortcodes() {
+
+        $this->shortcodes_loader->add(
+            'clockdown',
+            CountdownWidgetShortcode::class
+        );
+
+    }
+
+    /**
      * Defines all the scripts/styles that will be used in the plugin.
      *
      * The benefit of this method is that it allows to define the scripts/styles in a single place,
@@ -117,6 +140,24 @@ class Core {
             array(),
             '1.0.0',
             false
+        );
+
+        $this->shortcodes_loader->add_inline_script(
+            'clockdown',
+            array(
+                'id'  => 'clockdown-widget-script',
+                'src' => CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.js',
+                'ver' => '1.0.0',
+            )
+        );
+
+        $this->shortcodes_loader->add_inline_stylesheet(
+            'clockdown',
+            array(
+                'id'   => 'clockdown-widget-style',
+                'href' => CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.css',
+                'ver'  => '1.0.0',
+            )
         );
     }
 
@@ -176,40 +217,16 @@ class Core {
     }
 
     /**
-     * Adding the shortcodes to Wordpress
-     *
-     */
-    private function add_shortcodes() {
-
-        $widget_shortcode = new CountdownWidgetShortcode( 'clockdown' );
-
-        $widget_shortcode->add_inline_script(
-            array(
-                'id'  => 'clockdown-widget-script',
-                'src' => CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.js',
-                'ver' => '1.0.0',
-            )
-        );
-
-        $widget_shortcode->add_inline_stylesheet(
-            array(
-                'id'   => 'clockdown-widget-style',
-                'href' => CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.css',
-                'ver'  => '1.0.0',
-            )
-        );
-    }
-
-    /**
      * Run:
-     * 1. the scripts enqueuer to execute all of the hooks related to javascript and css files.
-     * 2. loader to execute all of the hooks with WordPress.
+     * 1. The Shortcodes loader to instanciate the shortcodes classes and register the shortcode.
+     * 2. The Scripts enqueuer to execute all of the hooks related to javascript and css files.
+     * 3. The hooks loader to execute all of the hooks with WordPress.
      *
      * @since    1.0.0
      */
     public function run() {
 
-        $this->add_shortcodes();
+        $this->shortcodes_loader->run();
 
         $this->scripts_enqueuer->run();
 
