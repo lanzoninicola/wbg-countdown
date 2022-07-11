@@ -2,7 +2,6 @@
 
 namespace Clockdown\Backend\PluginCore;
 
-use Clockdown\Backend\App\Common\Shortcode;
 use Clockdown\Backend\App\Services\ScriptLocalizerService;
 use Clockdown\Backend\Modules\Api\Routes;
 use Clockdown\Backend\Modules\CountdownWidget\CountdownWidgetShortcode;
@@ -152,31 +151,6 @@ class Core {
      */
     private function define_public_hooks() {
 
-        // new CountdownWidgetShortcode();
-
-        $widget_shortcode = new Shortcode(
-            'clockdown',
-            function ( $atts ) {
-                CountdownWidgetShortcode::render( $atts );
-            }
-        );
-
-        $widget_shortcode->add_inline_script(
-            array(
-                'id'  => 'clockdown-widget-script',
-                'src' => CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.js',
-                'ver' => '1.0.0',
-            )
-        );
-
-        $widget_shortcode->add_inline_stylesheet(
-            array(
-                'id'   => 'clockdown-widget-style',
-                'href' => CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.css',
-                'ver'  => '1.0.0',
-            )
-        );
-
     }
 
     /**
@@ -202,6 +176,31 @@ class Core {
     }
 
     /**
+     * Adding the shortcodes to Wordpress
+     *
+     */
+    private function add_shortcodes() {
+
+        $widget_shortcode = new CountdownWidgetShortcode( 'clockdown' );
+
+        $widget_shortcode->add_inline_script(
+            array(
+                'id'  => 'clockdown-widget-script',
+                'src' => CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.js',
+                'ver' => '1.0.0',
+            )
+        );
+
+        $widget_shortcode->add_inline_stylesheet(
+            array(
+                'id'   => 'clockdown-widget-style',
+                'href' => CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.css',
+                'ver'  => '1.0.0',
+            )
+        );
+    }
+
+    /**
      * Run:
      * 1. the scripts enqueuer to execute all of the hooks related to javascript and css files.
      * 2. loader to execute all of the hooks with WordPress.
@@ -209,6 +208,8 @@ class Core {
      * @since    1.0.0
      */
     public function run() {
+
+        $this->add_shortcodes();
 
         $this->scripts_enqueuer->run();
 

@@ -2,7 +2,20 @@
 
 namespace Clockdown\Backend\App\Common;
 
-class Shortcode {
+/**
+ * This class is used to define the shortcodes used by the plugin.
+ *
+ * The class that extends this class must define the method `output` that will be used to render the shortcode.
+ *
+ * @package    Clockdown
+ * @subpackage Clockdown/Backend/App/Common
+ *
+ * @method add_inline_script( $inline_script = array() ) Let you add a script to the list of scripts to be enqueued.
+ * @method add_inline_style( $inline_stylesheet = array() ) Let you add a style to the list of styles to be enqueued.
+ * @method output( $atts = array() ) Let you define the code that will be rendered by the shortcode.
+ *
+ */
+abstract class Shortcode {
 
     /**
      * The name of shortcode
@@ -26,21 +39,21 @@ class Shortcode {
     public $inline_stylesheet = array();
 
     /**
-     * Undocumented function
+     * Bootstrap the shortcode.
      *
-     * @param string $name
+     * @param string $name The name of shortcode.
      *
      */
-    public function __construct( string $name, $function ) {
+    public function __construct( string $name ) {
 
-        $this->name     = $name;
-        $this->function = $function;
+        $this->name = $name;
 
         add_shortcode( $this->name, array( $this, 'render' ) );
     }
 
     /**
-     * Add the <script> tag under the shortcode html code
+     * Register the information for the <script> tag
+     * that will added under the shortcode html code
      *
      * @param array $inline_script
      * $inline_script = array(
@@ -61,7 +74,8 @@ class Shortcode {
     }
 
     /**
-     * Add the <link rel="stylesheet"> tag under the shortcode html code
+     * Register the information for the <link rel="stylesheet"> tag
+     * that will added above the shortcode html code
      *
      * @param array $inline_stylesheet
      * $inline_stylesheet = array(
@@ -96,8 +110,8 @@ class Shortcode {
             $this->render_stylesheet_tag();
         }
 
-        if ( is_callable( $this->function ) ) {
-            call_user_func( $this->function, $atts );
+        if ( is_callable( $this->output( $atts ) ) ) {
+            call_user_func( $this->output, $atts );
         }
 
         if ( !empty( $this->inline_script ) ) {
@@ -108,6 +122,18 @@ class Shortcode {
 
     }
 
+    /**
+     * The code rendered by the shortcode.
+     *
+     * @return void
+     */
+    abstract public static function output( $atts = array() );
+
+    /**
+     * This function renders the <script> tag.
+     *
+     * @return void
+     */
     private function render_script_tag() {
 
         $script = "<script
@@ -126,6 +152,11 @@ class Shortcode {
 
     }
 
+    /**
+     * This function renders the <link rel="stylesheet"> tag.
+     *
+     * @return void
+     */
     private function render_stylesheet_tag() {
 
         $style = "<link rel='stylesheet'

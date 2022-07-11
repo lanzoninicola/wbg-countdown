@@ -4,22 +4,18 @@ namespace Clockdown\Backend\Modules\CountdownWidget;
 
 use Clockdown\Backend\App\Common\Shortcode;
 
-class CountdownWidgetShortcode {
+class CountdownWidgetShortcode extends Shortcode {
 
     /**
-     * Shortcode Wrapper.
+     * The code rendered by the shortcode.
      *
-     *
-     * @param  string[] $function Callback function.
      * @param  array    $atts     Attributes. Default to empty array.
-     * @param  array    $wrapper  Customer wrapper data.
      * @return string
      */
-    public static function render(
+    public static function output(
         $atts = array()
     ) {
 
-        // echo '<div>Hello ' . $atts["id"] . 'Pongo</div>';
         echo '<div data-role="clockdown-shortcode" data-id="' . $atts["id"] . '">';
     }
 
