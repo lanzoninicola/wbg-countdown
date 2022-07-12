@@ -4,13 +4,21 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-// const BundleAnalyzerPlugin =
-//   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
-/* ---------------
- * Main config
- * We will place here all the common settings
- * ---------------*/
+const ENABLE_ANALYZER = false;
+
+let plugins = [
+  new MiniCssExtractPlugin({
+    filename: "index.css",
+  }),
+];
+
+if (ENABLE_ANALYZER === true) {
+  plugins.push(new BundleAnalyzerPlugin());
+}
+
 const config = {
   mode: "production",
   resolve: {
@@ -23,14 +31,9 @@ const config = {
     //   ),
     // },
   },
-  plugins: [
-    // new BundleAnalyzerPlugin(),
-    new MiniCssExtractPlugin({
-      filename: "index.css",
-    }),
-  ],
+  plugins: [...plugins],
   optimization: {
-    minimizer: [new CssMinimizerPlugin()],
+    minimizer: [new CssMinimizerPlugin(), "..."],
   },
   module: {
     rules: [
@@ -68,7 +71,7 @@ const config = {
 const configPublic = Object.assign({}, config, {
   name: "configPublic",
   entry: {
-    shortcode: "./src/main.tsx",
+    templateEditor: "./src/main.tsx",
   },
   output: {
     filename: "index.js",

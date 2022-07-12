@@ -5,7 +5,7 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+// const CopyWebpackPlugin = require("copy-webpack-plugin");
 // const BundleAnalyzerPlugin =
 //   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
@@ -25,12 +25,12 @@ const config = {
       filename: "index.css",
     }),
     // let me help copy static files from a folder to the build out folder
-    new CopyWebpackPlugin({
-      patterns: [{ from: "static" }],
-    }),
+    // new CopyWebpackPlugin({
+    //   patterns: [{ from: "static" }],
+    // }),
   ],
   optimization: {
-    minimizer: [new CssMinimizerPlugin()],
+    minimizer: [new CssMinimizerPlugin(), "..."],
   },
   module: {
     rules: [
