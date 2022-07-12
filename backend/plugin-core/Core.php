@@ -2,6 +2,7 @@
 
 namespace Clockdown\Backend\PluginCore;
 
+use Clockdown\Backend\App\Services\RoutesService;
 use Clockdown\Backend\App\Services\ScriptLocalizerService;
 use Clockdown\Backend\Modules\Api\V1\Routes;
 use Clockdown\Backend\Modules\CountdownWidget\CountdownWidgetShortcode;
@@ -187,8 +188,8 @@ class Core {
         $this->hooks_loader->add_action( 'admin_menu', $templates, 'add_menu' );
 
         // Registring the routes for the rest api
-        $routes = new Routes();
-        $this->hooks_loader->add_action( 'rest_api_init', $routes, 'register_api_endpoints' );
+        // $routes = new Routes();
+        // $this->hooks_loader->add_action( 'rest_api_init', $routes, 'register_api_endpoints' );
 
     }
 
@@ -234,6 +235,10 @@ class Core {
      * @since    1.0.0
      */
     public function run() {
+
+        $V1Routes       = new Routes();
+        $routes_service = new RoutesService( $V1Routes );
+        $routes_service->run();
 
         $this->shortcodes_loader->run();
 
