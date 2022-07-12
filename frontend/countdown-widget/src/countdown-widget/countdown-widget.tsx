@@ -11,7 +11,7 @@ export default function CountdownWidget() {
     useThemeTitleSelector();
 
   return (
-    <>
+    <div>
       <GoogleFontsLinkTag
         googleFonts={[
           { fontFamily: digitFontFamily, fontWeight: digitFontWeight },
@@ -22,6 +22,6 @@ export default function CountdownWidget() {
       <CountdownContainer>
         <CountdownTimer />
       </CountdownContainer>
-    </>
+    </div>
   );
 }

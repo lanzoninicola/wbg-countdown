@@ -38,22 +38,15 @@ const CountdownTimer = () => {
     }
   }, [timerExpired, days, hours, minutes, seconds]);
 
+  if (isLoading) {
+    return <TimerSkeleton />;
+  }
+
   return (
-    <>
-      {isLoading ? (
-        <TimerSkeleton />
-      ) : (
-        <>
-          <CounterTitle />
-          <Counter
-            days={days}
-            hours={hours}
-            minutes={minutes}
-            seconds={seconds}
-          />
-        </>
-      )}
-    </>
+    <div>
+      <CounterTitle />
+      <Counter days={days} hours={hours} minutes={minutes} seconds={seconds} />
+    </div>
   );
 };
 
