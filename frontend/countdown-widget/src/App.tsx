@@ -14,7 +14,7 @@ function App({ current }: AppProps) {
     current: current,
   });
 
-  return <> {isLoading ? <TimerSkeleton /> : <CountdownWidget />}</>;
+  return <div>{isLoading ? <TimerSkeleton /> : <CountdownWidget />}</div>;
 }
 
 export default App;
