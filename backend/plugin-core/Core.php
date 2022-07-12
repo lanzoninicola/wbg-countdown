@@ -47,12 +47,21 @@ class Core {
     protected $scripts_enqueuer;
 
     /**
-     *
+     * The class responsible for defining the shortcodes
      *
      * @access protected
      * @var ShortcodesLoader $shortcodes_loader
      */
     protected $shortcodes_loader;
+
+    /**
+     * The class responsible for defining the REST-API routes.
+     *
+     * @since    1.0.0
+     * @access   protected
+     * @var      RoutesService $routes_service
+     */
+    protected $routes_service;
 
     /**
      * Define the core functionality of the plugin.
@@ -68,6 +77,7 @@ class Core {
         $this->hooks_loader      = new HooksLoader();
         $this->scripts_enqueuer  = new ScriptsEnqueuer();
         $this->shortcodes_loader = new ShortcodesLoader();
+        $this->routes_service    = new RoutesService();
 
         $this->set_locale();
 
@@ -76,6 +86,7 @@ class Core {
         $this->define_admin_hooks();
         $this->define_public_hooks();
         $this->define_localized_script();
+        $this->define_rest_api_routes();
 
     }
 
@@ -227,24 +238,36 @@ class Core {
     }
 
     /**
+     * Define the rest api routes
+     *
+     * @return void
+     */
+    private function define_rest_api_routes() {
+
+        $V1Routes = new Routes();
+
+        $this->routes_service->add_routes( $V1Routes );
+
+    }
+
+    /**
      * Run:
      * 1. The Shortcodes loader to instanciate the shortcodes classes and register the shortcode.
      * 2. The Scripts enqueuer to execute all of the hooks related to javascript and css files.
      * 3. The hooks loader to execute all of the hooks with WordPress.
+     * 4. The Routes service to register the routes for the rest api.
      *
      * @since    1.0.0
      */
     public function run() {
-
-        $V1Routes       = new Routes();
-        $routes_service = new RoutesService( $V1Routes );
-        $routes_service->run();
 
         $this->shortcodes_loader->run();
 
         $this->scripts_enqueuer->run();
 
         $this->hooks_loader->run();
+
+        $this->routes_service->run();
     }
 
     /**

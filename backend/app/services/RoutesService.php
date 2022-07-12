@@ -12,14 +12,24 @@ use Clockdown\Backend\App\Common\BaseRoutes;
  */
 class RoutesService {
 
-    public function __construct( BaseRoutes $routes ) {
+    /**
+     * The is root path of each route.
+     *
+     * @var BaseRoutes[]
+     */
+    private $routes = array();
 
-        $this->root_path   = $routes->root_path();
-        $this->api_version = $routes->api_version();
-        $this->routes      = $routes->routes();
+    public function add_routes( BaseRoutes $routes ) {
+
+        $this->routes[] = $routes;
 
     }
 
+    /**
+     * Add the wordpress action to register the routes.
+     *
+     * @return void
+     */
     public function run() {
 
         add_action( 'rest_api_init', array( $this, 'register_api_endpoints' ) );
@@ -35,37 +45,28 @@ class RoutesService {
      */
     public function register_api_endpoints() {
 
-        $full_api_root_path = "{$this->root_path}/{$this->api_version}";
+        foreach ( $this->routes as $route ) {
 
-        if ( !$this->routes ) {
-            throw new \Exception( 'Routes not set. Set the routes first with the "add_routes" method.' );
-        }
+            $full_api_root_path = "{$route->root_path()}/{$route->api_version()}";
 
-        foreach ( $this->routes as $route => $methods ) {
+            if ( empty( $route->endpoints() ) ) {
+                throw new \Exception( 'Endpoints not set. Set the endpoints first.' );
+            }
 
-            foreach ( $methods as $method => $options ) {
-                register_rest_route( $full_api_root_path, $route, array(
-                    'methods'             => $method,
-                    'callback'            => $this->get_callback( $options['callback'][0], $options['callback'][1] ),
-                    'permission_callback' => $this->get_permission_callback( $options['capability'] ),
-                ) );
+            foreach ( $route->endpoints() as $endpoint => $methods ) {
+
+                foreach ( $methods as $method => $options ) {
+                    register_rest_route( $full_api_root_path, $endpoint, array(
+                        'methods'             => $method,
+                        'callback'            => $options['callback'],
+                        'permission_callback' => $this->get_permission_callback( $options['capability'] ),
+                    ) );
+                }
+
             }
 
         }
 
-    }
-
-    /**
-     * Get the callback function for the register_rest_route() wordpress function.
-     *
-     * @param object $controller_object The controller object.
-     * @param string $method_name The method name that will handle the API call.
-     *
-     * @return string The callback function.
-     */
-    private function get_callback( object $controller_object, string $method_name ) {
-
-        return array( $controller_object, $method_name );
     }
 
     /**

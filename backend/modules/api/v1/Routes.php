@@ -6,7 +6,7 @@ use Clockdown\Backend\App\Common\BaseRoutes;
 use Clockdown\Backend\Modules\Api\V1\Factories\ControllersFactory;
 
 /**
- * The class that describe the custom REST API end-point for the countdown.
+ * The class that describe the custom REST API end-points for the countdown.
  *
  * @package    Clockdown
  * @subpackage Clockdown/admin
@@ -20,7 +20,7 @@ class Routes extends BaseRoutes {
 
     public function __construct() {
 
-        $routes = array(
+        $endpoints = array(
             'countdowns'                                 => array(
                 'GET'  => array(
                     'callback'   => $this->get_callback( 'CountdownsController', 'find_all' ),
@@ -65,7 +65,7 @@ class Routes extends BaseRoutes {
             ),
         );
 
-        parent::__construct( 'clockdown', 'v1', $routes );
+        parent::__construct( 'clockdown', 'v1', $endpoints );
 
     }
 
