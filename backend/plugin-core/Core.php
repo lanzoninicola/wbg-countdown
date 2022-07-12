@@ -2,9 +2,11 @@
 
 namespace Clockdown\Backend\PluginCore;
 
+use Clockdown\Backend\App\Common\RestApiEndpoint;
+use Clockdown\Backend\App\Common\Routes;
 use Clockdown\Backend\App\Services\RoutesService;
 use Clockdown\Backend\App\Services\ScriptLocalizerService;
-use Clockdown\Backend\Modules\Api\V1\Routes;
+use Clockdown\Backend\Modules\Api\V1\Factories\ControllersFactory;
 use Clockdown\Backend\Modules\CountdownWidget\CountdownWidgetShortcode;
 use Clockdown\Backend\Modules\TemplatesEditor\TemplatesEditor;
 use Clockdown\Backend\PluginCore\I18n;
@@ -240,13 +242,64 @@ class Core {
     /**
      * Define the rest api routes
      *
+     * 1. create an array of enpoints - RestApiEndpoint[]
+     * 2. create the Routes object passing the root_path, the api version, the array of endpoints to it
+     * 3. register the routes with the rest api - $this->routes_service->add_routes( Routes $routes )
+     *
      * @return void
      */
     private function define_rest_api_routes() {
 
-        $V1Routes = new Routes();
+        $countdowns_endpoint   = 'countdowns';
+        $countdown_id_endpoint = '/countdowns/(?P<id>\d+)';
+        $settings_enpoint      = '/countdowns/(?P<id>\d+)/settings';
 
-        $this->routes_service->add_routes( $V1Routes );
+        $countdown_controller = ControllersFactory::get_instance_by_class_name( 'CountdownsController' );
+        $settings_controller  = ControllersFactory::get_instance_by_class_name( 'CountdownsSettingsController' );
+
+        $endpoints_v1 = array(
+            new RestApiEndpoint( $countdowns_endpoint, 'GET',
+                array( $countdown_controller, 'find_all' ),
+                'public'
+            ),
+            new RestApiEndpoint( $countdowns_endpoint, 'POST',
+                array( $countdown_controller, 'create' ),
+                'public'
+            ),
+            new RestApiEndpoint( $countdown_id_endpoint, 'GET',
+                array( $countdown_controller, 'find_by_id' ),
+                'public'
+            ),
+            new RestApiEndpoint( $countdown_id_endpoint, 'PUT',
+                array( $countdown_controller, 'update' ),
+                'public'
+            ),
+            new RestApiEndpoint( $countdown_id_endpoint, 'DELETE',
+                array( $countdown_controller, 'delete' ),
+                'public'
+            ),
+            new RestApiEndpoint( $settings_enpoint, 'GET',
+                array( $settings_controller, 'find_by_id' ),
+                'public'
+            ),
+            new RestApiEndpoint( $settings_enpoint, 'POST',
+                array( $settings_controller, 'create' ),
+                'public'
+            ),
+            new RestApiEndpoint( $settings_enpoint, 'PUT',
+                array( $settings_controller, 'update' ),
+                'public'
+            ),
+            new RestApiEndpoint( $settings_enpoint, 'DELETE',
+                array( $settings_controller, 'delete' ),
+                'public'
+            ),
+
+        );
+
+        $routes = new Routes( 'clockdown', 'v1', $endpoints_v1 );
+
+        $this->routes_service->add_routes( $routes );
 
     }
 

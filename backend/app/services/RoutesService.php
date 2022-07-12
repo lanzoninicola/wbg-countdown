@@ -2,7 +2,7 @@
 
 namespace Clockdown\Backend\App\Services;
 
-use Clockdown\Backend\App\Common\BaseRoutes;
+use Clockdown\Backend\App\Common\Routes;
 
 /**
  * Class responsible for registering the routes for custom REST-API.
@@ -13,13 +13,18 @@ use Clockdown\Backend\App\Common\BaseRoutes;
 class RoutesService {
 
     /**
-     * The is root path of each route.
+     * The active routes.
      *
-     * @var BaseRoutes[]
+     * @var Routes[]
      */
     private $routes = array();
 
-    public function add_routes( BaseRoutes $routes ) {
+    /**
+     * Adds a new Routes collection to the collection of routes.
+     *
+     * @param Routes $route The route to be added.
+     */
+    public function add_routes( Routes $routes ) {
 
         $this->routes[] = $routes;
 
@@ -53,15 +58,13 @@ class RoutesService {
                 throw new \Exception( 'Endpoints not set. Set the endpoints first.' );
             }
 
-            foreach ( $route->endpoints() as $endpoint => $methods ) {
+            foreach ( $route->endpoints() as $endpoint ) {
 
-                foreach ( $methods as $method => $options ) {
-                    register_rest_route( $full_api_root_path, $endpoint, array(
-                        'methods'             => $method,
-                        'callback'            => $options['callback'],
-                        'permission_callback' => $this->get_permission_callback( $options['capability'] ),
-                    ) );
-                }
+                register_rest_route( $full_api_root_path, $endpoint->endpoint(), array(
+                    'methods'             => $endpoint->verb(),
+                    'callback'            => $endpoint->callback(),
+                    'permission_callback' => $this->get_permission_callback( $endpoint->capability() ),
+                ) );
 
             }
 

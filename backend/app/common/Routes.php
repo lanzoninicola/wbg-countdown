@@ -3,46 +3,35 @@
 namespace Clockdown\Backend\App\Common;
 
 /**
- * Base class for defining the endpoints to be registered.
+ * The class that describe the custom REST API end-points for the countdown.
+ *
+ * @package    Clockdown
+ * @subpackage Clockdown/admin
+ *
+ * @link       https://lanzoninicola.com.br
+ * @since      1.0.0
  */
-class BaseRoutes {
+
+//TODO: handling wp-nonce
+class Routes {
 
     /**
-     * The is root path of each route.
-     */
-    protected $root_path = '';
-
-    /**
-     * Version of the API, format v<number> (eg. v1, v2, v3, ...)
+     * Collection of routes for the custom REST-API.
      *
-     * @var string
-     */
-    protected $api_version = '';
-
-    /**
-     * The endpoints list.
-     */
-    protected $endpoints = array();
-
-    /**
-     * Register the endpoints for the custom REST-API.
+     * @param string $root_path The root path of api endpoint (e.g. /wp-json/clockdown)
+     * @param string $api_version The API version (eg. v1, v2, v3, etc.)
+     * @param array $endpoints The endpoints to be registered.
      *
-     * @param string $root_path The root path of the plugin.
-     * @param string $api_version The API version.
-     * @param array $endpoints The endpoints list.
-     *
-     * @example https://domain.com/root_path/api_version/leaf
+     * @example -
+     * https://domain.com/wp-json/root_path/api_version/endpoint_1;
+     * https: //domain.com/wp-json/root_path/api_version/endpoint_2;
      */
     public function __construct( string $root_path, string $api_version, array $endpoints ) {
         $this->root_path   = $root_path;
         $this->api_version = $api_version;
         $this->endpoints   = $endpoints;
-    }
 
-    /**
-     * Return the callback function for the register_rest_route() wordpress function.
-     */
-    protected function get_callback( string $class_name, string $method_name ) {}
+    }
 
     /**
      * Returns the root path of REST-API.
@@ -65,7 +54,7 @@ class BaseRoutes {
     /**
      * Returns the array of endpoints.
      *
-     * @return array
+     * @return RestApiEndpoint[]
      * @example array(
      *    'endpoint' => array(
      *      'method' => array(     // GET, POST, PUT, DELETE
