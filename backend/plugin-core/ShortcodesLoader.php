@@ -2,6 +2,17 @@
 
 namespace Clockdown\Backend\PluginCore;
 
+/**
+ * Class to manage the registration of the shortcodes.
+ *
+ * @package    Clockdown
+ * @subpackage Clockdown/plugin-core
+ *
+ * @method add() Add a shortcode to the list of registered shortcodes.
+ * @method add_inline_script() Add the inline script tag for the shortcode.
+ * @method add_inline_style() Add the inline style tag for the shortcode.
+ * @method add_localized_script_data() Add the localized script data for the shortcode.
+ */
 class ShortcodesLoader {
 
     /**
@@ -24,7 +35,16 @@ class ShortcodesLoader {
      *
      * @since    1.0.0
      */
-    private $shortcode_scripts = array();
+    private $scripts = array();
+
+    /**
+     * The array that contains the information of the script localized for each shortcode.
+     *
+     * @example - $localized_scripts = array(
+     *   shortcode_name => localized_script_info[],
+     * );
+     */
+    private $localized_scripts = array();
 
     /**
      * The array that contains the information of the inline stylesheet for each shortcode.
@@ -35,7 +55,7 @@ class ShortcodesLoader {
      *
      * @since    1.0.0
      */
-    private $shortcode_stylesheets = array();
+    private $stylesheets = array();
 
     /**
      * Add the shortcode to the collection.
@@ -65,13 +85,27 @@ class ShortcodesLoader {
      */
     public function add_inline_script( string $name, array $inline_script = array() ) {
 
-        $this->shortcode_scripts[$name] = array(
+        $this->scripts[$name] = array(
             'id'    => $inline_script['id'],
             'src'   => $inline_script['src'],
             'ver'   => isset( $inline_script['ver'] ) ? $inline_script['ver'] : '1.0.0',
             'defer' => isset( $inline_script['defer'] ) ? $inline_script['defer'] : false,
             'async' => isset( $inline_script['async'] ) ? $inline_script['async'] : false,
         );
+    }
+
+    /**
+     * Register the information for the script type="text-javascript" tag that will added below the shortcode html code
+     * and contains the localized data on support of the shortcode.
+     *
+     * @param string $name The name of the shortcode.
+     * @param array $object_name Name for the JavaScript object. Passed directly, so it should be qualified JS variable.
+     * @param array $inline_localized_script The data itself. The data must be a  multi-dimensional array.
+     */
+    public function add_localize_script( string $name, string $object_name, array $localize_script ) {
+
+        $this->localized_scripts[$name][$object_name] = $localize_script;
+
     }
 
     /**
@@ -88,7 +122,7 @@ class ShortcodesLoader {
      */
     public function add_inline_stylesheet( string $name, array $inline_stylesheet = array() ) {
 
-        $this->shortcode_stylesheets[$name] = array(
+        $this->stylesheets[$name] = array(
             'id'    => $inline_stylesheet['id'],
             'href'  => $inline_stylesheet['href'],
             'ver'   => isset( $inline_stylesheet['ver'] ) ? $inline_stylesheet['ver'] : '1.0.0',
@@ -113,14 +147,22 @@ class ShortcodesLoader {
                 throw new \Exception( 'The class ' . $class_name . ' must extends the Shortcode class and contain the output() method.' );
             }
 
-            if ( isset( $this->shortcode_scripts[$name] ) ) {
+            if ( isset( $this->scripts[$name] ) ) {
 
-                $shortcode->register_script( $this->shortcode_scripts[$name] );
+                $shortcode->register_script( $this->scripts[$name] );
             }
 
-            if ( isset( $this->shortcode_stylesheets[$name] ) ) {
+            if ( isset( $this->localized_scripts[$name] ) ) {
 
-                $shortcode->register_stylesheet( $this->shortcode_stylesheets[$name] );
+                foreach ( $this->localized_scripts[$name] as $object_name => $localize_script ) {
+                    $shortcode->register_localize_script( $object_name, $localize_script );
+                }
+
+            }
+
+            if ( isset( $this->stylesheets[$name] ) ) {
+
+                $shortcode->register_stylesheet( $this->stylesheets[$name] );
             }
 
         }

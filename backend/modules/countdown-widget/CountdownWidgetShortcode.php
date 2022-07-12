@@ -16,7 +16,8 @@ class CountdownWidgetShortcode extends Shortcode {
         $atts = array()
     ) {
 
-        echo '<div data-role="clockdown-shortcode" data-id="' . $atts["id"] . '">';
+        echo '<div data-role="clockdown-shortcode" data-id="' . $atts["id"] . '"></div>';
+
     }
 
 }

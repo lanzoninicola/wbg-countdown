@@ -115,6 +115,15 @@ class Core {
             CountdownWidgetShortcode::class
         );
 
+        $this->shortcodes_loader->add_localize_script(
+            'clockdown',
+            'clockdownLocalized',
+            array(
+                'apiURL'   => home_url( '/wp-json' ),
+                'language' => get_locale(),
+            )
+        );
+
     }
 
     /**
@@ -212,7 +221,7 @@ class Core {
         );
 
         $this->hooks_loader->add_action( 'admin_enqueue_scripts', $script_localizer, 'localize_script' );
-        $this->hooks_loader->add_action( 'wp_enqueue_scripts', $script_localizer, 'localize_script' );
+        // $this->hooks_loader->add_action( 'wp_enqueue_scripts', $script_localizer, 'localize_script' );
 
     }
 

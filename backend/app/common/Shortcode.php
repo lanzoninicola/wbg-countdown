@@ -32,6 +32,20 @@ abstract class Shortcode {
     public $inline_script = array();
 
     /**
+     * The name of the object to render
+     *
+     * @var array
+     */
+    public $inline_localized_script_object_name = '';
+
+    /**
+     * This array contains the information to generate the in line <script type="text/javascript"> tag
+     *
+     * @var array
+     */
+    public $inline_localized_script_data = array();
+
+    /**
      * This array contains the information to generate the in line <link rel="stylesheet"> tag
      *
      * @var array
@@ -69,6 +83,21 @@ abstract class Shortcode {
     }
 
     /**
+     * Register the information for the script type="text-javascript" tag that will added below the shortcode html code
+     * and contains the localized data on support of the shortcode.
+     *
+     * @param array $localized_script
+     * $inline_script = array(
+     *    ...data to be localized...
+     * );
+     */
+    public function register_localize_script( string $object_name, array $localized_script ) {
+
+        $this->inline_localized_script_object_name = $object_name;
+        $this->inline_localized_script_data        = $localized_script;
+    }
+
+    /**
      * Register the information for the link rel="stylesheet" tag that will added above the shortcode html code
      *
      * @param array $inline_stylesheet
@@ -97,13 +126,25 @@ abstract class Shortcode {
 
         ob_start();
 
+        /** add the stylesheet tag */
+
         if ( !empty( $this->inline_stylesheet ) ) {
             $this->render_stylesheet_tag();
         }
 
+        /** add output of the shortcode */
+
         if ( is_callable( $this->output( $atts ) ) ) {
             call_user_func( $this->output, $atts );
         }
+
+        /** add the script localized */
+
+        if ( !empty( $this->inline_localized_script_data ) ) {
+            $this->render_localize_script_tag();
+        }
+
+        /** add the script tag */
 
         if ( !empty( $this->inline_script ) ) {
             $this->render_script_tag();
@@ -141,6 +182,23 @@ abstract class Shortcode {
 
         echo $script;
 
+    }
+
+    /**
+     * This function renders the <script type="text/javascript"> tag.
+     *
+     * @return void
+     */
+    private function render_localize_script_tag() {
+
+        $script = "<script type='text/javascript'>";
+
+        $script .= "/* <![CDATA[ */";
+        $script .= "var {$this->inline_localized_script_object_name} = " . wp_json_encode( $this->inline_localized_script_data ) . ';';
+        $script .= "/* ]]> */";
+        $script .= "</script>";
+
+        echo $script;
     }
 
     /**
