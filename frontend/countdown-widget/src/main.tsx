@@ -5,15 +5,13 @@ import CountdownProvider from "./countdown-provider/countdown-provider";
 
 const env = process.env.NODE_ENV;
 
-document.addEventListener("DOMContentLoaded", function () {
-  if (env === "development") {
-    createShortcodeNode("67");
-  }
-  const shortcodeNodes: NodeListOf<HTMLDivElement> = document.querySelectorAll(
-    '[data-role="clockdown-shortcode"]'
-  );
-  renderWithReact(shortcodeNodes);
-});
+if (env === "development") {
+  createShortcodeNode("67");
+}
+const shortcodeNodes: NodeListOf<HTMLDivElement> = document.querySelectorAll(
+  '[data-role="clockdown-shortcode"]'
+);
+renderWithReact(shortcodeNodes);
 
 function renderWithReact(nodes: NodeListOf<HTMLDivElement>) {
   // for each shortcode node attach create react app
