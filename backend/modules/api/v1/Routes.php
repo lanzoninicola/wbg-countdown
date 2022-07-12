@@ -1,11 +1,11 @@
 <?php
 
-namespace Clockdown\Backend\Modules\Api;
+namespace Clockdown\Backend\Modules\Api\V1;
 
-use Clockdown\Backend\Modules\Api\Factories\ControllersFactory;
+use Clockdown\Backend\Modules\Api\V1\Factories\ControllersFactory;
 
 /**
- * The class will create the custom REST API end-point for the countdown.
+ * The class that describe the custom REST API end-point for the countdown.
  *
  * @package    Clockdown
  * @subpackage Clockdown/admin

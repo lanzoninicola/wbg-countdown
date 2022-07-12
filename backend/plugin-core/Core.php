@@ -3,7 +3,7 @@
 namespace Clockdown\Backend\PluginCore;
 
 use Clockdown\Backend\App\Services\ScriptLocalizerService;
-use Clockdown\Backend\Modules\Api\Routes;
+use Clockdown\Backend\Modules\Api\V1\Routes;
 use Clockdown\Backend\Modules\CountdownWidget\CountdownWidgetShortcode;
 use Clockdown\Backend\Modules\TemplatesEditor\TemplatesEditor;
 use Clockdown\Backend\PluginCore\I18n;

@@ -1,60 +1,56 @@
 <?php
 
-namespace Clockdown\Backend\Modules\Api\Controllers;
+namespace Clockdown\Backend\Modules\Api\V1\Controllers;
 
 use Clockdown\Backend\App\Common\DatabaseError;
-use Clockdown\Backend\Modules\Database\Repositories\CountdownsRepository;
+use Clockdown\Backend\Modules\Database\Repositories\CountdownsSettingsRepository;
 
-class CountdownsController {
+class CountdownsSettingsController {
 
     /**
      * Repository
      *
-     * @var CountdownsRepository
+     * @var CountdownsSettingsRepository
      */
     public $repository;
 
     /**
      * Singleton instance.
      *
-     * @var CountdownsController
+     * @var CountdownsSettingsController
      */
     protected static $instance = null;
 
     /**
      * Instantiate the singleton.
      *
-     * @return CountdownsController
+     * @return CountdownsSettingsController
      */
-    public static function get_instance( CountdownsRepository $repository ) {
+    public static function get_instance( CountdownsSettingsRepository $repository ) {
 
         if ( self::$instance === null ) {
-            self::$instance = new CountdownsController( $repository );
+            self::$instance = new CountdownsSettingsController( $repository );
         }
 
         return self::$instance;
     }
 
-    public function __construct( CountdownsRepository $repository ) {
+    public function __construct( CountdownsSettingsRepository $repository ) {
         $this->repository = $repository;
     }
 
     public function create( \WP_REST_Request $request ) {
 
-        $name_param        = $request->get_param( 'name' );
-        $description_param = $request->get_param( 'description' );
+        $countdown_id_param = $request->get_param( 'countdown_id' );
+        $settings_param     = $request->get_param( 'settings' );
 
-        if ( empty( $name_param ) || $name_param === null ) {
-            return new \WP_Error( 'missing_parameters', 'Missing Name parameter', array( 'status' => 400 ) );
-        }
-
-        if ( empty( $description_param ) || $description_param === null ) {
-            return new \WP_Error( 'missing_parameters', 'Missing Description parameters', array( 'status' => 400 ) );
+        if ( empty( $countdown_id_param ) || $countdown_id_param === null ) {
+            return new \WP_Error( 'missing_parameters', 'Missing countdown_id parameter', array( 'status' => 400 ) );
         }
 
         $new_countdown = array(
-            'name'        => sanitize_text_field( $name_param ),
-            'description' => sanitize_text_field( $description_param ),
+            'countdown_id' => sanitize_text_field( $countdown_id_param ),
+            'settings'     => json_encode( $settings_param ),
         );
 
         $result = $this->repository->insert( $new_countdown );
@@ -75,23 +71,19 @@ class CountdownsController {
                 array( 'status' => 400 ) );
         }
 
-        $name_param        = $request->get_param( 'name' );
-        $description_param = $request->get_param( 'description' );
+        $countdown_id_param = $request->get_param( 'countdown_id' );
+        $settings_param     = $request->get_param( 'settings' );
 
-        if ( empty( $name_param ) || $name_param === null ) {
-            return new \WP_Error( 'missing_parameters', 'Missing Name parameter', array( 'status' => 400 ) );
+        if ( empty( $countdown_id_param ) || $countdown_id_param === null ) {
+            return new \WP_Error( 'missing_parameters', 'Missing countdown_id parameter', array( 'status' => 400 ) );
         }
 
-        if ( empty( $description_param ) || $description_param === null ) {
-            return new \WP_Error( 'missing_parameters', 'Missing Description parameters', array( 'status' => 400 ) );
-        }
-
-        $next_countdown = array(
-            'name'        => sanitize_text_field( $name_param ),
-            'description' => sanitize_text_field( $description_param ),
+        $next_countdown_settings = array(
+            'countdown_id' => sanitize_text_field( $countdown_id_param ),
+            'settings'     => json_encode( $settings_param ),
         );
 
-        $result = $this->repository->update( $next_countdown, $countdown_id );
+        $result = $this->repository->update( $next_countdown_settings, $countdown_id );
 
         if ( $result instanceof DatabaseError ) {
             return new \WP_Error( $result->get_code(), $result->get_data(), array( 'status' => 500 ) );
@@ -117,17 +109,6 @@ class CountdownsController {
 
         return rest_ensure_response( $result->to_array() );
 
-    }
-
-    public function find_all() {
-
-        $result = $this->repository->find_all();
-
-        if ( $result instanceof DatabaseError ) {
-            return new \WP_Error( $result->get_code(), $result->get_data(), array( 'status' => 500 ) );
-        }
-
-        return rest_ensure_response( $result->to_array() );
     }
 
     public function find_by_id( \WP_REST_Request $request ) {

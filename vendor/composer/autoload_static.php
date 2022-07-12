@@ -7,7 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
 {
     public static $files = array (
-        '0269d8cc425e52e7c5a9fdf65f65b92e' => __DIR__ . '/../..' . '/backend/app/functions/admin_menu.php',
+        '80cfd87f3d74c00a9020ef2b28d51605' => __DIR__ . '/../..' . '/backend/app/functions/admin_menu.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -20,9 +20,9 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
             'Clockdown\\Backend\\Modules\\Database\\Factories\\' => 45,
             'Clockdown\\Backend\\Modules\\Database\\' => 35,
             'Clockdown\\Backend\\Modules\\CountdownWidget\\' => 42,
-            'Clockdown\\Backend\\Modules\\Api\\Factories\\' => 40,
-            'Clockdown\\Backend\\Modules\\Api\\Controllers\\' => 42,
-            'Clockdown\\Backend\\Modules\\Api\\' => 30,
+            'Clockdown\\Backend\\Modules\\Api\\V1\\Factories\\' => 43,
+            'Clockdown\\Backend\\Modules\\Api\\V1\\Controllers\\' => 45,
+            'Clockdown\\Backend\\Modules\\Api\\V1\\' => 33,
             'Clockdown\\Backend\\App\\Traits\\' => 29,
             'Clockdown\\Backend\\App\\Services\\' => 31,
             'Clockdown\\Backend\\App\\Interfaces\\' => 33,
@@ -59,17 +59,17 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
         array (
             0 => __DIR__ . '/../..' . '/backend/modules/countdown-widget',
         ),
-        'Clockdown\\Backend\\Modules\\Api\\Factories\\' => 
+        'Clockdown\\Backend\\Modules\\Api\\V1\\Factories\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/backend/modules/api/factories',
+            0 => __DIR__ . '/../..' . '/backend/modules/api/v1/factories',
         ),
-        'Clockdown\\Backend\\Modules\\Api\\Controllers\\' => 
+        'Clockdown\\Backend\\Modules\\Api\\V1\\Controllers\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/backend/modules/api/controllers',
+            0 => __DIR__ . '/../..' . '/backend/modules/api/v1/controllers',
         ),
-        'Clockdown\\Backend\\Modules\\Api\\' => 
+        'Clockdown\\Backend\\Modules\\Api\\V1\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/backend/modules/api',
+            0 => __DIR__ . '/../..' . '/backend/modules/api/v1',
         ),
         'Clockdown\\Backend\\App\\Traits\\' => 
         array (

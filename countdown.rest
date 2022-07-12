@@ -1,0 +1,55 @@
+### List all countdowns
+GET http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns
+
+### Create a countdown
+POST http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns
+content-type: application/json
+
+{
+    "name": "countdown 3",
+    "description": "Countdown description"
+}
+
+### Get the countdown with id 1
+GET http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/1
+
+
+### Update the countdown with id 1
+POST http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/2
+content-type: application/json
+
+{
+    "name": "countdown number 2",
+    "description": "Qui dolor duis amet excepteur. Magna cupidatat cupidatat adipisicing laboris irure irure. Excepteur deserunt ad incididunt occaecat ad labore. "
+}
+
+### Delete the countdown with id 1
+DELETE http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/1
+
+
+### Get the countdown settings with id 2
+GET http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/68/countdown-settings
+
+### Create a countdown settings for the countdown with id 2
+POST http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/17/countdown-settings
+content-type: application/json
+
+{
+    "countdown_id": 17,
+    "settings": {
+            "targetDate": "2022-11-06T20:00",
+            "targetTimezone": "America/Sao_Paulo"
+        }
+
+}
+
+### Update a countdown settings for the countdown with id 2
+PUT http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/16/countdown-settings
+content-type: application/json
+
+{
+    "countdown_id":"16",
+    "settings":{"targetDate":"2022-10-06T23:00","targetTimezone":"Europe/Berlin",
+    "timer":{"unitsShown":["dd","hh","mm","ss"],"showSeparator":true,"separatorChar":":","digitFontFamily":"Inter","digitFontWeight":"400","digitFontSize":48,"digitFontColor":"#000000","lastUnitColor":"#e10b0b","labelFontFamily":"Inter","labelFontWeight":"400","labelFontSize":16,"labelFontColor":"#000000"},
+    "title":{"text":"Countdown to New Year","fontFamily":"Inter","fontWeight":"400","fontSize":24,"fontColor":"#000000"}}
+}
