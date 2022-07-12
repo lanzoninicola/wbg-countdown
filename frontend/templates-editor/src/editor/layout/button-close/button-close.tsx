@@ -1,5 +1,5 @@
 import { Button, forwardRef, IconButtonProps, Tooltip } from "@chakra-ui/react";
-import { FiX } from "react-icons/fi";
+import { FiX } from "@react-icons/all-files/fi/FiX";
 
 interface ButtonCloseProps extends Omit<IconButtonProps, "aria-label"> {
   label: string;

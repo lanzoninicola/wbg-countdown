@@ -1,6 +1,8 @@
 import { HStack } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import { FaLaptop, FaMobileAlt, FaTabletAlt } from "react-icons/fa";
+import { FaLaptop } from "@react-icons/all-files/fa/FaLaptop";
+import { FaMobileAlt } from "@react-icons/all-files/fa/FaMobileAlt";
+import { FaTabletAlt } from "@react-icons/all-files/fa/FaTabletAlt";
 import useCurrentTokenSelector from "../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
 import BoxRadiusLg from "../../../layout/box-radius-lg/box-radius-lg";
 

@@ -4,7 +4,7 @@ import {
   IconButtonProps,
   Tooltip,
 } from "@chakra-ui/react";
-import { FiEdit } from "react-icons/fi";
+import { FiEdit } from "@react-icons/all-files/fi/FiEdit";
 
 interface ButtonEditProps extends Omit<IconButtonProps, "aria-label"> {
   label: string;

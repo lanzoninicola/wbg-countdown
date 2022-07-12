@@ -1,8 +1,9 @@
 import { Text } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { MdLabelOutline, MdOutlineTimer10, MdTitle } from "react-icons/md";
-import { TbSeparatorVertical } from "react-icons/tb";
+import { MdLabelOutline } from "@react-icons/all-files/md/MdLabelOutline";
+import { MdTimer10 } from "@react-icons/all-files/md/MdTimer10";
+import { MdTitle } from "@react-icons/all-files/md/MdTitle";
 
 import DialogWrapper from "../../primitives/dialog-wrapper/dialog-wrapper";
 import DialogWrapperHeader from "../../primitives/dialog-wrapper/dialog-wrapper-header/dialog-wrapper-header";
@@ -12,6 +13,7 @@ import SeparatorPropertiesGroup from "../common/properties-group/separator-prope
 import TitlePropertiesGroup from "../common/properties-group/title-properties-group/title-properties-group";
 import PropertiesBar from "./components/properties-bar/properties-bar";
 import { PropertyBarItem } from "./types";
+import VerticalSeparatorIcon from "./components/properties-bar/vertical-separator-icon/vertical-separator-icon";
 
 export default function EditorPropertiesFloat() {
   const { t } = useTranslation();
@@ -29,7 +31,7 @@ export default function EditorPropertiesFloat() {
     },
     {
       label: t("editor.propertiesBar.timer"),
-      icon: <MdOutlineTimer10 />,
+      icon: <MdTimer10 />,
       ref: useRef(null),
       title: t("editor.propertiesGroup.digits.groupTitle"),
       component: <DigitsPropertiesGroup showGroupTitle={false} pb={5} />,
@@ -43,7 +45,7 @@ export default function EditorPropertiesFloat() {
     },
     {
       label: t("editor.propertiesGroup.separator.groupTitle"),
-      icon: <TbSeparatorVertical />,
+      icon: <VerticalSeparatorIcon />,
       ref: useRef(null),
       title: t("editor.propertiesGroup.separator.groupTitle"),
       component: <SeparatorPropertiesGroup showGroupTitle={false} pb={5} />,

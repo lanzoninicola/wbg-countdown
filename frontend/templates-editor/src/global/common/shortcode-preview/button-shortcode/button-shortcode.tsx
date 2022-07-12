@@ -1,11 +1,5 @@
-import {
-  Button,
-  forwardRef,
-  IconButton,
-  IconButtonProps,
-  Tooltip,
-} from "@chakra-ui/react";
-import { BsWordpress } from "react-icons/bs";
+import { Button, forwardRef, IconButtonProps, Tooltip } from "@chakra-ui/react";
+import { FaWordpress } from "@react-icons/all-files/fa/FaWordpress";
 
 interface ButtonShortcodeProps extends Omit<IconButtonProps, "aria-label"> {
   label: string;
@@ -18,7 +12,7 @@ const ButtonShortcode = forwardRef(
         <Button
           ref={ref}
           {...props}
-          leftIcon={<BsWordpress />}
+          leftIcon={<FaWordpress />}
           size="sm"
           aria-label={label}
         >

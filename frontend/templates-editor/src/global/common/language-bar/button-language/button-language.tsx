@@ -1,5 +1,5 @@
 import { Button, forwardRef, IconButtonProps, Tooltip } from "@chakra-ui/react";
-import { IoLanguage } from "react-icons/io5";
+import { IoLanguage } from "@react-icons/all-files/io5/IoLanguage";
 
 interface ButtonLanguageProps extends Omit<IconButtonProps, "aria-label"> {
   label: string;

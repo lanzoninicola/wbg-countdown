@@ -1,6 +1,8 @@
 import { HStack, IconButton } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import { FiArrowLeft } from "@react-icons/all-files/fi/FiArrowLeft";
+import { FiArrowRight } from "@react-icons/all-files/fi/FiArrowRight";
+
 import Teext from "../../../../global/common/layout/teext/teext";
 import PageChangeButton from "../page-change-button/page-change-button";
 

@@ -4,7 +4,7 @@ import {
   IconButtonProps,
   Tooltip,
 } from "@chakra-ui/react";
-import { FiSettings } from "react-icons/fi";
+import { FiSettings } from "@react-icons/all-files/fi/FiSettings";
 
 interface ButtonSettingsProps extends Omit<IconButtonProps, "aria-label"> {
   label: string;

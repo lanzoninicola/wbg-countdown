@@ -4,7 +4,7 @@ import {
   IconButtonProps,
   Tooltip,
 } from "@chakra-ui/react";
-import { FiTrash2 } from "react-icons/fi";
+import { FiTrash2 } from "@react-icons/all-files/fi/FiTrash2";
 
 interface BudttonDeleteProps extends Omit<IconButtonProps, "aria-label"> {
   label: string;

@@ -5,7 +5,7 @@ import {
   forwardRef,
   Tooltip,
 } from "@chakra-ui/react";
-import { FiSave } from "react-icons/fi";
+import { FiSave } from "@react-icons/all-files/fi/FiSave";
 
 interface ButtonSaveProps
   extends Omit<ComponentWithAs<"button", ButtonProps>, "aria-label"> {
