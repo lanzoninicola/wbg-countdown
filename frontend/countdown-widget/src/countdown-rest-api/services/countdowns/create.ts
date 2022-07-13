@@ -17,6 +17,8 @@ const create = async (
       body: JSON.stringify(countdown),
       headers: {
         "Content-Type": "application/json",
+        // @ts-ignore
+        "X-WP-Nonce": clockdownLocalized.wp_rest_nonce,
       },
     })
   ).json();

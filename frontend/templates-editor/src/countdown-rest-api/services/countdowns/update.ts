@@ -14,6 +14,8 @@ const update = async (
       body: JSON.stringify(payload),
       headers: {
         "Content-Type": "application/json",
+        // @ts-ignore
+        "X-WP-Nonce": clockdownLocalized.wp_rest_nonce,
       },
     })
   ).json();

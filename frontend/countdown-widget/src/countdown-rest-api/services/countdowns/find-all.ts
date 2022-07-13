@@ -23,6 +23,8 @@ const findAll = async (): Promise<APIResponse<CountdownModel[]>> => {
       method: method,
       headers: {
         "Content-Type": "application/json",
+        // @ts-ignore
+        "X-WP-Nonce": clockdownLocalized.wp_rest_nonce,
       },
     })
   ).json();
