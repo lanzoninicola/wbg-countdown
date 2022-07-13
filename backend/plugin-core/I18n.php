@@ -32,17 +32,4 @@ class I18n {
 
     }
 
-    public function enqueue_scripts() {
-
-        $handle = CLOCKDOWN_PLUGIN_NAME . '-i18n';
-
-        wp_localize_script(
-            $handle,
-            'clockdown_wp_locale',
-            array(
-                'language' => get_locale(),
-            )
-        );
-    }
-
 }
