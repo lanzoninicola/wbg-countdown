@@ -66,6 +66,15 @@ class Core {
     protected $routes_service;
 
     /**
+     * The class responsible for localized script into HTML.
+     *
+     * @since    1.0.0
+     * @access   protected
+     * @var      RestApiEndpoint $rest_api_endpoint
+     */
+    protected $script_localizer;
+
+    /**
      * Define the core functionality of the plugin.
      *
      * Set the plugin name and the plugin version that can be used throughout the plugin.
@@ -80,6 +89,7 @@ class Core {
         $this->scripts_enqueuer  = new ScriptsEnqueuer();
         $this->shortcodes_loader = new ShortcodesLoader();
         $this->routes_service    = new RoutesService();
+        $this->script_localizer  = ScriptLocalizerService::singletone();
 
         $this->set_locale();
 
@@ -114,7 +124,6 @@ class Core {
         $plugin_i18n = new I18n();
 
         $this->hooks_loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-        $this->hooks_loader->add_action( 'admin_enqueue_scripts', $plugin_i18n, 'enqueue_scripts' );
 
     }
 
@@ -221,16 +230,16 @@ class Core {
      */
     private function define_localized_script() {
 
-        $script_localizer = new ScriptLocalizerService();
+        // $script_localizer = new ScriptLocalizerService();
 
-        $script_localizer->localize(
+        $this->script_localizer->localize_admin(
             array(
                 'apiURL'   => home_url( '/wp-json' ),
                 'language' => get_locale(),
             )
         );
 
-        $this->hooks_loader->add_action( 'admin_enqueue_scripts', $script_localizer, 'localize_script' );
+        // $this->hooks_loader->add_action( 'admin_enqueue_scripts', $this->script_localizer, 'localize_script' );
         // $this->hooks_loader->add_action( 'wp_enqueue_scripts', $script_localizer, 'localize_script' );
 
     }
