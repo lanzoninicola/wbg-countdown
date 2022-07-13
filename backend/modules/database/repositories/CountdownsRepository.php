@@ -30,7 +30,7 @@ class CountdownsRepository {
      *
      * @return CountdownsRepository
      */
-    public static function get_instance( DatabaseQueryService $query_service ) {
+    public static function singletone( DatabaseQueryService $query_service ) {
 
         if ( self::$instance === null ) {
             self::$instance = new CountdownsRepository( $query_service );

@@ -10,7 +10,7 @@ class Uninstaller {
 
     public static function uninstall() {
 
-        // $countdown_database = DatabaseQueryService::get_instance();
+        // $countdown_database = DatabaseQueryService::singletone();
 
         // if ( $countdown_database->table_exists( 'countdowns' ) ) {
         //     $countdown_database->drop_table_countdowns();

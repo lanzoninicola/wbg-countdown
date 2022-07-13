@@ -28,12 +28,12 @@ class ControllersFactory {
 
     public static function get_countdowns_controller(): CountdownsController {
         $repository = RepositoriesFactory::get_countdowns_repository();
-        return CountdownsController::get_instance( $repository );
+        return CountdownsController::singletone( $repository );
     }
 
     public static function get_countdowns_settings_controller(): CountdownsSettingsController {
         $repository = RepositoriesFactory::get_countdowns_settings_repository();
-        return CountdownsSettingsController::get_instance( $repository );
+        return CountdownsSettingsController::singletone( $repository );
     }
 
 }

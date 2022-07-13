@@ -26,7 +26,7 @@ class CountdownsSettingsController {
      *
      * @return CountdownsSettingsController
      */
-    public static function get_instance( CountdownsSettingsRepository $repository ) {
+    public static function singletone( CountdownsSettingsRepository $repository ) {
 
         if ( self::$instance === null ) {
             self::$instance = new CountdownsSettingsController( $repository );

@@ -30,7 +30,7 @@ class AdminMenuService {
      *
      * @return AdminMenuService
      */
-    public static function get_instance() {
+    public static function singletone() {
 
         if ( self::$instance === null ) {
             self::$instance = new AdminMenuService();
