@@ -5,7 +5,8 @@ namespace Clockdown\Backend\PluginCore;
 use Clockdown\Backend\App\Common\RestApiEndpoint;
 use Clockdown\Backend\App\Common\Routes;
 use Clockdown\Backend\App\Services\RoutesService;
-use Clockdown\Backend\App\Services\ScriptLocalizerService;
+use Clockdown\Backend\App\Services\ScriptAdminLocalizerService;
+use Clockdown\Backend\App\Services\ScriptPublicLocalizerService;
 use Clockdown\Backend\Modules\Api\V1\Factories\ControllersFactory;
 use Clockdown\Backend\Modules\CountdownWidget\CountdownWidgetShortcode;
 use Clockdown\Backend\Modules\TemplatesEditor\TemplatesEditor;
@@ -66,6 +67,24 @@ class Core {
     protected $routes_service;
 
     /**
+     * The class responsible for localized admin script into HTML.
+     *
+     * @since    1.0.0
+     * @access   protected
+     * @var      ScriptAdminLocalizerService $rest_api_endpoint
+     */
+    protected $script_admin_localizer;
+
+    /**
+     * The class responsible for localized public script into HTML.
+     *
+     * @since    1.0.0
+     * @access   protected
+     * @var      ScriptPublicLocalizerService $rest_api_endpoint
+     */
+    protected $script_public_localizer;
+
+    /**
      * Define the core functionality of the plugin.
      *
      * Set the plugin name and the plugin version that can be used throughout the plugin.
@@ -76,10 +95,12 @@ class Core {
      */
     public function __construct() {
 
-        $this->hooks_loader      = new HooksLoader();
-        $this->scripts_enqueuer  = new ScriptsEnqueuer();
-        $this->shortcodes_loader = new ShortcodesLoader();
-        $this->routes_service    = new RoutesService();
+        $this->hooks_loader            = new HooksLoader();
+        $this->scripts_enqueuer        = new ScriptsEnqueuer();
+        $this->shortcodes_loader       = new ShortcodesLoader();
+        $this->routes_service          = new RoutesService();
+        $this->script_admin_localizer  = ScriptAdminLocalizerService::singletone();
+        $this->script_public_localizer = ScriptPublicLocalizerService::singletone();
 
         $this->set_locale();
 
@@ -114,7 +135,6 @@ class Core {
         $plugin_i18n = new I18n();
 
         $this->hooks_loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-        $this->hooks_loader->add_action( 'admin_enqueue_scripts', $plugin_i18n, 'enqueue_scripts' );
 
     }
 
@@ -221,17 +241,12 @@ class Core {
      */
     private function define_localized_script() {
 
-        $script_localizer = new ScriptLocalizerService();
-
-        $script_localizer->localize(
+        $this->script_admin_localizer->localize(
             array(
                 'apiURL'   => home_url( '/wp-json' ),
                 'language' => get_locale(),
             )
         );
-
-        $this->hooks_loader->add_action( 'admin_enqueue_scripts', $script_localizer, 'localize_script' );
-        // $this->hooks_loader->add_action( 'wp_enqueue_scripts', $script_localizer, 'localize_script' );
 
     }
 

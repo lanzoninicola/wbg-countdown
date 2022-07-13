@@ -2,6 +2,8 @@
 
 namespace Clockdown\Backend\App\Services;
 
+use Clockdown\Backend\App\Common\Helpers;
+
 /**
  * The class responsible for localize the script.
  *
@@ -32,35 +34,43 @@ class ScriptLocalizerService {
     private $object_name = CLOCKDOWN_PLUGIN_NAME . 'Localized';
 
     /**
-     * This is the cointent of the Javascript object that will be used to localize the script.
+     * This is the content of the Javascript object
+     * that will be used to localize the script in the admin area.
      *
      * @var array
      */
-    public $l10n = array();
+    protected $l10n = array();
 
     public function __construct() {
 
         /**
-         * wp_localize_script works only if the handle used on
+         * wp_localize_script() works only if the handle used on
          * wp_enqueue_script() function is the same of
          * the handle used on wp_register_script()
          */
         wp_register_script( $this->handle, '' );
         wp_enqueue_script( $this->handle );
+
     }
 
     /**
-     * Register the data to be localized.
+     * Register the data to be localized only for the public area
      *
      * @param array $l10n - associative array $l10n that will transformed to Javascript object
      * @return void
      */
     public function localize( array $l10n ) {
-        $this->l10n = $l10n;
+
+        $this->is_associative_array( $l10n );
+
+        $next_l10n  = array_merge( $this->l10n, $l10n );
+        $this->l10n = $next_l10n;
+
     }
 
     /**
-     * Register the JavaScript for the admin area.
+     * Localize a script.
+     * Works only if the script has already been registered.
      *
      * @since    1.0.0
      */
@@ -77,6 +87,20 @@ class ScriptLocalizerService {
                 )
             )
         );
+    }
+
+    /**
+     * Check if the array given is associative, otherwise throw an exception.
+     *
+     * @param array $l10n
+     * @return boolean
+     */
+    protected function is_associative_array( array $l10n ) {
+
+        if ( !Helpers::is_associative_array( $l10n ) ) {
+            throw new \Exception( 'ScriptLocalizerService::localize - The data must be an associative array.' );
+        }
+
     }
 
 }
