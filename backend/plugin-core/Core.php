@@ -200,10 +200,6 @@ class Core {
         $templates = new TemplatesEditor();
         $this->hooks_loader->add_action( 'admin_menu', $templates, 'add_menu' );
 
-        // Registring the routes for the rest api
-        // $routes = new Routes();
-        // $this->hooks_loader->add_action( 'rest_api_init', $routes, 'register_api_endpoints' );
-
     }
 
     /**
@@ -260,11 +256,11 @@ class Core {
         $endpoints_v1 = array(
             new RestApiEndpoint( $countdowns_endpoint, 'GET',
                 array( $countdown_controller, 'find_all' ),
-                'public'
+                'manage_options'
             ),
             new RestApiEndpoint( $countdowns_endpoint, 'POST',
                 array( $countdown_controller, 'create' ),
-                'public'
+                'manage_options'
             ),
             new RestApiEndpoint( $countdown_id_endpoint, 'GET',
                 array( $countdown_controller, 'find_by_id' ),
@@ -272,11 +268,11 @@ class Core {
             ),
             new RestApiEndpoint( $countdown_id_endpoint, 'PUT',
                 array( $countdown_controller, 'update' ),
-                'public'
+                'manage_options'
             ),
             new RestApiEndpoint( $countdown_id_endpoint, 'DELETE',
                 array( $countdown_controller, 'delete' ),
-                'public'
+                'manage_options'
             ),
             new RestApiEndpoint( $settings_enpoint, 'GET',
                 array( $settings_controller, 'find_by_id' ),
@@ -284,15 +280,15 @@ class Core {
             ),
             new RestApiEndpoint( $settings_enpoint, 'POST',
                 array( $settings_controller, 'create' ),
-                'public'
+                'manage_options'
             ),
             new RestApiEndpoint( $settings_enpoint, 'PUT',
                 array( $settings_controller, 'update' ),
-                'public'
+                'manage_options'
             ),
             new RestApiEndpoint( $settings_enpoint, 'DELETE',
                 array( $settings_controller, 'delete' ),
-                'public'
+                'manage_options'
             ),
 
         );
