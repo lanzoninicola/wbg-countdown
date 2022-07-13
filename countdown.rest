@@ -11,7 +11,7 @@ content-type: application/json
 }
 
 ### Get the countdown with id 1
-GET http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/1
+GET http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/68
 
 
 ### Update the countdown with id 1
@@ -28,10 +28,10 @@ DELETE http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/1
 
 
 ### Get the countdown settings with id 2
-GET http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/68/countdown-settings
+GET http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/68/settings
 
 ### Create a countdown settings for the countdown with id 2
-POST http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/17/countdown-settings
+POST http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/17/settings
 content-type: application/json
 
 {
@@ -44,7 +44,7 @@ content-type: application/json
 }
 
 ### Update a countdown settings for the countdown with id 2
-PUT http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/16/countdown-settings
+PUT http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/16/settings
 content-type: application/json
 
 {
