@@ -2,8 +2,11 @@
 
 namespace Clockdown\Backend\PluginCore;
 
+use Clockdown\Backend\App\Common\RestApiEndpoint;
+use Clockdown\Backend\App\Common\Routes;
+use Clockdown\Backend\App\Services\RoutesService;
 use Clockdown\Backend\App\Services\ScriptLocalizerService;
-use Clockdown\Backend\Modules\Api\Routes;
+use Clockdown\Backend\Modules\Api\V1\Factories\ControllersFactory;
 use Clockdown\Backend\Modules\CountdownWidget\CountdownWidgetShortcode;
 use Clockdown\Backend\Modules\TemplatesEditor\TemplatesEditor;
 use Clockdown\Backend\PluginCore\I18n;
@@ -46,12 +49,21 @@ class Core {
     protected $scripts_enqueuer;
 
     /**
-     *
+     * The class responsible for defining the shortcodes
      *
      * @access protected
      * @var ShortcodesLoader $shortcodes_loader
      */
     protected $shortcodes_loader;
+
+    /**
+     * The class responsible for defining the REST-API routes.
+     *
+     * @since    1.0.0
+     * @access   protected
+     * @var      RoutesService $routes_service
+     */
+    protected $routes_service;
 
     /**
      * Define the core functionality of the plugin.
@@ -67,6 +79,7 @@ class Core {
         $this->hooks_loader      = new HooksLoader();
         $this->scripts_enqueuer  = new ScriptsEnqueuer();
         $this->shortcodes_loader = new ShortcodesLoader();
+        $this->routes_service    = new RoutesService();
 
         $this->set_locale();
 
@@ -75,6 +88,7 @@ class Core {
         $this->define_admin_hooks();
         $this->define_public_hooks();
         $this->define_localized_script();
+        $this->define_rest_api_routes();
 
     }
 
@@ -186,10 +200,6 @@ class Core {
         $templates = new TemplatesEditor();
         $this->hooks_loader->add_action( 'admin_menu', $templates, 'add_menu' );
 
-        // Registring the routes for the rest api
-        $routes = new Routes();
-        $this->hooks_loader->add_action( 'rest_api_init', $routes, 'register_api_endpoints' );
-
     }
 
     /**
@@ -226,10 +236,75 @@ class Core {
     }
 
     /**
+     * Define the rest api routes
+     *
+     * 1. create an array of enpoints - RestApiEndpoint[]
+     * 2. create the Routes object passing the root_path, the api version, the array of endpoints to it
+     * 3. register the routes with the rest api - $this->routes_service->add_routes( Routes $routes )
+     *
+     * @return void
+     */
+    private function define_rest_api_routes() {
+
+        $countdowns_endpoint   = 'countdowns';
+        $countdown_id_endpoint = '/countdowns/(?P<id>\d+)';
+        $settings_enpoint      = '/countdowns/(?P<id>\d+)/settings';
+
+        $countdown_controller = ControllersFactory::get_instance_by_class_name( 'CountdownsController' );
+        $settings_controller  = ControllersFactory::get_instance_by_class_name( 'CountdownsSettingsController' );
+
+        $endpoints_v1 = array(
+            new RestApiEndpoint( $countdowns_endpoint, 'GET',
+                array( $countdown_controller, 'find_all' ),
+                'manage_options'
+            ),
+            new RestApiEndpoint( $countdowns_endpoint, 'POST',
+                array( $countdown_controller, 'create' ),
+                'manage_options'
+            ),
+            new RestApiEndpoint( $countdown_id_endpoint, 'GET',
+                array( $countdown_controller, 'find_by_id' ),
+                'public'
+            ),
+            new RestApiEndpoint( $countdown_id_endpoint, 'PUT',
+                array( $countdown_controller, 'update' ),
+                'manage_options'
+            ),
+            new RestApiEndpoint( $countdown_id_endpoint, 'DELETE',
+                array( $countdown_controller, 'delete' ),
+                'manage_options'
+            ),
+            new RestApiEndpoint( $settings_enpoint, 'GET',
+                array( $settings_controller, 'find_by_id' ),
+                'public'
+            ),
+            new RestApiEndpoint( $settings_enpoint, 'POST',
+                array( $settings_controller, 'create' ),
+                'manage_options'
+            ),
+            new RestApiEndpoint( $settings_enpoint, 'PUT',
+                array( $settings_controller, 'update' ),
+                'manage_options'
+            ),
+            new RestApiEndpoint( $settings_enpoint, 'DELETE',
+                array( $settings_controller, 'delete' ),
+                'manage_options'
+            ),
+
+        );
+
+        $routes = new Routes( 'clockdown', 'v1', $endpoints_v1 );
+
+        $this->routes_service->add_routes( $routes );
+
+    }
+
+    /**
      * Run:
      * 1. The Shortcodes loader to instanciate the shortcodes classes and register the shortcode.
      * 2. The Scripts enqueuer to execute all of the hooks related to javascript and css files.
      * 3. The hooks loader to execute all of the hooks with WordPress.
+     * 4. The Routes service to register the routes for the rest api.
      *
      * @since    1.0.0
      */
@@ -240,6 +315,8 @@ class Core {
         $this->scripts_enqueuer->run();
 
         $this->hooks_loader->run();
+
+        $this->routes_service->run();
     }
 
     /**

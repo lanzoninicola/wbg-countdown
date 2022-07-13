@@ -72,7 +72,8 @@ class ScriptLocalizerService {
             array_merge(
                 $this->l10n,
                 array(
-                    'nonce' => wp_create_nonce( CLOCKDOWN_PLUGIN_NAME . 'nonce' ),
+                    'nonce'         => wp_create_nonce( CLOCKDOWN_PLUGIN_NAME . 'nonce' ),
+                    'wp_rest_nonce' => wp_create_nonce( 'wp_rest' ),
                 )
             )
         );

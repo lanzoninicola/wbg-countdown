@@ -25,9 +25,9 @@
       "Clockdown\\Backend\\Modules\\Database\\Factories\\": "./backend/modules/database/factories",
       "Clockdown\\Backend\\Modules\\Database\\Repositories\\": "./backend/modules/database/repositories",
       "Clockdown\\Backend\\Modules\\Database\\Models\\": "./backend/modules/database/models",
-      "Clockdown\\Backend\\Modules\\Api\\": "./backend/modules/api",
-      "Clockdown\\Backend\\Modules\\Api\\Factories\\": "./backend/modules/api/factories",
-      "Clockdown\\Backend\\Modules\\Api\\Controllers\\": "./backend/modules/api/controllers"
+      "Clockdown\\Backend\\Modules\\Api\\V1\\": "./backend/modules/api/v1",
+      "Clockdown\\Backend\\Modules\\Api\\V1\\Controllers\\": "./backend/modules/api/v1/controllers",
+      "Clockdown\\Backend\\Modules\\Api\\V1\\Factories\\": "./backend/modules/api/v1/factories"
     },
     "files": [
       "./backend/app/functions/admin_menu.php"
