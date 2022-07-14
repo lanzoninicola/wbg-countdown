@@ -6,7 +6,7 @@ use Clockdown\Backend\App\Services\DatabaseQueryService;
 
 class CountdownsSettingsRepository {
 
-    public $tables_prefix = 'wbg';
+    public $tables_prefix = 'ckdo';
 
     private $table_name = 'countdowns_settings';
 
