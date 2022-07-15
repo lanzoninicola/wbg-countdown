@@ -13,5 +13,5 @@
 export interface APIResponse<T = undefined> {
   code: "error" | "success" | "warning" | "rest_no_route";
   message: string;
-  data: { status: number; payload?: T };
+  payload?: T;
 }

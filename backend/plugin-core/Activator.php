@@ -2,9 +2,7 @@
 
 namespace Clockdown\Backend\PluginCore;
 
-use Clockdown\Backend\Modules\Database\Factories\RepositoriesFactory;
-
-// TODO: implement the class. Why the database integration depends on the API module (need refactor)?
+use Clockdown\Backend\Modules\Setup\ClockdownSetup;
 
 /**
  * Fired during plugin activation.
@@ -29,11 +27,8 @@ class Activator {
      */
     public static function activate() {
 
-        $countdown_repository = RepositoriesFactory::get_countdowns_repository();
-        $countdown_repository->create_table();
-
-        $countdown_settings_repository = RepositoriesFactory::get_countdowns_settings_repository();
-        $countdown_settings_repository->create_table();
+        $clockdown_setup = new ClockdownSetup();
+        $clockdown_setup->install();
 
     }
 

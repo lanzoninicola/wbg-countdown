@@ -52,11 +52,11 @@ export default function useEditorSettings({
           setIsError(true);
         }
 
-        const { data } = res;
+        const { payload } = res;
 
-        if (data.payload) {
+        if (payload) {
           const settingsParsed: CountdownSettingsAndTheme = JSON.parse(
-            data.payload.settings
+            payload.settings
           );
 
           if (settingsParsed) {

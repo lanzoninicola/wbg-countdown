@@ -2,23 +2,14 @@
 
 namespace Clockdown\Backend\PluginCore;
 
-// use Clockdown\Backend\App\Services\DatabaseQueryService;
-
-// TODO: implement the class. Why the database integration depends on the API module (need refactor)?
+use Clockdown\Backend\Modules\Setup\ClockdownSetup;
 
 class Uninstaller {
 
     public static function uninstall() {
 
-        // $countdown_database = DatabaseQueryService::singletone();
-
-        // if ( $countdown_database->table_exists( 'countdowns' ) ) {
-        //     $countdown_database->drop_table_countdowns();
-        // }
-
-        // if ( $countdown_database->table_exists( 'countdown' ) ) {
-        //     $countdown_database->drop_table_countdowns_settings();
-        // }
+        $clockdown_setup = new ClockdownSetup();
+        $clockdown_setup->uninstall();
 
     }
 

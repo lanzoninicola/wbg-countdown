@@ -95,15 +95,8 @@ class Core {
      */
     public function __construct() {
 
-        $this->hooks_loader            = new HooksLoader();
-        $this->scripts_enqueuer        = new ScriptsEnqueuer();
-        $this->shortcodes_loader       = new ShortcodesLoader();
-        $this->routes_service          = new RoutesService();
-        $this->script_admin_localizer  = ScriptAdminLocalizerService::singletone();
-        $this->script_public_localizer = ScriptPublicLocalizerService::singletone();
-
+        $this->load_services();
         $this->set_locale();
-
         $this->define_shortcodes();
         $this->define_scripts();
         $this->define_admin_hooks();
@@ -111,6 +104,21 @@ class Core {
         $this->define_localized_script();
         $this->define_rest_api_routes();
 
+    }
+
+    /**
+     * Load the services.
+     *
+     * @since    1.0.0
+     */
+    protected function load_services() {
+
+        $this->hooks_loader            = new HooksLoader();
+        $this->scripts_enqueuer        = new ScriptsEnqueuer();
+        $this->shortcodes_loader       = new ShortcodesLoader();
+        $this->routes_service          = new RoutesService();
+        $this->script_admin_localizer  = ScriptAdminLocalizerService::singletone();
+        $this->script_public_localizer = ScriptPublicLocalizerService::singletone();
     }
 
     /**

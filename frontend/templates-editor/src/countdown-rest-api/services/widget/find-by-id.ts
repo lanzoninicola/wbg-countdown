@@ -1,5 +1,4 @@
 import {
-  CountdownSettingsAndTheme,
   CountdownSettingsAndThemeModel,
   StringOrNumber,
 } from "../../../countdown-widget/types";
@@ -28,7 +27,6 @@ export const findById = async (
     return {
       code: "error",
       message: "No countdown id was provided.",
-      data: { status: 400 },
     };
   }
 

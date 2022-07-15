@@ -16,29 +16,27 @@
       "Clockdown\\Backend\\PluginCore\\": "./backend/plugin-core",
       "Clockdown\\Backend\\App\\Interfaces\\": "./backend/app/interfaces",
       "Clockdown\\Backend\\App\\Services\\": "./backend/app/services",
+      "Clockdown\\Backend\\App\\Services\\Database\\": "./backend/app/services/database",
+      "Clockdown\\Backend\\App\\Services\\Setup\\": "./backend/app/services/setup",
       "Clockdown\\Backend\\App\\Traits\\": "./backend/app/traits",
       "Clockdown\\Backend\\App\\Common\\": "./backend/app/common",
+      "Clockdown\\Backend\\Modules\\Setup\\": "./backend/modules/setup",
       "Clockdown\\Backend\\Modules\\TemplatesEditor\\": "./backend/modules/templates-editor",
       "Clockdown\\Backend\\Modules\\CountdownWidget\\": "./backend/modules/countdown-widget",
-      "Clockdown\\Backend\\Modules\\Database\\": "./backend/modules/database",
-      "Clockdown\\Backend\\Modules\\Database\\Factories\\": "./backend/modules/database/factories",
-      "Clockdown\\Backend\\Modules\\Database\\Repositories\\": "./backend/modules/database/repositories",
-      "Clockdown\\Backend\\Modules\\Database\\Models\\": "./backend/modules/database/models",
       "Clockdown\\Backend\\Modules\\Api\\V1\\": "./backend/modules/api/v1",
       "Clockdown\\Backend\\Modules\\Api\\V1\\Controllers\\": "./backend/modules/api/v1/controllers",
-      "Clockdown\\Backend\\Modules\\Api\\V1\\Factories\\": "./backend/modules/api/v1/factories"
+      "Clockdown\\Backend\\Modules\\Api\\V1\\Factories\\": "./backend/modules/api/v1/factories",
+      "Clockdown\\Backend\\Modules\\Api\\V1\\Repositories\\": "./backend/modules/api/v1/repositories",
+      "Clockdown\\Backend\\Modules\\Api\\V1\\Models\\": "./backend/modules/api/v1/models"
     },
     "files": [
       "./backend/app/functions/admin_menu.php"
     ]
   },
   "require-dev": {
-    "symfony/var-dumper": "^5.4",
-    "pestphp/pest": "^1.21"
+    "symfony/var-dumper": "^5.4"
   },
   "config": {
-    "allow-plugins": {
-      "pestphp/pest-plugin": true
-    }
+    "allow-plugins": {}
   }
 }

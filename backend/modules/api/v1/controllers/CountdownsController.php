@@ -2,8 +2,8 @@
 
 namespace Clockdown\Backend\Modules\Api\V1\Controllers;
 
-use Clockdown\Backend\App\Common\DatabaseError;
-use Clockdown\Backend\Modules\Database\Repositories\CountdownsRepository;
+use Clockdown\Backend\App\Services\Database\DatabaseResponseError;
+use Clockdown\Backend\Modules\Api\V1\Repositories\CountdownsRepository;
 
 class CountdownsController {
 
@@ -59,8 +59,14 @@ class CountdownsController {
 
         $result = $this->repository->insert( $new_countdown );
 
-        if ( $result instanceof DatabaseError ) {
-            return new \WP_Error( $result->get_code(), $result->get_data(), array( 'status' => 500 ) );
+        if ( $result instanceof DatabaseResponseError ) {
+
+            $result->set_payload(
+                array(
+                    'operation' => 'Countdown creation',
+                    'data'      => $new_countdown,
+                )
+            );
         }
 
         return rest_ensure_response( $result->to_array() );
@@ -93,10 +99,6 @@ class CountdownsController {
 
         $result = $this->repository->update( $next_countdown, $countdown_id );
 
-        if ( $result instanceof DatabaseError ) {
-            return new \WP_Error( $result->get_code(), $result->get_data(), array( 'status' => 500 ) );
-        }
-
         return rest_ensure_response( $result->to_array() );
     }
 
@@ -111,10 +113,6 @@ class CountdownsController {
 
         $result = $this->repository->delete( $countdown_id );
 
-        if ( $result instanceof DatabaseError ) {
-            return new \WP_Error( $result->get_code(), $result->get_data(), array( 'status' => 500 ) );
-        }
-
         return rest_ensure_response( $result->to_array() );
 
     }
@@ -123,8 +121,8 @@ class CountdownsController {
 
         $result = $this->repository->find_all();
 
-        if ( $result instanceof DatabaseError ) {
-            return new \WP_Error( $result->get_code(), $result->get_data(), array( 'status' => 500 ) );
+        if ( $result instanceof DatabaseResponseError ) {
+            return new \WP_Error( $result->get_code(), $result->get_payload(), array( 'status' => 500 ) );
         }
 
         return rest_ensure_response( $result->to_array() );
@@ -143,10 +141,6 @@ class CountdownsController {
         }
 
         $result = $this->repository->find_by_id( $countdown_id );
-
-        if ( $result instanceof DatabaseError ) {
-            return new \WP_Error( $result->get_code(), $result->get_data(), array( 'status' => 500 ) );
-        }
 
         return rest_ensure_response( $result->to_array() );
 
