@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import svgLoader from "vite-svg-loader";
 
@@ -13,6 +13,10 @@ export default defineConfig({
       defaultImport: "url", // or 'raw'
     }),
   ],
+  test: {
+    globals: true,
+    environment: "jsdom",
+  },
   // base: "",
   // build: {
   //   outDir: "../../public/templates-editor",
