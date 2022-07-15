@@ -7,7 +7,7 @@
  * Plugin Name:       Clockdown
  * Plugin URI:        https://lanzoninicola.com.br
  * Description:       The countdown timer heats the sense of urgency and scarcity, forcing the users as quickly as possible to make a purchase decision. Set the end date, customize it, put the widget in your e-commerce pages and your timer is ready.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Lanzoni Nicola
  * Author URI:        https://lanzoninicola.com.br
  * License:           GPL-2.0+
@@ -39,24 +39,10 @@ use Clockdown\Backend\PluginCore\Core;
 use Clockdown\Backend\PluginCore\Deactivator;
 use Clockdown\Backend\PluginCore\Uninstaller;
 
-/**
- * Currently plugin version.
- */
 define( 'CLOCKDOWN_PLUGIN_NAME', 'clockdown' );
-
-/**
- * Currently plugin version.
- */
-define( 'CLOCKDOWN_PLUGIN_VERSION', '1.0.0' );
-
-/**
- * Base path of the plugin.
- */
+define( 'CLOCKDOWN_PLUGIN_VERSION', '1.0.1' );
+define( 'CLOCKDOWN_PLUGIN_DB_PREFIX', 'ckdo' );
 define( 'CLOCKDOWN_PLUGIN_BASE_URL_PATH', plugin_dir_url( __FILE__ ) );
-
-/**
- * Text domain
- */
 define( 'CLOCKDOWN_TEXT_DOMAIN', 'clockdown' );
 
 /**
