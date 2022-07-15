@@ -59,6 +59,7 @@ class DatabaseHelpers {
     /**
      * Check if the table exists in the database.
      *
+     * @param string $table_name The fullname with all prefixes of the table
      * @return bool
      */
     public static function table_exists( string $table_name ): bool {
