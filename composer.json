@@ -17,8 +17,10 @@
       "Clockdown\\Backend\\App\\Interfaces\\": "./backend/app/interfaces",
       "Clockdown\\Backend\\App\\Services\\": "./backend/app/services",
       "Clockdown\\Backend\\App\\Services\\Database\\": "./backend/app/services/database",
+      "Clockdown\\Backend\\App\\Services\\Setup\\": "./backend/app/services/setup",
       "Clockdown\\Backend\\App\\Traits\\": "./backend/app/traits",
       "Clockdown\\Backend\\App\\Common\\": "./backend/app/common",
+      "Clockdown\\Backend\\Modules\\Setup\\": "./backend/modules/setup",
       "Clockdown\\Backend\\Modules\\TemplatesEditor\\": "./backend/modules/templates-editor",
       "Clockdown\\Backend\\Modules\\CountdownWidget\\": "./backend/modules/countdown-widget",
       "Clockdown\\Backend\\Modules\\Api\\V1\\": "./backend/modules/api/v1",
@@ -32,12 +34,9 @@
     ]
   },
   "require-dev": {
-    "symfony/var-dumper": "^5.4",
-    "pestphp/pest": "^1.21"
+    "symfony/var-dumper": "^5.4"
   },
   "config": {
-    "allow-plugins": {
-      "pestphp/pest-plugin": true
-    }
+    "allow-plugins": {}
   }
 }
