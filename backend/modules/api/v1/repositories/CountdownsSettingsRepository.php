@@ -1,19 +1,15 @@
 <?php
 
-namespace Clockdown\Backend\Modules\Database\Repositories;
+namespace Clockdown\Backend\Modules\Api\V1\Repositories;
 
-use Clockdown\Backend\App\Services\DatabaseQueryService;
+use Clockdown\Backend\App\Services\Database\DatabaseTableQueryInterface;
 
 class CountdownsSettingsRepository {
-
-    public $tables_prefix = 'ckdo';
-
-    private $table_name = 'countdowns_settings';
 
     /**
      * Query service.
      *
-     * @var DatabaseQueryService
+     * @var DatabaseTableQueryInterface
      */
     private $query_service;
 
@@ -29,7 +25,7 @@ class CountdownsSettingsRepository {
      *
      * @return CountdownsSettingsRepository
      */
-    public static function singletone( DatabaseQueryService $query_service ) {
+    public static function singletone( DatabaseTableQueryInterface $query_service ) {
 
         if ( self::$instance === null ) {
             self::$instance = new CountdownsSettingsRepository( $query_service );
@@ -38,41 +34,15 @@ class CountdownsSettingsRepository {
         return self::$instance;
     }
 
-    public function __construct( DatabaseQueryService $query_service ) {
+    public function __construct( DatabaseTableQueryInterface $query_service ) {
         $this->query_service = $query_service;
-        // setup query service
-        $this->query_service->set_tables_prefix( $this->tables_prefix );
-        $this->query_service->set_table_name( $this->table_name );
-    }
-
-    public function create_table() {
-
-        if ( $this->query_service->table_exists() ) {
-            return true;
-        }
-
-        $charset_collate = $this->query_service->get_charset_collate();
-        $table_name      = $this->query_service->get_table_name();
-
-        $sql = "CREATE TABLE `{$table_name}` (
-                id INT NOT NULL AUTO_INCREMENT,
-                countdown_id varchar(255) NOT NULL,
-                settings LONGTEXT NULL,
-                created_at datetime NULL,
-                updated_at datetime NULL,
-                PRIMARY KEY  (id)
-                -- INDEX countdown_id_idx (countdown_id ASC) VISIBLE,
-                ) $charset_collate;";
-
-        return $this->query_service->create_table( $sql );
-
     }
 
     /**
      * Insert a record in the table countdowns_settings.
      *
      * @param array $data
-     * @return DatabaseSuccess|DatabaseError
+     * @return DatabaseResponseSuccess|DatabaseResponseError
      */
     public function insert( array $data ) {
 
@@ -103,11 +73,11 @@ class CountdownsSettingsRepository {
 
     /**
      * Get the list of countdowns_settings.
-     * If found return the DatabaseSuccess object that contains the Countdown model.
-     * If not found return the DatabaseError object.
+     * If found return the DatabaseResponseSuccess object that contains the Countdown model.
+     * If not found return the DatabaseResponseError object.
      *
      * @param int The id of the countdown to find.
-     * @return DatabaseSuccess|DatabaseError
+     * @return DatabaseResponseSuccess|DatabaseResponseError
      */
     public function find_all() {
 
@@ -116,13 +86,13 @@ class CountdownsSettingsRepository {
 
     /**
      * Search a countdowns_settings by id.
-     * If found return the DatabaseSuccess object that contains the Countdown model.
-     * If not found return the DatabaseError object.
+     * If found return the DatabaseResponseSuccess object that contains the Countdown model.
+     * If not found return the DatabaseResponseError object.
      *
-     * // TODO: the function should be returned the CountdownSettings model if success and DatabaseError if failed. Controllers in the API module should be updated and the Shortcode class
+     * // TODO: the function should be returned the CountdownSettings model if success and DatabaseResponseError if failed. Controllers in the API module should be updated and the Shortcode class
      *
      * @param int The id of the countdown to find.
-     * @return DatabaseSuccess|DatabaseError
+     * @return DatabaseResponseSuccess|DatabaseResponseError
      */
     public function find_by_id( int $id ) {
 

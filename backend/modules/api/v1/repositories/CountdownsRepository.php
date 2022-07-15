@@ -1,20 +1,15 @@
 <?php
 
-namespace Clockdown\Backend\Modules\Database\Repositories;
+namespace Clockdown\Backend\Modules\Api\V1\Repositories;
 
-use Clockdown\Backend\App\Common\DatabaseError;
-use Clockdown\Backend\App\Services\DatabaseQueryService;
+use Clockdown\Backend\App\Services\Database\DatabaseTableQueryInterface;
 
 class CountdownsRepository {
-
-    public $tables_prefix = 'ckdo';
-
-    private $table_name = 'countdowns';
 
     /**
      * Query service.
      *
-     * @var DatabaseQueryService
+     * @var DatabaseTableQueryInterface
      */
     private $query_service;
 
@@ -30,7 +25,7 @@ class CountdownsRepository {
      *
      * @return CountdownsRepository
      */
-    public static function singletone( DatabaseQueryService $query_service ) {
+    public static function singletone( DatabaseTableQueryInterface $query_service ) {
 
         if ( self::$instance === null ) {
             self::$instance = new CountdownsRepository( $query_service );
@@ -39,32 +34,8 @@ class CountdownsRepository {
         return self::$instance;
     }
 
-    public function __construct( DatabaseQueryService $query_service ) {
+    public function __construct( DatabaseTableQueryInterface $query_service ) {
         $this->query_service = $query_service;
-        // setup query service
-        $this->query_service->set_tables_prefix( $this->tables_prefix );
-        $this->query_service->set_table_name( $this->table_name );
-    }
-
-    public function create_table() {
-
-        if ( $this->query_service->table_exists() ) {
-            return true;
-        }
-
-        $charset_collate = $this->query_service->get_charset_collate();
-        $table_name      = $this->query_service->get_table_name();
-
-        $sql = "CREATE TABLE `{$table_name}` (
-                id INT NOT NULL AUTO_INCREMENT,
-                name varchar(255) NOT NULL,
-                description varchar(255) NOT NULL,
-                created_at datetime NULL,
-                updated_at datetime NULL,
-                PRIMARY KEY  (id)
-                ) $charset_collate;";
-
-        return $this->query_service->create_table( $sql );
 
     }
 
@@ -72,7 +43,7 @@ class CountdownsRepository {
      * Create the model and insert a record in the table countdowns.
      *
      * @param array $data
-     * @return DatabaseSuccess|DatabaseError
+     * @return DatabaseResponse
      */
     public function insert( array $data ) {
 
@@ -107,11 +78,11 @@ class CountdownsRepository {
 
     /**
      * Get the list of countdowns.
-     * If found return the DatabaseSuccess object that contains the Countdown model.
-     * If not found return the DatabaseError object.
+     * If found return the DatabaseResponseSuccess object that contains the Countdown model.
+     * If not found return the DatabaseResponseError object.
      *
      * @param int The id of the countdown to find.
-     * @return DatabaseSuccess|DatabaseError
+     * @return DatabaseResponse
      */
     public function find_all() {
 
@@ -121,11 +92,11 @@ class CountdownsRepository {
 
     /**
      * Search a countdown by id.
-     * If found return the DatabaseSuccess object that contains the Countdown model.
-     * If not found return the DatabaseError object.
+     * If found return the DatabaseResponseSuccess object that contains the Countdown model.
+     * If not found return the DatabaseResponseError object.
      *
      * @param int The id of the countdown to find.
-     * @return DatabaseSuccess|DatabaseError
+     * @return DatabaseResponse
      */
     public function find_by_id( int $id ) {
 

@@ -18,10 +18,10 @@ export default function useCountdownsList(): UseCountdownListSWR {
     findAll
   );
 
-  const shouldError = error || (response && response.data.status >= 400);
+  const shouldError = error || (response && response.code === "error");
 
   return {
-    countdowns: response?.data.payload!,
+    countdowns: response?.payload!,
     isLoading: !error && !response,
     isError: shouldError,
     errorMessage: shouldError && response?.message,

@@ -72,15 +72,14 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
         array (
             'Clockdown\\Backend\\PluginCore\\' => 29,
             'Clockdown\\Backend\\Modules\\TemplatesEditor\\' => 42,
-            'Clockdown\\Backend\\Modules\\Database\\Repositories\\' => 48,
-            'Clockdown\\Backend\\Modules\\Database\\Models\\' => 42,
-            'Clockdown\\Backend\\Modules\\Database\\Factories\\' => 45,
-            'Clockdown\\Backend\\Modules\\Database\\' => 35,
             'Clockdown\\Backend\\Modules\\CountdownWidget\\' => 42,
+            'Clockdown\\Backend\\Modules\\Api\\V1\\Repositories\\' => 46,
+            'Clockdown\\Backend\\Modules\\Api\\V1\\Models\\' => 40,
             'Clockdown\\Backend\\Modules\\Api\\V1\\Factories\\' => 43,
             'Clockdown\\Backend\\Modules\\Api\\V1\\Controllers\\' => 45,
             'Clockdown\\Backend\\Modules\\Api\\V1\\' => 33,
             'Clockdown\\Backend\\App\\Traits\\' => 29,
+            'Clockdown\\Backend\\App\\Services\\Database\\' => 40,
             'Clockdown\\Backend\\App\\Services\\' => 31,
             'Clockdown\\Backend\\App\\Interfaces\\' => 33,
             'Clockdown\\Backend\\App\\Common\\' => 29,
@@ -91,8 +90,8 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'Whoops\\' => 
         array (
@@ -190,25 +189,17 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
         array (
             0 => __DIR__ . '/../..' . '/backend/modules/templates-editor',
         ),
-        'Clockdown\\Backend\\Modules\\Database\\Repositories\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/backend/modules/database/repositories',
-        ),
-        'Clockdown\\Backend\\Modules\\Database\\Models\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/backend/modules/database/models',
-        ),
-        'Clockdown\\Backend\\Modules\\Database\\Factories\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/backend/modules/database/factories',
-        ),
-        'Clockdown\\Backend\\Modules\\Database\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/backend/modules/database',
-        ),
         'Clockdown\\Backend\\Modules\\CountdownWidget\\' => 
         array (
             0 => __DIR__ . '/../..' . '/backend/modules/countdown-widget',
+        ),
+        'Clockdown\\Backend\\Modules\\Api\\V1\\Repositories\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/modules/api/v1/repositories',
+        ),
+        'Clockdown\\Backend\\Modules\\Api\\V1\\Models\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/modules/api/v1/models',
         ),
         'Clockdown\\Backend\\Modules\\Api\\V1\\Factories\\' => 
         array (
@@ -225,6 +216,10 @@ class ComposerStaticInit1561f8a2c85b74a145afca32e267c7bc
         'Clockdown\\Backend\\App\\Traits\\' => 
         array (
             0 => __DIR__ . '/../..' . '/backend/app/traits',
+        ),
+        'Clockdown\\Backend\\App\\Services\\Database\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/app/services/database',
         ),
         'Clockdown\\Backend\\App\\Services\\' => 
         array (

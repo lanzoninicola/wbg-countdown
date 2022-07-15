@@ -1,6 +1,6 @@
 <?php
 
-namespace Clockdown\Backend\Modules\Api\Models;
+namespace Clockdown\Backend\Modules\Api\V1\Models;
 
 class CountdownSettingsModel extends BaseModel {
 

@@ -32,7 +32,7 @@ export default function EditorSave({ currentCountdown }: EditorSaveProps) {
     if (currentCountdown) {
       update(currentCountdown, savePayload)
         .then((res) => {
-          if (res.code === "error" || res.data.status >= 400) {
+          if (res.code === "error") {
             error(t("global.error"), {
               title: t("global.errorTitle"),
             });

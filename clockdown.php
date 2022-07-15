@@ -60,11 +60,6 @@ define( 'CLOCKDOWN_PLUGIN_BASE_URL_PATH', plugin_dir_url( __FILE__ ) );
 define( 'CLOCKDOWN_TEXT_DOMAIN', 'clockdown' );
 
 /**
- * Database tables prefixes
- */
-define( 'CLOCKDOWN_TABLE_PREFIXES', 'wbg' );
-
-/**
  * The code that runs during plugin activation.
  * This action is documented in plugin-core/Activator.php
  */
