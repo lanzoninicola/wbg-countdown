@@ -64,11 +64,11 @@ export default function ModalNewCountdown() {
       id: StringOrNumber;
     }>
   ) {
-    if (!response.data.payload) {
+    if (!response.payload) {
       return;
     }
 
-    const { id } = JSON.parse(JSON.stringify(response.data.payload));
+    const { id } = JSON.parse(JSON.stringify(response.payload));
 
     createCountdownSettingsRecord(id).then((res) => {
       setIsSuspense(false);

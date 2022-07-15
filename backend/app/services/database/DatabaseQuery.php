@@ -6,11 +6,7 @@ namespace Clockdown\Backend\App\Services\Database;
  * Class responsible for querying the table passed in the constructor.
  *
  */
-class DatabaseTableQuery extends DatabaseTable implements DatabaseTableQueryInterface {
-
-    public function __construct( string $plugin_prefix, string $name ) {
-        parent::__construct( $plugin_prefix, $name );
-    }
+class DatabaseQuery implements DatabaseQueryInterface {
 
     /**
      * Insert a row.
@@ -20,12 +16,12 @@ class DatabaseTableQuery extends DatabaseTable implements DatabaseTableQueryInte
      *
      * @return DatabaseResponse
      */
-    public function insert_row( array $data ): DatabaseResponse {
+    public function insert_row( string $table_name, array $data ): DatabaseResponse {
 
         global $wpdb;
 
         $result = $wpdb->insert(
-            $this->table_fullname,
+            $table_name,
             $data
         );
 
@@ -59,12 +55,12 @@ class DatabaseTableQuery extends DatabaseTable implements DatabaseTableQueryInte
      *
      * @return DatabaseResponse
      */
-    public function update_row( array $data, array $where ): DatabaseResponse {
+    public function update_row( string $table_name, array $data, array $where ): DatabaseResponse {
 
         global $wpdb;
 
         $result = $wpdb->update(
-            $this->table_fullname,
+            $table_name,
             $data,
             $where
         );
@@ -94,12 +90,12 @@ class DatabaseTableQuery extends DatabaseTable implements DatabaseTableQueryInte
      *
      * @return DatabaseResponse
      */
-    public function delete_row( array $where ): DatabaseResponse {
+    public function delete_row( string $table_name, array $where ): DatabaseResponse {
 
         global $wpdb;
 
         $result = $wpdb->delete(
-            $this->table_fullname,
+            $table_name,
             $where
         );
 
@@ -129,12 +125,12 @@ class DatabaseTableQuery extends DatabaseTable implements DatabaseTableQueryInte
      *
      * @return DatabaseResponse
      */
-    public function get_row( string $where ): DatabaseResponse {
+    public function get_row( string $table_name, string $where ): DatabaseResponse {
 
         global $wpdb;
 
         $result = $wpdb->get_row(
-            $wpdb->prepare( "SELECT * FROM `$this->table_fullname` WHERE $where" ),
+            $wpdb->prepare( "SELECT * FROM `$table_name` WHERE $where" ),
             ARRAY_A
         );
 
@@ -163,12 +159,12 @@ class DatabaseTableQuery extends DatabaseTable implements DatabaseTableQueryInte
      *
      * @return DatabaseResponse
      */
-    public function get_all_rows(): DatabaseResponse {
+    public function get_all_rows( string $table_name ): DatabaseResponse {
 
         global $wpdb;
 
         $result = $wpdb->get_results(
-            $wpdb->prepare( "SELECT * FROM `$this->table_fullname`" ),
+            $wpdb->prepare( "SELECT * FROM `$table_name`" ),
             ARRAY_A
         );
 

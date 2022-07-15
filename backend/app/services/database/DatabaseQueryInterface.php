@@ -4,7 +4,7 @@ namespace Clockdown\Backend\App\Services\Database;
 
 use Clockdown\Backend\App\Services\Database\DatabaseResponse;
 
-interface DatabaseTableQueryInterface {
+interface DatabaseQueryInterface {
 
     /**
      * Insert a row.
@@ -14,21 +14,21 @@ interface DatabaseTableQueryInterface {
      *
      * @return DatabaseResponse
      */
-    public function insert_row( array $data ): DatabaseResponse;
+    public function insert_row( string $table_name, array $data ): DatabaseResponse;
 
     /**
      * Update a row.
      *
      * @return DatabaseResponse
      */
-    public function update_row( array $data, array $where ): DatabaseResponse;
+    public function update_row( string $table_name, array $data, array $where ): DatabaseResponse;
 
     /**
      * Delete a row.
      *
      * @return DatabaseResponse
      */
-    public function delete_row( array $where ): DatabaseResponse;
+    public function delete_row( string $table_name, array $where ): DatabaseResponse;
 
     /**
      * Get a row.
@@ -37,13 +37,13 @@ interface DatabaseTableQueryInterface {
      *
      * @return DatabaseResponse
      */
-    public function get_row( string $where ): DatabaseResponse;
+    public function get_row( string $table_name, string $where ): DatabaseResponse;
 
     /**
      * Get all rows.
      *
      * @return DatabaseResponse
      */
-    public function get_all_rows(): DatabaseResponse;
+    public function get_all_rows( string $table_name ): DatabaseResponse;
 
 }
