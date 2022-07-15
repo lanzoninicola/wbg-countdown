@@ -2,17 +2,14 @@
 
 namespace Clockdown\Backend\PluginCore;
 
-use Clockdown\Backend\App\Services\Database\DatabaseTableSchema;
+use Clockdown\Backend\Modules\Setup\ClockdownSetup;
 
 class Uninstaller {
 
     public static function uninstall() {
 
-        $countdowns = new DatabaseTableSchema( 'ckdo', 'countdowns' );
-        $countdowns->drop_table();
-
-        $countdowns_settings = new DatabaseTableSchema( 'ckdo', 'countdown_settings' );
-        $countdowns_settings->drop_table();
+        $clockdown_setup = new ClockdownSetup();
+        $clockdown_setup->uninstall();
 
     }
 
