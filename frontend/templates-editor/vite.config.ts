@@ -5,6 +5,8 @@ import svgLoader from "vite-svg-loader";
 // VITE is used only for DEV mode.
 // Due de fact that VITE builds the whole project without using IIFFE and could be colliding with other WP plugins
 
+// https://github.com/vitejs/vite/issues/1078
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
