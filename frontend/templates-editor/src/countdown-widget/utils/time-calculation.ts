@@ -15,8 +15,8 @@ export function diff(
   todayDateTimeLocalTime: dayjs.Dayjs,
   targetDateTimeLocalTime: dayjs.Dayjs
 ) {
-  const target = targetDateTimeLocalTime;
   const now = todayDateTimeLocalTime;
+  const target = targetDateTimeLocalTime;
 
   if (target.isBefore(todayDateTimeLocalTime)) {
     return DEFAULT_REMAINING_TIME;
