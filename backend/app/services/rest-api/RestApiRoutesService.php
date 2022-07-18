@@ -1,8 +1,6 @@
 <?php
 
-namespace Clockdown\Backend\App\Services;
-
-use Clockdown\Backend\App\Common\Routes;
+namespace Clockdown\Backend\App\Services\RestApi;
 
 /**
  * Class responsible for registering the routes for custom REST-API.
@@ -10,21 +8,21 @@ use Clockdown\Backend\App\Common\Routes;
  * @method void add_routes()
  * @method void run()
  */
-class RoutesService {
+class RestApiRoutesService {
 
     /**
      * The active routes.
      *
-     * @var Routes[]
+     * @var RestApiRoutes[]
      */
     private $routes = array();
 
     /**
-     * Adds a new Routes collection to the collection of routes.
+     * Adds a new RestApiRoutes collection to the collection of routes.
      *
-     * @param Routes $route The route to be added.
+     * @param RestApiRoutes $route The route to be added.
      */
-    public function add_routes( Routes $routes ) {
+    public function add_routes( RestApiRoutes $routes ) {
 
         $this->routes[] = $routes;
 

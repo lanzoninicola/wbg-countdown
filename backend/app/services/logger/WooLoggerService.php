@@ -1,10 +1,8 @@
 <?php
 
-namespace Clockdown\Backend\App\Services;
+namespace Clockdown\Backend\App\Services\Logger;
 
-use Clockdown\Backend\App\Interfaces\LoggerService;
-
-class WooLoggerServive implements LoggerService {
+class WooLoggerServive implements LoggerServiceInterface {
 
     /**
      * Woocommerce Logger object

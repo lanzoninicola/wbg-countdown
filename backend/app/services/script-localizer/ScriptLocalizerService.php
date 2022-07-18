@@ -1,6 +1,6 @@
 <?php
 
-namespace Clockdown\Backend\App\Services;
+namespace Clockdown\Backend\App\Services\ScriptLocalizer;
 
 use Clockdown\Backend\App\Common\Helpers;
 

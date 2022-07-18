@@ -1,6 +1,6 @@
 <?php
 
-namespace Clockdown\Backend\App\Common;
+namespace Clockdown\Backend\App\Services\RestApi;
 
 /**
  * The class that describe the custom REST API end-points for the countdown.
@@ -13,7 +13,7 @@ namespace Clockdown\Backend\App\Common;
  */
 
 //TODO: handling wp-nonce
-class Routes {
+class RestApiRoutes {
 
     /**
      * Collection of routes for the custom REST-API.

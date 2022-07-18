@@ -1,10 +1,10 @@
 <?php
 
-namespace Clockdown\Backend\App\Services;
+namespace Clockdown\Backend\App\Common;
 
-class WooConditionalsService {
+class WooConditionalsTest {
 
-    public function test( string $name ) {
+    public static function test( string $name ) {
 
         /**
          * Start Woocommerce conditionals
@@ -14,7 +14,10 @@ class WooConditionalsService {
             return is_woocommerce();
         }
 
-// Returns true when on the product archive page (shop).
+        /**
+         *  Returns true when on the product archive page (shop).
+         */
+
         if ( $name === 'is_shop' ) {
             return is_shop();
         }
@@ -43,7 +46,10 @@ class WooConditionalsService {
             return is_search();
         }
 
-// When the endpoint page for order received is being displayed.
+        /**
+         * When the endpoint page for order received is being displayed.
+         */
+
         if ( $name === 'is_wc_endpoint_url_order_received' ) {
             return is_wc_endpoint_url( 'order-received' );
         }

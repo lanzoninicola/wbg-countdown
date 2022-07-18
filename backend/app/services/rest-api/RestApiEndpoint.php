@@ -1,6 +1,6 @@
 <?php
 
-namespace Clockdown\Backend\App\Common;
+namespace Clockdown\Backend\App\Services\RestApi;
 
 class RestApiEndpoint {
 

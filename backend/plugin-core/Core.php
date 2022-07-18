@@ -2,11 +2,11 @@
 
 namespace Clockdown\Backend\PluginCore;
 
-use Clockdown\Backend\App\Common\RestApiEndpoint;
-use Clockdown\Backend\App\Common\Routes;
-use Clockdown\Backend\App\Services\RoutesService;
-use Clockdown\Backend\App\Services\ScriptAdminLocalizerService;
-use Clockdown\Backend\App\Services\ScriptPublicLocalizerService;
+use Clockdown\Backend\App\Services\RestApi\RestApiEndpoint;
+use Clockdown\Backend\App\Services\RestApi\RestApiRoutes;
+use Clockdown\Backend\App\Services\RestApi\RestApiRoutesService;
+use Clockdown\Backend\App\Services\ScriptLocalizer\ScriptAdminLocalizerService;
+use Clockdown\Backend\App\Services\ScriptLocalizer\ScriptPublicLocalizerService;
 use Clockdown\Backend\Modules\Api\V1\Factories\ControllersFactory;
 use Clockdown\Backend\Modules\CountdownWidget\CountdownWidgetShortcode;
 use Clockdown\Backend\Modules\TemplatesEditor\TemplatesEditor;
@@ -62,7 +62,7 @@ class Core {
      *
      * @since    1.0.0
      * @access   protected
-     * @var      RoutesService $routes_service
+     * @var      RestApiRoutesService $routes_service
      */
     protected $routes_service;
 
@@ -116,7 +116,7 @@ class Core {
         $this->hooks_loader            = new HooksLoader();
         $this->scripts_enqueuer        = new ScriptsEnqueuer();
         $this->shortcodes_loader       = new ShortcodesLoader();
-        $this->routes_service          = new RoutesService();
+        $this->routes_service          = new RestApiRoutesService();
         $this->script_admin_localizer  = ScriptAdminLocalizerService::singletone();
         $this->script_public_localizer = ScriptPublicLocalizerService::singletone();
     }
@@ -262,8 +262,8 @@ class Core {
      * Define the rest api routes
      *
      * 1. create an array of enpoints - RestApiEndpoint[]
-     * 2. create the Routes object passing the root_path, the api version, the array of endpoints to it
-     * 3. register the routes with the rest api - $this->routes_service->add_routes( Routes $routes )
+     * 2. create the RestApiRoutes object passing the root_path, the api version, the array of endpoints to it
+     * 3. register the routes with the rest api - $this->routes_service->add_routes( RestApiRoutes $routes )
      *
      * @return void
      */
@@ -316,7 +316,7 @@ class Core {
 
         );
 
-        $routes = new Routes( 'clockdown', 'v1', $endpoints_v1 );
+        $routes = new RestApiRoutes( 'clockdown', 'v1', $endpoints_v1 );
 
         $this->routes_service->add_routes( $routes );
 
@@ -327,7 +327,7 @@ class Core {
      * 1. The Shortcodes loader to instanciate the shortcodes classes and register the shortcode.
      * 2. The Scripts enqueuer to execute all of the hooks related to javascript and css files.
      * 3. The hooks loader to execute all of the hooks with WordPress.
-     * 4. The Routes service to register the routes for the rest api.
+     * 4. The RestApiRoutes service to register the routes for the rest api.
      *
      * @since    1.0.0
      */

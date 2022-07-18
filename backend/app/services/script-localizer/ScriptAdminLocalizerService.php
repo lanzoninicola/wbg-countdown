@@ -1,6 +1,6 @@
 <?php
 
-namespace Clockdown\Backend\App\Services;
+namespace Clockdown\Backend\App\Services\ScriptLocalizer;
 
 /**
  * The class responsible for localize the script.
@@ -12,24 +12,24 @@ namespace Clockdown\Backend\App\Services;
  * @since      1.0.0
  */
 
-class ScriptPublicLocalizerService extends ScriptLocalizerService {
+class ScriptAdminLocalizerService extends ScriptLocalizerService {
 
     /**
      * Singleton instance.
      *
-     * @var ScriptPublicLocalizerService
+     * @var ScriptAdminLocalizerService
      */
     protected static $instance = null;
 
     /**
      * Instantiate the singleton.
      *
-     * @return ScriptPublicLocalizerService
+     * @return ScriptAdminLocalizerService
      */
     public static function singletone() {
 
         if ( self::$instance === null ) {
-            self::$instance = new ScriptPublicLocalizerService();
+            self::$instance = new ScriptAdminLocalizerService();
         }
 
         return self::$instance;
@@ -38,19 +38,19 @@ class ScriptPublicLocalizerService extends ScriptLocalizerService {
     public function __construct() {
         parent::__construct();
 
-        $this->enqueue_scripts();
+        $this->admin_enqueue_scripts();
     }
 
     /**
-     * Enqueue the script for the public area
+     * Enqueue the script for the admin area
      *
      * The 'localize_script()' method is owned by the parent class.
      *
      * @return void
      */
-    private function enqueue_scripts() {
+    private function admin_enqueue_scripts() {
 
-        add_action( 'wp_enqueue_scripts', array( $this, 'localize_script' ) );
+        add_action( 'admin_enqueue_scripts', array( $this, 'localize_script' ) );
     }
 
 }

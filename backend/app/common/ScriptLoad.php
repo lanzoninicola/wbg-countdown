@@ -1,12 +1,17 @@
 <?php
 
-namespace Clockdown\Backend\App\Services;
+namespace Clockdown\Backend\App\Common;
 
 /**
- * An helper class that let you tag your scripts with the "defer" or "async" attribute.
+ * An helper class that let you tag your scripts with the "defer" / "async" / type="module" attribute.
+ *
+ *  Public methods:
+ * - defer()
+ * - async()
+ * - type_module()
  *
  */
-class ScriptLoaderTaggerService {
+class ScriptLoad {
 
     /**
      * The handle name used to enqueue the script.
@@ -25,7 +30,7 @@ class ScriptLoaderTaggerService {
     /**
      * Add the "defer" attribute to the <script> enqueued.
      */
-    public function add_defer() {
+    public function defer() {
 
         add_filter( 'script_loader_tag', array( $this, 'add_defer_attribute' ), 10, 3 );
     }
@@ -33,9 +38,17 @@ class ScriptLoaderTaggerService {
     /**
      * Add the "async" attribute to the <script> enqueued.
      */
-    public function add_async() {
+    public function async() {
 
         add_filter( 'script_loader_tag', array( $this, 'add_async_attribute' ), 10, 3 );
+    }
+
+    /**
+     * Add the "module" type attribute to the <script> enqueued.
+     */
+    public function type_module() {
+
+        add_filter( 'script_loader_tag', array( $this, 'add_module_type_attribute' ), 10, 3 );
     }
 
     public function add_defer_attribute( $tag, $handle, $src ) {
@@ -53,6 +66,16 @@ class ScriptLoaderTaggerService {
         if ( strpos( $handle, $this->handle ) !== false ) {
 
             return str_replace( ' src', ' async src', $tag );
+        }
+
+        return $tag;
+    }
+
+    public function add_module_type_attribute( $tag, $handle, $src ) {
+
+        if ( strpos( $handle, $this->handle ) !== false ) {
+
+            return str_replace( ' src', ' type="module" src', $tag );
         }
 
         return $tag;

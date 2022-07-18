@@ -33,6 +33,9 @@ class ComposerStaticInit896bedbb7132cf491fd9b0bc26984e54
             'Clockdown\\Backend\\Modules\\Api\\V1\\' => 33,
             'Clockdown\\Backend\\App\\Traits\\' => 29,
             'Clockdown\\Backend\\App\\Services\\Setup\\' => 37,
+            'Clockdown\\Backend\\App\\Services\\ScriptLocalizer\\' => 47,
+            'Clockdown\\Backend\\App\\Services\\RestApi\\' => 39,
+            'Clockdown\\Backend\\App\\Services\\Logger\\' => 38,
             'Clockdown\\Backend\\App\\Services\\Database\\' => 40,
             'Clockdown\\Backend\\App\\Services\\' => 31,
             'Clockdown\\Backend\\App\\Interfaces\\' => 33,
@@ -96,6 +99,18 @@ class ComposerStaticInit896bedbb7132cf491fd9b0bc26984e54
         'Clockdown\\Backend\\App\\Services\\Setup\\' => 
         array (
             0 => __DIR__ . '/../..' . '/backend/app/services/setup',
+        ),
+        'Clockdown\\Backend\\App\\Services\\ScriptLocalizer\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/app/services/script-localizer',
+        ),
+        'Clockdown\\Backend\\App\\Services\\RestApi\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/app/services/rest-api',
+        ),
+        'Clockdown\\Backend\\App\\Services\\Logger\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/backend/app/services/logger',
         ),
         'Clockdown\\Backend\\App\\Services\\Database\\' => 
         array (
