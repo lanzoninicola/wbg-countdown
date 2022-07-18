@@ -1,6 +1,7 @@
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import svgLoader from "vite-svg-loader";
+import * as path from "path";
 
 // VITE is used only for DEV mode.
 // Due de fact that VITE builds the whole project without using IIFFE and could be colliding with other WP plugins
@@ -9,6 +10,7 @@ import svgLoader from "vite-svg-loader";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/",
   plugins: [
     react(),
     svgLoader({
@@ -18,6 +20,19 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "jsdom",
+  },
+  resolve: {
+    alias: [
+      { find: "@", replacement: path.resolve(__dirname, "./src") },
+      {
+        find: "@test-utils",
+        replacement: path.resolve(__dirname, "./src/__test__/utils"),
+      },
+      {
+        find: "@countdown-provider",
+        replacement: path.resolve(__dirname, "./src/countdown-provider"),
+      },
+    ],
   },
   // base: "",
   // build: {

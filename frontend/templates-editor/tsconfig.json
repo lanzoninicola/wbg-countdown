@@ -1,9 +1,10 @@
 {
-  // "baseUrl": "./src",
-  // "paths": {
-  //   "countdown-provider/*": ["./src/countdown-provider/*"]
-  // },
   "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./src"],
+      "@test-utils/*": ["__test__/utils/*"]
+    },
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
@@ -19,7 +20,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["jest", "node"]
+    "types": ["node", "jsdom", "vitest/globals", "@testing-library/jest-dom"]
   },
   "include": ["src", "**/*.test.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
