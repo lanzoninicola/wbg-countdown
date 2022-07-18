@@ -279,11 +279,11 @@ class Core {
         $endpoints_v1 = array(
             new RestApiEndpoint( $countdowns_endpoint, 'GET',
                 array( $countdown_controller, 'find_all' ),
-                'manage_options'
+                'public'
             ),
             new RestApiEndpoint( $countdowns_endpoint, 'POST',
                 array( $countdown_controller, 'create' ),
-                'manage_options'
+                'public'
             ),
             new RestApiEndpoint( $countdown_id_endpoint, 'GET',
                 array( $countdown_controller, 'find_by_id' ),
@@ -291,11 +291,11 @@ class Core {
             ),
             new RestApiEndpoint( $countdown_id_endpoint, 'PUT',
                 array( $countdown_controller, 'update' ),
-                'manage_options'
+                'public'
             ),
             new RestApiEndpoint( $countdown_id_endpoint, 'DELETE',
                 array( $countdown_controller, 'delete' ),
-                'manage_options'
+                'public'
             ),
             new RestApiEndpoint( $settings_enpoint, 'GET',
                 array( $settings_controller, 'find_by_id' ),
@@ -303,15 +303,15 @@ class Core {
             ),
             new RestApiEndpoint( $settings_enpoint, 'POST',
                 array( $settings_controller, 'create' ),
-                'manage_options'
+                'public'
             ),
             new RestApiEndpoint( $settings_enpoint, 'PUT',
                 array( $settings_controller, 'update' ),
-                'manage_options'
+                'public'
             ),
             new RestApiEndpoint( $settings_enpoint, 'DELETE',
                 array( $settings_controller, 'delete' ),
-                'manage_options'
+                'public'
             ),
 
         );

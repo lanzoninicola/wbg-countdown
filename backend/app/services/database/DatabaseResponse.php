@@ -15,11 +15,38 @@ namespace Clockdown\Backend\App\Services\Database;
  */
 class DatabaseResponse {
 
-    private $code;
+    /**
+     * @var string $code (success, error, warning)
+     */
+    private $code = 'success';
 
-    private $message;
+    /**
+     * @var string
+     */
+    private $message = '';
 
-    private $payload;
+    /**
+     * @var mixed
+     */
+    private $payload = null;
+
+    /**
+     * DatabaseResponse constructor.
+     *
+     * @param string $code
+     * @param string $message
+     * @param mixed $payload
+     */
+    public function __construct( string $code, string $message, $payload = null ) {
+
+        if ( !in_array( $code, array( 'success', 'error', 'warning' ) ) ) {
+            throw new \Exception( 'Invalid code' );
+        }
+
+        $this->code    = $code;
+        $this->message = $message;
+        $this->payload = $payload;
+    }
 
     /**
      * Return the code of the response: success, warning, error.

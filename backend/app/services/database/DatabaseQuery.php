@@ -40,7 +40,7 @@ class DatabaseQuery implements DatabaseQueryInterface {
          */
 
         if ( is_array( $result ) && count( $result ) === 0 ) {
-            return new DatabaseResponseWarning( 'No rows were affected' );
+            return new DatabaseResponseNotAffected();
         }
 
         return new DatabaseResponseSuccess(
@@ -77,8 +77,8 @@ class DatabaseQuery implements DatabaseQueryInterface {
          * no rows were affected
          */
 
-        if ( is_array( $result ) && count( $result ) === 0 ) {
-            return new DatabaseResponseWarning( 'No rows were affected' );
+        if ( is_array( $result ) && count( $result ) === 0 || $result === 0 ) {
+            return new DatabaseResponseNotAffected();
         }
 
         return new DatabaseResponseSuccess( 'Row updated successfully.' );
@@ -112,8 +112,8 @@ class DatabaseQuery implements DatabaseQueryInterface {
          * no rows were affected
          */
 
-        if ( is_array( $result ) && count( $result ) === 0 ) {
-            return new DatabaseResponseWarning( 'No rows were affected' );
+        if ( is_array( $result ) && count( $result ) === 0 || $result === 0 ) {
+            return new DatabaseResponseNotAffected();
         }
 
         return new DatabaseResponseSuccess( 'Row deleted successfully.' );
@@ -147,7 +147,7 @@ class DatabaseQuery implements DatabaseQueryInterface {
          */
 
         if ( is_array( $result ) && count( $result ) === 0 || $result === null ) {
-            return new DatabaseResponseWarning( 'No rows were affected' );
+            return new DatabaseResponseNotFound();
         }
 
         return new DatabaseResponseSuccess( 'Row retrieved successfully.', $result );
@@ -182,7 +182,7 @@ class DatabaseQuery implements DatabaseQueryInterface {
          */
 
         if ( is_array( $result ) && count( $result ) === 0 ) {
-            return new DatabaseResponseWarning( 'No rows were affected' );
+            return new DatabaseResponseEmpty();
         }
 
         return new DatabaseResponseSuccess( 'All rows retrieved successfully.', $result );
