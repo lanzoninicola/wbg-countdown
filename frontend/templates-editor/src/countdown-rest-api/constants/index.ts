@@ -1,7 +1,7 @@
 const env = process.env.NODE_ENV;
 
 const BASE_ENDPOINT_URL =
-  env === "development"
+  env === "development" || env === "test"
     ? import.meta.env.VITE_REST_API_BASE_ENDPOINT_URL
     : // @ts-ignore
       // the clockdownLocalized variable is available only in Wordpress environment and not in dev mode on Vite

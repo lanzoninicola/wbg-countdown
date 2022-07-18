@@ -120,6 +120,7 @@ export default function ModalNewCountdown() {
               colorScheme="blue"
               size={"sm"}
               onClick={() => createCountdown()}
+              data-test="create-countdown-button"
             >
               {t("global.save").capitalize()}
             </Button>
