@@ -21,19 +21,20 @@ export default defineConfig({
     globals: true,
     environment: "jsdom",
   },
-  resolve: {
-    alias: [
-      { find: "@", replacement: path.resolve(__dirname, "./src") },
-      {
-        find: "@test-utils",
-        replacement: path.resolve(__dirname, "./src/__test__/utils"),
-      },
-      {
-        find: "@countdown-provider",
-        replacement: path.resolve(__dirname, "./src/countdown-provider"),
-      },
-    ],
-  },
+  /* Disabled resolve. Need first setup correctly the alias also in webpack */
+  // resolve: {
+  //   alias: [
+  //     { find: "@", replacement: path.resolve(__dirname, "./src") },
+  //     {
+  //       find: "@test-utils",
+  //       replacement: path.resolve(__dirname, "./src/__test__/utils"),
+  //     },
+  //     {
+  //       find: "@countdown-provider",
+  //       replacement: path.resolve(__dirname, "./src/countdown-provider"),
+  //     },
+  //   ],
+  // },
   // base: "",
   // build: {
   //   outDir: "../../public/templates-editor",

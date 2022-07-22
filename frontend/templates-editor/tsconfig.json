@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
-    "paths": {
-      "@/*": ["./src"],
-      "@test-utils/*": ["__test__/utils/*"]
-    },
+    /* Disabled. Need first setup correctly the alias also in webpack */
+    // "baseUrl": "./src",
+    // "paths": {
+    //   "@/*": ["./src"],
+    //   "@test-utils/*": ["__test__/utils/*"]
+    // },
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],

@@ -23,13 +23,9 @@ const config = {
   mode: "production",
   resolve: {
     extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
-    // alias: {
-    //   "countdown-provider": path.resolve(
-    //     __dirname,
-    //     "src",
-    //     "countdown-provider"
-    //   ),
-    // },
+    //   alias: {
+    //     "@": path.resolve(__dirname, "src"),
+    //   },
   },
   plugins: [...plugins],
   optimization: {
