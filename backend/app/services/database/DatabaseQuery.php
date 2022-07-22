@@ -182,7 +182,7 @@ class DatabaseQuery implements DatabaseQueryInterface {
          */
 
         if ( is_array( $result ) && count( $result ) === 0 ) {
-            return new DatabaseResponseEmpty();
+            return new DatabaseResponseEmpty( 'No records were found', array() );
         }
 
         return new DatabaseResponseSuccess( 'All rows retrieved successfully.', $result );

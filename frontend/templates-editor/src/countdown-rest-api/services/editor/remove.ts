@@ -7,23 +7,28 @@ import { APIResponse } from "../../types";
  * @param id - CountdownModel ID
  * @returns APIResponse
  *
- * Response codes:
- * - "success" if the record was removed
- * - "error" if the record was not removed
- * - "warning" if the record was not found
- *
- * No payload is returned.
+ * Payload returns by the API might be:
+ * - a string (successfully message) with status 200
+ * - null (error occured on server) with status >=400
  */
 const remove = async (id: CountdownModel["id"]): Promise<APIResponse> => {
   const { endpoint, method } = EDITOR_REST_API_ENDPOINTS.delete;
+
+  const disabledNonce = process.env.NODE_ENV === "development" && true;
+  const headers = {
+    "Content-Type": "application/json",
+    // @ts-ignore
+    "X-WP-Nonce": clockdownLocalized.wp_rest_nonce,
+  };
+
+  if (disabledNonce) {
+    delete headers["X-WP-Nonce"];
+  }
+
   return await (
     await fetch(endpoint(id), {
       method: method,
-      headers: {
-        "Content-Type": "application/json",
-        // @ts-ignore
-        "X-WP-Nonce": clockdownLocalized.wp_rest_nonce,
-      },
+      headers,
     })
   ).json();
 };

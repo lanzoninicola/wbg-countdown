@@ -44,12 +44,13 @@ class CountdownsSettingsController {
     }
 
     public function create( \WP_REST_Request $request ) {
+        $operation = 'Settings creation';
 
         $countdown_id_param = $request->get_param( 'countdown_id' );
         $settings_param     = $request->get_param( 'settings' );
 
         if ( empty( $countdown_id_param ) || $countdown_id_param === null ) {
-            return RestApiResponseError::missing_parameter( 'countdownId', 'Settings creation' );
+            return RestApiResponseError::missing_parameter( 'countdownId', $operation );
         }
 
         $new_countdown = array(
@@ -60,28 +61,29 @@ class CountdownsSettingsController {
         $result = $this->repository->insert( $new_countdown );
 
         if ( $result instanceof DatabaseResponseError ) {
-            return RestApiResponseError::database_error( $result->get_message(), 'Settings creation' );
+            return RestApiResponseError::database_error( $result->get_message(), $operation );
         }
 
         return RestApiResponseSuccess::success( 'Settings created', array(
-            'operation' => 'Settings creation',
+            'operation' => $operation,
             'payload'   => $result->to_array()['payload'],
         ) );
 
     }
 
     public function update( \WP_REST_Request $request ) {
+        $operation    = 'Settings update';
         $countdown_id = absint( $request->get_param( 'id' ) );
 
         if ( !is_numeric( $countdown_id ) ) {
-            return RestApiResponseError::invalid_parameter( 'id', 'Settings update' );
+            return RestApiResponseError::invalid_parameter( 'id', $operation );
         }
 
         $countdown_id_param = $request->get_param( 'countdown_id' );
         $settings_param     = $request->get_param( 'settings' );
 
         if ( empty( $countdown_id_param ) || $countdown_id_param === null ) {
-            return RestApiResponseError::missing_parameter( 'countdownId', 'Settings update' );
+            return RestApiResponseError::missing_parameter( 'countdownId', $operation );
         }
 
         $next_countdown_settings = array(
@@ -92,63 +94,65 @@ class CountdownsSettingsController {
         $result = $this->repository->update( $next_countdown_settings, $countdown_id );
 
         if ( $result instanceof DatabaseResponseError ) {
-            return RestApiResponseError::database_error( $result->get_message(), 'Settings update' );
+            return RestApiResponseError::database_error( $result->get_message(), $operation );
         }
 
         if ( $result instanceof DatabaseResponseNotAffected ) {
-            return RestApiResponseError::database_records_not_affected( $result->get_message(), 'Settings update' );
+            return RestApiResponseError::database_records_not_affected( $result->get_message(), $operation );
         }
 
         return RestApiResponseSuccess::success( 'Settings updated', array(
-            'operation' => 'Settings update',
+            'operation' => $operation,
             'payload'   => $result->to_array()['payload'],
         ) );
     }
 
     public function delete( \WP_REST_Request $request ) {
+        $operation    = 'Settings deletion';
         $countdown_id = absint( $request->get_param( 'id' ) );
 
         if ( !is_numeric( $countdown_id ) ) {
-            return RestApiResponseError::invalid_parameter( 'id', 'Settings deletion' );
+            return RestApiResponseError::invalid_parameter( 'id', $operation );
         }
 
         $result = $this->repository->delete( $countdown_id );
 
         if ( $result instanceof DatabaseResponseError ) {
-            return RestApiResponseError::database_error( $result->get_message(), 'Settings deletion' );
+            return RestApiResponseError::database_error( $result->get_message(), $operation );
         }
 
         if ( $result instanceof DatabaseResponseNotAffected ) {
-            return RestApiResponseError::database_records_not_affected( $result->get_message(), 'Settings deletion' );
+            return RestApiResponseError::database_records_not_affected( $result->get_message(), $operation );
         }
 
         return RestApiResponseSuccess::success( 'Settings deleted', array(
-            'operation' => 'Settings deletion',
+            'operation' => $operation,
             'payload'   => $result->to_array()['payload'],
         ) );
 
     }
 
     public function find_by_id( \WP_REST_Request $request ) {
+        $operation = 'Settings find by id';
 
         $countdown_id = absint( $request->get_param( 'id' ) );
 
         if ( !is_numeric( $countdown_id ) ) {
-            return RestApiResponseError::invalid_parameter( 'id', 'Settings find by id' );
+            return RestApiResponseError::invalid_parameter( 'id', $operation );
         }
 
         $result = $this->repository->find_by_id( $countdown_id );
 
         if ( $result instanceof DatabaseResponseError ) {
-            return RestApiResponseError::database_error( $result->get_message(), 'Countdown find by id' );
+            return RestApiResponseError::database_error( $result->get_message(), $operation );
         }
 
         if ( $result instanceof DatabaseResponseNotFound ) {
-            return RestApiResponseError::database_record_not_found( $result->get_message(), 'Countdown update' );
+            return RestApiResponseError::database_record_not_found( $result->get_message(), $operation );
         }
 
         return RestApiResponseSuccess::success( 'Settings found', array(
-            'operation' => 'Settings find by id',
+            'operation' => $operation,
             'payload'   => $result->to_array()['payload'],
         ) );
     }

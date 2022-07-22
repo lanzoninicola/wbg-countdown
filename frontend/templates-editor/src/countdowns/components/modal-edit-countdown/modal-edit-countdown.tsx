@@ -47,7 +47,10 @@ export default function ModalEditCountdown({
 
     updateCountdown(countdown.id, { name, description })
       .then((res) => {
-        setIsSuspense(false);
+        if (!res || !res.data) throw new Error();
+
+        if (res?.data?.status >= 400) throw new Error();
+
         onClose();
 
         successNotification(t("countdown_edit_edit.updateSuccess"), {
@@ -55,12 +58,12 @@ export default function ModalEditCountdown({
         });
       })
       .catch(() => {
-        setIsSuspense(false);
         errorNotification(t("global.error"), {
           title: t("global.errorTitle"),
         });
       })
       .finally(() => {
+        setIsSuspense(false);
         mutate(COUNTDOWNS_REST_API_ENDPOINTS.findAll.endpoint());
       });
   }

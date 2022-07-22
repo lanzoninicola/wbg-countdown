@@ -24,6 +24,17 @@ const update = async (
 ): Promise<APIResponse> => {
   const { endpoint, method } = EDITOR_REST_API_ENDPOINTS.update;
 
+  const disabledNonce = process.env.NODE_ENV === "development" && true;
+  const headers = {
+    "Content-Type": "application/json",
+    // @ts-ignore
+    "X-WP-Nonce": clockdownLocalized.wp_rest_nonce,
+  };
+
+  if (disabledNonce) {
+    delete headers["X-WP-Nonce"];
+  }
+
   return await (
     await fetch(endpoint(id), {
       method: method,
@@ -31,11 +42,7 @@ const update = async (
         countdown_id: id,
         settings: payload,
       }),
-      headers: {
-        "Content-Type": "application/json",
-        // @ts-ignore
-        "X-WP-Nonce": clockdownLocalized.wp_rest_nonce,
-      },
+      headers,
     })
   ).json();
 };

@@ -20,9 +20,9 @@ class RestApiResponseSuccess {
 
     public static function database_records_empty( string $message, string $operation ) {
 
-        return self::success( 'Database warning', array(
+        return self::success( $message, array(
             'operation' => $operation,
-            'payload'   => $message,
+            'payload'   => array(),
         ) );
 
     }

@@ -14,47 +14,47 @@ class RestApiResponseError {
 
     }
 
-    public static function missing_parameter( string $parameter, string $operation ) {
+    public static function missing_parameter( string $parameter, string $operation, $payload = null ) {
 
-        return self::error( 'Missing parameter', array(
+        return self::error( "Missing parameter - Expected '$parameter' parameter", array(
             'operation' => $operation,
-            'payload'   => "Expected '$parameter' parameter",
+            'payload'   => $payload,
         ), 400 );
 
     }
 
-    public static function invalid_parameter( string $parameter, string $operation ) {
+    public static function invalid_parameter( string $parameter, string $operation, $payload = null ) {
 
-        return self::error( 'Invalid parameter', array(
+        return self::error( "Invalid parameter - '$parameter' is not in the expected format", array(
             'operation' => $operation,
-            'payload'   => "'$parameter' is not in the expected format",
+            'payload'   => $payload,
         ), 400 );
 
     }
 
-    public static function database_error( string $message, string $operation ) {
+    public static function database_error( string $message, string $operation, $payload = null ) {
 
-        return self::error( 'Database error', array(
+        return self::error( $message, array(
             'operation' => $operation,
-            'payload'   => $message,
+            'payload'   => $payload,
         ), 500 );
 
     }
 
-    public static function database_records_not_affected( string $message, string $operation ) {
+    public static function database_records_not_affected( string $message, string $operation, $payload = null ) {
 
-        return self::error( 'Database bad request', array(
+        return self::error( $message, array(
             'operation' => $operation,
-            'payload'   => $message,
+            'payload'   => $payload,
         ), 400 );
 
     }
 
-    public static function database_record_not_found( string $message, string $operation ) {
+    public static function database_record_not_found( string $message, string $operation, $payload = null ) {
 
-        return self::error( 'Database bad request', array(
+        return self::error( $message, array(
             'operation' => $operation,
-            'payload'   => $message,
+            'payload'   => $payload,
         ), 404 );
 
     }

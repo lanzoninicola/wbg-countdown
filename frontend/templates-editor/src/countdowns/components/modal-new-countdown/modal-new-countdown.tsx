@@ -48,11 +48,13 @@ export default function ModalNewCountdown() {
   function createCountdown() {
     setIsSuspense(true);
     createCountdownRecord({ name, description })
-      .then((response) => {
-        createCountdownSettings(response);
+      .then((res) => {
+        if (!res || !res.data) throw new Error();
+        if (res?.data?.status >= 400) throw new Error();
+
+        createCountdownSettings(res);
       })
       .catch((e) => {
-        setIsSuspense(false);
         errorNotification(t("global.error"), {
           title: t("global.errorTitle"),
         });
@@ -60,30 +62,38 @@ export default function ModalNewCountdown() {
   }
 
   function createCountdownSettings(
-    response: APIResponse<{
+    res: APIResponse<{
       id: StringOrNumber;
     }>
   ) {
-    if (!response.payload) {
-      return;
-    }
+    if (!res || !res.data) return;
 
-    const { id } = JSON.parse(JSON.stringify(response.payload));
+    const { id } = JSON.parse(JSON.stringify(res.data.payload));
 
-    createCountdownSettingsRecord(id).then((res) => {
-      setIsSuspense(false);
-      onClose();
+    createCountdownSettingsRecord(id)
+      .then((res) => {
+        if (!res || !res.data) throw new Error();
+        if (res?.data?.status >= 400) throw new Error();
 
-      successNotification(t("countdown_edit_new.createSuccess"), {
-        title: t("countdown_edit_new.createSuccessTitle"),
-        buttonProps: {
-          children: t("countdown_edit_new.openEditor"),
-          onClick: () => setCurrentCountdown(id),
-        },
+        onClose();
+
+        successNotification(t("countdown_edit_new.createSuccess"), {
+          title: t("countdown_edit_new.createSuccessTitle"),
+          buttonProps: {
+            children: t("countdown_edit_new.openEditor"),
+            onClick: () => setCurrentCountdown(id),
+          },
+        });
+      })
+      .catch(() =>
+        errorNotification(t("global.error"), {
+          title: t("global.errorTitle"),
+        })
+      )
+      .finally(() => {
+        setIsSuspense(false);
+        mutate(COUNTDOWNS_REST_API_ENDPOINTS.findAll.endpoint());
       });
-
-      mutate(COUNTDOWNS_REST_API_ENDPOINTS.create.endpoint());
-    });
   }
 
   return (

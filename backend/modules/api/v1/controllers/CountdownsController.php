@@ -45,16 +45,17 @@ class CountdownsController {
     }
 
     public function create( \WP_REST_Request $request ) {
+        $operation = 'Countdown creation';
 
         $name_param        = $request->get_param( 'name' );
         $description_param = $request->get_param( 'description' );
 
         if ( empty( $name_param ) || $name_param === null ) {
-            return RestApiResponseError::missing_parameter( 'name', 'Countdown creation' );
+            return RestApiResponseError::missing_parameter( 'name', $operation );
         }
 
         if ( empty( $description_param ) || $description_param === null ) {
-            return RestApiResponseError::missing_parameter( 'description', 'Countdown creation' );
+            return RestApiResponseError::missing_parameter( 'description', $operation );
         }
 
         $new_countdown = array(
@@ -65,32 +66,33 @@ class CountdownsController {
         $result = $this->repository->insert( $new_countdown );
 
         if ( $result instanceof DatabaseResponseError ) {
-            return RestApiResponseError::database_error( $result->get_message(), 'Countdown creation' );
+            return RestApiResponseError::database_error( $result->get_message(), $operation );
         }
 
         return RestApiResponseSuccess::success( 'Countdown created', array(
-            'operation' => 'Countdown creation',
+            'operation' => $operation,
             'payload'   => $result->to_array()['payload'],
         ) );
 
     }
 
     public function update( \WP_REST_Request $request ) {
+        $operation    = 'Countdown update';
         $countdown_id = absint( $request->get_param( 'id' ) );
 
         if ( !is_numeric( $countdown_id ) ) {
-            return RestApiResponseError::invalid_parameter( 'id', 'Countdown update' );
+            return RestApiResponseError::invalid_parameter( 'id', $operation );
         }
 
         $name_param        = $request->get_param( 'name' );
         $description_param = $request->get_param( 'description' );
 
         if ( empty( $name_param ) || $name_param === null ) {
-            return RestApiResponseError::missing_parameter( 'name', 'Countdown update' );
+            return RestApiResponseError::missing_parameter( 'name', $operation );
         }
 
         if ( empty( $description_param ) || $description_param === null ) {
-            return RestApiResponseError::missing_parameter( 'description', 'Countdown update' );
+            return RestApiResponseError::missing_parameter( 'description', $operation );
         }
 
         $next_countdown = array(
@@ -101,58 +103,60 @@ class CountdownsController {
         $result = $this->repository->update( $next_countdown, $countdown_id );
 
         if ( $result instanceof DatabaseResponseError ) {
-            return RestApiResponseError::database_error( $result->get_message(), 'Countdown update' );
+            return RestApiResponseError::database_error( $result->get_message(), $operation );
         }
 
         if ( $result instanceof DatabaseResponseNotAffected ) {
-            return RestApiResponseError::database_records_not_affected( $result->get_message(), 'Countdown update' );
+            return RestApiResponseError::database_records_not_affected( $result->get_message(), $operation );
         }
 
         return RestApiResponseSuccess::success( 'Countdown updated', array(
-            'operation' => 'Countdown update',
+            'operation' => $operation,
             'payload'   => $result->to_array()['payload'],
         ) );
 
     }
 
     public function delete( \WP_REST_Request $request ) {
+        $operation    = 'Countdown deletion';
         $countdown_id = absint( $request->get_param( 'id' ) );
 
         if ( !is_numeric( $countdown_id ) ) {
-            return RestApiResponseError::invalid_parameter( 'id', 'Countdown deletion' );
+            return RestApiResponseError::invalid_parameter( 'id', $operation );
         }
 
         $result = $this->repository->delete( $countdown_id );
 
         if ( $result instanceof DatabaseResponseError ) {
-            return RestApiResponseError::database_error( $result->get_message(), 'Countdown deletion' );
+            return RestApiResponseError::database_error( $result->get_message(), $operation );
         }
 
         if ( $result instanceof DatabaseResponseNotAffected ) {
-            return RestApiResponseError::database_records_not_affected( $result->get_message(), 'Countdown update' );
+            return RestApiResponseError::database_records_not_affected( $result->get_message(), $operation );
         }
 
         return RestApiResponseSuccess::success( 'Countdown deleted', array(
-            'operation' => 'Countdown deletion',
+            'operation' => $operation,
             'payload'   => $result->to_array()['payload'],
         ) );
 
     }
 
     public function find_all() {
+        $operation = 'Countdown find all';
 
         $result = $this->repository->find_all();
 
         if ( $result instanceof DatabaseResponseError ) {
-            return RestApiResponseError::database_error( $result->get_message(), 'Countdown find all' );
+            return RestApiResponseError::database_error( $result->get_message(), $operation );
         }
 
         if ( $result instanceof DatabaseResponseEmpty ) {
-            return RestApiResponseSuccess::database_records_empty( $result->get_message(), 'Countdown update' );
+            return RestApiResponseSuccess::database_records_empty( $result->get_message(), $operation );
         }
 
         return RestApiResponseSuccess::success( 'Countdowns found', array(
-            'operation' => 'Countdown find all',
+            'operation' => $operation,
             'payload'   => $result->to_array()['payload'],
         ) );
 
@@ -160,24 +164,26 @@ class CountdownsController {
 
     public function find_by_id( \WP_REST_Request $request ) {
 
+        $operation = 'Countdown find by id';
+
         $countdown_id = absint( $request->get_param( 'id' ) );
 
         if ( !is_numeric( $countdown_id ) ) {
-            return RestApiResponseError::invalid_parameter( 'id', 'Countdown find by id' );
+            return RestApiResponseError::invalid_parameter( 'id', $operation );
         }
 
         $result = $this->repository->find_by_id( $countdown_id );
 
         if ( $result instanceof DatabaseResponseError ) {
-            return RestApiResponseError::database_error( $result->get_message(), 'Countdown find by id' );
+            return RestApiResponseError::database_error( $result->get_message(), $operation );
         }
 
         if ( $result instanceof DatabaseResponseNotFound ) {
-            return RestApiResponseError::database_record_not_found( $result->get_message(), 'Countdown update' );
+            return RestApiResponseError::database_record_not_found( $result->get_message(), $operation );
         }
 
         return RestApiResponseSuccess::success( 'Countdown found', array(
-            'operation' => 'Countdown find by id',
+            'operation' => $operation,
             'payload'   => $result->to_array()['payload'],
         ) );
 

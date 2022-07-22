@@ -15,17 +15,25 @@ import { APIResponse } from "../../types";
  *
  * If a record in the database is not found, the API will return an empty array.
  */
+
 const findAll = async (): Promise<APIResponse<CountdownModel[]>> => {
   const { endpoint, method } = COUNTDOWNS_REST_API_ENDPOINTS.findAll;
+  const disabledNonce = process.env.NODE_ENV === "development" && true;
+
+  const headers = {
+    "Content-Type": "application/json",
+    // @ts-ignore
+    "X-WP-Nonce": clockdownLocalized.wp_rest_nonce,
+  };
+
+  if (disabledNonce) {
+    delete headers["X-WP-Nonce"];
+  }
 
   return await (
     await fetch(endpoint(), {
       method: method,
-      headers: {
-        "Content-Type": "application/json",
-        // @ts-ignore
-        "X-WP-Nonce": clockdownLocalized.wp_rest_nonce,
-      },
+      headers,
     })
   ).json();
 };

@@ -11,7 +11,7 @@ import { RuntimeEnvironment } from "./types";
 interface CountdownProviderProps {
   children: React.ReactNode;
   current?: CountdownModel["id"] | null;
-  runtimeEnvironment: RuntimeEnvironment;
+  runtimeEnvironment?: RuntimeEnvironment;
 }
 
 /**

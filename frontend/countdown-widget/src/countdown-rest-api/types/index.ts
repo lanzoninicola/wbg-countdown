@@ -2,16 +2,28 @@
  * Shape of the REST API response.
  *
  * {
- *   code: "error" | "success" | "warning";
+ *   code: "error" | "success";
  *   message: string;
  *   data: {
+ *      operation: string;
  *      status: number;
- *      payload?: T  // "T" parameter of APIResponse interface
+ *      payload?: {
+ *       operation: string;
+ *       status: number;
+ *       payload: T  // "T" parameter of APIResponse interface
+ *      }
  *   };
  * }
  */
+
 export interface APIResponse<T = undefined> {
-  code: "error" | "success" | "warning" | "rest_no_route";
+  code: "error" | "success";
   message: string;
+  data?: APIResponsePayload<T>;
+}
+
+export interface APIResponsePayload<T = undefined> {
+  operation: string;
+  status: number;
   payload?: T;
 }

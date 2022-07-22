@@ -18,6 +18,7 @@ import { useSWRConfig } from "swr";
 import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdown-rest-api/constants/countdowns/endpoints";
 import { remove as removeCountdownSettings } from "../../../countdown-rest-api/services/editor";
 import { useState } from "react";
+import useNotifications from "../../../hooks/useNotification";
 
 interface ModalDeleteCountdownProps {
   countdown: CountdownModel;
@@ -31,16 +32,24 @@ export default function ModalDeleteCountdown({
   const { mutate } = useSWRConfig();
   const [isDeleteSuspense, setIsDeleteSuspense] = useState(false);
 
+  const { error: errorNotification } = useNotifications();
+
   function deleteCountdown(ctd: any) {
     setIsDeleteSuspense(true);
     removeCountdown(ctd.id)
-      .then(() => {
+      .then((res) => {
+        if (!res || !res.data) throw new Error();
+        if (res?.data?.status >= 400) throw new Error();
+
         removeCountdownSettings(ctd.id);
       })
-      .then(() => {
-        mutate(COUNTDOWNS_REST_API_ENDPOINTS.create.endpoint());
+      .catch(() => {
+        errorNotification(t("global.error"), {
+          title: t("global.errorTitle"),
+        });
       })
       .finally(() => {
+        mutate(COUNTDOWNS_REST_API_ENDPOINTS.findAll.endpoint());
         onClose();
         setIsDeleteSuspense(false);
       });
