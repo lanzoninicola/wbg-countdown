@@ -27,4 +27,5 @@ return array(
     'Clockdown\\Backend\\App\\Services\\' => array($baseDir . '/backend/app/services'),
     'Clockdown\\Backend\\App\\Interfaces\\' => array($baseDir . '/backend/app/interfaces'),
     'Clockdown\\Backend\\App\\Common\\' => array($baseDir . '/backend/app/common'),
+    'Clockdown\\' => array($baseDir . '/'),
 );

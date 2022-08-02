@@ -40,6 +40,7 @@ class ComposerStaticInit896bedbb7132cf491fd9b0bc26984e54
             'Clockdown\\Backend\\App\\Services\\' => 31,
             'Clockdown\\Backend\\App\\Interfaces\\' => 33,
             'Clockdown\\Backend\\App\\Common\\' => 29,
+            'Clockdown\\' => 10,
         ),
     );
 
@@ -127,6 +128,10 @@ class ComposerStaticInit896bedbb7132cf491fd9b0bc26984e54
         'Clockdown\\Backend\\App\\Common\\' => 
         array (
             0 => __DIR__ . '/../..' . '/backend/app/common',
+        ),
+        'Clockdown\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/',
         ),
     );
 

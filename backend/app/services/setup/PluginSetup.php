@@ -85,6 +85,10 @@ class PluginSetup {
         $charset_collate = DatabaseHelpers::get_charset_collate();
         $wp_prefix       = DatabaseHelpers::get_wp_db_prefix();
 
+        if ( empty( $tables ) ) {
+            return;
+        }
+
         foreach ( $tables as $name => $sql ) {
 
             $table_name = "{$wp_prefix}{$this->db_prefix}_{$name}";

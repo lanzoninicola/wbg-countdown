@@ -44,7 +44,6 @@ class ClockdownSetup implements PluginSetupInterface {
                 created_at datetime NULL,
                 updated_at datetime NULL,
                 PRIMARY KEY  (id)
-                -- INDEX countdown_id_idx (countdown_id ASC) VISIBLE,
                 ) %charset_collate%;",
         );
 

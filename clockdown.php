@@ -1,5 +1,5 @@
 <?php
-
+namespace Clockdown;
 /**
  * The plugin bootstrap file
  *
@@ -34,44 +34,18 @@ if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
     require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 }
 
-use Clockdown\Backend\PluginCore\Activator;
 use Clockdown\Backend\PluginCore\Core;
-use Clockdown\Backend\PluginCore\Deactivator;
-use Clockdown\Backend\PluginCore\Uninstaller;
 
+define( 'CLOCKDOWN_PLUGIN_ID', '2' );
 define( 'CLOCKDOWN_PLUGIN_NAME', 'clockdown' );
 define( 'CLOCKDOWN_PLUGIN_VERSION', '1.0.1' );
 define( 'CLOCKDOWN_PLUGIN_DB_PREFIX', 'ckdo' );
 define( 'CLOCKDOWN_PLUGIN_BASE_URL_PATH', plugin_dir_url( __FILE__ ) );
 define( 'CLOCKDOWN_TEXT_DOMAIN', 'clockdown' );
 
-/**
- * The code that runs during plugin activation.
- * This action is documented in plugin-core/Activator.php
- */
-function activate() {
-    Activator::activate();
-}
-
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in plugin-core/Deactivator.php
- */
-function deactivate() {
-    Deactivator::deactivate();
-}
-
-/**
- * The code that runs when the plugin is uninstalled.
- * This action is documented in plugin-core/Uninstaller.php
- */
-function uninstall() {
-    Uninstaller::uninstall();
-}
-
-register_activation_hook( __FILE__, 'activate' );
-register_deactivation_hook( __FILE__, 'deactivate' );
-register_uninstall_hook( __FILE__, 'uninstall' );
+register_activation_hook( __FILE__, array( 'Clockdown\Backend\PluginCore\Activator', 'activate' ) );
+register_deactivation_hook( __FILE__, array( 'Clockdown\Backend\PluginCore\Deactivator', 'deactivate' ) );
+register_uninstall_hook( __FILE__, array( 'Clockdown\Backend\PluginCore\Uninstaller', 'uninstall' ) );
 
 /**
  * Begins execution of the plugin.
