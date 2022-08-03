@@ -28,7 +28,7 @@ DELETE http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/1
 
 
 ### Get the countdown settings with id 2
-GET http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/68/settings
+GET http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/19/settings
 
 ### Create a countdown settings for the countdown with id 2
 POST http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/17/settings

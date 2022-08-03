@@ -4,130 +4,89 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit896bedbb7132cf491fd9b0bc26984e54
+class ComposerStaticInit52ea3edaa65e1833e507c367577ec588
 {
     public static $files = array (
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
-        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
-        '80cfd87f3d74c00a9020ef2b28d51605' => __DIR__ . '/../..' . '/backend/app/functions/admin_menu.php',
+        'e7da8a496deb2eb70b9646f9fd5fcaac' => __DIR__ . '/../..' . '/app/functions/admin_menu.php',
     );
 
     public static $prefixLengthsPsr4 = array (
-        'S' => 
-        array (
-            'Symfony\\Polyfill\\Php80\\' => 23,
-            'Symfony\\Polyfill\\Mbstring\\' => 26,
-            'Symfony\\Component\\VarDumper\\' => 28,
-        ),
         'C' => 
         array (
-            'Clockdown\\Backend\\PluginCore\\' => 29,
-            'Clockdown\\Backend\\Modules\\TemplatesEditor\\' => 42,
-            'Clockdown\\Backend\\Modules\\Setup\\' => 32,
-            'Clockdown\\Backend\\Modules\\CountdownWidget\\' => 42,
-            'Clockdown\\Backend\\Modules\\Api\\V1\\Repositories\\' => 46,
-            'Clockdown\\Backend\\Modules\\Api\\V1\\Models\\' => 40,
-            'Clockdown\\Backend\\Modules\\Api\\V1\\Factories\\' => 43,
-            'Clockdown\\Backend\\Modules\\Api\\V1\\Controllers\\' => 45,
-            'Clockdown\\Backend\\Modules\\Api\\V1\\' => 33,
-            'Clockdown\\Backend\\App\\Traits\\' => 29,
-            'Clockdown\\Backend\\App\\Services\\Setup\\' => 37,
-            'Clockdown\\Backend\\App\\Services\\ScriptLocalizer\\' => 47,
-            'Clockdown\\Backend\\App\\Services\\RestApi\\' => 39,
-            'Clockdown\\Backend\\App\\Services\\Logger\\' => 38,
-            'Clockdown\\Backend\\App\\Services\\Database\\' => 40,
-            'Clockdown\\Backend\\App\\Services\\' => 31,
-            'Clockdown\\Backend\\App\\Interfaces\\' => 33,
-            'Clockdown\\Backend\\App\\Common\\' => 29,
+            'Clockdown\\Core\\' => 15,
+            'Clockdown\\Client\\Config\\' => 24,
+            'Clockdown\\Client\\Backend\\CountdownWidget\\' => 41,
+            'Clockdown\\Client\\Backend\\Api\\V1\\Countdowns\\' => 43,
+            'Clockdown\\Client\\Backend\\Api\\V1\\CountdownSettings\\' => 50,
+            'Clockdown\\App\\Traits\\' => 21,
+            'Clockdown\\App\\Services\\ScriptLocalizer\\' => 39,
+            'Clockdown\\App\\Services\\RestApi\\' => 31,
+            'Clockdown\\App\\Services\\Logger\\' => 30,
+            'Clockdown\\App\\Services\\Database\\' => 32,
+            'Clockdown\\App\\Services\\' => 23,
+            'Clockdown\\App\\Interfaces\\' => 25,
+            'Clockdown\\App\\Functions\\' => 24,
+            'Clockdown\\App\\Common\\' => 21,
             'Clockdown\\' => 10,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Symfony\\Polyfill\\Php80\\' => 
+        'Clockdown\\Core\\' => 
         array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
+            0 => __DIR__ . '/../..' . '/core',
         ),
-        'Symfony\\Polyfill\\Mbstring\\' => 
+        'Clockdown\\Client\\Config\\' => 
         array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+            0 => __DIR__ . '/../..' . '/client/config',
         ),
-        'Symfony\\Component\\VarDumper\\' => 
+        'Clockdown\\Client\\Backend\\CountdownWidget\\' => 
         array (
-            0 => __DIR__ . '/..' . '/symfony/var-dumper',
+            0 => __DIR__ . '/../..' . '/client/backend/countdown-widget',
         ),
-        'Clockdown\\Backend\\PluginCore\\' => 
+        'Clockdown\\Client\\Backend\\Api\\V1\\Countdowns\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/backend/plugin-core',
+            0 => __DIR__ . '/../..' . '/client/backend/api/v1/countdowns',
         ),
-        'Clockdown\\Backend\\Modules\\TemplatesEditor\\' => 
+        'Clockdown\\Client\\Backend\\Api\\V1\\CountdownSettings\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/backend/modules/templates-editor',
+            0 => __DIR__ . '/../..' . '/client/backend/api/v1/countdown-settings',
         ),
-        'Clockdown\\Backend\\Modules\\Setup\\' => 
+        'Clockdown\\App\\Traits\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/backend/modules/setup',
+            0 => __DIR__ . '/../..' . '/app/traits',
         ),
-        'Clockdown\\Backend\\Modules\\CountdownWidget\\' => 
+        'Clockdown\\App\\Services\\ScriptLocalizer\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/backend/modules/countdown-widget',
+            0 => __DIR__ . '/../..' . '/app/services/script-localizer',
         ),
-        'Clockdown\\Backend\\Modules\\Api\\V1\\Repositories\\' => 
+        'Clockdown\\App\\Services\\RestApi\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/backend/modules/api/v1/repositories',
+            0 => __DIR__ . '/../..' . '/app/services/rest-api',
         ),
-        'Clockdown\\Backend\\Modules\\Api\\V1\\Models\\' => 
+        'Clockdown\\App\\Services\\Logger\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/backend/modules/api/v1/models',
+            0 => __DIR__ . '/../..' . '/app/services/logger',
         ),
-        'Clockdown\\Backend\\Modules\\Api\\V1\\Factories\\' => 
+        'Clockdown\\App\\Services\\Database\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/backend/modules/api/v1/factories',
+            0 => __DIR__ . '/../..' . '/app/services/database',
         ),
-        'Clockdown\\Backend\\Modules\\Api\\V1\\Controllers\\' => 
+        'Clockdown\\App\\Services\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/backend/modules/api/v1/controllers',
+            0 => __DIR__ . '/../..' . '/app/services',
         ),
-        'Clockdown\\Backend\\Modules\\Api\\V1\\' => 
+        'Clockdown\\App\\Interfaces\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/backend/modules/api/v1',
+            0 => __DIR__ . '/../..' . '/app/interfaces',
         ),
-        'Clockdown\\Backend\\App\\Traits\\' => 
+        'Clockdown\\App\\Functions\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/backend/app/traits',
+            0 => __DIR__ . '/../..' . '/app/functions',
         ),
-        'Clockdown\\Backend\\App\\Services\\Setup\\' => 
+        'Clockdown\\App\\Common\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/backend/app/services/setup',
-        ),
-        'Clockdown\\Backend\\App\\Services\\ScriptLocalizer\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/backend/app/services/script-localizer',
-        ),
-        'Clockdown\\Backend\\App\\Services\\RestApi\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/backend/app/services/rest-api',
-        ),
-        'Clockdown\\Backend\\App\\Services\\Logger\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/backend/app/services/logger',
-        ),
-        'Clockdown\\Backend\\App\\Services\\Database\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/backend/app/services/database',
-        ),
-        'Clockdown\\Backend\\App\\Services\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/backend/app/services',
-        ),
-        'Clockdown\\Backend\\App\\Interfaces\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/backend/app/interfaces',
-        ),
-        'Clockdown\\Backend\\App\\Common\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/backend/app/common',
+            0 => __DIR__ . '/../..' . '/app/common',
         ),
         'Clockdown\\' => 
         array (
@@ -136,20 +95,15 @@ class ComposerStaticInit896bedbb7132cf491fd9b0bc26984e54
     );
 
     public static $classMap = array (
-        'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
-        'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
-        'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
-        'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit896bedbb7132cf491fd9b0bc26984e54::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit896bedbb7132cf491fd9b0bc26984e54::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit896bedbb7132cf491fd9b0bc26984e54::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit52ea3edaa65e1833e507c367577ec588::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit52ea3edaa65e1833e507c367577ec588::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit52ea3edaa65e1833e507c367577ec588::$classMap;
 
         }, null, ClassLoader::class);
     }

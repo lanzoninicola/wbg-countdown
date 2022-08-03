@@ -1,46 +1,32 @@
 {
-  "name": "lanzoni/clockdown",
-  "description": "Clockdown Wordpress Plugin",
-  "homepage": "http://example.com",
-  "license": "",
-  "authors": [
-    {
-      "name": "Nicola Lanzoni",
-      "email": "lanzoni.nicola@gmail.com",
-      "homepage": "http://example.com",
-      "role": "Developer"
-    }
-  ],
+  "name": "lanzo/clockdown",
   "autoload": {
     "psr-4": {
-      "Clockdown\\": ".",
-      "Clockdown\\Backend\\PluginCore\\": "./backend/plugin-core",
-      "Clockdown\\Backend\\App\\Interfaces\\": "./backend/app/interfaces",
-      "Clockdown\\Backend\\App\\Services\\": "./backend/app/services",
-      "Clockdown\\Backend\\App\\Services\\Database\\": "./backend/app/services/database",
-      "Clockdown\\Backend\\App\\Services\\Setup\\": "./backend/app/services/setup",
-      "Clockdown\\Backend\\App\\Services\\RestApi\\": "./backend/app/services/rest-api",
-      "Clockdown\\Backend\\App\\Services\\ScriptLocalizer\\": "./backend/app/services/script-localizer",
-      "Clockdown\\Backend\\App\\Services\\Logger\\": "./backend/app/services/logger",
-      "Clockdown\\Backend\\App\\Traits\\": "./backend/app/traits",
-      "Clockdown\\Backend\\App\\Common\\": "./backend/app/common",
-      "Clockdown\\Backend\\Modules\\Setup\\": "./backend/modules/setup",
-      "Clockdown\\Backend\\Modules\\TemplatesEditor\\": "./backend/modules/templates-editor",
-      "Clockdown\\Backend\\Modules\\CountdownWidget\\": "./backend/modules/countdown-widget",
-      "Clockdown\\Backend\\Modules\\Api\\V1\\": "./backend/modules/api/v1",
-      "Clockdown\\Backend\\Modules\\Api\\V1\\Controllers\\": "./backend/modules/api/v1/controllers",
-      "Clockdown\\Backend\\Modules\\Api\\V1\\Factories\\": "./backend/modules/api/v1/factories",
-      "Clockdown\\Backend\\Modules\\Api\\V1\\Repositories\\": "./backend/modules/api/v1/repositories",
-      "Clockdown\\Backend\\Modules\\Api\\V1\\Models\\": "./backend/modules/api/v1/models"
+      "Clockdown\\": "./",
+      "Clockdown\\Core\\": "./core",
+      "Clockdown\\App\\Interfaces\\": "./app/interfaces",
+      "Clockdown\\App\\Services\\": "./app/services",
+      "Clockdown\\App\\Services\\Database\\": "./app/services/database",
+      "Clockdown\\App\\Services\\RestApi\\": "./app/services/rest-api",
+      "Clockdown\\App\\Services\\ScriptLocalizer\\": "./app/services/script-localizer",
+      "Clockdown\\App\\Services\\Logger\\": "./app/services/logger",
+      "Clockdown\\App\\Traits\\": "./app/traits",
+      "Clockdown\\App\\Functions\\": "./app/functions",
+      "Clockdown\\App\\Common\\": "./app/common",
+      "Clockdown\\Client\\Config\\": "./client/config",
+      "Clockdown\\Client\\Backend\\Api\\V1\\Countdowns\\": "./client/backend/api/v1/countdowns",
+      "Clockdown\\Client\\Backend\\Api\\V1\\CountdownSettings\\": "./client/backend/api/v1/countdown-settings",
+      "Clockdown\\Client\\Backend\\CountdownWidget\\": "./client/backend/countdown-widget"
     },
     "files": [
-      "./backend/app/functions/admin_menu.php"
+      "./app/functions/admin_menu.php"
     ]
   },
-  "require-dev": {
-    "symfony/var-dumper": "^5.4"
-  },
-  "config": {
-    "allow-plugins": {}
-  }
+  "authors": [
+    {
+      "name": "Nicola",
+      "email": "lanzoni.nicola@gmail.com"
+    }
+  ],
+  "require": {}
 }

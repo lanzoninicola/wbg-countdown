@@ -1,5 +1,10 @@
 <?php
+
 namespace Clockdown;
+
+use Clockdown\Client\Config\Configurator;
+use Clockdown\Core\Init;
+
 /**
  * The plugin bootstrap file
  *
@@ -12,7 +17,7 @@ namespace Clockdown;
  * Author URI:        https://lanzoninicola.com.br
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       clockdown
+ * Text Domain:       commerce
  * Domain Path:       /languages
  * @package           Clockdown
  *
@@ -34,18 +39,16 @@ if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
     require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 }
 
-use Clockdown\Backend\PluginCore\Core;
-
-define( 'CLOCKDOWN_PLUGIN_ID', '2' );
-define( 'CLOCKDOWN_PLUGIN_NAME', 'clockdown' );
+define( 'CLOCKDOWN_PLUGIN_ID', '1' );
+define( 'CLOCKDOWN_PLUGIN_NAME', 'commerce' );
 define( 'CLOCKDOWN_PLUGIN_VERSION', '1.0.1' );
-define( 'CLOCKDOWN_PLUGIN_DB_PREFIX', 'ckdo' );
+define( 'CLOCKDOWN_PLUGIN_DB_PREFIX', 'comm' );
 define( 'CLOCKDOWN_PLUGIN_BASE_URL_PATH', plugin_dir_url( __FILE__ ) );
-define( 'CLOCKDOWN_TEXT_DOMAIN', 'clockdown' );
+define( 'CLOCKDOWN_TEXT_DOMAIN', 'commerce' );
 
-register_activation_hook( __FILE__, array( 'Clockdown\Backend\PluginCore\Activator', 'activate' ) );
-register_deactivation_hook( __FILE__, array( 'Clockdown\Backend\PluginCore\Deactivator', 'deactivate' ) );
-register_uninstall_hook( __FILE__, array( 'Clockdown\Backend\PluginCore\Uninstaller', 'uninstall' ) );
+register_activation_hook( __FILE__, array( 'Clockdown\Client\Setup\Activator', 'activate' ) );
+register_deactivation_hook( __FILE__, array( 'Clockdown\Client\Setup\Deactivator', 'deactivate' ) );
+register_uninstall_hook( __FILE__, array( 'Clockdown\Client\Setup\Uninstaller', 'uninstall' ) );
 
 /**
  * Begins execution of the plugin.
@@ -58,13 +61,11 @@ register_uninstall_hook( __FILE__, array( 'Clockdown\Backend\PluginCore\Uninstal
  */
 function run_plugin() {
 
-    /**
-     * The core plugin class that is used to define internationalization,
-     * admin-specific hooks, and public-facing site hooks.
-     */
+    $config = new Configurator();
 
-    $plugin = new Core();
-    $plugin->run();
+    $init = new Init( $config );
+
+    $init->run();
 
 }
 
