@@ -141,10 +141,13 @@ class Configurator implements PluginConfigurable {
      */
     public function define_localized_script( ScriptAdminLocalizerService $script_admin_localizer, ScriptPublicLocalizerService $script_public_localizer ) {
 
+        $is_onboarding_required = (bool) get_option( strtolower( CLOCKDOWN_PLUGIN_NAME ) . '_is_onboarding_required' );
+
         $script_admin_localizer->localize(
             array(
-                'apiURL'   => home_url( '/wp-json' ),
-                'language' => get_locale(),
+                'apiURL'                 => home_url( '/wp-json' ),
+                'language'               => get_locale(),
+                'is_onboarding_required' => $is_onboarding_required === "" ? 'false' : 'true',
             )
         );
 

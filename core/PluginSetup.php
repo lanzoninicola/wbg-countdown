@@ -13,6 +13,13 @@ use Clockdown\App\Services\Database\DatabaseHelpers;
 class PluginSetup {
 
     /**
+     * Define the prefix for the plugin.
+     *
+     * @return void
+     */
+    public $analytics_server_api_url = 'http://localhost/bb-melhor-envio/wp-json/commerce/v1/analytics/installations';
+
+    /**
      * The name of the plugin.
      *
      * @var string
@@ -57,6 +64,7 @@ class PluginSetup {
 
     /**
      * The options to be saved in the database.
+     * Associative array with the name of the option as key and the value as value.
      *
      * @var array
      */
@@ -70,18 +78,53 @@ class PluginSetup {
      * @param string $db_version The db version of the plugin. Costant defined in the plugin **[PLUGIN_NAME]_PLUGIN_VERSION**.
      * @param string $plugin_id The id of the plugin. Costant defined in the plugin **[PLUGIN_NAME]_PLUGIN_ID**.
      */
-    public function __construct( string $plugin_name, string $db_prefix, string $db_version, string $plugin_id ) {
+    public function __construct(
+        string $plugin_name,
+        string $db_prefix,
+        string $db_version,
+        string $plugin_id
+    ) {
 
         $this->plugin_name = strtolower( $plugin_name );
         $this->db_prefix   = $db_prefix;
         $this->db_version  = $db_version;
         $this->plugin_id   = $plugin_id;
 
+        $this->define_plugin_options();
+
+        $this->define_installation_id();
+
+    }
+
+    /**
+     * Define the plugin options.
+     * Save in the local array the options to be saved in the database.
+     *
+     * @return void
+     */
+    private function define_plugin_options() {
         $this->options = array(
-            'db_tables_prefix' => $this->db_prefix,
-            'db_version'       => $this->db_version,
-            'plugin_id'        => $this->plugin_id,
+            'db_tables_prefix'       => $this->db_prefix,
+            'db_version'             => $this->db_version,
+            'plugin_id'              => $this->plugin_id,
+            'is_activation_tracked'  => false,
+            'is_onboarding_required' => false,
         );
+    }
+
+    /**
+     * Define the installation id.
+     * Save in the local array the installation id option to be saved in the database.
+     *
+     * @return void
+     */
+    private function define_installation_id() {
+        $installation_id_option = (bool) get_option( "{$this->plugin_name}_installation_id" );
+
+        if ( $installation_id_option === false ) {
+            $this->options['installation_id'] = DatabaseHelpers::generate_uuid();
+        }
+
     }
 
     /**
@@ -142,8 +185,8 @@ class PluginSetup {
      */
     public function remove_options(): void {
 
-        foreach ( $this->options as $option_name => $option_value ) {
-            delete_option( "{$this->plugin_name}_{$option_name}", $option_value );
+        foreach ( $this->options as $option_name => $_ ) {
+            delete_option( "{$this->plugin_name}_{$option_name}" );
         }
 
     }
@@ -175,6 +218,49 @@ class PluginSetup {
     }
 
     /**
+     * Send the installation data to the server.
+     * @return void
+     */
+    private function send_activation_data() {
+
+        $is_activation_tracked = (bool) get_option( "{$this->plugin_name}_activation_tracked" );
+
+        if ( $is_activation_tracked ) {
+            return;
+        }
+
+        $installation_id = get_option( "{$this->plugin_name}_installation_id" );
+        $site_url        = get_site_url();
+        $site_language   = get_bloginfo( 'language' );
+        $site_timezone   = get_option( 'timezone_string' );
+
+        if ( empty( $site_timezone ) ) {
+            $site_timezone = 'UTC';
+        }
+
+        $response = wp_remote_post(
+            $this->analytics_server_api_url,
+            array(
+                'body' => array(
+                    'product_id'      => $this->plugin_id,
+                    'installation_id' => $installation_id,
+                    'site_url'        => $site_url,
+                    'site_language'   => $site_language,
+                    'site_timezone'   => $site_timezone,
+                ),
+            )
+        );
+
+        if ( is_wp_error( $response ) ) {
+            add_option( "{$this->plugin_name}_activation_tracked", false );
+            return;
+        }
+
+        add_option( "{$this->plugin_name}_activation_tracked", true );
+
+    }
+
+    /**
      * Add the tables to the database.
      *
      * @return array The result of the dbDelta() function.
@@ -182,6 +268,7 @@ class PluginSetup {
     public function install(): array{
 
         $this->add_options();
+        $this->send_activation_data();
         $result = $this->sync_db();
 
         return $result;

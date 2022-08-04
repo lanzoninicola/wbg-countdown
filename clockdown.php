@@ -46,9 +46,9 @@ define( 'CLOCKDOWN_PLUGIN_DB_PREFIX', 'ckdo' );
 define( 'CLOCKDOWN_PLUGIN_BASE_URL_PATH', plugin_dir_url( __FILE__ ) );
 define( 'CLOCKDOWN_TEXT_DOMAIN', 'clockdown' );
 
-register_activation_hook( __FILE__, array( 'Clockdown\Client\Setup\Activator', 'activate' ) );
-register_deactivation_hook( __FILE__, array( 'Clockdown\Client\Setup\Deactivator', 'deactivate' ) );
-register_uninstall_hook( __FILE__, array( 'Clockdown\Client\Setup\Uninstaller', 'uninstall' ) );
+register_activation_hook( __FILE__, array( 'Clockdown\Client\Config\Activator', 'activate' ) );
+register_deactivation_hook( __FILE__, array( 'Clockdown\Client\Config\Deactivator', 'deactivate' ) );
+register_uninstall_hook( __FILE__, array( 'Clockdown\Client\Config\Uninstaller', 'uninstall' ) );
 
 /**
  * Begins execution of the plugin.
