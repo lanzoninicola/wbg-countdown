@@ -6,16 +6,16 @@ POST http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns
 content-type: application/json
 
 {
-    "name1": "countdown 3",
+    "name": "countdown 3",
     "description": "Countdown description"
 }
 
 ### Get the countdown with id 1
-GET http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/68
+GET http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/16
 
 
 ### Update the countdown with id 1
-PUT http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/992222
+PUT http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/16
 content-type: application/json
 
 {

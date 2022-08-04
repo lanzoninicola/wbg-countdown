@@ -15,22 +15,24 @@ class RestApiEndpoint {
      * @param string $capability The capability of the endpoint.
      * @param string $middleware_object The instance of the RestApiValidatorMiddleware class for validationa and sanitization.
      */
-    public function __construct( string $url, string $verb, array $callback, string $capability, RestApiValidatorMiddleware $middleware_object ) {
+    public function __construct(
+        string $url,
+        string $verb,
+        array $callback,
+        string $capability,
+        array $validation_sanitizer_rules = array()
+    ) {
 
         if ( !in_array( $verb, $this->verbs ) ) {
             throw new \Exception( 'Invalid verb.' );
 
         }
 
-        if ( empty( $middleware_object ) ) {
-            throw new \Exception( 'Guard not set.' );
-        }
-
-        $this->url               = $url;
-        $this->verb              = $verb;
-        $this->callback          = $callback;
-        $this->capability        = $capability;
-        $this->middleware_object = $middleware_object;
+        $this->url                        = $url;
+        $this->verb                       = $verb;
+        $this->callback                   = $callback;
+        $this->capability                 = $capability;
+        $this->validation_sanitizer_rules = $validation_sanitizer_rules;
 
     }
 
@@ -72,13 +74,12 @@ class RestApiEndpoint {
     }
 
     /**
-     * Returns the name of the guard class that contains the methods
-     * to run to validation and sanitization of the request arguments.
+     * Returns the array rules for validation and sanitization of the request arguments.
      *
-     * @return object
+     * @return array
      */
-    public function middleware_object(): object {
-        return $this->middleware_object;
+    public function rules(): array{
+        return $this->validation_sanitizer_rules;
     }
 
 }
