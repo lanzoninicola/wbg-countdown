@@ -4,7 +4,7 @@ namespace Clockdown\App\Services\RestApi;
 
 use Clockdown\App\Traits\SanitizerTrait;
 
-class RestApiEndpointGuard implements RestApiEndpointGuardInterface {
+class RestApiValidatorMiddleware implements RestApiValidatorMiddlewareInterface {
 
     use SanitizerTrait;
 
@@ -16,7 +16,7 @@ class RestApiEndpointGuard implements RestApiEndpointGuardInterface {
     protected $rules = array();
 
     /**
-     * RestApiEndpointGuard constructor.
+     * RestApiValidatorMiddleware constructor.
      * The rules is the collection of the rest api enpoint argument
      * and the validation/sanitization rules.
      *
@@ -93,11 +93,6 @@ class RestApiEndpointGuard implements RestApiEndpointGuardInterface {
      * @return boolean
      */
     public function validate( $value, array $rules ): bool {
-
-// 'required' validation
-        if ( $rules['required'] && empty( $value ) ) {
-            return false;
-        }
 
 // 'type' validation
         if ( !empty( $rules['type'] ) && $this->get_type_from_rules( $rules ) !== gettype( $value ) ) {

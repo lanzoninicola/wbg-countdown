@@ -40,11 +40,11 @@ if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
 }
 
 define( 'CLOCKDOWN_PLUGIN_ID', '1' );
-define( 'CLOCKDOWN_PLUGIN_NAME', 'commerce' );
+define( 'CLOCKDOWN_PLUGIN_NAME', 'clockdown' );
 define( 'CLOCKDOWN_PLUGIN_VERSION', '1.0.1' );
-define( 'CLOCKDOWN_PLUGIN_DB_PREFIX', 'comm' );
+define( 'CLOCKDOWN_PLUGIN_DB_PREFIX', 'ckdo' );
 define( 'CLOCKDOWN_PLUGIN_BASE_URL_PATH', plugin_dir_url( __FILE__ ) );
-define( 'CLOCKDOWN_TEXT_DOMAIN', 'commerce' );
+define( 'CLOCKDOWN_TEXT_DOMAIN', 'clockdown' );
 
 register_activation_hook( __FILE__, array( 'Clockdown\Client\Setup\Activator', 'activate' ) );
 register_deactivation_hook( __FILE__, array( 'Clockdown\Client\Setup\Deactivator', 'deactivate' ) );

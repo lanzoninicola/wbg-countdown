@@ -3,9 +3,9 @@
 namespace Clockdown\Client\Config;
 
 use Clockdown\App\Services\RestApi\RestApiEndpoint;
-use Clockdown\App\Services\RestApi\RestApiEndpointGuard;
 use Clockdown\App\Services\RestApi\RestApiRoutes;
 use Clockdown\App\Services\RestApi\RestApiRoutesService;
+use Clockdown\App\Services\RestApi\RestApiValidatorMiddleware;
 use Clockdown\App\Services\ScriptLocalizer\ScriptAdminLocalizerService;
 use Clockdown\App\Services\ScriptLocalizer\ScriptPublicLocalizerService;
 use Clockdown\Client\Backend\Api\V1\CountdownSettings\CountdownSettingsControllerFactory;
@@ -173,12 +173,12 @@ class Configurator implements PluginConfigurable {
             new RestApiEndpoint( $countdowns_endpoint, 'GET',
                 array( $countdown_controller, 'find_all' ),
                 'public',
-                new RestApiEndpointGuard()
+                new RestApiValidatorMiddleware()
             ),
             new RestApiEndpoint( $countdowns_endpoint, 'POST',
                 array( $countdown_controller, 'create' ),
                 'public',
-                new RestApiEndpointGuard( array(
+                new RestApiValidatorMiddleware( array(
                     'name'        => array(
                         'type'     => 'string',
                         'required' => true,
@@ -192,9 +192,9 @@ class Configurator implements PluginConfigurable {
             new RestApiEndpoint( $countdown_id_endpoint, 'GET',
                 array( $countdown_controller, 'find_by_id' ),
                 'public',
-                new RestApiEndpointGuard( array(
+                new RestApiValidatorMiddleware( array(
                     'id' => array(
-                        'type'     => 'integer',
+                        'type'     => 'string:integer',
                         'required' => true,
                     ),
                 ) )
@@ -202,7 +202,7 @@ class Configurator implements PluginConfigurable {
             new RestApiEndpoint( $countdown_id_endpoint, 'PUT',
                 array( $countdown_controller, 'update' ),
                 'public',
-                new RestApiEndpointGuard( array(
+                new RestApiValidatorMiddleware( array(
                     'name'        => array(
                         'type'     => 'string',
                         'required' => true,
@@ -216,9 +216,9 @@ class Configurator implements PluginConfigurable {
             new RestApiEndpoint( $countdown_id_endpoint, 'DELETE',
                 array( $countdown_controller, 'delete' ),
                 'public',
-                new RestApiEndpointGuard( array(
+                new RestApiValidatorMiddleware( array(
                     'id' => array(
-                        'type'     => 'integer',
+                        'type'     => 'string:integer',
                         'required' => true,
                     ),
                 ) )
@@ -226,9 +226,9 @@ class Configurator implements PluginConfigurable {
             new RestApiEndpoint( $settings_enpoint, 'GET',
                 array( $settings_controller, 'find_by_id' ),
                 'public',
-                new RestApiEndpointGuard( array(
+                new RestApiValidatorMiddleware( array(
                     'id' => array(
-                        'type'     => 'integer',
+                        'type'     => 'string:integer',
                         'required' => true,
                     ),
                 ) )
@@ -236,13 +236,13 @@ class Configurator implements PluginConfigurable {
             new RestApiEndpoint( $settings_enpoint, 'POST',
                 array( $settings_controller, 'create' ),
                 'public',
-                new RestApiEndpointGuard( array(
+                new RestApiValidatorMiddleware( array(
                     'countdown_id' => array(
                         'type'     => 'integer',
                         'required' => true,
                     ),
                     'settings'     => array(
-                        'type'     => 'string:json_decode',
+                        'type'     => 'array:json_encode',
                         'required' => true,
                     ),
                 ) )
@@ -250,13 +250,17 @@ class Configurator implements PluginConfigurable {
             new RestApiEndpoint( $settings_enpoint, 'PUT',
                 array( $settings_controller, 'update' ),
                 'public',
-                new RestApiEndpointGuard( array(
+                new RestApiValidatorMiddleware( array(
+                    'id'           => array(
+                        'type'     => 'string:integer',
+                        'required' => true,
+                    ),
                     'countdown_id' => array(
                         'type'     => 'integer',
                         'required' => true,
                     ),
                     'settings'     => array(
-                        'type'     => 'string:json_decode',
+                        'type'     => 'array:json_encode',
                         'required' => true,
                     ),
                 ) )
@@ -264,9 +268,9 @@ class Configurator implements PluginConfigurable {
             new RestApiEndpoint( $settings_enpoint, 'DELETE',
                 array( $settings_controller, 'delete' ),
                 'public',
-                new RestApiEndpointGuard( array(
+                new RestApiValidatorMiddleware( array(
                     'id' => array(
-                        'type'     => 'integer',
+                        'type'     => 'string:integer',
                         'required' => true,
                     ),
                 ) )

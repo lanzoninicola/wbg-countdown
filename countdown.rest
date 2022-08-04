@@ -44,12 +44,15 @@ content-type: application/json
 }
 
 ### Update a countdown settings for the countdown with id 2
-PUT http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/16/settings
+PUT http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/17/settings
 content-type: application/json
 
 {
-    "countdown_id":"16",
+    "countdown_id":19,
     "settings":{"targetDate":"2022-10-06T23:00","targetTimezone":"Europe/Berlin",
     "timer":{"unitsShown":["dd","hh","mm","ss"],"showSeparator":true,"separatorChar":":","digitFontFamily":"Inter","digitFontWeight":"400","digitFontSize":48,"digitFontColor":"#000000","lastUnitColor":"#e10b0b","labelFontFamily":"Inter","labelFontWeight":"400","labelFontSize":16,"labelFontColor":"#000000"},
     "title":{"text":"Countdown to New Year","fontFamily":"Inter","fontWeight":"400","fontSize":24,"fontColor":"#000000"}}
 }
+
+### Delete the countdown settings with id 19
+DELETE http://localhost/bb-melhor-envio/wp-json/clockdown/v1/countdowns/17/settings

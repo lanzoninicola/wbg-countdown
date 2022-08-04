@@ -65,9 +65,10 @@ class CountdownSettingsRepository {
 
     }
 
-    public function update( array $data, int $id ) {
+    public function update( string $settings, int $id ) {
+
         $updated_countdown = array(
-            'settings'   => $data['settings'],
+            'settings'   => $settings,
             'updated_at' => date( 'Y-m-d H:i:s' ),
         );
 

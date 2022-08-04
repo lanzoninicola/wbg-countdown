@@ -2,7 +2,7 @@
 
 namespace Clockdown\App\Services\RestApi;
 
-interface RestApiEndpointGuardInterface {
+interface RestApiValidatorMiddlewareInterface {
 
     /**
      * This method is called by RestApiRouteService::register_api_endpoints()

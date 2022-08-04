@@ -40,24 +40,12 @@ class CountdownSettingsController {
         $this->service = $service;
     }
 
-    /**
-     * $new_countdown = array(
-    'countdown_id' => sanitize_text_field( $countdown_id_param ),
-    'settings'     => json_encode( $settings_param ),
-    );
-     */
     public function create( \WP_REST_Request $request ) {
         $operation = 'Settings creation';
 
-        $countdown_id_param = $request->get_param( 'countdown_id' );
-        $settings_param     = $request->get_param( 'settings' );
+        $params = $request->get_params();
 
-        $new_countdown = array(
-            'countdown_id' => sanitize_text_field( $countdown_id_param ),
-            'settings'     => json_encode( $settings_param ),
-        );
-
-        $result = $this->service->insert( $new_countdown );
+        $result = $this->service->insert( $params );
 
         if ( Helpers::is_error( $result ) ) {
             return RestApiResponseError::database_error( $result->get_error_message(), $operation );
@@ -71,26 +59,14 @@ class CountdownSettingsController {
     }
 
     public function update( \WP_REST_Request $request ) {
-        $operation    = 'Settings update';
-        $countdown_id = absint( $request->get_param( 'id' ) );
+        $operation = 'Settings update';
 
-        if ( !is_numeric( $countdown_id ) ) {
-            return RestApiResponseError::invalid_parameter( 'id', $operation );
-        }
+        $params = $request->get_params();
 
-        $countdown_id_param = $request->get_param( 'countdown_id' );
-        $settings_param     = $request->get_param( 'settings' );
-
-        if ( empty( $countdown_id_param ) || $countdown_id_param === null ) {
-            return RestApiResponseError::missing_parameter( 'countdownId', $operation );
-        }
-
-        $next_countdown_settings = array(
-            'countdown_id' => sanitize_text_field( $countdown_id_param ),
-            'settings'     => json_encode( $settings_param ),
+        $result = $this->service->update(
+            $params['settings'],
+            $params['id']
         );
-
-        $result = $this->service->update( $next_countdown_settings, $countdown_id );
 
         if ( Helpers::is_error( $result ) ) {
             return RestApiResponseError::database_error( $result->get_error_message(), $operation );
@@ -98,19 +74,14 @@ class CountdownSettingsController {
 
         return RestApiResponseSuccess::success( 'Settings updated', array(
             'operation' => $operation,
-            'payload'   => $result,
         ) );
+
     }
 
     public function delete( \WP_REST_Request $request ) {
-        $operation    = 'Settings deletion';
-        $countdown_id = absint( $request->get_param( 'id' ) );
+        $operation = 'Settings deletion';
 
-        if ( !is_numeric( $countdown_id ) ) {
-            return RestApiResponseError::invalid_parameter( 'id', $operation );
-        }
-
-        $result = $this->service->delete( $countdown_id );
+        $result = $this->service->delete( $request->get_param( 'id' ) );
 
         if ( Helpers::is_error( $result ) ) {
             return RestApiResponseError::database_error( $result->get_error_message(), $operation );
@@ -118,7 +89,6 @@ class CountdownSettingsController {
 
         return RestApiResponseSuccess::success( 'Settings deleted', array(
             'operation' => $operation,
-            'payload'   => $result,
         ) );
 
     }
@@ -126,13 +96,7 @@ class CountdownSettingsController {
     public function find_by_id( \WP_REST_Request $request ) {
         $operation = 'Settings find by id';
 
-        $countdown_id = absint( $request->get_param( 'id' ) );
-
-        if ( !is_numeric( $countdown_id ) ) {
-            return RestApiResponseError::invalid_parameter( 'id', $operation );
-        }
-
-        $result = $this->service->find_by_id( $countdown_id );
+        $result = $this->service->find_by_id( $request->get_param( 'id' ) );
 
         if ( Helpers::is_error( $result ) ) {
             return RestApiResponseError::database_error( $result->get_error_message(), $operation );

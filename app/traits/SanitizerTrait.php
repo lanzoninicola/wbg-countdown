@@ -63,7 +63,7 @@ trait SanitizerTrait {
             return $this->sanitize_string( $value );
         } else
 
-        if ( $type === 'int' ) {
+        if ( $type === 'int' || $type === 'integer' || $type === 'number' || $type === 'numeric' ) {
             return $this->sanitize_int( $value );
         } else
 
@@ -146,8 +146,7 @@ trait SanitizerTrait {
     private function sanitize_json( $value, string $action ) {
 
         if ( $action === 'encode' ) {
-            $sanitized = $this->sanitize_string( $value );
-            return json_encode( $sanitized );
+            return json_encode( $value );
         }
 
         return json_decode( $value );
