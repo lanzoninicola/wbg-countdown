@@ -55,7 +55,7 @@ const esEs = {
         },
       },
       countdown_edit_new: {
-        buttonLabel: "Crear",
+        buttonLabel: "Crear nuevo contador",
         header: "Nuevo contador",
         namePlaceholder: "Nombre del contador",
         descriptionPlaceholder: "Descripción del contador",
@@ -80,12 +80,21 @@ const esEs = {
         targetDate: "Fecha de finalización",
         countdownStyle: "Estilo del contador",
         propertiesBar: {
+          list: "Lista de contadores",
+          layout: "Elegir diseño",
           title: "Personalizar titulo",
           timer: "Personalizar dígitos",
           labels: "Personalizar etiquetas",
           separator: "Personalizar separador",
         },
         propertiesGroup: {
+          list: {
+            groupTitle: "Lista de contadores",
+          },
+          layout: {
+            groupTitle: "Elegir diseño",
+          },
+
           title: {
             groupTitle: "Estilo del título",
             titlePlaceholder: "Fecha de finalización al Nuevo Año",

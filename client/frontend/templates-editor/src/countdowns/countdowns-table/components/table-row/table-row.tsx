@@ -27,14 +27,16 @@ export default function TableRow({ countdown }: TableRowProps) {
 
   return (
     <Tr>
-      <Td maxW="12rem" overflow={"hidden"} textOverflow={"ellipsis"}>
-        <TableCellText>{id}</TableCellText>
+      <Td maxW="8rem" overflow={"hidden"} textOverflow={"ellipsis"}>
+        <TableCellText fontSize={"xs"}>{id}</TableCellText>
       </Td>
-      <Td maxW="12rem" overflow={"hidden"} textOverflow={"ellipsis"}>
-        <TableCellText>{name}</TableCellText>
+      <Td maxW="8rem" overflow={"hidden"} textOverflow={"ellipsis"}>
+        <TableCellText fontSize={"xs"}>{name}</TableCellText>
       </Td>
-      <Td maxW="30rem" overflow={"hidden"} textOverflow={"ellipsis"}>
-        <TableCellText>{description ? description : "..."}</TableCellText>
+      <Td maxW="20rem" overflow={"hidden"} textOverflow={"ellipsis"}>
+        <TableCellText fontSize={"xs"}>
+          {description ? description : "..."}
+        </TableCellText>
       </Td>
       <Td>
         <ShortcodePreview countdownId={countdown.id} />
@@ -52,12 +54,12 @@ export default function TableRow({ countdown }: TableRowProps) {
           <DeleteModal countdown={countdown} />
         </HStack>
       </Td>
-      <Td>
+      {/* <Td>
         <TableCellText fontSize={"xs"}>{createdAt}</TableCellText>
       </Td>
       <Td>
         <TableCellText fontSize={"xs"}>{updatedAt}</TableCellText>
-      </Td>
+      </Td> */}
     </Tr>
   );
 }

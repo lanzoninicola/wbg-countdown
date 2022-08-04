@@ -4,15 +4,13 @@ import "@fontsource/inter/600.css";
 
 import Header from "./global/header/header";
 import MainContent from "./global/common/layout/main-content/main-content";
-import Countdowns from "./countdowns/countdowns";
-import Editor from "./editor/editor";
+import EditorPage from "./editor/editor-page";
 
 function App() {
   return (
     <MainContent>
       <Header />
-      <Countdowns />
-      <Editor />
+      <EditorPage />
     </MainContent>
   );
 }

@@ -1,5 +1,5 @@
 import useCurrentCountdownSelector from "../countdown-provider/hooks/app/useCurrentCountdownSelector";
-import EditorPage from "./components/editor-page/editor-page";
+import Editor from "./components/editor/editor";
 
 /**
  *  This is the main entry point for the countdowns page.
@@ -9,12 +9,8 @@ import EditorPage from "./components/editor-page/editor-page";
  *  due the position of Context providers in the app.
  *
  */
-export default function Editor() {
+export default function EditorPage() {
   const { currentCountdown } = useCurrentCountdownSelector();
 
-  return (
-    <>
-      {currentCountdown && <EditorPage currentCountdown={currentCountdown} />}
-    </>
-  );
+  return <Editor currentCountdown={currentCountdown} />;
 }

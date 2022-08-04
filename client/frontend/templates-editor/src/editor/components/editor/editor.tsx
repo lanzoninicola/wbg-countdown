@@ -11,11 +11,11 @@ import CenterContent from "../../layout/center-content/center-content";
 import EditorWrapper from "../../layout/editor-wrapper/editor-wrapper";
 import EditorSkeleton from "../editor-skeleton.tsx/editor-skeleton";
 
-interface EditorPageProps {
-  currentCountdown?: CountdownModel["id"];
+interface EditorProps {
+  currentCountdown?: CountdownModel["id"] | null;
 }
 
-export default function EditorPage({ currentCountdown }: EditorPageProps) {
+export default function Editor({ currentCountdown }: EditorProps) {
   const { isError, isLoading } = useEditorSettings({
     current: currentCountdown,
   });
@@ -30,11 +30,17 @@ export default function EditorPage({ currentCountdown }: EditorPageProps) {
         <EditorWrapper>
           <EditorPropertiesFloat />
           <CenterContent>
-            <BoxRadiusLg bg={"gray.200"}>
-              <TargetDate size="sm" />
-              <TimezonePicker size="sm" />
-            </BoxRadiusLg>
-            <EditorPreview />
+            {currentCountdown ? (
+              <>
+                <BoxRadiusLg bg={"gray.200"}>
+                  <TargetDate size="sm" />
+                  <TimezonePicker size="sm" />
+                </BoxRadiusLg>
+                <EditorPreview />
+              </>
+            ) : (
+              <h1>select a countdown to customize</h1>
+            )}
           </CenterContent>
           {/* <RightSidebar>
             <Text>This is the countdown theme area</Text>

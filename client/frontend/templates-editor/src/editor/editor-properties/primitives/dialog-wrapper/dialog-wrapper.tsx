@@ -60,7 +60,7 @@ export default function DialogWrapper({
         role="dialog"
         flexDirection={"column"}
         h="max-content"
-        maxH="350px"
+        maxH="500px"
         minW={minWidth || minW}
         bg="white"
         position={"absolute"}

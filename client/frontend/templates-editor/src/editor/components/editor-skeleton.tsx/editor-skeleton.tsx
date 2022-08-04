@@ -11,6 +11,8 @@ export default function EditorSkeleton() {
         <SkeletonProp />
         <SkeletonProp />
         <SkeletonProp />
+        <SkeletonProp />
+        <SkeletonProp />
       </VStack>
       <CenterContent>
         <Skeleton minH="60px" minW="650px" borderRadius={"lg"} />

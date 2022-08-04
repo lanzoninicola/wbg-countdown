@@ -13,7 +13,7 @@ export default function TableHeaders({
     <Tr>
       {columnNames.map((name, idx) => {
         const w =
-          name === "name" ? "200px" : name === "description" ? "300px" : "auto";
+          name === "name" ? "150px" : name === "description" ? "200px" : "auto";
 
         return (
           <Th key={idx} minW={w}>

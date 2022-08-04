@@ -80,12 +80,20 @@ const ptBR = {
         targetDate: "Data de término",
         countdownStyle: "Estilo do contador regressivo",
         propertiesBar: {
+          list: "Lista de contadores regressivos",
+          layout: "Escolha o layout",
           title: "Personaliza o titulo",
           timer: "Personaliza os digitos",
           labels: "Personaliza as etiquetas",
           separator: "Personaliza o separador",
         },
         propertiesGroup: {
+          list: {
+            groupTitle: "Lista de contadores regressivos",
+          },
+          layout: {
+            groupTitle: "Layout",
+          },
           title: {
             groupTitle: "Estilo do titulo",
             titlePlaceholder: "Contador regressivo para Ano Novo",

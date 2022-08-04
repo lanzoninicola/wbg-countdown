@@ -55,7 +55,7 @@ const itIT = {
         },
       },
       countdown_edit_new: {
-        buttonLabel: "Crea",
+        buttonLabel: "Crea nuovo timer",
         header: "Nuovo timer",
         namePlaceholder: "Nome del timer",
         descriptionPlaceholder: "Descrizione del timer",
@@ -80,12 +80,20 @@ const itIT = {
         targetDate: "Data di scadenza",
         countdownStyle: "Stile del timer",
         propertiesBar: {
+          list: "Lista dei timer",
+          layout: "Scegli layout",
           title: "Personalizza il titolo",
           timer: "Personalizza le unità",
           labels: "Personalizza le etichette",
           separator: "Personaliza il separatore",
         },
         propertiesGroup: {
+          list: {
+            groupTitle: "Lista dei timer",
+          },
+          layout: {
+            groupTitle: "Scegli layout",
+          },
           title: {
             groupTitle: "Stile del titolo",
             titlePlaceholder: "Scadenza al Nuovo Anno",

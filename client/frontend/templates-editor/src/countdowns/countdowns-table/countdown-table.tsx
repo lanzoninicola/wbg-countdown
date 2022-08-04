@@ -19,13 +19,13 @@ export default function CountdownsTable({
     "description",
     "shortcode",
     "actions",
-    "createdAt",
-    "updatedAt",
+    // "createdAt",
+    // "updatedAt",
   ];
 
   return (
     <TableContainer bg="white">
-      <Table variant="simple">
+      <Table variant="simple" size={"sm"}>
         <Thead>
           <TableHeaders columnNames={columnsName} />
         </Thead>

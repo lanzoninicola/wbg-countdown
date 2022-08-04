@@ -55,7 +55,7 @@ const enUS = {
         },
       },
       countdown_edit_new: {
-        buttonLabel: "Create",
+        buttonLabel: "New countdown",
         header: "New Countdown",
         namePlaceholder: "Name of the countdown",
         descriptionPlaceholder: "Description of the countdown",
@@ -80,12 +80,20 @@ const enUS = {
         targetDate: "Target date",
         countdownStyle: "Countdown style",
         propertiesBar: {
+          list: "Countodowns list",
+          layout: "Choose layout",
           title: "Customize Title",
           timer: "Customize Timer Units",
           labels: "Customize Labels",
           separator: "Customize Separator",
         },
         propertiesGroup: {
+          list: {
+            groupTitle: "Countdowns List",
+          },
+          layout: {
+            groupTitle: "Choose Layout",
+          },
           title: {
             groupTitle: "Title style",
             titlePlaceholder: "Countown to New Year",

@@ -12,6 +12,7 @@ import useAppContextReset from "../../countdown-provider/hooks/app/useAppContext
 import Logo from "../common/logo/logo";
 import LanguagesBar from "../common/language-bar/languages-bar";
 import ShortcodePreview from "../common/shortcode-preview/shortcode-preview";
+import ModalNewCountdown from "../../countdowns/components/modal-new-countdown/modal-new-countdown";
 
 //TODO: detect language from Wordpress
 const lngs: Languages = {
@@ -40,7 +41,10 @@ export default function Header() {
       <Logo />
       <Box>
         <HStack justifyContent={"space-between"}>
-          <LanguagesBar languages={lngs} />
+          <HStack>
+            <LanguagesBar languages={lngs} />
+            <ModalNewCountdown />
+          </HStack>
           <HStack spacing={4}>
             {isEditorShown && (
               <ShortcodePreview countdownId={currentCountdown} />

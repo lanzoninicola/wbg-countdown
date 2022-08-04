@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 import { MdLabelOutline } from "@react-icons/all-files/md/MdLabelOutline";
 import { MdTimer10 } from "@react-icons/all-files/md/MdTimer10";
 import { MdTitle } from "@react-icons/all-files/md/MdTitle";
+import { MdViewList } from "@react-icons/all-files/md/MdViewList";
+import { BsLayoutWtf } from "@react-icons/all-files/bs/BsLayoutWtf";
 
 import DialogWrapper from "../../primitives/dialog-wrapper/dialog-wrapper";
 import DialogWrapperHeader from "../../primitives/dialog-wrapper/dialog-wrapper-header/dialog-wrapper-header";
@@ -14,6 +16,8 @@ import TitlePropertiesGroup from "../common/properties-group/title-properties-gr
 import PropertiesBar from "./components/properties-bar/properties-bar";
 import { PropertyBarItem } from "./types";
 import VerticalSeparatorIcon from "./components/properties-bar/vertical-separator-icon/vertical-separator-icon";
+import LayoutPicker from "../common/properties-group/layout-picker/layout-picker";
+import Countdowns from "../../../../countdowns/components/countdowns/countdowns";
 
 export default function EditorPropertiesFloat() {
   const { t } = useTranslation();
@@ -22,6 +26,20 @@ export default function EditorPropertiesFloat() {
   );
 
   const items = [
+    {
+      label: t("editor.propertiesBar.list"),
+      icon: <MdViewList />,
+      ref: useRef(null),
+      title: t("editor.propertiesGroup.list.groupTitle"),
+      component: <Countdowns />,
+    },
+    {
+      label: t("editor.propertiesBar.layout"),
+      icon: <BsLayoutWtf />,
+      ref: useRef(null),
+      title: t("editor.propertiesGroup.layout.groupTitle"),
+      component: <LayoutPicker />,
+    },
     {
       label: t("editor.propertiesBar.title"),
       icon: <MdTitle />,
