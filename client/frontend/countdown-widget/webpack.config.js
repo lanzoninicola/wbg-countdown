@@ -64,7 +64,7 @@ const configPublic = Object.assign({}, config, {
   },
   output: {
     filename: "index.js",
-    path: path.resolve(__dirname, "../../public/clockdown-widget/assets"),
+    path: path.resolve(__dirname, "../public/clockdown-widget/assets"),
   },
 });
 

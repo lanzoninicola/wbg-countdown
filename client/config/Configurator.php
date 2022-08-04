@@ -61,7 +61,7 @@ class Configurator implements PluginConfigurable {
             'clockdown',
             array(
                 'id'  => 'clockdown-widget-script',
-                'src' => CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.js',
+                'src' => CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'client/frontend/public/clockdown-widget/assets/index.js',
                 'ver' => '1.0.0',
             )
         );
@@ -70,7 +70,7 @@ class Configurator implements PluginConfigurable {
             'clockdown',
             array(
                 'id'   => 'clockdown-widget-style',
-                'href' => CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/clockdown-widget/assets/index.css',
+                'href' => CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'client/frontend/public/clockdown-widget/assets/index.css',
                 'ver'  => '1.0.0',
             )
         );
@@ -89,14 +89,14 @@ class Configurator implements PluginConfigurable {
 
         $scripts_enqueuer->add_admin_style(
             'templates-editor-style',
-            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/templates-editor/assets/index.css',
+            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'client/frontend/public/templates-editor/assets/index.css',
             array(),
             '1.0.0'
         );
 
         $scripts_enqueuer->add_admin_script(
             'templates-editor-script',
-            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'public/templates-editor/assets/index.js',
+            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'client/frontend/public/templates-editor/assets/index.js',
             array(),
             '1.0.0',
             false
