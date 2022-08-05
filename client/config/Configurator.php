@@ -2,6 +2,7 @@
 
 namespace Clockdown\Client\Config;
 
+use Clockdown\App\Services\Onboarding;
 use Clockdown\App\Services\RestApi\RestApiEndpoint;
 use Clockdown\App\Services\RestApi\RestApiRoutes;
 use Clockdown\App\Services\RestApi\RestApiRoutesService;
@@ -17,7 +18,6 @@ use Clockdown\Core\ShortcodesLoader;
 use function Clockdown\App\Functions\add_menu;
 use function Clockdown\App\Functions\add_submenu;
 use function Clockdown\get_plugin_base_url_path;
-use function Clockdown\get_plugin_name;
 use function Clockdown\get_plugin_text_domain;
 
 class Configurator implements PluginConfigurable {
@@ -144,13 +144,11 @@ class Configurator implements PluginConfigurable {
      */
     public function define_localized_script( ScriptAdminLocalizerService $script_admin_localizer, ScriptPublicLocalizerService $script_public_localizer ) {
 
-        $is_onboarding_required = (bool) get_option( strtolower( get_plugin_name() ) . '_is_onboarding_required' );
-
         $script_admin_localizer->localize(
             array(
-                'apiURL'                 => home_url( '/wp-json' ),
-                'language'               => get_locale(),
-                'is_onboarding_required' => $is_onboarding_required === "" ? 'false' : 'true',
+                'apiURL'            => home_url( '/wp-json' ),
+                'language'          => get_locale(),
+                'onboarding_status' => Onboarding::get_status(),
             )
         );
 

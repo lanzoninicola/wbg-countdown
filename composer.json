@@ -6,6 +6,7 @@
       "Clockdown\\Core\\": "./core",
       "Clockdown\\App\\Interfaces\\": "./app/interfaces",
       "Clockdown\\App\\Services\\": "./app/services",
+      "Clockdown\\App\\Services\\Analytics\\": "./app/services/analytics",
       "Clockdown\\App\\Services\\Database\\": "./app/services/database",
       "Clockdown\\App\\Services\\RestApi\\": "./app/services/rest-api",
       "Clockdown\\App\\Services\\ScriptLocalizer\\": "./app/services/script-localizer",

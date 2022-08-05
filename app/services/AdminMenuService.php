@@ -102,6 +102,8 @@ class AdminMenuService {
      */
     public function page_wrapper() {
 
+        do_action( "{$this->slug}_admin_page_render" );
+
         $html = sprintf( '<div id="%s"></div>', $this->slug );
         echo wp_kses_post( $html );
 

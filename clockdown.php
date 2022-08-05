@@ -2,6 +2,7 @@
 
 namespace Clockdown;
 
+use Clockdown\App\Services\Onboarding;
 use Clockdown\Client\Config\Configurator;
 use Clockdown\Core\Init;
 
@@ -63,6 +64,10 @@ function get_plugin_text_domain() {
     return 'clockdown';
 }
 
+function get_api_base_url() {
+    return 'http://localhost/bb-melhor-envio/wp-json/commerce';
+}
+
 register_activation_hook( __FILE__, array( 'Clockdown\Client\Config\Activator', 'activate' ) );
 register_deactivation_hook( __FILE__, array( 'Clockdown\Client\Config\Deactivator', 'deactivate' ) );
 register_uninstall_hook( __FILE__, array( 'Clockdown\Client\Config\Uninstaller', 'uninstall' ) );
@@ -79,10 +84,11 @@ register_uninstall_hook( __FILE__, array( 'Clockdown\Client\Config\Uninstaller',
 function run_plugin() {
 
     $config = new Configurator();
-
-    $init = new Init( $config );
-
+    $init   = new Init( $config );
     $init->run();
+
+    $onboarding = new Onboarding();
+    $onboarding->on( 'clockdown_admin_page_render' );
 
 }
 
