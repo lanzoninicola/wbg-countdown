@@ -1,4 +1,4 @@
-import { FontsizeUnit } from "../../countdown-provider/types/theme/responsive";
+import { FontsizeUnit } from "../types";
 
 /** Appends the unit to a unitless value. */
 const withUnit = (unitlessValue: number, unit: FontsizeUnit) =>

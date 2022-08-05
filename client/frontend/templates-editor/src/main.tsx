@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const ClockdownApp = () => (
   <ChakraProvider theme={theme}>
-    <CountdownProvider runtimeEnvironment="wordpress">
+    <CountdownProvider>
       <App />
     </CountdownProvider>
   </ChakraProvider>

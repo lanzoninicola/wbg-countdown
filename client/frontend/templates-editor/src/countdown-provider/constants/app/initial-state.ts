@@ -5,7 +5,6 @@ const APP_INITIAL_STATE: AppStateData = {
   currentToken: "lg",
   isEditorMode: false,
   timerExpired: false,
-  runtimeEnv: "other",
   fontSizeUnit: "px",
 };
 
