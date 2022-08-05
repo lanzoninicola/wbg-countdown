@@ -9,7 +9,7 @@ use Clockdown\App\Services\ScriptLocalizer\ScriptAdminLocalizerService;
 use Clockdown\App\Services\ScriptLocalizer\ScriptPublicLocalizerService;
 use Clockdown\Client\Backend\Api\V1\CountdownSettings\CountdownSettingsControllerFactory;
 use Clockdown\Client\Backend\Api\V1\Countdowns\CountdownsControllerFactory;
-use Clockdown\Client\Backend\CountdownWidget\CountdownWidgetShortcode;
+use Clockdown\Client\Backend\App\CountdownWidgetShortcode;
 use Clockdown\Core\HooksLoader;
 use Clockdown\Core\PluginConfigurable;
 use Clockdown\Core\ScriptsEnqueuer;

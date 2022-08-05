@@ -15,7 +15,7 @@ class ComposerStaticInit52ea3edaa65e1833e507c367577ec588
         array (
             'Clockdown\\Core\\' => 15,
             'Clockdown\\Client\\Config\\' => 24,
-            'Clockdown\\Client\\Backend\\CountdownWidget\\' => 41,
+            'Clockdown\\Client\\Backend\\App\\' => 29,
             'Clockdown\\Client\\Backend\\Api\\V1\\Countdowns\\' => 43,
             'Clockdown\\Client\\Backend\\Api\\V1\\CountdownSettings\\' => 50,
             'Clockdown\\App\\Traits\\' => 21,
@@ -40,9 +40,9 @@ class ComposerStaticInit52ea3edaa65e1833e507c367577ec588
         array (
             0 => __DIR__ . '/../..' . '/client/config',
         ),
-        'Clockdown\\Client\\Backend\\CountdownWidget\\' => 
+        'Clockdown\\Client\\Backend\\App\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/client/backend/countdown-widget',
+            0 => __DIR__ . '/../..' . '/client/backend/app',
         ),
         'Clockdown\\Client\\Backend\\Api\\V1\\Countdowns\\' => 
         array (

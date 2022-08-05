@@ -8,7 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Clockdown\\Core\\' => array($baseDir . '/core'),
     'Clockdown\\Client\\Config\\' => array($baseDir . '/client/config'),
-    'Clockdown\\Client\\Backend\\CountdownWidget\\' => array($baseDir . '/client/backend/countdown-widget'),
+    'Clockdown\\Client\\Backend\\App\\' => array($baseDir . '/client/backend/app'),
     'Clockdown\\Client\\Backend\\Api\\V1\\Countdowns\\' => array($baseDir . '/client/backend/api/v1/countdowns'),
     'Clockdown\\Client\\Backend\\Api\\V1\\CountdownSettings\\' => array($baseDir . '/client/backend/api/v1/countdown-settings'),
     'Clockdown\\App\\Traits\\' => array($baseDir . '/app/traits'),

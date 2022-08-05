@@ -1,6 +1,6 @@
 <?php
 
-namespace Clockdown\Client\Backend\CountdownWidget;
+namespace Clockdown\Client\Backend\App;
 
 use Clockdown\App\Common\Shortcode;
 

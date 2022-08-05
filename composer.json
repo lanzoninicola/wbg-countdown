@@ -16,7 +16,7 @@
       "Clockdown\\Client\\Config\\": "./client/config",
       "Clockdown\\Client\\Backend\\Api\\V1\\Countdowns\\": "./client/backend/api/v1/countdowns",
       "Clockdown\\Client\\Backend\\Api\\V1\\CountdownSettings\\": "./client/backend/api/v1/countdown-settings",
-      "Clockdown\\Client\\Backend\\CountdownWidget\\": "./client/backend/countdown-widget"
+      "Clockdown\\Client\\Backend\\App\\": "./client/backend/app"
     },
     "files": [
       "./app/functions/admin_menu.php"
