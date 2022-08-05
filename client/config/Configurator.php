@@ -16,6 +16,9 @@ use Clockdown\Core\ScriptsEnqueuer;
 use Clockdown\Core\ShortcodesLoader;
 use function Clockdown\App\Functions\add_menu;
 use function Clockdown\App\Functions\add_submenu;
+use function Clockdown\get_plugin_base_url_path;
+use function Clockdown\get_plugin_name;
+use function Clockdown\get_plugin_text_domain;
 
 class Configurator implements PluginConfigurable {
 
@@ -29,10 +32,10 @@ class Configurator implements PluginConfigurable {
 
         add_submenu(
             'clockdown',
-            __( 'Templates', CLOCKDOWN_TEXT_DOMAIN ),
+            __( 'Templates', get_plugin_text_domain() ),
             'clockdown-templates',
             array(
-                'page_title' => __( 'Templates', CLOCKDOWN_TEXT_DOMAIN ),
+                'page_title' => __( 'Templates', get_plugin_text_domain() ),
             )
         );
     }
@@ -61,7 +64,7 @@ class Configurator implements PluginConfigurable {
             'clockdown',
             array(
                 'id'  => 'clockdown-widget-script',
-                'src' => CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'client/frontend/public/clockdown-widget/assets/index.js',
+                'src' => get_plugin_base_url_path() . 'client/frontend/public/clockdown-widget/assets/index.js',
                 'ver' => '1.0.0',
             )
         );
@@ -70,7 +73,7 @@ class Configurator implements PluginConfigurable {
             'clockdown',
             array(
                 'id'   => 'clockdown-widget-style',
-                'href' => CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'client/frontend/public/clockdown-widget/assets/index.css',
+                'href' => get_plugin_base_url_path() . 'client/frontend/public/clockdown-widget/assets/index.css',
                 'ver'  => '1.0.0',
             )
         );
@@ -89,14 +92,14 @@ class Configurator implements PluginConfigurable {
 
         $scripts_enqueuer->add_admin_style(
             'templates-editor-style',
-            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'client/frontend/public/templates-editor/assets/index.css',
+            get_plugin_base_url_path() . 'client/frontend/public/templates-editor/assets/index.css',
             array(),
             '1.0.0'
         );
 
         $scripts_enqueuer->add_admin_script(
             'templates-editor-script',
-            CLOCKDOWN_PLUGIN_BASE_URL_PATH . 'client/frontend/public/templates-editor/assets/index.js',
+            get_plugin_base_url_path() . 'client/frontend/public/templates-editor/assets/index.js',
             array(),
             '1.0.0',
             false
@@ -141,7 +144,7 @@ class Configurator implements PluginConfigurable {
      */
     public function define_localized_script( ScriptAdminLocalizerService $script_admin_localizer, ScriptPublicLocalizerService $script_public_localizer ) {
 
-        $is_onboarding_required = (bool) get_option( strtolower( CLOCKDOWN_PLUGIN_NAME ) . '_is_onboarding_required' );
+        $is_onboarding_required = (bool) get_option( strtolower( get_plugin_name() ) . '_is_onboarding_required' );
 
         $script_admin_localizer->localize(
             array(

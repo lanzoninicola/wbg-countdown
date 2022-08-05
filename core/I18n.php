@@ -2,6 +2,8 @@
 
 namespace Clockdown\Core;
 
+use function Clockdown\get_plugin_text_domain;
+
 /**
  * Define the internationalization functionality.
  *
@@ -25,7 +27,7 @@ class I18n {
     public function load_plugin_textdomain() {
 
         load_plugin_textdomain(
-            CLOCKDOWN_TEXT_DOMAIN,
+            get_plugin_text_domain(),
             false,
             dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
         );

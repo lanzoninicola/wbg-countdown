@@ -4,6 +4,7 @@ namespace Clockdown\Client\Backend\Api\V1\CountdownSettings;
 
 use Clockdown\App\Services\Database\DatabaseHelpers;
 use Clockdown\App\Services\Database\DatabaseQueryInterface;
+use function Clockdown\get_plugin_db_prefix;
 
 class CountdownSettingsRepository {
 
@@ -44,7 +45,7 @@ class CountdownSettingsRepository {
 
     public function __construct( DatabaseQueryInterface $query_service ) {
         $this->query_service = $query_service;
-        $this->table_name    = DatabaseHelpers::get_table_fullname( CLOCKDOWN_PLUGIN_DB_PREFIX, 'countdowns_settings' );
+        $this->table_name    = DatabaseHelpers::get_table_fullname( get_plugin_db_prefix(), 'countdowns_settings' );
     }
 
     /**

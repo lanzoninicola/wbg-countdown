@@ -3,6 +3,7 @@
 namespace Clockdown\App\Services\ScriptLocalizer;
 
 use Clockdown\App\Common\Helpers;
+use function Clockdown\get_plugin_name;
 
 /**
  * The class responsible for localize the script.
@@ -23,7 +24,7 @@ class ScriptLocalizerService {
      * @var string - the handle name
      * @since    1.0.0
      */
-    private $handle = CLOCKDOWN_PLUGIN_NAME . '-localizer';
+    private $handle;
 
     /**
      * This is the name of Javascript object that will be used to localize the script.
@@ -31,7 +32,7 @@ class ScriptLocalizerService {
      *
      * @var string
      */
-    private $object_name = CLOCKDOWN_PLUGIN_NAME . 'Localized';
+    private $object_name;
 
     /**
      * This is the content of the Javascript object
@@ -42,6 +43,8 @@ class ScriptLocalizerService {
     protected $l10n = array();
 
     public function __construct() {
+        $this->handle      = get_plugin_name() . '-localizer';
+        $this->object_name = get_plugin_name() . 'Localized';
 
         /**
          * wp_localize_script() works only if the handle used on
@@ -82,7 +85,7 @@ class ScriptLocalizerService {
             array_merge(
                 $this->l10n,
                 array(
-                    'nonce'         => wp_create_nonce( CLOCKDOWN_PLUGIN_NAME . 'nonce' ),
+                    'nonce'         => wp_create_nonce( get_plugin_name() . 'nonce' ),
                     'wp_rest_nonce' => wp_create_nonce( 'wp_rest' ),
                 )
             )

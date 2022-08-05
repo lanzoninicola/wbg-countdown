@@ -39,12 +39,29 @@ if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
     require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 }
 
-define( 'CLOCKDOWN_PLUGIN_ID', '1' );
-define( 'CLOCKDOWN_PLUGIN_NAME', 'clockdown' );
-define( 'CLOCKDOWN_PLUGIN_VERSION', '1.0.1' );
-define( 'CLOCKDOWN_PLUGIN_DB_PREFIX', 'ckdo' );
-define( 'CLOCKDOWN_PLUGIN_BASE_URL_PATH', plugin_dir_url( __FILE__ ) );
-define( 'CLOCKDOWN_TEXT_DOMAIN', 'clockdown' );
+function get_plugin_id() {
+    return '1';
+}
+
+function get_plugin_name() {
+    return 'clockdown';
+}
+
+function get_plugin_version() {
+    return '1.0.1';
+}
+
+function get_plugin_db_prefix() {
+    return 'ckdo';
+}
+
+function get_plugin_base_url_path() {
+    return plugin_dir_url( __FILE__ );
+}
+
+function get_plugin_text_domain() {
+    return 'clockdown';
+}
 
 register_activation_hook( __FILE__, array( 'Clockdown\Client\Config\Activator', 'activate' ) );
 register_deactivation_hook( __FILE__, array( 'Clockdown\Client\Config\Deactivator', 'deactivate' ) );

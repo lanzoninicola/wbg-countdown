@@ -3,6 +3,10 @@
 namespace Clockdown\Client\Config;
 
 use Clockdown\Core\PluginSetup;
+use function Clockdown\get_plugin_db_prefix;
+use function Clockdown\get_plugin_id;
+use function Clockdown\get_plugin_name;
+use function Clockdown\get_plugin_version;
 
 /**
  * Fired during plugin activation.
@@ -28,10 +32,10 @@ class Activator {
     public static function activate() {
 
         $plugin_setup = new PluginSetup(
-            CLOCKDOWN_PLUGIN_NAME,
-            CLOCKDOWN_PLUGIN_DB_PREFIX,
-            CLOCKDOWN_PLUGIN_VERSION,
-            CLOCKDOWN_PLUGIN_ID
+            get_plugin_name(),
+            get_plugin_db_prefix(),
+            get_plugin_version(),
+            get_plugin_id()
         );
 
         $tables = array(
