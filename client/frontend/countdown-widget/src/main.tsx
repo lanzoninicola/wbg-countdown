@@ -22,10 +22,7 @@ function renderWithReact(nodes: NodeListOf<HTMLDivElement>) {
     if (shortcodeID) {
       ReactDOM.createRoot(shortcodeNode).render(
         <React.StrictMode>
-          <CountdownProvider
-            current={shortcodeID}
-            runtimeEnvironment="wordpress"
-          >
+          <CountdownProvider current={shortcodeID}>
             <App current={shortcodeID} />
           </CountdownProvider>
         </React.StrictMode>
