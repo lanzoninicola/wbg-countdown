@@ -8,6 +8,10 @@ use function Clockdown\get_plugin_name;
 
 class Onboarding implements EventListenable {
 
+    public function __construct() {
+        self::pending();
+    }
+
     /**
      * Attach an event listener to the given action name.
      * This method is executed when the plugin run.
