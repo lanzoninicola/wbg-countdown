@@ -149,6 +149,8 @@ class Configurator implements PluginConfigurable {
                 'apiURL'            => home_url( '/wp-json' ),
                 'language'          => get_locale(),
                 'onboarding_status' => Onboarding::get_status(),
+                'product_id'        => '1',
+                'installation_id'   => '7cg9997b-0f40-11ed-9cce-040e3caabadb',
             )
         );
 

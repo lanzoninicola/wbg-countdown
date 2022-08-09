@@ -1,9 +1,26 @@
-export type OnboardingContextData = OnboardingStateData & OnboardingStateSetter;
+import {
+  OnboardingContextData,
+  OnboardingStateData,
+  OnboardingStateSetter,
+} from "./context";
 
-export interface OnboardingStateData {
-  status: "pending" | "completed";
-}
+import {
+  OnboardingFormState,
+  OnboardingFormChangeAction,
+  OnboardingFormSubmitAction,
+  OnboardingFormSuccessAction,
+  OnboardingFormFailureAction,
+  OnboardingFormAction,
+} from "./onboarding-form";
 
-export interface OnboardingStateSetter {
-  setStatus: (status: "pending" | "completed") => void;
-}
+export type {
+  OnboardingContextData,
+  OnboardingStateData,
+  OnboardingStateSetter,
+  OnboardingFormState,
+  OnboardingFormChangeAction,
+  OnboardingFormSubmitAction,
+  OnboardingFormSuccessAction,
+  OnboardingFormFailureAction,
+  OnboardingFormAction,
+};

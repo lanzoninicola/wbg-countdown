@@ -1,18 +1,14 @@
-import { Box, Button, Flex, Grid, HStack, Text } from "@chakra-ui/react";
-import { t } from "i18next";
-import { useTranslation } from "react-i18next";
+import { Box, Grid, HStack } from "@chakra-ui/react";
 
-import useSettingsContextReset from "../../countdown-provider/hooks/settings/useSettingsContextReset";
 import useCurrentCountdownSelector from "../../countdown-provider/hooks/app/useCurrentCountdownSelector";
-import useThemeContextReset from "../../countdown-provider/hooks/theme/useThemeContextReset";
-import EditorSave from "../../editor/components/editor-save/editor-save";
-import ButtonClose from "../../editor/layout/button-close/button-close";
-import { Languages } from "../../i18n/types";
-import useAppContextReset from "../../countdown-provider/hooks/app/useAppContextReset";
-import Logo from "../common/logo/logo";
-import LanguagesBar from "../common/language-bar/languages-bar";
-import ShortcodePreview from "../common/shortcode-preview/shortcode-preview";
 import ModalNewCountdown from "../../countdowns/components/modal-new-countdown/modal-new-countdown";
+import EditorSave from "../../editor/components/editor-save/editor-save";
+import { Languages } from "../../i18n/types";
+import { OnboardingProvider, useOnboardingStatus } from "../../onboarding";
+import OnboardingModalForm from "../../onboarding/components/onboarding-modal-form/onboarding-modal-form";
+import LanguagesBar from "../common/language-bar/languages-bar";
+import Logo from "../common/logo/logo";
+import ShortcodePreview from "../common/shortcode-preview/shortcode-preview";
 
 //TODO: detect language from Wordpress
 const lngs: Languages = {
@@ -23,13 +19,8 @@ const lngs: Languages = {
 };
 
 export default function Header() {
-  const { t } = useTranslation();
   const { currentCountdown } = useCurrentCountdownSelector();
-  const { resetSettingsContext } = useSettingsContextReset();
-  const { resetAppContext } = useAppContextReset();
-  const { resetThemeContext } = useThemeContextReset();
-
-  const isEditorShown = currentCountdown !== null;
+  const { status: onboardingStatus } = useOnboardingStatus();
 
   return (
     <Grid
@@ -46,27 +37,18 @@ export default function Header() {
             <ModalNewCountdown />
           </HStack>
           <HStack spacing={4}>
-            {isEditorShown && (
+            {currentCountdown && (
               <ShortcodePreview countdownId={currentCountdown} />
             )}
-            {isEditorShown && (
-              <EditorSave currentCountdown={currentCountdown} />
-            )}
+            {currentCountdown &&
+              (onboardingStatus === "pending" ? (
+                <OnboardingModalForm />
+              ) : (
+                <EditorSave currentCountdown={currentCountdown} />
+              ))}
           </HStack>
         </HStack>
       </Box>
-      <Flex justifyContent={"flex-end"}>
-        {isEditorShown && (
-          <ButtonClose
-            label={t("editor.close")}
-            onClick={() => {
-              resetAppContext();
-              resetSettingsContext();
-              resetThemeContext();
-            }}
-          />
-        )}
-      </Flex>
     </Grid>
   );
 }

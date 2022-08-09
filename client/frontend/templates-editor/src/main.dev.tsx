@@ -4,7 +4,7 @@ export default function createDevRoot() {
   const scriptNode = document.createElement("script");
   scriptNode.type = "text/javascript";
   scriptNode.textContent = `
-    /* <![CDATA[ */var clockdownLocalized = {"apiURL":"http:\/\/localhost\/bb-melhor-envio\/wp-json","language":"pt_BR", "onboarding_status":"pending"};/* ]]&gt; */
+    /* <![CDATA[ */var clockdownLocalized = {"apiURL":"http:\/\/localhost\/bb-melhor-envio\/wp-json","language":"pt_BR", "onboarding_status":"pending", "product_id": "1", "installation_id": "7cg9997b-0f40-11ed-9cce-040e3caabadb"};/* ]]&gt; */
   `;
 
   // get body

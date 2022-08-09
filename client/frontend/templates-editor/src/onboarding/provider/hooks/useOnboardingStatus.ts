@@ -2,12 +2,22 @@ import { useEffect } from "react";
 import { useContextSelector } from "use-context-selector";
 import { OnboardingContext } from "../context/onboarding-context";
 
-export default function useOnboardingContext() {
+export default function useOnboardingStatus() {
   const status = useContextSelector(OnboardingContext, (ctx) => ctx.status);
+
+  const showOnboardingModal = useContextSelector(
+    OnboardingContext,
+    (ctx) => ctx.showOnboardingModal
+  );
 
   const setStatus = useContextSelector(
     OnboardingContext,
     (ctx) => ctx.setStatus
+  );
+
+  const setShowOnboardingModal = useContextSelector(
+    OnboardingContext,
+    (ctx) => ctx.setShowOnboardingModal
   );
 
   useEffect(() => {
@@ -20,5 +30,7 @@ export default function useOnboardingContext() {
   return {
     status,
     setStatus,
+    showOnboardingModal,
+    setShowOnboardingModal,
   };
 }

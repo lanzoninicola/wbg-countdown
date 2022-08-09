@@ -15,6 +15,8 @@ const esEs = {
         copied: "copiado!",
         name: "Nombre",
         description: "Descripción",
+        email: "Correo electrónico",
+        emailMain: "Tu correo electrónico principal",
         error: "Algo salió mal. Inténtalo de nuevo.",
         errorTitle: "Oops!",
         success: "Tus cambios se han guardado.",
@@ -142,6 +144,14 @@ const esEs = {
           showSeparatorLabel: "Mostrar separador",
           showSeparatorAriaLabel: "Mostrar separador del contador",
         },
+      },
+      onboarding: {
+        title: "Bienvenido a Clockdown!",
+        subtitle:
+          "Clockdown es una herramienta para crear contadores de tiempo. Registre su cuenta para comenzar.",
+        buttonLabel: "Registrarme",
+        namePlaceholder: "Nombre completo",
+        emailPlaceholder: "Correo electrónico",
       },
     },
   },

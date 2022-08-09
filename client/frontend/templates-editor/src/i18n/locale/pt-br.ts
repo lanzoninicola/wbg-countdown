@@ -15,6 +15,8 @@ const ptBR = {
         copied: "copiado!",
         name: "Nome",
         description: "Descrição",
+        email: "Email",
+
         error: "Algo deu errado. Tente novamente.",
         errorTitle: "Ops!",
         success: "Suas alterações foram salvas.",
@@ -135,6 +137,13 @@ const ptBR = {
           tokenBadge: "Tamanho da tela:",
           smallestDisplay: "Tela mais pequena",
         },
+      },
+      onboarding: {
+        title: "Bem vindo ao ClockDown!",
+        body: "Você pode criar contadores regressivos e editá-los em qualquer momento. Cadastre-se abaixo para começar.",
+        buttonLabel: "Cadastrar",
+        namePlaceholder: "Nome completo",
+        emailPlaceholder: "Seu melhor email",
       },
     },
   },

@@ -1,5 +1,5 @@
 import { client } from "../client/client";
-import { OnboardingRequestPayload } from "../types";
+import { APIResponse, OnboardingRequestPayload } from "../types";
 import useOnboardingRestConfig from "./useOnboardingRestConfig";
 
 export default function useOnboardingRestApi() {
@@ -7,7 +7,7 @@ export default function useOnboardingRestApi() {
 
   const doOnboarding = async (
     payload: OnboardingRequestPayload
-  ): Promise<any> => {
+  ): Promise<APIResponse> => {
     return client(doOnboardingConfig.endpoint(), {
       method: "POST",
       data: payload,

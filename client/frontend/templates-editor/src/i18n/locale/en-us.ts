@@ -15,6 +15,7 @@ const enUS = {
         copied: "copied!",
         name: "Name",
         description: "Description",
+        email: "Email",
         error: "Something went wrong. Please try again.",
         errorTitle: "Oops!",
         success: "Your changes have been saved.",
@@ -135,6 +136,14 @@ const enUS = {
           tokenBadge: "Display size:",
           smallestDisplay: "Smallest display",
         },
+      },
+      onboarding: {
+        title: "Welcome to Clockdown!",
+        subtitle:
+          "This is the first time you are using Clockdown. Register your account to get started.",
+        buttonLabel: "Register",
+        namePlaceholder: "Your fullname",
+        emailPlaceholder: "Your best email",
       },
     },
   },
