@@ -8,7 +8,7 @@ import {
   CountdownModel,
   CountdownSettingsAndTheme,
 } from "../../../countdown-widget/types";
-import useNotifications from "../../../hooks/useNotification";
+import useNotifications from "../../../notifications/hooks/useNotifications";
 
 interface UseEditorSaveProps {
   currentCountdown: CountdownModel["id"] | null;

@@ -22,7 +22,7 @@ import {
   CountdownModel,
   StringOrNumber,
 } from "../../../countdown-widget/types";
-import useNotifications from "../../../hooks/useNotification";
+import { useNotifications } from "../../../notifications";
 import NewForm from "./new-form/new-form";
 
 export default function ModalNewCountdown() {

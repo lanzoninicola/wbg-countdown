@@ -16,10 +16,10 @@ import ButtonEdit from "../../countdowns-table/primitives/button-edit/button-edi
 import EditForm from "./edit-form/edit-form";
 import { CountdownModel } from "../../../countdown-widget/types";
 import { useTranslation } from "react-i18next";
-import useNotifications from "../../../hooks/useNotification";
 import { update as updateCountdown } from "../../../countdown-rest-api/services/countdowns";
 import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdown-rest-api/constants/countdowns/endpoints";
 import { useSWRConfig } from "swr";
+import { useNotifications } from "../../../notifications";
 
 interface ModalEditCountdownProps {
   countdown: CountdownModel;

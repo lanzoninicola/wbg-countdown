@@ -18,7 +18,7 @@ import { useSWRConfig } from "swr";
 import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdown-rest-api/constants/countdowns/endpoints";
 import { remove as removeCountdownSettings } from "../../../countdown-rest-api/services/editor";
 import { useState } from "react";
-import useNotifications from "../../../hooks/useNotification";
+import { useNotifications } from "../../../notifications";
 
 interface ModalDeleteCountdownProps {
   countdown: CountdownModel;
