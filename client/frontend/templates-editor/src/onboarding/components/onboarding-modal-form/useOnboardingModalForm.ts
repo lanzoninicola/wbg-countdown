@@ -10,11 +10,19 @@ export const useOnboardingModalForm = () => {
   const { formState, dispatchFormState } = useOnboardingFormState();
   const { doOnboarding } = useOnboardingRestApi();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatchFormState({
       type: "CHANGE",
       name: e.target.name as keyof OnboardingFormState,
-      value: e.target.value,
+      value: e.target.value.trim(),
+    });
+  };
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatchFormState({
+      type: "CHANGE",
+      name: e.target.name as keyof OnboardingFormState,
+      value: e.target.checked,
     });
   };
 
@@ -53,5 +61,5 @@ export const useOnboardingModalForm = () => {
       });
   };
 
-  return { formState, handleChange, handleSubmit };
+  return { formState, handleInputChange, handleCheckboxChange, handleSubmit };
 };

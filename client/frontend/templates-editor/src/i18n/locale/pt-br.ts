@@ -144,6 +144,12 @@ const ptBR = {
         buttonLabel: "Cadastrar",
         namePlaceholder: "Nome completo",
         emailPlaceholder: "Seu melhor email",
+        newsletterConsent:
+          "Eu gostaria de assinar seu boletim informativo, mas somente se você prometer não me incomodar (aproximadamente 1-2 por mês). Estou ciente de que posso cancelar minha assinatura sempre que quiser.",
+        privacyConsent:
+          "Eu li a política de privacidade. Estou ciente de que você se preocupa com minha privacidade e nunca compartilhará meus dados com ninguém. Este é o link para:",
+        termsAndConditionsConsent:
+          "Seus termos e condições são aceitáveis para mim.",
       },
     },
   },

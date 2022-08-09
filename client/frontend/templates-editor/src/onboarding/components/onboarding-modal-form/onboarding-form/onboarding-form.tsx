@@ -4,8 +4,10 @@ import {
   FormErrorMessage,
   FormLabel,
   Input,
+  Text,
   VStack,
 } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useOnboardingModalForm } from "../useOnboardingModalForm";
@@ -18,51 +20,81 @@ interface OnboardingFormProps {
 export default function OnboardingForm({
   initialFocusRef,
 }: OnboardingFormProps) {
-  const { formState, handleChange } = useOnboardingModalForm();
+  const { formState, handleInputChange, handleCheckboxChange } =
+    useOnboardingModalForm();
   const { t } = useTranslation();
 
+  const { fullname, email } = formState;
+
+  useEffect(() => {
+    console.log(formState);
+  }, [formState]);
+
   return (
-    <VStack alignItems={"flex-start"} spacing={4}>
-      <VStack alignItems={"flex-start"}>
+    <VStack alignItems={"flex-start"} spacing={6} w="100%">
+      <VStack alignItems={"flex-start"} w="100%">
         <FormControl>
-          <FormLabel htmlFor="fullname" className="theme-font" fontSize={"sm"}>
+          <FormLabel htmlFor="fullname" className="theme-font" fontSize={"xs"}>
             {t("global.name")}
           </FormLabel>
           <Input
             id="fullname"
+            name="fullname"
             ref={initialFocusRef}
             placeholder={t("onboarding.namePlaceholder")}
-            onChange={handleChange}
+            onChange={handleInputChange}
             className="theme-font"
             isDisabled={formState.isLoading}
             autoComplete="off"
+            size={"sm"}
           />
         </FormControl>
         <FormControl>
-          <FormLabel htmlFor="email" className="theme-font" fontSize={"sm"}>
+          <FormLabel htmlFor="email" className="theme-font" fontSize={"xs"}>
             {t("global.email")}
           </FormLabel>
           <Input
             id="email"
+            name="email"
             placeholder={t("onboarding.emailPlaceholder")}
-            onChange={handleChange}
+            onChange={handleInputChange}
             className="theme-font"
             isDisabled={formState.isLoading}
+            size={"sm"}
           />
         </FormControl>
       </VStack>
-
-      <VStack spacing={1} alignItems={"flex-start"}>
-        <Checkbox size="sm" name="consent_newsletter" onChange={handleChange}>
-          Newsletter Consent blah blah blah
-        </Checkbox>
-        <Checkbox size="sm" name="consent_terms" onChange={handleChange}>
-          Terms Consent blah blah blah
-        </Checkbox>
-        <Checkbox size="sm" name="consent_privacy" onChange={handleChange}>
-          Privacy Consent blah blah blah
-        </Checkbox>
-      </VStack>
+      {fullname !== "" && email !== "" && (
+        <VStack spacing={2} alignItems={"flex-start"}>
+          <Checkbox
+            size="md"
+            name="consent_newsletter"
+            onChange={handleCheckboxChange}
+          >
+            <Text as="p" fontSize={"xs"} lineHeight={1.1} color={"gray.500"}>
+              {t("onboarding.newsletterConsent")}
+            </Text>
+          </Checkbox>
+          <Checkbox
+            size="md"
+            name="consent_terms"
+            onChange={handleCheckboxChange}
+          >
+            <Text as="p" fontSize={"xs"} lineHeight={1.1} color={"gray.500"}>
+              {t("onboarding.privacyConsent")}
+            </Text>
+          </Checkbox>
+          <Checkbox
+            size="md"
+            name="consent_privacy"
+            onChange={handleCheckboxChange}
+          >
+            <Text as="p" fontSize={"xs"} lineHeight={1.1} color={"gray.500"}>
+              {t("onboarding.termsAndConditionsConsent")}
+            </Text>
+          </Checkbox>
+        </VStack>
+      )}
       {formState.isError && (
         <FormErrorMessage>{t("global.error")}</FormErrorMessage>
       )}

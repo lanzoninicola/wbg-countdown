@@ -1,7 +1,7 @@
 import { ReducerWithoutAction, useReducer, useState } from "react";
 import INITIAL_STATE from "./constants/initial-state";
 import { OnboardingContext } from "./context/onboarding-context";
-import { onboardingFormReducer } from "./reducers/onboarding-form";
+import { onboardingFormReducer } from "./reducers/onboarding-form-reducer";
 import { OnboardingFormState } from "./types";
 
 interface OnboardingProviderProps {

@@ -27,6 +27,8 @@ export default function OnboardingModalForm() {
 
   const initialRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
+  const { fullname, email, consent_terms, consent_privacy } = formState;
+
   return (
     <>
       <ButtonSave
@@ -43,7 +45,7 @@ export default function OnboardingModalForm() {
         onClose={onClose}
         closeOnOverlayClick={false}
         blockScrollOnMount={true}
-        size="xl"
+        size="2xl"
       >
         <ModalOverlay />
         <ModalContent>
@@ -52,11 +54,15 @@ export default function OnboardingModalForm() {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <HStack>
+            <HStack spacing={4}>
               <Box
                 className="onboarding-image"
                 bgImage={`url(${steppingUp})`}
-                bgSize={"150px"}
+                bgSize={"250px"}
+                w="600px"
+                h="400px"
+                bgRepeat={["no-repeat"]}
+                bgPosition={["center"]}
               ></Box>
               <VStack spacing={8} alignItems={"flex-start"}>
                 <Heeading as="h2" fontSize={"md"}>
@@ -70,6 +76,12 @@ export default function OnboardingModalForm() {
           <ModalFooter>
             <Button
               isLoading={formState.isLoading}
+              isDisabled={
+                fullname === "" ||
+                email === "" ||
+                consent_terms === false ||
+                consent_privacy === false
+              }
               loadingText={t("global.saving").capitalize()}
               className="theme-font"
               colorScheme="blue"
@@ -77,7 +89,7 @@ export default function OnboardingModalForm() {
               onClick={handleSubmit}
               data-test="onboarding-form-submit"
             >
-              {t("global.save").capitalize()}
+              {t("onboarding.buttonLabel").capitalize()}
             </Button>
           </ModalFooter>
         </ModalContent>

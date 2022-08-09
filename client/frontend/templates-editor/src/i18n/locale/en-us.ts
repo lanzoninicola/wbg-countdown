@@ -142,8 +142,14 @@ const enUS = {
         subtitle:
           "This is the first time you are using Clockdown. Register your account to get started.",
         buttonLabel: "Register",
-        namePlaceholder: "Your fullname",
+        namePlaceholder: "Your name",
         emailPlaceholder: "Your best email",
+        newsletterConsent:
+          "I would like to sign up for your newsletter, but only if you promise not to bother me (approx. 1-2 per month). I am aware that I can unsubscribe whenever I choose.",
+        privacyConsent:
+          "I read the privacy policy. I am aware that you care about my privacy and will never share my data with anyone. This is the link to:",
+        termsAndConditionsConsent:
+          "Your terms and conditions are acceptable to me.",
       },
     },
   },

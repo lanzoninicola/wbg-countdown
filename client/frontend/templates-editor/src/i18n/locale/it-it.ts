@@ -143,6 +143,12 @@ const itIT = {
         buttonLabel: "Registrati",
         namePlaceholder: "Nome completo",
         emailPlaceholder: "La tua migliore email",
+        newsletterConsent:
+          "Vorrei iscrivermi alla vostra newsletter, ma solo se mi promettete di non disturbarmi (circa 1-2 al mese). Sono consapevole di potermi cancellare quando voglio.",
+        privacyConsent:
+          "Ho letto l'informativa sulla privacy. Sono consapevole che avete a cuore la mia privacy e che non condividerete mai i miei dati con nessuno. Questo è il link a:",
+        termsAndConditionsConsent:
+          "I vostri termini e condizioni sono accettabili per me.",
       },
     },
   },

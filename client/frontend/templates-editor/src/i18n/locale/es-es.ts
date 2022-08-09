@@ -152,6 +152,11 @@ const esEs = {
         buttonLabel: "Registrarme",
         namePlaceholder: "Nombre completo",
         emailPlaceholder: "Correo electrónico",
+        newsletterConsent:
+          "Me gustaría suscribirme a su boletín de noticias, pero sólo si prometen no molestarme (aproximadamente 1-2 al mes). Soy consciente de que puedo darme de baja cuando quiera.",
+        privacyConsent:
+          "He leído la política de privacidad. Soy consciente de que os preocupáis por mi privacidad y de que nunca compartiréis mis datos con nadie. Este es el enlace a:",
+        termsAndConditionsConsent: "Sus condiciones son aceptables para mí.",
       },
     },
   },
