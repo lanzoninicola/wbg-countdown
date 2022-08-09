@@ -3,12 +3,14 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Grid,
   Input,
   Text,
   VStack,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import ConsentGroup from "../consent-group/consent-group";
 
 import { useOnboardingModalForm } from "../useOnboardingModalForm";
 
@@ -20,20 +22,19 @@ interface OnboardingFormProps {
 export default function OnboardingForm({
   initialFocusRef,
 }: OnboardingFormProps) {
-  const { formState, handleInputChange, handleCheckboxChange } =
-    useOnboardingModalForm();
+  const { formState, handleInputChange } = useOnboardingModalForm();
   const { t } = useTranslation();
 
   const { fullname, email } = formState;
 
   useEffect(() => {
-    console.log(formState);
+    console.log(formState.isError);
   }, [formState]);
 
   return (
-    <VStack alignItems={"flex-start"} spacing={6} w="100%">
+    <Grid gridTemplateRows={"1fr 1fr"} gap={5} w="100%" maxW={"400px"}>
       <VStack alignItems={"flex-start"} w="100%">
-        <FormControl>
+        <FormControl isRequired>
           <FormLabel htmlFor="fullname" className="theme-font" fontSize={"xs"}>
             {t("global.name")}
           </FormLabel>
@@ -49,7 +50,7 @@ export default function OnboardingForm({
             size={"sm"}
           />
         </FormControl>
-        <FormControl>
+        <FormControl isRequired>
           <FormLabel htmlFor="email" className="theme-font" fontSize={"xs"}>
             {t("global.email")}
           </FormLabel>
@@ -64,40 +65,7 @@ export default function OnboardingForm({
           />
         </FormControl>
       </VStack>
-      {fullname !== "" && email !== "" && (
-        <VStack spacing={2} alignItems={"flex-start"}>
-          <Checkbox
-            size="md"
-            name="consent_newsletter"
-            onChange={handleCheckboxChange}
-          >
-            <Text as="p" fontSize={"xs"} lineHeight={1.1} color={"gray.500"}>
-              {t("onboarding.newsletterConsent")}
-            </Text>
-          </Checkbox>
-          <Checkbox
-            size="md"
-            name="consent_terms"
-            onChange={handleCheckboxChange}
-          >
-            <Text as="p" fontSize={"xs"} lineHeight={1.1} color={"gray.500"}>
-              {t("onboarding.privacyConsent")}
-            </Text>
-          </Checkbox>
-          <Checkbox
-            size="md"
-            name="consent_privacy"
-            onChange={handleCheckboxChange}
-          >
-            <Text as="p" fontSize={"xs"} lineHeight={1.1} color={"gray.500"}>
-              {t("onboarding.termsAndConditionsConsent")}
-            </Text>
-          </Checkbox>
-        </VStack>
-      )}
-      {formState.isError && (
-        <FormErrorMessage>{t("global.error")}</FormErrorMessage>
-      )}
-    </VStack>
+      {fullname !== "" && email !== "" && <ConsentGroup />}
+    </Grid>
   );
 }

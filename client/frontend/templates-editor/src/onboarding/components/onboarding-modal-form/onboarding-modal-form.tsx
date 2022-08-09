@@ -52,7 +52,6 @@ export default function OnboardingModalForm() {
           <ModalHeader className="theme-font">
             {t("onboarding.title")}
           </ModalHeader>
-          <ModalCloseButton />
           <ModalBody>
             <HStack spacing={4}>
               <Box

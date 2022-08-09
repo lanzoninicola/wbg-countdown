@@ -26,6 +26,7 @@ export const onboardingFormReducer = (
         ...state,
         isLoading: false,
         isError: true,
+        error: action.error,
         isSubmitted: true,
       };
 

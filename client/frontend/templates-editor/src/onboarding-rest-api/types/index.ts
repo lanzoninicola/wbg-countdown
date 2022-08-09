@@ -38,7 +38,7 @@ export interface ErrorResponse {
  *
  * @param T The type of the Header used for the authentication.
  */
-export interface RestApiActionConfig<T> {
+export interface RestApiActionConfig {
   method: "GET" | "POST" | "PUT" | "DELETE";
   endpoint: () => string;
   headers: Record<string, string>;

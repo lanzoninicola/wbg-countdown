@@ -1,5 +1,6 @@
 // create a hook to handle the form state with useReducer including loading and error  and the reducer function
 import React from "react";
+import { useNotifications } from "../../../notifications";
 import { useOnboardingRestApi } from "../../../onboarding-rest-api";
 import useOnboardingFormState from "../../provider/hooks/useOnboardingFormState";
 import useProductInfo from "../../provider/hooks/useProductInfo";
@@ -9,6 +10,7 @@ export const useOnboardingModalForm = () => {
   const { productId, installationId } = useProductInfo();
   const { formState, dispatchFormState } = useOnboardingFormState();
   const { doOnboarding } = useOnboardingRestApi();
+  const { error: errorNotification } = useNotifications();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatchFormState({
@@ -58,6 +60,8 @@ export const useOnboardingModalForm = () => {
       })
       .catch((error) => {
         dispatchFormState({ type: "FAILURE", error });
+
+        errorNotification(error.message);
       });
   };
 

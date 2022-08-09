@@ -12,6 +12,7 @@ const INITIAL_STATE: OnboardingStateData = {
     consent_privacy: false,
     consent_terms: false,
     isError: false,
+    error: "",
     isLoading: false,
     isSubmitted: false,
   },

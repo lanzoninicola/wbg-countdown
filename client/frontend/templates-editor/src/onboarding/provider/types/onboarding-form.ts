@@ -5,6 +5,7 @@ export interface OnboardingFormState {
   consent_privacy: boolean;
   consent_terms: boolean;
   isError: boolean;
+  error: string;
   isLoading: boolean;
   isSubmitted: boolean;
 }
