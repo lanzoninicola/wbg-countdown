@@ -1,30 +1,30 @@
 import { OnboardingFormState } from "./context";
 
 export interface OnboardingFormChangeAction {
-  type: "ON_CHANGE_ONBOARDING_FORM";
+  type: "ONBOARDING_FORM_ON_CHANGE";
   name: keyof OnboardingFormState;
   value: string | boolean;
 }
 
 export interface OnboardingFormSubmitAction {
-  type: "SUBMIT_ONBOARDING_FORM";
+  type: "ONBOARDING_FORM_SUBMIT";
 }
 
 export interface OnboardingFormSuccessAction {
-  type: "SUCCESS_ONBOARDING_RESPONSE";
+  type: "ONBOARDING_FORM_SUCCESS_RESPONSE";
 }
 
 export interface OnboardingFormFailureAction {
-  type: "FAILURE_ONBOARDING_RESPONSE";
+  type: "ONBOARDING_FORM_FAILURE_RESPONSE";
   error: string;
 }
 
-export interface OnboardingStatusSuccessAction {
-  type: "ONBOARDING_STATUS_RESPONSE_SUCCESS";
+export interface OnboardingPreCheckStatusResponseFailedAction {
+  type: "ONBOARDING_PRE_CHECK_STATUS_RESPONSE_FAILED";
 }
 
-export interface OnboardingStatusFailedAction {
-  type: "ONBOARDING_STATUS_RESPONSE_FAILED";
+export interface OnboardingPreCheckStatusResponseSuccessAction {
+  type: "ONBOARDING_PRE_CHECK_STATUS_RESPONSE_SUCCESS";
 }
 
 export type OnboardingAction =
@@ -32,5 +32,5 @@ export type OnboardingAction =
   | OnboardingFormSubmitAction
   | OnboardingFormSuccessAction
   | OnboardingFormFailureAction
-  | OnboardingStatusSuccessAction
-  | OnboardingStatusFailedAction;
+  | OnboardingPreCheckStatusResponseFailedAction
+  | OnboardingPreCheckStatusResponseSuccessAction;

@@ -5,7 +5,6 @@ import { CountdownContext } from "../../context/countdown-context";
 
 interface UseCurrentCountdownSelector {
   currentCountdown: CountdownModel["id"] | null;
-  isCountdownLoaded: boolean;
   setCurrentCountdown: (countdown: CountdownModel["id"] | null) => void;
 }
 
@@ -30,8 +29,6 @@ export default function useCurrentCountdownSelector(): UseCurrentCountdownSelect
 
   return {
     currentCountdown,
-    isCountdownLoaded:
-      currentCountdown !== null || currentCountdown !== undefined,
     setCurrentCountdown,
   };
 }

@@ -1,21 +1,38 @@
-import {
-  OnboardingModalForm,
-  useOnboardingCheckStatus,
-} from "../../../onboarding";
-import useSaveSettings from "../../hooks/useSaveSettings";
+import { OnboardingModal, useOnboardingCheckStatus } from "../../../onboarding";
 import EditorSaveButton from "./editor-save-button/editor-save-button";
 
 export default function EditorSave() {
-  const { onSave, isLoading } = useSaveSettings();
   const status = useOnboardingCheckStatus();
 
-  if (status === "pending") {
+  // TODO: handle onboarding thankyou and failed
+
+  /**
+  const { onboardingResult } = useOnboardingContext();
+
+  if (status === "pending" && onboardingResult === "success") {
     return (
-      <OnboardingModalForm>
+      <OnboardingModal config="success" body={<EditorSaveButton />}>
         <EditorSaveButton />
-      </OnboardingModalForm>
+      </OnboardingModal>
     );
   }
 
-  return <EditorSaveButton onClick={onSave} isLoading={isLoading} />;
+  if (status === "pending" && onboardingResult === "failed") {
+    return (
+      <OnboardingModal config="failed" body={<EditorSaveButton />}>
+        <EditorSaveButton />
+      </OnboardingModal>
+    );
+  }
+   */
+
+  if (status === "pending") {
+    return (
+      <OnboardingModal config="onboardingForm">
+        <EditorSaveButton />
+      </OnboardingModal>
+    );
+  }
+
+  return <EditorSaveButton />;
 }

@@ -6,6 +6,7 @@ export interface OnboardingStateData {
   productId: string;
   installationId: string;
   onboardingStatus: "pending" | "completed";
+  onboardingResult: "success" | "failed" | null;
   formState: OnboardingFormState;
 }
 

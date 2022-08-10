@@ -1,6 +1,5 @@
 import { useReducer, useState } from "react";
 
-import useOnboardingCheckStatus from "../hooks/useOnboardingCheckStatus";
 import INITIAL_STATE from "./constants/initial-state";
 import { OnboardingContext } from "./context/onboarding-context";
 import { onboardingReducer } from "./reducers/onboarding-reducer";

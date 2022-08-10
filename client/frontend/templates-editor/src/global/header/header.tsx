@@ -15,7 +15,7 @@ const lngs: Languages = {
 };
 
 export default function Header() {
-  const { currentCountdown, isCountdownLoaded } = useCurrentCountdownSelector();
+  const { currentCountdown } = useCurrentCountdownSelector();
 
   return (
     <Grid
@@ -32,10 +32,10 @@ export default function Header() {
             <ModalNewCountdown />
           </HStack>
           <HStack spacing={4}>
-            {isCountdownLoaded && (
+            {currentCountdown && (
               <ShortcodePreview countdownId={currentCountdown!} />
             )}
-            {isCountdownLoaded && <EditorSave />}
+            {currentCountdown && <EditorSave />}
           </HStack>
         </HStack>
       </Box>

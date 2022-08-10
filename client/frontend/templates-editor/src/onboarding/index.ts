@@ -4,7 +4,7 @@ import useOnboardingStatusSelector from "./provider/hooks/useOnboardingStatusSel
 import useOnboardingFormStateSelector from "./provider/hooks/useOnboardingFormStateSelector";
 import useOnboardingModalForm from "./hooks/useOnboardingModalForm";
 import useOnboardingCheckStatus from "./hooks/useOnboardingCheckStatus";
-import OnboardingModalForm from "./components/onboarding-modal-form/onboarding-modal-form";
+import OnboardingModal from "./components/onboarding-modal/onboarding-modal";
 
 export {
   OnboardingProvider,
@@ -13,5 +13,5 @@ export {
   useOnboardingContext,
   useOnboardingModalForm,
   useOnboardingCheckStatus,
-  OnboardingModalForm,
+  OnboardingModal,
 };

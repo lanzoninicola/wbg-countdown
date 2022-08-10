@@ -20,6 +20,7 @@ import { update as updateCountdown } from "../../../countdown-rest-api/services/
 import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdown-rest-api/constants/countdowns/endpoints";
 import { useSWRConfig } from "swr";
 import { useNotifications } from "../../../notifications";
+import ButtonSettings from "../../countdowns-table/primitives/button-settings/button-settings";
 
 interface ModalEditCountdownProps {
   countdown: CountdownModel;
@@ -70,7 +71,7 @@ export default function ModalEditCountdown({
 
   return (
     <>
-      <ButtonEdit label="Edit" onClick={onOpen} />
+      <ButtonSettings label="Settings" onClick={onOpen} />
       <Modal
         isCentered
         initialFocusRef={initialRef}

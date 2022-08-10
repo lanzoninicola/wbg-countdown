@@ -10,6 +10,7 @@ import ShortcodePreview from "../../../../global/common/shortcode-preview/shortc
 import ButtonSettings from "../../primitives/button-settings/button-settings";
 import ButtonShortcode from "../../../../global/common/shortcode-preview/button-shortcode/button-shortcode";
 import TableCellText from "../../primitives/table-cell-text/table-cell-text";
+import ButtonEdit from "../../primitives/button-edit/button-edit";
 
 interface TableRowProps {
   countdown: CountdownModel;
@@ -43,7 +44,7 @@ export default function TableRow({ countdown }: TableRowProps) {
       </Td>
       <Td>
         <HStack>
-          <ButtonSettings
+          <ButtonEdit
             label={t("global.customize")}
             onClick={() => {
               setCurrentCountdown(id);

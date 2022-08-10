@@ -150,6 +150,15 @@ const enUS = {
           "I read the privacy policy. I am aware that you care about my privacy and will never share my data with anyone. This is the link to:",
         termsAndConditionsConsent:
           "Your terms and conditions are acceptable to me.",
+        success: {
+          title: "Thank you!",
+          subtitle: "You are now registered.",
+        },
+        failed: {
+          title: "Oops!",
+          subtitle:
+            "Sorry, something went wrong. Save your changes and we will try again later.",
+        },
       },
     },
   },

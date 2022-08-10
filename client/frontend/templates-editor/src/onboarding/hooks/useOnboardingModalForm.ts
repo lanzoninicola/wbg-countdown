@@ -6,7 +6,6 @@ import { useOnboardingRestApi } from "../../onboarding-rest-api";
 import useOnboardingContext from "../provider/hooks/useOnboardingContext";
 import useProductInfo from "../provider/hooks/useProductInfo";
 import { OnboardingFormState } from "../provider/types/context";
-import useOnboardingModalThankYou from "./useOnboardingModalThankYou";
 
 export default function useOnboardingModalForm() {
   const {
@@ -14,7 +13,6 @@ export default function useOnboardingModalForm() {
     onOpen: onOpenModal,
     onClose: onCloseModal,
   } = useDisclosure();
-  const { onOpenModal: onOpenModalThankYou } = useOnboardingModalThankYou();
   const { productId, installationId } = useProductInfo();
   const { formState, dispatch } = useOnboardingContext();
   const { doOnboarding } = useOnboardingRestApi();
@@ -22,7 +20,7 @@ export default function useOnboardingModalForm() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
-      type: "ON_CHANGE_ONBOARDING_FORM",
+      type: "ONBOARDING_FORM_ON_CHANGE",
       name: e.target.name as keyof OnboardingFormState,
       value: e.target.value.trim(),
     });
@@ -30,7 +28,7 @@ export default function useOnboardingModalForm() {
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
-      type: "ON_CHANGE_ONBOARDING_FORM",
+      type: "ONBOARDING_FORM_ON_CHANGE",
       name: e.target.name as keyof OnboardingFormState,
       value: e.target.checked,
     });
@@ -38,7 +36,7 @@ export default function useOnboardingModalForm() {
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    dispatch({ type: "SUBMIT_ONBOARDING_FORM" });
+    dispatch({ type: "ONBOARDING_FORM_SUBMIT" });
 
     const {
       fullname,
@@ -63,13 +61,11 @@ export default function useOnboardingModalForm() {
         }
 
         if (res.data.status === 200) {
-          dispatch({ type: "SUCCESS_ONBOARDING_RESPONSE" });
-          onCloseModal();
-          onOpenModalThankYou();
+          dispatch({ type: "ONBOARDING_FORM_SUCCESS_RESPONSE" });
         }
       })
       .catch((error) => {
-        dispatch({ type: "FAILURE_ONBOARDING_RESPONSE", error });
+        dispatch({ type: "ONBOARDING_FORM_FAILURE_RESPONSE", error });
 
         errorNotification(error.message);
       });

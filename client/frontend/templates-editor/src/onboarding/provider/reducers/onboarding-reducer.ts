@@ -5,7 +5,7 @@ export const onboardingReducer = (
   action: OnboardingAction
 ): OnboardingStateData => {
   switch (action.type) {
-    case "ON_CHANGE_ONBOARDING_FORM":
+    case "ONBOARDING_FORM_ON_CHANGE":
       return {
         ...state,
         formState: {
@@ -13,7 +13,7 @@ export const onboardingReducer = (
           [action.name]: action.value,
         },
       };
-    case "SUBMIT_ONBOARDING_FORM":
+    case "ONBOARDING_FORM_SUBMIT":
       return {
         ...state,
         formState: {
@@ -21,18 +21,20 @@ export const onboardingReducer = (
           isLoading: true,
         },
       };
-    case "SUCCESS_ONBOARDING_RESPONSE":
+    case "ONBOARDING_FORM_SUCCESS_RESPONSE":
       return {
         ...state,
         onboardingStatus: "completed",
+        onboardingResult: "success",
         formState: {
           ...state.formState,
           isLoading: false,
         },
       };
-    case "FAILURE_ONBOARDING_RESPONSE":
+    case "ONBOARDING_FORM_FAILURE_RESPONSE":
       return {
         ...state,
+        onboardingResult: "failed",
         formState: {
           ...state.formState,
           isLoading: false,
@@ -41,13 +43,13 @@ export const onboardingReducer = (
         },
       };
 
-    case "ONBOARDING_STATUS_RESPONSE_FAILED":
+    case "ONBOARDING_PRE_CHECK_STATUS_RESPONSE_FAILED":
       return {
         ...state,
         onboardingStatus: "pending",
       };
 
-    case "ONBOARDING_STATUS_RESPONSE_SUCCESS":
+    case "ONBOARDING_PRE_CHECK_STATUS_RESPONSE_SUCCESS":
       return {
         ...state,
         onboardingStatus: "completed",
