@@ -12,7 +12,6 @@ import {
 import { cloneElement, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
-import EditorSaveButton from "../../../editor/components/editor-save/editor-save-button/editor-save-button";
 import Heeading from "../../../global/common/layout/heeading/heeading";
 import error from "../../assets/images/error.png";
 import steppingUp from "../../assets/images/stepping-up.png";
