@@ -3,8 +3,7 @@ import { OnboardingStateData } from "../types";
 const INITIAL_STATE: OnboardingStateData = {
   productId: "",
   installationId: "",
-  status: "pending",
-  isShownModal: false,
+  onboardingStatus: "pending",
   formState: {
     fullname: "",
     email: "",
@@ -14,7 +13,6 @@ const INITIAL_STATE: OnboardingStateData = {
     isError: false,
     error: "",
     isLoading: false,
-    isSubmitted: false,
   },
 };
 

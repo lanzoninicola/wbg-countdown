@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useOnboardingRestApi } from "../../onboarding-rest-api";
+import useOnboardingContext from "../provider/hooks/useOnboardingContext";
 
 /**
  * Make call to external API to check if user is onboarded or not.
@@ -9,13 +10,10 @@ import { useOnboardingRestApi } from "../../onboarding-rest-api";
  *
  * @dependencies useOnboardingRestApi() hook
  */
-export default function useOnboardingCheckStatus({
-  installationId,
-}: {
-  installationId: string;
-}) {
+export default function useOnboardingCheckStatus() {
   const isRequiredRef = useRef<boolean | null>(null);
   const [status, setStatus] = useState<"pending" | "completed">("pending");
+  const { dispatch, installationId } = useOnboardingContext();
   const { shouldOnboardingRequired } = useOnboardingRestApi();
 
   useEffect(() => {
@@ -28,6 +26,7 @@ export default function useOnboardingCheckStatus({
 
       if (res.data.status > 400) {
         setStatus("pending");
+        dispatch({ type: "ONBOARDING_STATUS_RESPONSE_FAILED" });
         isRequiredRef.current = true;
         return;
       }
@@ -35,11 +34,15 @@ export default function useOnboardingCheckStatus({
       if (res.data.status === 200) {
         if (res.data.payload?.product_installation?.wp_user_id === null) {
           setStatus("pending");
+          dispatch({
+            type: "ONBOARDING_STATUS_RESPONSE_FAILED",
+          });
           isRequiredRef.current = true;
           return;
         }
 
         setStatus("completed");
+        dispatch({ type: "ONBOARDING_STATUS_RESPONSE_SUCCESS" });
         isRequiredRef.current = false;
       }
     }

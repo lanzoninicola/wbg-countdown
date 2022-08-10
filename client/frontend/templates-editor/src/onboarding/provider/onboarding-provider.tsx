@@ -1,9 +1,9 @@
 import { useReducer, useState } from "react";
 
+import useOnboardingCheckStatus from "../hooks/useOnboardingCheckStatus";
 import INITIAL_STATE from "./constants/initial-state";
 import { OnboardingContext } from "./context/onboarding-context";
-import useOnboardingCheckStatus from "../hooks/useOnboardingCheckStatus";
-import { formReducer } from "./reducers/form-reducer";
+import { onboardingReducer } from "./reducers/onboarding-reducer";
 
 /** START: Info localized by Wordpress */
 // @ts-ignore
@@ -20,24 +20,17 @@ interface OnboardingProviderProps {
 export default function OnboardingProvider({
   children,
 }: OnboardingProviderProps) {
-  const status = useOnboardingCheckStatus({ installationId });
-  const [isShownModal, setIsShownModal] = useState(false);
-
-  const [formState, dispatchFormState] = useReducer(
-    formReducer,
-    INITIAL_STATE.formState
-  );
+  const [state, dispatch] = useReducer(onboardingReducer, {
+    ...INITIAL_STATE,
+    installationId,
+    productId,
+  });
 
   return (
     <OnboardingContext.Provider
       value={{
-        productId,
-        installationId,
-        status,
-        isShownModal,
-        setIsShownModal,
-        formState,
-        dispatchFormState,
+        ...state,
+        dispatch,
       }}
     >
       {children}

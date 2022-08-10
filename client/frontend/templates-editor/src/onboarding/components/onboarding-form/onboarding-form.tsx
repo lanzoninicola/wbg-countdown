@@ -18,10 +18,6 @@ export default function OnboardingForm({
 
   const { fullname, email } = formState;
 
-  useEffect(() => {
-    console.log(formState.isError);
-  }, [formState]);
-
   return (
     <Grid gridTemplateRows={"1fr 1fr"} gap={5} w="100%" maxW={"400px"}>
       <VStack alignItems={"flex-start"} w="100%">

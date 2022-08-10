@@ -12,31 +12,28 @@ import {
 } from "@chakra-ui/react";
 import { cloneElement, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { EditorSave } from "../../../editor/components";
 
 import Heeading from "../../../global/common/layout/heeading/heeading";
-import steppingUp from "../../assets/images/stepping-up.png";
+import thankyou from "../../assets/images/thank-you.png";
 import useOnboardingModalForm from "../../hooks/useOnboardingModalForm";
+import useOnboardingModalThankYou from "../../hooks/useOnboardingModalThankYou";
 import OnboardingForm from "../onboarding-form/onboarding-form";
 
-interface OnboardingModalProps {
+interface OnboardingModalThankYouProps {
   /** The button component that will open the modal */
   children: React.ReactElement;
 }
 
-/**
- * The onboarding modal is a modal that is used to onboard a user to the site.
- *
- * @param children the button component that will open the modal. The onOpenModal is passed via React.cloneElement()
- */
-export default function OnboardingModal({ children }: OnboardingModalProps) {
-  const { formState, handleSubmit, isModalOpen, onOpenModal, onCloseModal } =
-    useOnboardingModalForm();
+export default function OnboardingModalThankYou({
+  children,
+}: OnboardingModalThankYouProps) {
+  const { isModalOpen, onOpenModal, onCloseModal } =
+    useOnboardingModalThankYou();
 
   const { t } = useTranslation();
 
   const initialRef = useRef() as React.MutableRefObject<HTMLInputElement>;
-
-  const { fullname, email, consent_terms, consent_privacy } = formState;
 
   return (
     <>
@@ -60,7 +57,7 @@ export default function OnboardingModal({ children }: OnboardingModalProps) {
             <HStack spacing={4}>
               <Box
                 className="onboarding-image"
-                bgImage={`url(${steppingUp})`}
+                bgImage={`url(${thankyou})`}
                 bgSize={"250px"}
                 w="600px"
                 h="400px"
@@ -71,30 +68,10 @@ export default function OnboardingModal({ children }: OnboardingModalProps) {
                 <Heeading as="h2" fontSize={"md"}>
                   {t("onboarding.subtitle")}
                 </Heeading>
-                <OnboardingForm />
+                <EditorSave />
               </VStack>
             </HStack>
           </ModalBody>
-
-          <ModalFooter>
-            <Button
-              isLoading={formState.isLoading}
-              isDisabled={
-                fullname === "" ||
-                email === "" ||
-                consent_terms === false ||
-                consent_privacy === false
-              }
-              loadingText={t("global.saving").capitalize()}
-              className="theme-font"
-              colorScheme="blue"
-              size={"sm"}
-              onClick={handleSubmit}
-              data-test="onboarding-form-submit"
-            >
-              {t("onboarding.buttonLabel").capitalize()}
-            </Button>
-          </ModalFooter>
         </ModalContent>
       </Modal>
     </>

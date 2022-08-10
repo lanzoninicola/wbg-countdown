@@ -10,11 +10,11 @@ export default function useOnboardingContext(): OnboardingContextData {
   );
 
   useEffect(() => {
-    onboardingContext.status === undefined &&
+    onboardingContext.onboardingStatus === undefined &&
       console.error(
         "onboardingContext hook must be used within a OnboardingProvider"
       );
-  }, [onboardingContext.status]);
+  }, [onboardingContext.onboardingStatus]);
 
   return {
     ...onboardingContext,

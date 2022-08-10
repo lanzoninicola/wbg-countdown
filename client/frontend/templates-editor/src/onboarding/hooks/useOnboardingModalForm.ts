@@ -5,7 +5,8 @@ import { useNotifications } from "../../notifications";
 import { useOnboardingRestApi } from "../../onboarding-rest-api";
 import useOnboardingContext from "../provider/hooks/useOnboardingContext";
 import useProductInfo from "../provider/hooks/useProductInfo";
-import { OnboardingFormState } from "../provider/types";
+import { OnboardingFormState } from "../provider/types/context";
+import useOnboardingModalThankYou from "./useOnboardingModalThankYou";
 
 export default function useOnboardingModalForm() {
   const {
@@ -13,22 +14,23 @@ export default function useOnboardingModalForm() {
     onOpen: onOpenModal,
     onClose: onCloseModal,
   } = useDisclosure();
+  const { onOpenModal: onOpenModalThankYou } = useOnboardingModalThankYou();
   const { productId, installationId } = useProductInfo();
-  const { formState, dispatchFormState, status } = useOnboardingContext();
+  const { formState, dispatch } = useOnboardingContext();
   const { doOnboarding } = useOnboardingRestApi();
   const { error: errorNotification } = useNotifications();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatchFormState({
-      type: "CHANGE",
+    dispatch({
+      type: "ON_CHANGE_ONBOARDING_FORM",
       name: e.target.name as keyof OnboardingFormState,
       value: e.target.value.trim(),
     });
   };
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatchFormState({
-      type: "CHANGE",
+    dispatch({
+      type: "ON_CHANGE_ONBOARDING_FORM",
       name: e.target.name as keyof OnboardingFormState,
       value: e.target.checked,
     });
@@ -36,7 +38,7 @@ export default function useOnboardingModalForm() {
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    dispatchFormState({ type: "SUBMIT" });
+    dispatch({ type: "SUBMIT_ONBOARDING_FORM" });
 
     const {
       fullname,
@@ -61,19 +63,19 @@ export default function useOnboardingModalForm() {
         }
 
         if (res.data.status === 200) {
-          dispatchFormState({ type: "SUCCESS" });
+          dispatch({ type: "SUCCESS_ONBOARDING_RESPONSE" });
           onCloseModal();
+          onOpenModalThankYou();
         }
       })
       .catch((error) => {
-        dispatchFormState({ type: "FAILURE", error });
+        dispatch({ type: "FAILURE_ONBOARDING_RESPONSE", error });
 
         errorNotification(error.message);
       });
   };
 
   return {
-    status,
     formState,
     handleInputChange,
     handleCheckboxChange,

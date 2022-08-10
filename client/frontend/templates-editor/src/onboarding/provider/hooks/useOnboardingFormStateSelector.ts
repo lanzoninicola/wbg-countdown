@@ -8,9 +8,9 @@ export default function useOnboardingFormStateSelector() {
     (ctx) => ctx.formState
   );
 
-  const dispatchFormState = useContextSelector(
+  const dispatchFormAction = useContextSelector(
     OnboardingContext,
-    (ctx) => ctx.dispatchFormState
+    (ctx) => ctx.dispatchFormAction
   );
 
   useEffect(() => {
@@ -22,6 +22,6 @@ export default function useOnboardingFormStateSelector() {
 
   return {
     formState,
-    dispatchFormState,
+    dispatchFormAction,
   };
 }

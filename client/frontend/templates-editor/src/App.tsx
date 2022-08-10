@@ -10,9 +10,7 @@ import { OnboardingProvider } from "./onboarding";
 function App() {
   return (
     <MainContent>
-      <OnboardingProvider>
-        <Header />
-      </OnboardingProvider>
+      <Header />
       <EditorPage />
     </MainContent>
   );

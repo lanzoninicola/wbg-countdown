@@ -5,22 +5,20 @@ import {
 } from "./context";
 
 import {
-  OnboardingFormState,
   OnboardingFormChangeAction,
   OnboardingFormSubmitAction,
   OnboardingFormSuccessAction,
   OnboardingFormFailureAction,
-  OnboardingFormAction,
-} from "./onboarding-form";
+  OnboardingAction,
+} from "./actions";
 
 export type {
   OnboardingContextData,
   OnboardingStateData,
   OnboardingStateSetter,
-  OnboardingFormState,
   OnboardingFormChangeAction,
   OnboardingFormSubmitAction,
   OnboardingFormSuccessAction,
   OnboardingFormFailureAction,
-  OnboardingFormAction,
+  OnboardingAction,
 };

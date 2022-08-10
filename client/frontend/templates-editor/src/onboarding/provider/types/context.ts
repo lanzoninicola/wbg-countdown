@@ -1,16 +1,25 @@
-import { OnboardingFormAction, OnboardingFormState } from "./onboarding-form";
+import { OnboardingAction } from "./actions";
 
 export type OnboardingContextData = OnboardingStateData & OnboardingStateSetter;
 
 export interface OnboardingStateData {
   productId: string;
   installationId: string;
-  status: "pending" | "completed";
-  isShownModal: boolean;
+  onboardingStatus: "pending" | "completed";
   formState: OnboardingFormState;
 }
 
 export interface OnboardingStateSetter {
-  setIsShownModal: (isShownModal: boolean) => void;
-  dispatchFormState: (action: OnboardingFormAction) => void;
+  dispatch: (action: OnboardingAction) => void;
+}
+
+export interface OnboardingFormState {
+  fullname: string;
+  email: string;
+  consent_newsletter: boolean;
+  consent_privacy: boolean;
+  consent_terms: boolean;
+  isError: boolean;
+  error: string;
+  isLoading: boolean;
 }
