@@ -1,18 +1,9 @@
-import {
-  Checkbox,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Grid,
-  Input,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { FormControl, FormLabel, Grid, Input, VStack } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import ConsentGroup from "../consent-group/consent-group";
 
-import { useOnboardingModalForm } from "../useOnboardingModalForm";
+import useOnboardingModalForm from "../../hooks/useOnboardingModalForm";
+import ConsentGroup from "./consent-group/consent-group";
 
 interface OnboardingFormProps {
   /** Used to focus on an input field */

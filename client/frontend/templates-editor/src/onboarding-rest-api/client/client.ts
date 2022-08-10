@@ -1,13 +1,19 @@
+import { APIResponse } from "../types";
+
 export interface RestClientOptions {
   method: string;
   headers: Record<string, string>;
   data?: any;
 }
 
-async function client(
+/**
+ * The "T" is the type of response payload (data required to get the work done).
+ * It may be different depending on the type of request.
+ */
+async function client<T>(
   endpoint: string,
   { method, headers, data }: RestClientOptions
-): Promise<any> {
+): Promise<APIResponse<T>> {
   return await (
     await fetch(endpoint, {
       method: method,

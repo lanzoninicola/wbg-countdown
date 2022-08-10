@@ -1,28 +1,37 @@
 import {
-  useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  ModalFooter,
-  HStack,
-  Button,
-  VStack,
   Box,
+  Button,
+  HStack,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  VStack,
 } from "@chakra-ui/react";
-import { useRef } from "react";
+import { cloneElement, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import ButtonSave from "../../../editor/layout/button-save/button-save";
-import Heeading from "../../../global/common/layout/heeading/heeading";
-import OnboardingForm from "./onboarding-form/onboarding-form";
-import { useOnboardingModalForm } from "./useOnboardingModalForm";
-import steppingUp from "../../assets/images/stepping-up.png";
 
-export default function OnboardingModalForm() {
-  const { formState, handleSubmit } = useOnboardingModalForm();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+import Heeading from "../../../global/common/layout/heeading/heeading";
+import steppingUp from "../../assets/images/stepping-up.png";
+import useOnboardingModalForm from "../../hooks/useOnboardingModalForm";
+import OnboardingForm from "../onboarding-form/onboarding-form";
+
+interface OnboardingModalProps {
+  /** The button component that will open the modal */
+  children: React.ReactElement;
+}
+
+/**
+ * The onboarding modal is a modal that is used to onboard a user to the site.
+ *
+ * @param children the button component that will open the modal. The onOpenModal is passed via React.cloneElement()
+ */
+export default function OnboardingModal({ children }: OnboardingModalProps) {
+  const { formState, handleSubmit, isModalOpen, onOpenModal, onCloseModal } =
+    useOnboardingModalForm();
+
   const { t } = useTranslation();
 
   const initialRef = useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -31,18 +40,13 @@ export default function OnboardingModalForm() {
 
   return (
     <>
-      <ButtonSave
-        label={t("editor.saveSettings").capitalize()}
-        colorScheme={"green"}
-        onClick={onOpen}
-        loadingText={t("global.saving").capitalize()}
-      />
+      {cloneElement(children, { onClick: onOpenModal })}
 
       <Modal
         isCentered
         initialFocusRef={initialRef}
-        isOpen={isOpen}
-        onClose={onClose}
+        isOpen={isModalOpen}
+        onClose={onCloseModal}
         closeOnOverlayClick={false}
         blockScrollOnMount={true}
         size="2xl"

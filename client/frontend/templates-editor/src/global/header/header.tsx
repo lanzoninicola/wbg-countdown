@@ -1,14 +1,10 @@
 import { Box, Grid, HStack } from "@chakra-ui/react";
 
 import useCurrentCountdownSelector from "../../countdown-provider/hooks/app/useCurrentCountdownSelector";
-import ModalNewCountdown from "../../countdowns/components/modal-new-countdown/modal-new-countdown";
-import EditorSave from "../../editor/components/editor-save/editor-save";
+import { ModalNewCountdown } from "../../countdowns/components";
+import { EditorSave } from "../../editor/components";
 import { Languages } from "../../i18n/types";
-import { OnboardingProvider, useOnboardingStatus } from "../../onboarding";
-import OnboardingModalForm from "../../onboarding/components/onboarding-modal-form/onboarding-modal-form";
-import LanguagesBar from "../common/language-bar/languages-bar";
-import Logo from "../common/logo/logo";
-import ShortcodePreview from "../common/shortcode-preview/shortcode-preview";
+import { Logo, LanguagesBar, ShortcodePreview } from "../common";
 
 //TODO: detect language from Wordpress
 const lngs: Languages = {
@@ -19,8 +15,7 @@ const lngs: Languages = {
 };
 
 export default function Header() {
-  const { currentCountdown } = useCurrentCountdownSelector();
-  const { status: onboardingStatus } = useOnboardingStatus();
+  const { currentCountdown, isCountdownLoaded } = useCurrentCountdownSelector();
 
   return (
     <Grid
@@ -37,15 +32,10 @@ export default function Header() {
             <ModalNewCountdown />
           </HStack>
           <HStack spacing={4}>
-            {currentCountdown && (
-              <ShortcodePreview countdownId={currentCountdown} />
+            {isCountdownLoaded && (
+              <ShortcodePreview countdownId={currentCountdown!} />
             )}
-            {currentCountdown &&
-              (onboardingStatus === "pending" ? (
-                <OnboardingModalForm />
-              ) : (
-                <EditorSave currentCountdown={currentCountdown} />
-              ))}
+            {isCountdownLoaded && <EditorSave />}
           </HStack>
         </HStack>
       </Box>

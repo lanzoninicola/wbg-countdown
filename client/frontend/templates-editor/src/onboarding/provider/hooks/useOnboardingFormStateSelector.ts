@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useContextSelector } from "use-context-selector";
 import { OnboardingContext } from "../context/onboarding-context";
 
-export default function useOnboardingFormState() {
+export default function useOnboardingFormStateSelector() {
   const formState = useContextSelector(
     OnboardingContext,
     (ctx) => ctx.formState
@@ -16,7 +16,7 @@ export default function useOnboardingFormState() {
   useEffect(() => {
     formState === undefined &&
       console.error(
-        "useOnboardingFormState hook must be used within a OnboardingProvider"
+        "useOnboardingFormStateSelector hook must be used within a OnboardingProvider"
       );
   }, [formState]);
 

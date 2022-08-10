@@ -1,11 +1,17 @@
-import useOnboardingStatus from "./provider/hooks/useOnboardingStatus";
-import useOnboardingFormState from "./provider/hooks/useOnboardingFormState";
 import useOnboardingContext from "./provider/hooks/useOnboardingContext";
 import OnboardingProvider from "./provider/onboarding-provider";
+import useOnboardingStatusSelector from "./provider/hooks/useOnboardingStatusSelector";
+import useOnboardingFormStateSelector from "./provider/hooks/useOnboardingFormStateSelector";
+import useOnboardingModalForm from "./hooks/useOnboardingModalForm";
+import useOnboardingCheckStatus from "./hooks/useOnboardingCheckStatus";
+import OnboardingModal from "./components/onboarding-modal/onboarding-modal";
 
 export {
   OnboardingProvider,
-  useOnboardingStatus,
-  useOnboardingFormState,
+  useOnboardingStatusSelector,
+  useOnboardingFormStateSelector,
   useOnboardingContext,
+  useOnboardingModalForm,
+  useOnboardingCheckStatus,
+  OnboardingModal,
 };

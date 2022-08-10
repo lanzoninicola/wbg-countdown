@@ -1,29 +1,21 @@
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
+import {
+  OnboardingModal,
+  useOnboardingStatusSelector,
+} from "../../../onboarding";
+import useSaveSettings from "../../hooks/useSaveSettings";
+import EditorSaveButton from "./editor-save-button/editor-save-button";
 
-import { CountdownModel } from "../../../countdown-widget/types";
-import ButtonSave from "../../layout/button-save/button-save";
-import useEditorSave from "./useEditorSave";
+export default function EditorSave() {
+  const { onSave, isLoading } = useSaveSettings();
+  const { status: onboardingStatus } = useOnboardingStatusSelector();
 
-interface EditorSaveProps {
-  currentCountdown: CountdownModel["id"] | null;
-}
-
-export default function EditorSave({ currentCountdown }: EditorSaveProps) {
-  const { t } = useTranslation();
-  const { onSaveCountdown, isLoading } = useEditorSave({ currentCountdown });
-
-  function onSave() {
-    onSaveCountdown();
+  if (onboardingStatus === "pending") {
+    return (
+      <OnboardingModal>
+        <EditorSaveButton />
+      </OnboardingModal>
+    );
   }
 
-  return (
-    <ButtonSave
-      label={t("editor.saveSettings").capitalize()}
-      colorScheme={"green"}
-      onClick={onSave}
-      isLoading={isLoading}
-      loadingText={t("global.saving").capitalize()}
-    />
-  );
+  return <EditorSaveButton onClick={onSave} isLoading={isLoading} />;
 }

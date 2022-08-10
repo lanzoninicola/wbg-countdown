@@ -1,6 +1,6 @@
 import { OnboardingFormAction, OnboardingFormState } from "../types";
 
-export const onboardingFormReducer = (
+export const formReducer = (
   state: OnboardingFormState,
   action: OnboardingFormAction
 ): OnboardingFormState => {

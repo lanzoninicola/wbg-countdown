@@ -1,14 +1,20 @@
 // create a hook to handle the form state with useReducer including loading and error  and the reducer function
+import { useDisclosure } from "@chakra-ui/react";
 import React from "react";
-import { useNotifications } from "../../../notifications";
-import { useOnboardingRestApi } from "../../../onboarding-rest-api";
-import useOnboardingFormState from "../../provider/hooks/useOnboardingFormState";
-import useProductInfo from "../../provider/hooks/useProductInfo";
-import { OnboardingFormState } from "../../provider/types";
+import { useNotifications } from "../../notifications";
+import { useOnboardingRestApi } from "../../onboarding-rest-api";
+import useOnboardingContext from "../provider/hooks/useOnboardingContext";
+import useProductInfo from "../provider/hooks/useProductInfo";
+import { OnboardingFormState } from "../provider/types";
 
-export const useOnboardingModalForm = () => {
+export default function useOnboardingModalForm() {
+  const {
+    isOpen: isModalOpen,
+    onOpen: onOpenModal,
+    onClose: onCloseModal,
+  } = useDisclosure();
   const { productId, installationId } = useProductInfo();
-  const { formState, dispatchFormState } = useOnboardingFormState();
+  const { formState, dispatchFormState, status } = useOnboardingContext();
   const { doOnboarding } = useOnboardingRestApi();
   const { error: errorNotification } = useNotifications();
 
@@ -56,6 +62,7 @@ export const useOnboardingModalForm = () => {
 
         if (res.data.status === 200) {
           dispatchFormState({ type: "SUCCESS" });
+          onCloseModal();
         }
       })
       .catch((error) => {
@@ -65,5 +72,14 @@ export const useOnboardingModalForm = () => {
       });
   };
 
-  return { formState, handleInputChange, handleCheckboxChange, handleSubmit };
-};
+  return {
+    status,
+    formState,
+    handleInputChange,
+    handleCheckboxChange,
+    handleSubmit,
+    isModalOpen,
+    onOpenModal,
+    onCloseModal,
+  };
+}

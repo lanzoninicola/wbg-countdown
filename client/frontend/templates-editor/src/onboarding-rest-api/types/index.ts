@@ -8,10 +8,14 @@ export interface OnboardingRequestPayload {
   installation_id: string;
 }
 
-export interface APIResponse {
+export interface APIResponse<T = unknown> {
   code: "error" | "success";
   message: string;
-  data: SuccessResponse | MissingParameterResponse | ErrorResponse;
+  data:
+    | SuccessResponse
+    | SuccessResponseWithPayload<T>
+    | MissingParameterResponse
+    | ErrorResponse;
 }
 
 /** Payload on succesfully response */
@@ -19,6 +23,12 @@ export interface SuccessResponse {
   operation: string;
   status: 200;
   payload: null;
+}
+
+export interface SuccessResponseWithPayload<T> {
+  operation: string;
+  status: 200;
+  payload: T;
 }
 
 /** Payload when a parameter missing on request sent*/
@@ -33,13 +43,20 @@ export interface ErrorResponse {
 }
 
 /**
- * REST API action configuration.
+ * REST API request configuration.
  * Contain the information of method, endpoint, headers for the REST API call.
  *
- * @param T The type of the Header used for the authentication.
  */
-export interface RestApiActionConfig {
+
+export interface BaseRestApiRequestConfig {
   method: "GET" | "POST" | "PUT" | "DELETE";
-  endpoint: () => string;
   headers: Record<string, string>;
+}
+
+export interface WithEndpointParamsId extends BaseRestApiRequestConfig {
+  endpoint: (installationId: string) => string;
+}
+
+export interface WithEndpointEmptyParams extends BaseRestApiRequestConfig {
+  endpoint: () => string;
 }

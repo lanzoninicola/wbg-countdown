@@ -1,8 +1,8 @@
 import { VStack, Checkbox, Text } from "@chakra-ui/react";
 import { t } from "i18next";
 import { useTranslation } from "react-i18next";
+import useOnboardingModalForm from "../../../hooks/useOnboardingModalForm";
 import FormRequiredIndicator from "../form-required-indicator/form-required-indicator";
-import { useOnboardingModalForm } from "../useOnboardingModalForm";
 import CheckboxLabel from "./checkbox-label/checkbox-label";
 
 export default function ConsentGroup() {

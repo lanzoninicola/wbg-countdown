@@ -4,7 +4,7 @@ const INITIAL_STATE: OnboardingStateData = {
   productId: "",
   installationId: "",
   status: "pending",
-  showOnboardingModal: false,
+  isShownModal: false,
   formState: {
     fullname: "",
     email: "",
