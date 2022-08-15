@@ -3,6 +3,7 @@
 namespace Clockdown\App\Services\ScriptLocalizer;
 
 use Clockdown\App\Common\Helpers;
+use function Clockdown\get_commerce_api_base_url;
 use function Clockdown\get_plugin_name;
 
 /**
@@ -85,8 +86,9 @@ class ScriptLocalizerService {
             array_merge(
                 $this->l10n,
                 array(
-                    'nonce'         => wp_create_nonce( get_plugin_name() . 'nonce' ),
-                    'wp_rest_nonce' => wp_create_nonce( 'wp_rest' ),
+                    'commerce_api_url' => get_commerce_api_base_url(),
+                    'nonce'            => wp_create_nonce( get_plugin_name() . 'nonce' ),
+                    'wp_rest_nonce'    => wp_create_nonce( 'wp_rest' ),
                 )
             )
         );
