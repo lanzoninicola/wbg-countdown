@@ -5,16 +5,13 @@ import ptBR from "./locale/pt-br";
 import enUS from "./locale/en-us";
 import esEs from "./locale/es-es";
 import itIT from "./locale/it-it";
+import { getServerData } from "../global/utils";
 
 const env = process.env.NODE_ENV;
 const isDev = env === "development";
 
 // the default language from wordpress configuration
-// @ts-ignore
-const wordpressLocale = isDev
-  ? "en"
-  : // @ts-ignore
-    clockdownLocalized.language.substring(0, 2);
+const { language: wordpressLocale } = getServerData();
 
 i18n
   // detect user language

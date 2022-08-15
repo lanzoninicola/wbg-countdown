@@ -1,24 +1,13 @@
 import { useReducer } from "react";
+import { getServerData } from "../../global/utils";
 
 import INITIAL_STATE from "./constants/initial-state";
 import { OnboardingContext } from "./context/onboarding-context";
 import { onboardingReducer } from "./reducers/onboarding-reducer";
 
-const env = process.env.NODE_ENV;
-
 /** START: Info localized by Wordpress */
-// @ts-ignore
-const cloc =
-  env === "development"
-    ? {
-        product_id: "1",
-        installation_id: "7cg9997b-0f40-11ed-9cce-040e3caabadb",
-      }
-    : // @ts-ignore
-      clockdownLocalized;
-
-const productId = cloc.product_id;
-const installationId = cloc.installation_id;
+const { product_id: productId, installation_id: installationId } =
+  getServerData();
 /** END: Info localized by Wordpress */
 
 interface OnboardingProviderProps {

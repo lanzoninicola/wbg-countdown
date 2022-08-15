@@ -1,4 +1,5 @@
 import { CountdownModel } from "../../../countdown-widget/types";
+import { WP_REST_NONCE } from "../../constants";
 import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../constants/countdowns/endpoints";
 import { APIResponse } from "../../types";
 
@@ -16,8 +17,7 @@ const update = async (
   const disabledNonce = process.env.NODE_ENV === "development" && true;
   const headers = {
     "Content-Type": "application/json",
-    // @ts-ignore
-    "X-WP-Nonce": clockdownLocalized.wp_rest_nonce,
+    "X-WP-Nonce": WP_REST_NONCE,
   };
 
   if (disabledNonce) {
