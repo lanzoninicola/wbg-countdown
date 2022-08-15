@@ -56,7 +56,7 @@ class Configurator implements PluginConfigurable {
             'clockdown',
             'clockdownLocalized',
             array(
-                'apiURL'   => get_plugin_api_base_url(),
+                'api_url'  => get_plugin_api_base_url(),
                 'language' => get_locale(),
             )
         );
@@ -147,7 +147,7 @@ class Configurator implements PluginConfigurable {
 
         $script_admin_localizer->localize(
             array(
-                'apiURL'            => get_plugin_api_base_url(),
+                'api_url'           => get_plugin_api_base_url(),
                 'language'          => get_locale(),
                 'onboarding_status' => Onboarding::get_status(),
                 'product_id'        => '1',
