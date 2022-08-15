@@ -6,9 +6,7 @@ export function getServerData() {
 
   if (env === "development" || env === "test") {
     return {
-      apiURL: "http://localhost/bb-melhor-envio/wp-json/clockdown/v1",
-      apiNamespace: "clockdown",
-      apiVersion: "v1",
+      api_url: "http://localhost/bb-melhor-envio/wp-json/clockdown/v1",
       language: "en",
       onboarding_status: "pending",
       product_id: "1",

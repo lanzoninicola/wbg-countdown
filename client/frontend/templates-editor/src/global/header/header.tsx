@@ -4,6 +4,7 @@ import useCurrentCountdownSelector from "../../countdown-provider/hooks/app/useC
 import { ModalNewCountdown } from "../../countdowns/components";
 import { EditorSave } from "../../editor/components";
 import { Languages } from "../../i18n/types";
+import { PremiumFeature } from "../../premium-features";
 import { Logo, LanguagesBar, ShortcodePreview } from "../common";
 
 //TODO: detect language from Wordpress
@@ -29,7 +30,9 @@ export default function Header() {
         <HStack justifyContent={"space-between"}>
           <HStack>
             <LanguagesBar languages={lngs} />
-            <ModalNewCountdown />
+            <PremiumFeature variant="modal">
+              <ModalNewCountdown />
+            </PremiumFeature>
           </HStack>
           <HStack spacing={4}>
             {currentCountdown && (

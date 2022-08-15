@@ -8,6 +8,7 @@ import Pagination from "../pagination/pagination";
 import ModalFirstCountdown from "../modal-first-countdown/modal-first-countdown";
 import TableSkeleton from "../table-skeleton/table-skeleton";
 import ModalNewCountdown from "../modal-new-countdown/modal-new-countdown";
+import { PremiumFeature } from "../../../premium-features";
 
 // TODO: handling errors
 export default function Countdowns() {
@@ -25,11 +26,13 @@ export default function Countdowns() {
       ) : (
         <>
           {countdowns && countdowns.length > 0 ? (
-            <VStack alignItems={"flex-start"}>
-              <Pagination data={countdowns} rowsPerPage={5}>
-                <CountdownsTable />
-              </Pagination>
-            </VStack>
+            <PremiumFeature>
+              <VStack alignItems={"flex-start"}>
+                <Pagination data={countdowns} rowsPerPage={5}>
+                  <CountdownsTable />
+                </Pagination>
+              </VStack>
+            </PremiumFeature>
           ) : (
             <ModalFirstCountdown />
           )}

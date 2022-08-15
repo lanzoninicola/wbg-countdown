@@ -39,6 +39,12 @@ const esEs = {
         customize: "Personalizar",
         edit: "Editar",
       },
+      premiumFeatures: {
+        badgeText: "Función premium",
+        additionalText:
+          "Esta función sólo está disponible en la versión premium. ¡Conviértete en miembro premium para acceder a ella.",
+        buttonText: "Actualizar a premium",
+      },
       countdowns: {
         title: "Contadores",
         table: {

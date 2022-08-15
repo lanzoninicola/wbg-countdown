@@ -39,6 +39,12 @@ const ptBR = {
         customize: "Personalizar",
         edit: "Editar",
       },
+      premiumFeatures: {
+        badgeText: "Função premium",
+        additionalText:
+          "Esta função só está disponível na versão premium. Conviértese em membro premium para acessá-la.",
+        buttonText: "Atualizar para premium",
+      },
       countdowns: {
         title: "Contadores regressivos",
         table: {

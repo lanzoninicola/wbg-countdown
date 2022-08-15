@@ -38,6 +38,12 @@ const itIT = {
         customize: "Personalizza",
         edit: "Modifica",
       },
+      premiumFeatures: {
+        badgeText: "Funzione premium",
+        additionalText:
+          "Questa funzione è disponibile solo nella versione premium. Diventa un membro premium per accedere a questa funzione.",
+        buttonText: "Passa alla versione premium",
+      },
       countdowns: {
         title: "Countdowns",
         table: {

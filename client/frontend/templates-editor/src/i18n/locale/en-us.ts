@@ -38,6 +38,12 @@ const enUS = {
         customize: "Customize",
         edit: "Edit",
       },
+      premiumFeatures: {
+        badgeText: "Premium feature",
+        additionalText:
+          "This feature is only available in the premium version. Become a premium member to unlock it.",
+        buttonText: "Upgrade to premium",
+      },
       countdowns: {
         title: "Countdowns",
         table: {
