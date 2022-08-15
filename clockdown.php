@@ -64,8 +64,12 @@ function get_plugin_text_domain() {
     return 'clockdown';
 }
 
-function get_api_base_url() {
-    return 'http://localhost/bb-melhor-envio/wp-json/commerce';
+function get_plugin_api_base_url() {
+    return home_url( '/wp-json/clockdown/v1' );
+}
+
+function get_commerce_api_base_url() {
+    return 'http://localhost/bb-melhor-envio/wp-json/commerce/v1';
 }
 
 register_activation_hook( __FILE__, array( 'Clockdown\Client\Config\Activator', 'activate' ) );

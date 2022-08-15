@@ -12,7 +12,6 @@ import useOnboardingContext from "../provider/hooks/useOnboardingContext";
  */
 export default function useOnboardingCheckStatus() {
   const isRequiredRef = useRef<boolean | null>(null);
-  // const [status, setStatus] = useState<"pending" | "completed">("pending");
   const { dispatch, installationId, onboardingStatus } = useOnboardingContext();
   const { shouldOnboardingRequired } = useOnboardingRestApi();
 
@@ -32,6 +31,7 @@ export default function useOnboardingCheckStatus() {
       }
 
       if (res.data.status === 200) {
+        // TODO: move the following logic to server side
         if (res.data.payload?.product_installation?.wp_user_id === null) {
           // setStatus("pending");
           dispatch({

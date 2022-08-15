@@ -1,16 +1,9 @@
-import { REST_API_URL, WP_REST_NONCE } from "../constants";
+import { REST_API_URL } from "../constants";
 import { WithEndpointEmptyParams, WithEndpointParamsId } from "../types";
+import useOnboardingRestHeaders from "./useOnboardingRestHeaders";
 
 export default function useOnboardingRestConfig() {
-  const disabledNonce = process.env.NODE_ENV === "development" && true;
-  const headers = {
-    "Content-Type": "application/json",
-    "X-WP-Nonce": WP_REST_NONCE,
-  };
-
-  if (disabledNonce) {
-    delete headers["X-WP-Nonce"];
-  }
+  const headers = useOnboardingRestHeaders();
 
   const doOnboardingConfig: WithEndpointEmptyParams = {
     method: "POST",
