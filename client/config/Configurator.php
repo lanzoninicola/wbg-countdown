@@ -17,6 +17,7 @@ use Clockdown\Core\ScriptsEnqueuer;
 use Clockdown\Core\ShortcodesLoader;
 use function Clockdown\App\Functions\add_menu;
 use function Clockdown\App\Functions\add_submenu;
+use function Clockdown\get_plugin_api_base_url;
 use function Clockdown\get_plugin_base_url_path;
 use function Clockdown\get_plugin_text_domain;
 
@@ -55,7 +56,7 @@ class Configurator implements PluginConfigurable {
             'clockdown',
             'clockdownLocalized',
             array(
-                'apiURL'   => home_url( '/wp-json' ),
+                'apiURL'   => get_plugin_api_base_url(),
                 'language' => get_locale(),
             )
         );
@@ -146,7 +147,7 @@ class Configurator implements PluginConfigurable {
 
         $script_admin_localizer->localize(
             array(
-                'apiURL'            => home_url( '/wp-json' ),
+                'apiURL'            => get_plugin_api_base_url(),
                 'language'          => get_locale(),
                 'onboarding_status' => Onboarding::get_status(),
                 'product_id'        => '1',
