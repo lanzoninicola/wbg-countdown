@@ -1,7 +1,11 @@
 import { Box, Text } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-export default function Badge() {
+interface BadgeProps {
+  children?: React.ReactNode;
+}
+
+export default function Badge({ children }: BadgeProps) {
   const { t } = useTranslation();
 
   return (
@@ -19,7 +23,7 @@ export default function Badge() {
         fontSize={"1rem"}
         color={"white"}
       >
-        {t("premiumFeatures.badgeText").toUpperCase()}
+        {children || t("premiumFeatures.badgeText").toUpperCase()}
       </Text>
     </Box>
   );

@@ -1,4 +1,5 @@
 import { Box, Grid, HStack } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 
 import useCurrentCountdownSelector from "../../countdown-provider/hooks/app/useCurrentCountdownSelector";
 import { ModalNewCountdown } from "../../countdowns/components";
@@ -16,6 +17,7 @@ const lngs: Languages = {
 };
 
 export default function Header() {
+  const { t } = useTranslation();
   const { currentCountdown } = useCurrentCountdownSelector();
 
   return (
@@ -30,7 +32,12 @@ export default function Header() {
         <HStack justifyContent={"space-between"}>
           <HStack>
             <LanguagesBar languages={lngs} />
-            <PremiumFeature variant="modal">
+            <PremiumFeature
+              variant="modal"
+              customText={t("premiumFeatures.modal.body.newCountdown", {
+                maxCountdowns: "1",
+              })}
+            >
               <ModalNewCountdown />
             </PremiumFeature>
           </HStack>

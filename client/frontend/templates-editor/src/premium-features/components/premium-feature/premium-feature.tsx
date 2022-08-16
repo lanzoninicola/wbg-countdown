@@ -8,12 +8,15 @@ interface PremiumFeatureProps {
   children: React.ReactNode;
   hide?: boolean;
   variant?: "watermark" | "modal";
+  /** Add a custom text to the modal body */
+  customText?: string | React.ReactNode;
 }
 
 export default function PremiumFeature({
   children,
   hide = false,
   variant = "watermark",
+  customText,
 }: PremiumFeatureProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isPremium } = usePremiumFeaturesContext();
@@ -42,10 +45,14 @@ export default function PremiumFeature({
         onClickCapture={(e) => mightOpenModal(e)}
       >
         {children}
-        {variant === "watermark" && <Watermark />}
+        {variant === "watermark" && <Watermark customText={customText} />}
       </Box>
       {variant === "modal" && (
-        <PremiumFeatureModal isOpen={isOpen} onClose={onClose} />
+        <PremiumFeatureModal
+          isOpen={isOpen}
+          onClose={onClose}
+          bodyText={customText}
+        />
       )}
     </>
   );

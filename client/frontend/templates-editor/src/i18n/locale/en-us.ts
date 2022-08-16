@@ -43,6 +43,13 @@ const enUS = {
         additionalText:
           "This feature is only available in the premium version. Become a premium member to unlock it.",
         buttonText: "Upgrade to premium",
+        modal: {
+          title: "Exceed the limits",
+          body: {
+            newCountdown:
+              "You can only create a maximum of {{maxCountdowns}} countdowns. Upgrade to premium to create more.",
+          },
+        },
       },
       countdowns: {
         title: "Countdowns",

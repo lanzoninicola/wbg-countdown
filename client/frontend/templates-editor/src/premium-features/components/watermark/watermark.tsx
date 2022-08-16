@@ -2,7 +2,11 @@ import { VStack, Text, Box } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import Badge from "../badge/badge";
 
-export default function Watermark() {
+interface WatermarkProps {
+  customText?: string | React.ReactNode;
+}
+
+export default function Watermark({ customText }: WatermarkProps) {
   const { t } = useTranslation();
   return (
     <Box
@@ -26,7 +30,7 @@ export default function Watermark() {
           width={"60char"}
           textAlign={"center"}
         >
-          {t("premiumFeatures.additionalText")}
+          {customText || t("premiumFeatures.additionalText")}
         </Text>
       </VStack>
     </Box>

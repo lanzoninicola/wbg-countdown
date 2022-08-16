@@ -26,7 +26,11 @@ export default function Countdowns() {
       ) : (
         <>
           {countdowns && countdowns.length > 0 ? (
-            <PremiumFeature>
+            <PremiumFeature
+              customText={t("premiumFeatures.modal.body.newCountdown", {
+                maxCountdowns: "1",
+              })}
+            >
               <VStack alignItems={"flex-start"}>
                 <Pagination data={countdowns} rowsPerPage={5}>
                   <CountdownsTable />
