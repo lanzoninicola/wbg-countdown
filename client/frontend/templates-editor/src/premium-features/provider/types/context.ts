@@ -2,6 +2,7 @@ import { PremiumFeaturesAction } from "./actions";
 
 export interface PremiumFeaturesStateData {
   isPremium: boolean;
+  landingPageURL: string;
 }
 
 export interface PremiumFeaturesStateSetter {

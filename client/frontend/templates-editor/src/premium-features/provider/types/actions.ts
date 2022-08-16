@@ -1,3 +1,9 @@
+interface PremiumFeaturesInitLandingPageAction {
+  type: "PREMIUM_FEATURES_INIT_LANDING_PAGE";
+  /** the landing page URL */
+  payload: string;
+}
+
 interface PremiumFeaturesCheckStatus {
   type: "PREMIUM_FEATURES_CHECK_STATUS";
 }
@@ -13,4 +19,5 @@ interface PremiumFeaturesCheckStatusResponseFailed {
 export type PremiumFeaturesAction =
   | PremiumFeaturesCheckStatus
   | PremiumFeaturesCheckStatusResponseSuccess
-  | PremiumFeaturesCheckStatusResponseFailed;
+  | PremiumFeaturesCheckStatusResponseFailed
+  | PremiumFeaturesInitLandingPageAction;

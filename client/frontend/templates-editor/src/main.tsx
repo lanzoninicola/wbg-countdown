@@ -8,6 +8,7 @@ import FakeWrapper from "./FakeWrapper";
 import "./style/global.css";
 import createDevRoot from "./main.dev";
 import { OnboardingProvider } from "./onboarding";
+import PremiumFeatureProvider from "./premium-features/provider/premium-features-provider";
 
 const env = process.env.NODE_ENV;
 
@@ -29,9 +30,15 @@ document.addEventListener("DOMContentLoaded", function () {
 const ClockdownApp = () => (
   <ChakraProvider theme={theme}>
     <OnboardingProvider>
-      <CountdownProvider>
-        <App />
-      </CountdownProvider>
+      <PremiumFeatureProvider
+        config={{
+          landingPageUrl: "https://clockdown.io/premium-features",
+        }}
+      >
+        <CountdownProvider>
+          <App />
+        </CountdownProvider>
+      </PremiumFeatureProvider>
     </OnboardingProvider>
   </ChakraProvider>
 );

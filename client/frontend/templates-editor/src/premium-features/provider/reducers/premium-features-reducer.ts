@@ -6,6 +6,11 @@ export const premiumFeatureReducer = (
   action: PremiumFeaturesAction
 ): PremiumFeaturesStateData => {
   switch (action.type) {
+    case "PREMIUM_FEATURES_INIT_LANDING_PAGE":
+      return {
+        ...state,
+        landingPageURL: action.payload,
+      };
     case "PREMIUM_FEATURES_CHECK_STATUS":
       return {
         ...state,

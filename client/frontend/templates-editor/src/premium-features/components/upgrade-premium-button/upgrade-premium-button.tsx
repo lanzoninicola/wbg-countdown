@@ -1,8 +1,8 @@
 import { Box, HStack, Link, Text, TypographyProps } from "@chakra-ui/react";
 import { forwardRef } from "react";
 import { useTranslation } from "react-i18next";
-import LANDING_PAGE_URL from "../../constants";
 import { BiLinkExternal } from "@react-icons/all-files/bi/BiLinkExternal";
+import usePremiumFeaturesLandingURLSelector from "../../provider/hooks/usePremiumFeaturesLandingURLSelector";
 
 //TODO: Track the click event action in analytics
 
@@ -18,6 +18,7 @@ const UpgradePremiumButton = forwardRef(
     ref: any
   ) => {
     const { t } = useTranslation();
+    const landingPageUrl = usePremiumFeaturesLandingURLSelector();
 
     if (textVariant > 4) {
       textVariant = 1;
@@ -25,7 +26,7 @@ const UpgradePremiumButton = forwardRef(
 
     return (
       <Link
-        href={LANDING_PAGE_URL}
+        href={landingPageUrl}
         isExternal
         ref={ref}
         _hover={{
