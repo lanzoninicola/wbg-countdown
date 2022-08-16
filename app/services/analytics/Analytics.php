@@ -1,7 +1,7 @@
 <?php
 namespace Clockdown\App\Services\Analytics;
 
-use function Clockdown\get_api_base_url;
+use function Clockdown\get_commerce_api_base_url;
 
 class Analytics {
 
@@ -15,7 +15,7 @@ class Analytics {
      */
     public static function send_data( string $endpoint, array $data = array() ) {
 
-        $url = get_api_base_url() . "/v1/analytics{$endpoint}";
+        $url = get_commerce_api_base_url() . "/analytics{$endpoint}";
 
         return wp_remote_post(
             $url,
@@ -35,7 +35,7 @@ class Analytics {
      */
     public static function get_data( string $endpoint ) {
 
-        $url = get_api_base_url() . "/v1/analytics{$endpoint}";
+        $url = get_commerce_api_base_url() . "/analytics{$endpoint}";
 
         return wp_remote_get(
             $url,
