@@ -35,8 +35,9 @@ export default function Header() {
             <PremiumFeature
               variant="modal"
               customText={t("premiumFeatures.modal.body.newCountdown", {
-                maxCountdowns: "1",
+                maxCountdowns: "one",
               })}
+              ctaVariant={4}
             >
               <ModalNewCountdown />
             </PremiumFeature>

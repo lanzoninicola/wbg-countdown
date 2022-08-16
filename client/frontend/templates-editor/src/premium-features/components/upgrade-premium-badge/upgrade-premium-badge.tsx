@@ -11,7 +11,7 @@ export default function Badge({ children }: BadgeProps) {
   return (
     <Box
       bg={"blue.500"}
-      paddingInline={"1rem"}
+      paddingInline={"2rem"}
       paddingBlock={".25rem"}
       borderRadius={"20px"}
     >

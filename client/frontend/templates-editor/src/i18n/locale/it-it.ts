@@ -42,7 +42,19 @@ const itIT = {
         badgeText: "Funzione premium",
         additionalText:
           "Questa funzione è disponibile solo nella versione premium. Diventa un membro premium per accedere a questa funzione.",
-        buttonText: "Passa alla versione premium",
+        upgradeCTA: {
+          variant1: "Aggiorna alla versione premium",
+          variant2: "Dai un'occhiata alle funzioni",
+          variant3: "Sblocca tutte le funzioni",
+          variant4: "Aumenta le tue vendite",
+        },
+        modal: {
+          title: "Supera i tuoi limiti",
+          body: {
+            newCountdown:
+              "Sbloccate la versione premium per creare un numero illimitato di timer: impostate un timer per ogni campagna di sconti pianificata o personalizzate l'aspetto del timer per le vostre diverse landing page.",
+          },
+        },
       },
       countdowns: {
         title: "Countdowns",

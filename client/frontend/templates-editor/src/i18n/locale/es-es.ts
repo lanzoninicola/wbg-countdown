@@ -43,7 +43,16 @@ const esEs = {
         badgeText: "Función premium",
         additionalText:
           "Esta función sólo está disponible en la versión premium. ¡Conviértete en miembro premium para acceder a ella.",
-        buttonText: "Actualizar a premium",
+        upgradeCTA: {
+          variant1: "Actualizar a premium",
+          variant2: "Vea las funciones",
+          variant3: "Desbloquea todas las funciones",
+          variant4: "Aumente sus ventas",
+        },
+        modal: {
+          title: "Actualizar a premium",
+          text: "Desbloquee la versión premium para crear un número ilimitado de temporizadores: establezca un temporizador para cada campaña de descuento planificada o personalice el aspecto del temporizador para sus diferentes páginas de destino.",
+        },
       },
       countdowns: {
         title: "Contadores",

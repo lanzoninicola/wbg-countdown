@@ -1,6 +1,8 @@
-import { VStack, Text, Box } from "@chakra-ui/react";
+import { VStack, Text, Box, HStack, Grid } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import Badge from "../badge/badge";
+import PremiumFeatureIcon from "../premium-feature-icon/premium-feature-icon";
+import UpgradePremiumBadge from "../upgrade-premium-badge/upgrade-premium-badge";
+import UpgradePremiumButton from "../upgrade-premium-button/upgrade-premium-button";
 
 interface WatermarkProps {
   customText?: string | React.ReactNode;
@@ -19,20 +21,29 @@ export default function Watermark({ customText }: WatermarkProps) {
       justifyContent={"center"}
       alignItems={"center"}
     >
-      <VStack maxW={"350px"}>
-        <Badge />
-        <Text
-          as="p"
-          className="theme-font"
-          fontWeight={400}
-          fontSize={".85rem"}
-          color={"black"}
-          width={"60char"}
-          textAlign={"center"}
-        >
-          {customText || t("premiumFeatures.additionalText")}
-        </Text>
-      </VStack>
+      <Grid
+        gridTemplateColumns={"1fr auto"}
+        bg="white"
+        borderRadius={"10px"}
+        p="1rem"
+        maxW={"75%"}
+        gap={8}
+        boxShadow={"xl"}
+      >
+        <PremiumFeatureIcon />
+        <VStack alignItems={"flex-start"}>
+          <Text
+            as="p"
+            className="theme-font"
+            fontWeight={400}
+            fontSize={".85rem"}
+            color={"black"}
+          >
+            {customText || t("premiumFeatures.additionalText")}
+          </Text>
+          <UpgradePremiumButton fontSize={".75rem"} />
+        </VStack>
+      </Grid>
     </Box>
   );
 }

@@ -43,7 +43,19 @@ const ptBR = {
         badgeText: "Função premium",
         additionalText:
           "Esta função só está disponível na versão premium. Conviértese em membro premium para acessá-la.",
-        buttonText: "Atualizar para premium",
+        upgradeCTA: {
+          variant1: "Atualizar para premium",
+          variant2: "Veja as funcionalidades",
+          variant3: "Desbloqueie todas as funcionalidades",
+          variant4: "Aumente suas vendas",
+        },
+        modal: {
+          title: "Vá além de seus limites",
+          body: {
+            newCountdown:
+              "Desbloqueie a versão premium para criar um número ilimitado de temporizadores: defina um timer para cada campanha de desconto planejada ou personalize o visual do timer para suas diferentes páginas de desembarque.",
+          },
+        },
       },
       countdowns: {
         title: "Contadores regressivos",

@@ -42,12 +42,17 @@ const enUS = {
         badgeText: "Premium feature",
         additionalText:
           "This feature is only available in the premium version. Become a premium member to unlock it.",
-        buttonText: "Upgrade to premium",
+        upgradeCTA: {
+          variant1: "Upgrade to premium",
+          variant2: "Take a look at the features",
+          variant3: "Unlock all the features",
+          variant4: "Increase your sales",
+        },
         modal: {
-          title: "Exceed the limits",
+          title: "Exceed your limits",
           body: {
             newCountdown:
-              "You can only create a maximum of {{maxCountdowns}} countdowns. Upgrade to premium to create more.",
+              "Unlock the premium version to create an unlimited number of timers: set a timer for each planned discount campaign or customize the timer look for your different landing pages.",
           },
         },
       },

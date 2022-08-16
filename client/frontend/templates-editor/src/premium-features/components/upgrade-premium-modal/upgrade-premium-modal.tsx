@@ -8,23 +8,35 @@ import {
   ModalFooter,
   Button,
   VStack,
+  Text,
 } from "@chakra-ui/react";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import beTheHero from "../../assets/images/be-the-hero.png";
-import BecomePremiumButton from "../become-premium-button/become-premium-button";
+import UpgradePremiumButton from "../upgrade-premium-button/upgrade-premium-button";
+import UpgradePremiumImage from "../upgrade-premium-image/upgrade-premium-image";
 
 interface PremiumFeatureProps {
   isOpen: boolean;
   onClose: () => void;
+  ctaVariant?: number;
   bodyText: string | React.ReactNode;
 }
 
-export default function PremiumFeatureModal({
+/**
+ * Show a modal and a button to become premium
+ *
+ * @param {boolean} isOpen - from the ChakraUI useDisclousure() hook
+ * @param {function} onClose - from the ChakraUI useDisclousure() hook
+ * @param {number} ctaVariant - The variant of the cta text to use (1, 2 or 3)
+ * @param {string | React.ReactNode} bodyText - Text or node to add into the body of modal
+ */
+export default function UpgradePremiumModal({
   isOpen,
   onClose,
   bodyText,
+  ctaVariant = 1,
 }: PremiumFeatureProps) {
   const { t } = useTranslation();
 
@@ -47,13 +59,15 @@ export default function PremiumFeatureModal({
           <ModalCloseButton />
           <ModalBody pb={6}>
             <VStack gap={8}>
-              <img src={beTheHero} alt="upgrade to premium" width={"250px"} />
-              <p className="theme-font">{bodyText}</p>
+              <UpgradePremiumImage width="250px" />
+              <Text className="theme-font" fontSize={"sm"}>
+                {bodyText}
+              </Text>
             </VStack>
           </ModalBody>
 
-          <ModalFooter display={"flex"} justifyContent={"center"}>
-            <BecomePremiumButton />
+          <ModalFooter display={"flex"} justifyContent={"center"} pb={8}>
+            <UpgradePremiumButton ref={initialRef} textVariant={ctaVariant} />
           </ModalFooter>
         </ModalContent>
       </Modal>
