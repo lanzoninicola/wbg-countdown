@@ -64,11 +64,11 @@ class CountdownSettingsService {
     /**
      * Update the settings for a countdown.
      *
-     * @param string $next_settings The new countdown settings
+     * @param array $next_settings The new countdown settings
      * @param integer $countdown_id
      * @return boolean|Error True if the update was successful or Error
      */
-    public function update( string $next_settings, int $countdown_id ) {
+    public function update( array $next_settings, int $countdown_id ) {
 
         $result = $this->repository->update(
             $next_settings,
@@ -134,6 +134,35 @@ class CountdownSettingsService {
 
         return $result->get_payload();
 
+    }
+
+    /**
+     * Get the settings of the last countdown mutated.
+     *
+     * @return array|false|Error The countdown data if was successful, false if not found, or Error
+     */
+    public function get_last_one() {
+        $result = $this->repository->get_last_one();
+
+        if ( $result instanceof DatabaseResponseError ) {
+            return new Error(
+                'countdown_settings_get_last_one',
+                'Error while getting the last countdown settings mutated',
+                $result->get_message()
+            );
+        }
+
+        if ( $result instanceof DatabaseResponseNotFound ) {
+            return false;
+        }
+
+        $payload = $result->get_payload();
+
+        if ( is_array( $payload ) & count( $payload ) > 0 ) {
+            return $payload[0];
+        }
+
+        return false;
     }
 
 }

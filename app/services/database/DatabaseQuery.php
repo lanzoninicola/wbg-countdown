@@ -453,4 +453,30 @@ class DatabaseQuery implements DatabaseQueryInterface {
 
     }
 
+    /**
+     * Get the last record mutated. The last record mutated is the last record inserted or updated.
+     *
+     * The table name must have the created_at and updated_at columns.
+     *
+     * @param string $table_name
+     * @return DatabaseResponse
+     */
+    public function get_last_mutated_row( string $table_name ): DatabaseResponse {
+
+        $sql = 'SELECT *
+                FROM (
+                SELECT *,
+                CASE
+                    WHEN updated_at is not null THEN updated_at
+                    ELSE created_at
+                END as mutated_at
+                FROM ' . $table_name . ') t
+                ORDER BY mutated_at DESC
+                LIMIT 1';
+
+        $result = $this->query( $sql );
+
+        return $result;
+    }
+
 }

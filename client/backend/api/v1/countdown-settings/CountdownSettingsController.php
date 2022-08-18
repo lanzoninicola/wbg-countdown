@@ -108,4 +108,19 @@ class CountdownSettingsController {
         ) );
     }
 
+    public function get_last_one() {
+        $operation = 'Settings of last one countdown';
+
+        $result = $this->service->get_last_one();
+
+        if ( Helpers::is_error( $result ) ) {
+            return RestApiResponseError::database_error( $result->get_error_message(), $operation );
+        }
+
+        return RestApiResponseSuccess::success( 'Settings found', array(
+            'operation' => $operation,
+            'payload'   => $result,
+        ) );
+    }
+
 }

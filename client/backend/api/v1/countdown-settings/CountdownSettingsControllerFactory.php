@@ -7,7 +7,7 @@ use Clockdown\App\Services\Database\DatabaseQuery;
 class CountdownSettingsControllerFactory {
 
     /**
-     * @return CountdownsController
+     * @return CountdownSettingsController
      */
     public static function create() {
 

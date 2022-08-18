@@ -281,6 +281,11 @@ class Configurator implements PluginConfigurable {
                     ),
                 )
             ),
+            new RestApiEndpoint( 'countdowns/last/settings', 'GET',
+                array( $settings_controller, 'get_last_one' ),
+                'public',
+                array()
+            ),
 
         );
 

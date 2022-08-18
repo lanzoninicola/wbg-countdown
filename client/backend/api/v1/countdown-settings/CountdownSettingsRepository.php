@@ -66,7 +66,7 @@ class CountdownSettingsRepository {
 
     }
 
-    public function update( string $settings, int $id ) {
+    public function update( array $settings, int $id ) {
 
         $updated_countdown = array(
             'settings'   => $settings,
@@ -120,6 +120,15 @@ class CountdownSettingsRepository {
 
         return $this->query_service->get_row( $this->table_name, "countdown_id = {$id}" );
 
+    }
+
+    /**
+     * This returns the last one countdown_settings mutated.
+     *
+     * @return DatabaseResponseSuccess|DatabaseResponseError
+     */
+    public function get_last_one() {
+        return $this->query_service->get_last_mutated_row( $this->table_name );
     }
 
 }

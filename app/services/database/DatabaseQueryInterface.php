@@ -94,4 +94,14 @@ interface DatabaseQueryInterface {
      */
     public function select( string $table_name, array $conditions ): DatabaseResponse;
 
+    /**
+     * Get the last record mutated. The last record mutated is the last record inserted or updated.
+     *
+     * The table name must have the created_at and updated_at columns.
+     *
+     * @param string $table_name
+     * @return DatabaseResponse
+     */
+    public function get_last_mutated_row( string $table_name ): DatabaseResponse;
+
 }
