@@ -1,27 +1,13 @@
 import { CountdownModel } from "../../../countdown-widget/types";
-import { WP_REST_NONCE } from "../../constants";
 import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../constants/countdowns/endpoints";
+import { useRestHeaders } from "../../hooks";
 import { APIResponse } from "../../types";
 
 const create = async (
   countdown: Omit<CountdownModel, "id" | "created_at" | "updated_at">
-): Promise<
-  APIResponse<{
-    id: CountdownModel["id"];
-  }>
-> => {
+): Promise<APIResponse<CountdownModel["id"]>> => {
   const { endpoint, method } = COUNTDOWNS_REST_API_ENDPOINTS.create;
-
-  const disabledNonce = process.env.NODE_ENV === "development" && true;
-  const headers = {
-    "Content-Type": "application/json",
-    // @ts-ignore
-    "X-WP-Nonce": WP_REST_NONCE,
-  };
-
-  if (disabledNonce) {
-    delete headers["X-WP-Nonce"];
-  }
+  const headers = useRestHeaders();
 
   return await (
     await fetch(endpoint(), {

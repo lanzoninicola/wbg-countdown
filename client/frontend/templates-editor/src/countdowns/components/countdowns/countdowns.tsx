@@ -1,14 +1,12 @@
-import { Flex, Heading, HStack, VStack } from "@chakra-ui/react";
+import { Flex, Heading, VStack } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import CountdownsTable from "../../countdowns-table/countdown-table";
-
-import useCountdownsList from "../../hooks/useCountdownList";
-import Pagination from "../pagination/pagination";
-import ModalFirstCountdown from "../modal-first-countdown/modal-first-countdown";
-import TableSkeleton from "../table-skeleton/table-skeleton";
-import ModalNewCountdown from "../modal-new-countdown/modal-new-countdown";
+import useCountdownsList from "../../../countdown-rest-api/hooks/useCountdownsList";
 import { PremiumFeature } from "../../../premium-features";
+import CountdownsTable from "../../countdowns-table/countdown-table";
+import ModalFirstCountdown from "../modal-first-countdown/modal-first-countdown";
+import Pagination from "../pagination/pagination";
+import TableSkeleton from "../table-skeleton/table-skeleton";
 
 // TODO: handling errors
 export default function Countdowns() {

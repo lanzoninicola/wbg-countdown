@@ -1,8 +1,8 @@
 import useSWR from "swr";
 
-import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../countdown-rest-api/constants/countdowns/endpoints";
-import { findAll } from "../../countdown-rest-api/services/countdowns";
-import { APIResponse } from "../../countdown-rest-api/types";
+import { COUNTDOWNS_REST_API_ENDPOINTS } from "../constants/countdowns/endpoints";
+import { findAll } from "../services/countdowns";
+import { APIResponse } from "../types";
 import { CountdownModel } from "../../countdown-widget/types";
 
 interface UseCountdownListSWR {

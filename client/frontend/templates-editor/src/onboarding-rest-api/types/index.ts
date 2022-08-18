@@ -9,7 +9,11 @@ export interface OnboardingRequestPayload {
 }
 
 export interface APIResponse<T = unknown> {
-  code: "error" | "success";
+  code:
+    | "error"
+    | "success"
+    | "rest_missing_callback_param"
+    | "internal_server_error";
   message: string;
   data:
     | SuccessResponse

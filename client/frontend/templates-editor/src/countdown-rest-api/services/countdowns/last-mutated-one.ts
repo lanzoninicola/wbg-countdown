@@ -1,4 +1,4 @@
-import { CountdownModel } from "../../../countdown-widget/types";
+import { CountdownSettingsAndThemeModel } from "../../../countdown-widget/types";
 import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../constants/countdowns/endpoints";
 import { useRestHeaders } from "../../hooks";
 import { APIResponse } from "../../types";
@@ -8,20 +8,18 @@ import { APIResponse } from "../../types";
  * - a string (successfully message) with status 200
  * - null (error occured on server) with status >=400
  */
-const update = async (
-  id: CountdownModel["id"],
-  payload: Omit<CountdownModel, "id" | "created_at" | "updated_at">
-): Promise<APIResponse<string | null>> => {
-  const { endpoint, method } = COUNTDOWNS_REST_API_ENDPOINTS.update;
+const lastMutatedOne = async (): Promise<
+  APIResponse<CountdownSettingsAndThemeModel>
+> => {
+  const { endpoint, method } = COUNTDOWNS_REST_API_ENDPOINTS.lastMutatedOne;
   const headers = useRestHeaders();
 
   return await (
-    await fetch(endpoint(id), {
+    await fetch(endpoint(), {
       method: method,
-      body: JSON.stringify(payload),
       headers,
     })
   ).json();
 };
 
-export default update;
+export default lastMutatedOne;

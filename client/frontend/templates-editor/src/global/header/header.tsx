@@ -46,7 +46,7 @@ export default function Header() {
             {currentCountdown && (
               <ShortcodePreview countdownId={currentCountdown!} />
             )}
-            {currentCountdown && <EditorSave />}
+            <EditorSave />
           </HStack>
         </HStack>
       </Box>

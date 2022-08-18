@@ -24,11 +24,7 @@ import { APIResponse } from "../../types";
 const create = async (
   id: CountdownModel["id"],
   settings?: CountdownSettingsAndTheme
-): Promise<
-  APIResponse<{
-    id: CountdownSettingsAndThemeModel["id"];
-  }>
-> => {
+): Promise<APIResponse<CountdownSettingsAndThemeModel["id"]>> => {
   const { endpoint, method } = EDITOR_REST_API_ENDPOINTS.create;
 
   const disabledNonce = process.env.NODE_ENV === "development" && true;

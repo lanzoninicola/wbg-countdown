@@ -30,17 +30,11 @@ export default function Editor({ currentCountdown }: EditorProps) {
         <EditorWrapper>
           <EditorPropertiesFloat />
           <CenterContent>
-            {currentCountdown ? (
-              <>
-                <BoxRadiusLg bg={"gray.200"}>
-                  <TargetDate size="sm" />
-                  <TimezonePicker size="sm" />
-                </BoxRadiusLg>
-                <EditorPreview />
-              </>
-            ) : (
-              <h1>select a countdown to customize</h1>
-            )}
+            <BoxRadiusLg bg={"gray.200"}>
+              <TargetDate size="sm" />
+              <TimezonePicker size="sm" />
+            </BoxRadiusLg>
+            <EditorPreview />
           </CenterContent>
           {/* <RightSidebar>
             <Text>This is the countdown theme area</Text>

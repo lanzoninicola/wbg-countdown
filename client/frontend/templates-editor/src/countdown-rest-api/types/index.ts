@@ -16,14 +16,40 @@
  * }
  */
 
-export interface APIResponse<T = undefined> {
-  code: "error" | "success";
+export interface APIResponse<T = unknown> {
+  code:
+    | "error"
+    | "success"
+    | "rest_missing_callback_param"
+    | "internal_server_error";
   message: string;
-  data?: APIResponsePayload<T>;
+  data:
+    | SuccessResponse
+    | SuccessResponseWithPayload<T>
+    | MissingParameterResponse
+    | ErrorResponse;
 }
 
-export interface APIResponsePayload<T = undefined> {
+/** Payload on succesfully response */
+export interface SuccessResponse {
   operation: string;
-  status: number;
-  payload?: T;
+  status: 200;
+  payload: null;
+}
+
+export interface SuccessResponseWithPayload<T> {
+  operation: string;
+  status: 200;
+  payload: T;
+}
+
+/** Payload when a parameter missing on request sent*/
+export interface MissingParameterResponse {
+  status: 400;
+  params: string[];
+}
+
+/** Payload when server error occured */
+export interface ErrorResponse {
+  status: 500;
 }

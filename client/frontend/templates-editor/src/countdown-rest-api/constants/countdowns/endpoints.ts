@@ -22,6 +22,10 @@ const COUNTDOWNS_REST_API_ENDPOINTS = {
     method: "GET",
     endpoint: (id: CountdownModel["id"]) => `${REST_API_URL}/countdowns/${id}`,
   },
+  lastMutatedOne: {
+    method: "GET",
+    endpoint: () => `${REST_API_URL}/countdowns/last/settings`,
+  },
 };
 
 export { REST_API_URL, COUNTDOWNS_REST_API_ENDPOINTS };
