@@ -25,7 +25,14 @@ function CounterTitle() {
   };
 
   return (
-    <h2 style={style} data-role="clockdown-title" aria-label={text}>
+    <h2
+      style={{
+        ...style,
+        textAlign: "center",
+      }}
+      data-role="clockdown-title"
+      aria-label={text}
+    >
       {text}
     </h2>
   );

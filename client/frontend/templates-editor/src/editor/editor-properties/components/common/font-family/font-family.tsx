@@ -1,10 +1,10 @@
 import { Button } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 
-import PropertyWrapper from "../../../layout/property-wrapper/property-wrapper";
-import DialogWrapper from "../../../primitives/dialog-wrapper/dialog-wrapper";
-import FontFamilyPicker from "../../../primitives/font-family-picker/font-family-picker";
-import Label from "../../../primitives/label/label";
+import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
+import DialogWrapper from "../../primitives/dialog-wrapper/dialog-wrapper";
+import FontFamilyPicker from "../../primitives/font-family-picker/font-family-picker";
+import Label from "../../primitives/label/label";
 
 interface FontFamilyProps {
   label: string;
