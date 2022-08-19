@@ -13,7 +13,7 @@ export type UseThemeGlobalSelector = ThemeGlobalContextData &
 /**
  * Hook that let works with the single item of the "Timer" state.
  */
-export default function useThemeGlobalSelector(): UseThemeGlobalSelector {
+export default function useContainerSizeSelector(): UseThemeGlobalSelector {
   const global = useContextSelector(
     CountdownContext,
     (ctx) => ctx?.theme.global

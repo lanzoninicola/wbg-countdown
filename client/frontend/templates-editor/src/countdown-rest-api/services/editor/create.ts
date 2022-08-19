@@ -5,6 +5,7 @@ import {
 } from "../../../countdown-widget/types";
 import { WP_REST_NONCE } from "../../constants";
 import { EDITOR_REST_API_ENDPOINTS } from "../../constants/editor/endpoints";
+import { useRestHeaders } from "../../hooks";
 import { APIResponse } from "../../types";
 
 /**
@@ -26,16 +27,7 @@ const create = async (
   settings?: CountdownSettingsAndTheme
 ): Promise<APIResponse<CountdownSettingsAndThemeModel["id"]>> => {
   const { endpoint, method } = EDITOR_REST_API_ENDPOINTS.create;
-
-  const disabledNonce = process.env.NODE_ENV === "development" && true;
-  const headers = {
-    "Content-Type": "application/json",
-    "X-WP-Nonce": WP_REST_NONCE,
-  };
-
-  if (disabledNonce) {
-    delete headers["X-WP-Nonce"];
-  }
+  const headers = useRestHeaders();
 
   return await (
     await fetch(endpoint(id), {

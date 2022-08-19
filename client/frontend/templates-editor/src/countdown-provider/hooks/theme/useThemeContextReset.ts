@@ -17,11 +17,17 @@ export default function useThemeContextReset() {
     (state) => state.theme.setTitle
   );
 
+  const setGlobal = useContextSelector(
+    CountdownContext,
+    (state) => state.theme.setGlobal
+  );
+
   const resetThemeContext = () => {
-    const { timer, title } = THEME_INITIAL_STATE;
+    const { timer, title, global } = THEME_INITIAL_STATE;
 
     setTimer(timer);
     setTitle(title);
+    setGlobal(global);
   };
 
   useEffect(() => {

@@ -12,9 +12,17 @@ import useLastMutatedCountdownSettings from "./hooks/useLastMutatedCountdownSett
  *
  */
 export default function EditorPage() {
+  const { isLoading, isError } = useLastMutatedCountdownSettings();
+
   const { currentCountdown } = useCurrentCountdownSelector();
 
-  useLastMutatedCountdownSettings();
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error</div>;
+  }
 
   return <Editor currentCountdown={currentCountdown} />;
 }

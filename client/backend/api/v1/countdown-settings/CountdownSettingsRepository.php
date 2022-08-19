@@ -66,7 +66,14 @@ class CountdownSettingsRepository {
 
     }
 
-    public function update( array $settings, int $id ) {
+    /**
+     * Update a record in the table countdowns_settings.
+     *
+     * @param string $settings The new countdown settings
+     * @param integer $countdown_id
+     * @return DatabaseResponseSuccess|DatabaseResponseError
+     */
+    public function update( string $settings, int $id ) {
 
         $updated_countdown = array(
             'settings'   => $settings,

@@ -64,16 +64,15 @@ class CountdownSettingsService {
     /**
      * Update the settings for a countdown.
      *
-     * @param array $next_settings The new countdown settings
+     * @param string $next_settings The new countdown settings
      * @param integer $countdown_id
      * @return boolean|Error True if the update was successful or Error
      */
-    public function update( array $next_settings, int $countdown_id ) {
+    public function update( string $next_settings, int $countdown_id ) {
 
         $result = $this->repository->update(
             $next_settings,
             $countdown_id
-
         );
 
         if ( $result instanceof DatabaseResponseError || $result instanceof DatabaseResponseNotAffected ) {

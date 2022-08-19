@@ -5,12 +5,14 @@ import { ThemeContext } from "../../types/theme";
 export default function useThemeContext(): ThemeContext {
   const theme = useContextSelector(CountdownContext, (ctx) => ctx?.theme);
 
-  const { timer, setTimer, title, setTitle } = theme;
+  const { timer, setTimer, title, setTitle, global, setGlobal } = theme;
 
   return {
     timer,
     setTimer,
     title,
     setTitle,
+    global,
+    setGlobal,
   };
 }
