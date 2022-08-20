@@ -15,7 +15,7 @@ export default function useLastMutatedCountdownSettings() {
 
   const { setTargetDate, setTargetTimezone, setUnitLabelLanguage } =
     useSettingsContext();
-  const { setGlobal, setTimer, setTitle } = useThemeContext();
+  const { setGlobal, setTimer, setTitle, setLayout } = useThemeContext();
 
   useEffect(() => {
     if (!data?.id) {
@@ -34,6 +34,7 @@ export default function useLastMutatedCountdownSettings() {
       global,
       timer,
       title,
+      layout,
       unitLabelLanguage,
     } = data.settings;
 
@@ -54,6 +55,9 @@ export default function useLastMutatedCountdownSettings() {
     }
     if (unitLabelLanguage) {
       setUnitLabelLanguage(unitLabelLanguage);
+    }
+    if (layout) {
+      setLayout(layout);
     }
   }, [data, isError, isLoading]);
 
