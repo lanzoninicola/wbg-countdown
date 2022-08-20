@@ -9,6 +9,9 @@ const THEME_INITIAL_STATE: ThemeStateData = {
       height: 0,
     },
   },
+  layout: {
+    orientation: "vertical",
+  },
   title: {
     text: "Countdown to New Year",
     fontFamily: "Inter",

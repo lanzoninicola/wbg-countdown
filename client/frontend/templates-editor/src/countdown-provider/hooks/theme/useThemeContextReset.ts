@@ -22,12 +22,18 @@ export default function useThemeContextReset() {
     (state) => state.theme.setGlobal
   );
 
+  const setLayout = useContextSelector(
+    CountdownContext,
+    (state) => state.theme.setLayout
+  );
+
   const resetThemeContext = () => {
-    const { timer, title, global } = THEME_INITIAL_STATE;
+    const { timer, title, global, layout } = THEME_INITIAL_STATE;
 
     setTimer(timer);
     setTitle(title);
     setGlobal(global);
+    setLayout(layout);
   };
 
   useEffect(() => {

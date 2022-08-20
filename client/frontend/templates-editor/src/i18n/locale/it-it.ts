@@ -112,6 +112,19 @@ const itIT = {
           },
           layout: {
             groupTitle: "Scegli layout",
+            orientationLabelProp: "Seleziona orientamento",
+            vertical: {
+              title: "Layout verticale",
+              description:
+                "Il titolo é mostrato sopra il timer. Ideale per piccoli schermi.",
+              label: "Verticale",
+            },
+            horizontal: {
+              title: "Layout orrizontale",
+              description:
+                "Il titolo é mostrato a sinistra del timer. Ideale per schermi grandi.",
+              label: "Orrizontale",
+            },
           },
           title: {
             groupTitle: "Stile del titolo",

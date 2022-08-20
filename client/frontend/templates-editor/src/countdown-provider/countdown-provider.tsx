@@ -62,6 +62,7 @@ export default function CountdownProvider({
   const [global, setGlobal] = useState(THEME_INITIAL_STATE.global);
   const [title, setTitle] = useState(THEME_INITIAL_STATE.title);
   const [timer, setTimer] = useState(THEME_INITIAL_STATE.timer);
+  const [layout, setLayout] = useState(THEME_INITIAL_STATE.layout);
 
   return (
     <CountdownContext.Provider
@@ -89,6 +90,8 @@ export default function CountdownProvider({
         theme: {
           global,
           setGlobal,
+          layout,
+          setLayout,
           title,
           setTitle,
           timer,

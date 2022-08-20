@@ -110,6 +110,19 @@ const esEs = {
           },
           layout: {
             groupTitle: "Elegir diseño",
+            orientationLabelProp: "Elegir orientación",
+            vertical: {
+              title: "Diseño vertical",
+              description:
+                "O titulo é colocado en la parte superior y los contadores en la parte inferior. Ideal para pantallas más pequeña.",
+              label: "Diseño vertical",
+            },
+            horizontal: {
+              title: "Diseño horizontal",
+              description:
+                "O titulo é colocado en la parte izquierda y los contadores en la parte derecha. Ideal para pantallas más grandes.",
+              label: "Diseño horizontal",
+            },
           },
 
           title: {

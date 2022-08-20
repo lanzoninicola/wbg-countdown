@@ -113,6 +113,19 @@ const ptBR = {
           },
           layout: {
             groupTitle: "Layout",
+            orientationLabelProp: "Seleçiona orientação",
+            vertical: {
+              title: "Layout vertical",
+              description:
+                "O titulo é posicionado acima do contador regressivo e os digitos abaixo. Ideal para telas de tamanho pequeno.",
+              label: "Vertical",
+            },
+            horizontal: {
+              title: "Horizontal layout",
+              description:
+                "O titulo é posicionado a esquerda do contador regressivo e os digitos a direita. Ideal para telas de tamanho médio e grande.",
+              label: "Horizontal",
+            },
           },
           title: {
             groupTitle: "Estilo do titulo",

@@ -112,6 +112,19 @@ const enUS = {
           },
           layout: {
             groupTitle: "Choose Layout",
+            orientationLabelProp: "Choose orientation",
+            vertical: {
+              title: "Vertical layout",
+              description:
+                "The title is on top of the countdown. This is choosed for small screens.",
+              label: "Vertical",
+            },
+            horizontal: {
+              title: "Horizontal layout",
+              description:
+                "The title is on the left of the countdown. This is choosed for large screens.",
+              label: "Horizontal",
+            },
           },
           title: {
             groupTitle: "Title style",

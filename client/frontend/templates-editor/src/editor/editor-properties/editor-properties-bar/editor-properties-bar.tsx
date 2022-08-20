@@ -16,8 +16,9 @@ import TitlePropertiesGroup from "../properties/title-properties-group/title-pro
 import PropertiesBar from "./components/properties-bar/properties-bar";
 import { PropertyBarItem } from "./types";
 import VerticalSeparatorIcon from "./components/vertical-separator-icon/vertical-separator-icon";
-import LayoutPicker from "../properties/layout-picker/layout-picker";
+import LayoutPicker from "../components/primitives/layout-picker/layout-picker";
 import Countdowns from "../../../countdowns/components/countdowns/countdowns";
+import LayoutPropertiesGroup from "../properties/layout-properties-group/layout-properties-group";
 
 export default function EditorPropertiesBar() {
   const { t } = useTranslation();
@@ -38,7 +39,7 @@ export default function EditorPropertiesBar() {
       icon: <BsLayoutWtf />,
       ref: useRef(null),
       title: t("editor.propertiesGroup.layout.groupTitle"),
-      component: <LayoutPicker />,
+      component: <LayoutPropertiesGroup showGroupTitle={false} pb={5} />,
     },
     {
       label: t("editor.propertiesBar.title"),
