@@ -22,10 +22,12 @@ export default function DigitsPropertiesGroup({
     digitFontFamily,
     digitFontSize,
     digitFontWeight,
+    unitsShown,
     setDigitFontColor,
     setDigitFontFamily,
     setDigitFontSize,
     setDigitFontWeight,
+    setUnitsShown,
   } = useThemeTimerSelector();
 
   return (
@@ -50,6 +52,10 @@ export default function DigitsPropertiesGroup({
         label={t("editor.propertiesGroup.digits.digitsColor")}
         colorSelected={digitFontColor}
         onColorSelected={setDigitFontColor}
+      />
+      <UnitsVisible
+        unitsShown={unitsShown}
+        onUnitsShownChange={setUnitsShown}
       />
     </PropertyGroupWrapper>
   );

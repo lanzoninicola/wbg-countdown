@@ -11,17 +11,18 @@ import {
 import PropertyWrapper from "../../../components/layout/property-wrapper/property-wrapper";
 import Label from "../../../components/primitives/label/label";
 import { useTranslation } from "react-i18next";
+import { TimeUnits } from "../../../../../countdown-provider/types/theme/timer";
 
 // TODO: lot of logics in this component
 
 interface UnitsVisibleProps {
   unitsShown: string[];
-  onChangeUnitsShown: (unitsShown: string[]) => void;
+  onUnitsShownChange: (unitsShown: TimeUnits[]) => void;
 }
 
 export default function UnitsVisible({
   unitsShown,
-  onChangeUnitsShown,
+  onUnitsShownChange,
 }: UnitsVisibleProps) {
   const { t } = useTranslation();
   const { value } = useCheckboxGroup({
@@ -31,7 +32,7 @@ export default function UnitsVisible({
   function onChangeSelection(optionsKey: string[]) {
     let nextUnitsShown = [...optionsKey];
     nextUnitsShown = reorderUnitsShown(nextUnitsShown);
-    onChangeUnitsShown(nextUnitsShown);
+    onUnitsShownChange(nextUnitsShown as TimeUnits[]);
   }
 
   function reorderUnitsShown(unitsShown: string[]) {
