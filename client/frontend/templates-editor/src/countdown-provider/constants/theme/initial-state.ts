@@ -11,6 +11,8 @@ const THEME_INITIAL_STATE: ThemeStateData = {
   },
   layout: {
     orientation: "vertical",
+    gap: 1,
+    fitOnScreen: false,
   },
   title: {
     text: "Countdown to New Year",

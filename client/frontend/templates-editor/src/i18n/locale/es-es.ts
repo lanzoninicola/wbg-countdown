@@ -111,6 +111,8 @@ const esEs = {
           layout: {
             groupTitle: "Elegir diseño",
             orientationLabelProp: "Elegir orientación",
+            gapLabelProp: "Espacio entre el texto y el temporizador",
+            stretchLabelProp: "Ajustar al ancho de la página",
             vertical: {
               title: "Diseño vertical",
               description:

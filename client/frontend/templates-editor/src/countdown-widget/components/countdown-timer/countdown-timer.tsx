@@ -7,7 +7,6 @@ import CountdownWrapper from "../countdown-wrapper/countdown-wrapper";
 import CounterTitle from "../counter-title/counter-title";
 import Counter from "../counter/counter";
 import TimerSkeleton from "../timer-skeleton/timer-skeleton";
-import "./countdown-timer.css";
 
 // TODO: add padToZeros settings
 

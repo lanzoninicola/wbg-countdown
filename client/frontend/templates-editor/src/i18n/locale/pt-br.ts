@@ -114,6 +114,8 @@ const ptBR = {
           layout: {
             groupTitle: "Layout",
             orientationLabelProp: "Seleçiona orientação",
+            gapLabelProp: "Selecione o espaçamento entre o timer e o texto",
+            stretchProp: "Ajustar à largura da página",
             vertical: {
               title: "Layout vertical",
               description:

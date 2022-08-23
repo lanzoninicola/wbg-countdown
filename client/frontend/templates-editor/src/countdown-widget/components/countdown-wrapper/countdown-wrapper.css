@@ -1,4 +1,4 @@
-div[data-role="clockdown-wrapper"] {
+div[data-role="countdown-wrapper"] {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -7,10 +7,8 @@ div[data-role="clockdown-wrapper"] {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-
+  -webkit-justify-content: center;
+  justify-content: center;
   background: white;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  padding: 1rem 0.25rem 1rem 0.25rem;
+  padding: 1rem 0.5rem 1rem 0.5rem;
 }

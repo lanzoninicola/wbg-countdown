@@ -19,14 +19,22 @@ export default function useThemeLayoutSelector(): useThemeLayoutSelector {
     (ctx) => ctx?.theme.setLayout
   );
 
-  const { orientation } = layout;
-
   function setOrientation(orientation: CountdownLayoutOrientation) {
     setLayout({ ...layout, orientation });
   }
 
+  function setGap(gap: number) {
+    setLayout({ ...layout, gap });
+  }
+
+  function setFitOnScreen(fitOnScreen: boolean) {
+    setLayout({ ...layout, fitOnScreen });
+  }
+
   return {
-    orientation,
     setOrientation,
+    setGap,
+    setFitOnScreen,
+    ...layout,
   };
 }

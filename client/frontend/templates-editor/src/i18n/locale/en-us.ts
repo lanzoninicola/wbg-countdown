@@ -113,6 +113,8 @@ const enUS = {
           layout: {
             groupTitle: "Choose Layout",
             orientationLabelProp: "Choose orientation",
+            gapLabelProp: "Gap between text and timer",
+            stretchProp: "Fits the screen",
             vertical: {
               title: "Vertical layout",
               description:

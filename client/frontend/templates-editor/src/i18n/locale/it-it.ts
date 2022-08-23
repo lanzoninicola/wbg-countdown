@@ -113,6 +113,8 @@ const itIT = {
           layout: {
             groupTitle: "Scegli layout",
             orientationLabelProp: "Seleziona orientamento",
+            gapLabelProp: "Spazio tra testo e timer",
+            stretchProp: "Adatta alla larghezza della pagina",
             vertical: {
               title: "Layout verticale",
               description:

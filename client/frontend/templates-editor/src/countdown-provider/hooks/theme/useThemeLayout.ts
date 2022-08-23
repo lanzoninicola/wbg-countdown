@@ -9,7 +9,5 @@ import useThemeLayoutSelector from "./useThemeLayoutSelector";
 export default function useThemeLayout(): ThemeLayoutContextData {
   const layout = useThemeLayoutSelector();
 
-  const { orientation } = layout;
-
-  return { orientation };
+  return { ...layout };
 }

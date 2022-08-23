@@ -20,7 +20,7 @@ export default function CountdownContainer({
   }, [containerSize]);
 
   return (
-    <div ref={containerRef} data-role="clockdown-container">
+    <div ref={containerRef} data-role="countdown-container">
       {children}
     </div>
   );

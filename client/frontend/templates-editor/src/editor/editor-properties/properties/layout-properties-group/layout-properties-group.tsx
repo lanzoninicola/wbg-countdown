@@ -1,8 +1,9 @@
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import useThemeLayout from "../../../../countdown-provider/hooks/theme/useThemeLayout";
-import useThemeLayoutSelector from "../../../../countdown-provider/hooks/theme/useThemeLayoutSelector";
 import PropertyGroupWrapper from "../../components/layout/property-group-wrapper/property-group-wrapper";
+import GapSelector from "./gap-selector/gap-selector";
 import LayoutOrientation from "./layout-orientation/layout-orientation";
+import StretchSelector from "./stretch-selector/stretch-selector";
 
 interface LayoutPropertiesGroupProps {
   showGroupTitle?: boolean;
@@ -14,6 +15,7 @@ export default function LayoutPropertiesGroup({
   ...props
 }: LayoutPropertiesGroupProps) {
   const { orientation } = useThemeLayout();
+  const { t } = useTranslation();
 
   return (
     <PropertyGroupWrapper
@@ -22,6 +24,8 @@ export default function LayoutPropertiesGroup({
       {...props}
     >
       <LayoutOrientation orientationSelected={orientation} />
+      <GapSelector />
+      {orientation === "horizontal" && <StretchSelector />}
     </PropertyGroupWrapper>
   );
 }
