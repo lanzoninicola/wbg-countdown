@@ -1,5 +1,7 @@
 import { useTranslation } from "react-i18next";
 import useThemeLayout from "../../../../countdown-provider/hooks/theme/useThemeLayout";
+import { PremiumFeature } from "../../../../premium-features";
+import PremiumFeatureIcon from "../../../../premium-features/components/common/premium-feature-icon/premium-feature-icon";
 import PropertyGroupWrapper from "../../components/layout/property-group-wrapper/property-group-wrapper";
 import BackgroundColorSelector from "./background-color-selector/background-color-selector";
 import BackgroundTransparentSelector from "./background-transparent-selector/background-transparent-selector";
@@ -29,7 +31,9 @@ export default function LayoutPropertiesGroup({
       <GapSelector />
       {orientation === "horizontal" && <StretchSelector />}
       <BackgroundTransparentSelector />
-      <BackgroundColorSelector />
+      <PremiumFeature variant="modal">
+        <BackgroundColorSelector />
+      </PremiumFeature>
     </PropertyGroupWrapper>
   );
 }

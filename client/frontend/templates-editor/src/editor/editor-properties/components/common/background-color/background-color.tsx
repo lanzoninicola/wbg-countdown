@@ -1,6 +1,6 @@
 import { useState } from "react";
+
 import ColorPicker from "../../primitives/color-picker/color-picker";
-import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
 import Label from "../../primitives/label/label";
 
 interface BackgroundColorProps {
@@ -15,12 +15,12 @@ export default function BackgroundColor({
   onColorSelected,
 }: BackgroundColorProps) {
   return (
-    <PropertyWrapper>
+    <>
       <Label>{label}</Label>
       <ColorPicker
         colorSelected={colorSelected}
         onColorSelected={onColorSelected}
       />
-    </PropertyWrapper>
+    </>
   );
 }

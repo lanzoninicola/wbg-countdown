@@ -58,6 +58,7 @@ export default function DialogWrapper({
     <>
       <Flex
         role="dialog"
+        data-role="dialog-wrapper"
         flexDirection={"column"}
         h="max-content"
         maxH="500px"

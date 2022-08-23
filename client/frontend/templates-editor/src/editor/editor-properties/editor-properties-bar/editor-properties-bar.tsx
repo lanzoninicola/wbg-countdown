@@ -84,7 +84,7 @@ export default function EditorPropertiesBar() {
             top: 15,
           }}
           borderTopColor={"blue.500"}
-          minW={"350px"}
+          minW={"370px"}
         >
           <DialogWrapperHeader onClose={() => setItemSelected(null)}>
             <Text as="h3" className="theme-font" fontWeight={600}>

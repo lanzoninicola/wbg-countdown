@@ -1,4 +1,5 @@
 import { Box, Checkbox } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import useThemeLayoutSelector from "../../../../../countdown-provider/hooks/theme/useThemeLayoutSelector";
 
