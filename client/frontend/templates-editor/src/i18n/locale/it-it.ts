@@ -115,6 +115,8 @@ const itIT = {
             orientationLabelProp: "Seleziona orientamento",
             gapLabelProp: "Spazio tra testo e timer",
             stretchProp: "Adatta alla larghezza della pagina",
+            transparentProp: "Fondo trasparente",
+            backgroundColorProp: "Colore di sfondo",
             vertical: {
               title: "Layout verticale",
               description:

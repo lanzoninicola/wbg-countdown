@@ -113,6 +113,8 @@ const esEs = {
             orientationLabelProp: "Elegir orientación",
             gapLabelProp: "Espacio entre el texto y el temporizador",
             stretchLabelProp: "Ajustar al ancho de la página",
+            transparentProp: "Fondo transparente",
+            backgroundColorProp: "Color de fondo",
             vertical: {
               title: "Diseño vertical",
               description:

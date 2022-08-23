@@ -114,7 +114,9 @@ const enUS = {
             groupTitle: "Choose Layout",
             orientationLabelProp: "Choose orientation",
             gapLabelProp: "Gap between text and timer",
-            stretchProp: "Fits the screen",
+            stretchProp: "Fit the screen",
+            transparentProp: "Transparent background",
+            backgroundColorProp: "Background color",
             vertical: {
               title: "Vertical layout",
               description:

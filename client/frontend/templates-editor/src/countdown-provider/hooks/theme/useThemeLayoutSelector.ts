@@ -31,10 +31,20 @@ export default function useThemeLayoutSelector(): useThemeLayoutSelector {
     setLayout({ ...layout, fitOnScreen });
   }
 
+  function setTransparentBackground(transparentBackground: boolean) {
+    setLayout({ ...layout, transparentBackground });
+  }
+
+  function setBackgroundColor(backgroundColor: string) {
+    setLayout({ ...layout, backgroundColor });
+  }
+
   return {
     setOrientation,
     setGap,
     setFitOnScreen,
+    setTransparentBackground,
+    setBackgroundColor,
     ...layout,
   };
 }

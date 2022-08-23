@@ -9,7 +9,6 @@ div[data-role="countdown-wrapper"] {
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
-  background: white;
   gap: 1.5rem;
   padding: 1rem 0.5rem 1rem 0.5rem;
 }
