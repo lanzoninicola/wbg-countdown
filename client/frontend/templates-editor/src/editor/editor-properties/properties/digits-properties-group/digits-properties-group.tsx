@@ -5,6 +5,7 @@ import PropertyGroupWrapper from "../../components/layout/property-group-wrapper
 import FontColor from "../../components/common/font-color/font-color";
 import FontFamily from "../../components/common/font-family/font-family";
 import FontSize from "../../components/common/font-size/font-size";
+import UnitsVisible from "./units-visible/units-visible";
 
 interface DigitsPropertiesGroupProps {
   showGroupTitle?: boolean;

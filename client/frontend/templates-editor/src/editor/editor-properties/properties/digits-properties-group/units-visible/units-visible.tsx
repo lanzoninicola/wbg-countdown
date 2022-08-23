@@ -14,12 +14,15 @@ import { useTranslation } from "react-i18next";
 
 // TODO: lot of logics in this component
 
-interface UnitsProps {
+interface UnitsVisibleProps {
   unitsShown: string[];
   onChangeUnitsShown: (unitsShown: string[]) => void;
 }
 
-export default function Units({ unitsShown, onChangeUnitsShown }: UnitsProps) {
+export default function UnitsVisible({
+  unitsShown,
+  onChangeUnitsShown,
+}: UnitsVisibleProps) {
   const { t } = useTranslation();
   const { value } = useCheckboxGroup({
     value: unitsShown,
