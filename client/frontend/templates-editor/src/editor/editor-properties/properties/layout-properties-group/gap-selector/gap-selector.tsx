@@ -16,8 +16,8 @@ export default function GapSelector() {
       <Box gridColumn={"2 / 4"}>
         <SliderMarkTemplate
           min={1}
-          max={20}
-          step={0.5}
+          max={3}
+          step={1}
           onChangeSlider={setGap}
           ariaLabel="Change the gap between the title and timer"
           sliderValue={gap}

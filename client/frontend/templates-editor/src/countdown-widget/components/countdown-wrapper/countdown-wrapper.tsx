@@ -9,6 +9,8 @@ export default function CountdownWrapper({ children }: CountdownWrapperProps) {
   const { orientation, gap } = useThemeLayout();
 
   const flexOrientation = orientation === "vertical" ? "column" : "row";
+  const justifyContent =
+    gap === 1 ? "space-evenly" : gap === 2 ? "space-around" : "space-between";
 
   return (
     <div
@@ -17,7 +19,8 @@ export default function CountdownWrapper({ children }: CountdownWrapperProps) {
         WebkitFlexDirection: flexOrientation,
         msFlexDirection: flexOrientation,
         flexDirection: flexOrientation,
-        gap: `${gap}rem`,
+        WebkitJustifyContent: justifyContent,
+        justifyContent: justifyContent,
       }}
     >
       {children}
