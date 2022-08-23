@@ -16,18 +16,16 @@ export default function CountdownWrapper({ children }: CountdownWrapperProps) {
     ? "transparent"
     : backgroundColor || "white";
 
+  const editorStyle = {
+    flexDirection: flexOrientation as any,
+    WebkitJustifyContent: justifyContent,
+    justifyContent:
+      gap === 1 ? "space-evenly" : gap === 2 ? "space-around" : "space-between",
+    background,
+  };
+
   return (
-    <div
-      data-role="countdown-wrapper"
-      style={{
-        WebkitFlexDirection: flexOrientation,
-        msFlexDirection: flexOrientation,
-        flexDirection: flexOrientation,
-        WebkitJustifyContent: justifyContent,
-        justifyContent: justifyContent,
-        background,
-      }}
-    >
+    <div data-role="countdown-wrapper" style={editorStyle}>
       {children}
     </div>
   );

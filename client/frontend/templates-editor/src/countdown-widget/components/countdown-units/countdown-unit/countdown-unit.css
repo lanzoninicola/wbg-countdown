@@ -1,4 +1,4 @@
-.unit-group-wrapper {
+div[data-role="countdown-unit"] {
   display: grid;
   grid-template-areas:
     "digit separator"

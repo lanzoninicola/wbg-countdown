@@ -16,69 +16,69 @@ import { TimeUnits } from "../../../../../countdown-provider/types/theme/timer";
 // TODO: lot of logics in this component
 
 interface UnitsVisibleProps {
-  unitsShown: string[];
-  onUnitsShownChange: (unitsShown: TimeUnits[]) => void;
+  unitsVisible: string[];
+  onUnitsVisibleChange: (unitsVisible: TimeUnits[]) => void;
 }
 
 export default function UnitsVisible({
-  unitsShown,
-  onUnitsShownChange,
+  unitsVisible,
+  onUnitsVisibleChange,
 }: UnitsVisibleProps) {
   const { t } = useTranslation();
   const { value } = useCheckboxGroup({
-    value: unitsShown,
+    value: unitsVisible,
   });
 
   function onChangeSelection(optionsKey: string[]) {
-    let nextUnitsShown = [...optionsKey];
-    nextUnitsShown = reorderUnitsShown(nextUnitsShown);
-    onUnitsShownChange(nextUnitsShown as TimeUnits[]);
+    let nextUnitsVisible = [...optionsKey];
+    nextUnitsVisible = reorderUnitsVisible(nextUnitsVisible);
+    onUnitsVisibleChange(nextUnitsVisible as TimeUnits[]);
   }
 
-  function reorderUnitsShown(unitsShown: string[]) {
+  function reorderUnitsVisible(unitsVisible: string[]) {
     // "ss" must always be the last unit
-    if (unitsShown.includes("ss")) {
-      const ssIndex = unitsShown.indexOf("ss");
-      if (ssIndex !== unitsShown.length - 1) {
-        unitsShown.splice(ssIndex, 1);
-        unitsShown.push("ss");
+    if (unitsVisible.includes("ss")) {
+      const ssIndex = unitsVisible.indexOf("ss");
+      if (ssIndex !== unitsVisible.length - 1) {
+        unitsVisible.splice(ssIndex, 1);
+        unitsVisible.push("ss");
       }
     }
 
     // "mm" must after "hh"
-    if (unitsShown.includes("mm")) {
-      const indexOfMm = unitsShown.indexOf("mm");
-      const indexOfHh = unitsShown.indexOf("hh");
+    if (unitsVisible.includes("mm")) {
+      const indexOfMm = unitsVisible.indexOf("mm");
+      const indexOfHh = unitsVisible.indexOf("hh");
       if (indexOfMm > indexOfHh) {
-        unitsShown.splice(indexOfMm, 1);
-        unitsShown.splice(indexOfHh + 1, 0, "mm");
+        unitsVisible.splice(indexOfMm, 1);
+        unitsVisible.splice(indexOfHh + 1, 0, "mm");
       }
     }
     // "hh" must after "dd"
-    if (unitsShown.includes("hh")) {
-      const indexOfHh = unitsShown.indexOf("hh");
-      const indexOfDd = unitsShown.indexOf("dd");
+    if (unitsVisible.includes("hh")) {
+      const indexOfHh = unitsVisible.indexOf("hh");
+      const indexOfDd = unitsVisible.indexOf("dd");
       if (indexOfHh > indexOfDd) {
-        unitsShown.splice(indexOfHh, 1);
-        unitsShown.splice(indexOfDd + 1, 0, "hh");
+        unitsVisible.splice(indexOfHh, 1);
+        unitsVisible.splice(indexOfDd + 1, 0, "hh");
       }
     }
 
     // "dd" must be the first unit
-    if (unitsShown.includes("dd")) {
-      const indexOfDd = unitsShown.indexOf("dd");
+    if (unitsVisible.includes("dd")) {
+      const indexOfDd = unitsVisible.indexOf("dd");
       if (indexOfDd !== 0) {
-        unitsShown.splice(indexOfDd, 1);
-        unitsShown.splice(0, 0, "dd");
+        unitsVisible.splice(indexOfDd, 1);
+        unitsVisible.splice(0, 0, "dd");
       }
     }
 
-    return unitsShown;
+    return unitsVisible;
   }
 
   return (
     <PropertyWrapper>
-      <Label>{t("editor.unitsShown")}</Label>
+      <Label>{t("editor.propertiesGroup.digits.unitsVisible")}</Label>
       <Box gridColumn={"2 / -1"} borderRadius={"lg"} p={0.5}>
         <CheckboxGroup
           colorScheme="blue"
@@ -86,7 +86,7 @@ export default function UnitsVisible({
           onChange={onChangeSelection}
         >
           <Stack direction={["column", "row"]}>
-            {unitsShown.map((unit, key) => {
+            {unitsVisible.map((unit, key) => {
               return (
                 <Checkbox
                   key={key}

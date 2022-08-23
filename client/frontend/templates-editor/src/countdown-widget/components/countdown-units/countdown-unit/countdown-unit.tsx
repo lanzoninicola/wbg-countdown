@@ -2,12 +2,12 @@ import React from "react";
 
 import useThemeTimer from "../../../../countdown-provider/hooks/theme/useThemeTimer";
 import { StringOrNumber } from "../../../types";
-import Digit from "./digit/digit";
-import UnitGroupWrapper from "./unit-group-wrapper/unit-group-wrapper";
-import UnitLabel from "./unit-label/unit-label";
-import UnitSeparator from "./unit-separator/unit-separator";
+import CountdownUnitNumber from "./countdown-unit-number/countdown-unit-number";
+import UnitLabel from "./countdown-unit-label/countdown-unit-label";
+import CountdownUnitSeparator from "./countdown-unit-separator/countdown-unit-separator";
+import "./countdown-unit.css";
 
-interface UnitGroupProps {
+interface CountdownUnitProps {
   label: string;
   value: StringOrNumber;
   isDanger?: boolean;
@@ -18,21 +18,21 @@ interface UnitGroupProps {
   ariaLabelDigitLabel: string;
 }
 
-function UnitGroup({
+function CountdownUnit({
   label,
   value,
   isDanger,
   isLastDigit,
   ariaLabelDigit,
   ariaLabelDigitLabel,
-}: UnitGroupProps) {
+}: CountdownUnitProps) {
   const digitTheme = useThemeTimer("unit-digit");
   const labelTheme = useThemeTimer("unit-label");
   const separatorTheme = useThemeTimer("unit-separator");
 
   return (
-    <UnitGroupWrapper>
-      <Digit
+    <div data-role="countdown-unit" data-unit-type={`${label.toLowerCase()}`}>
+      <CountdownUnitNumber
         gridArea={"digit"}
         value={value}
         isDanger={isDanger}
@@ -48,21 +48,24 @@ function UnitGroup({
         ariaLabel={ariaLabelDigitLabel}
       />
       {!isLastDigit && separatorTheme.showSeparator && (
-        <UnitSeparator
+        <CountdownUnitSeparator
           gridArea={"separator"}
           separatorText={separatorTheme.separatorChar}
         />
       )}
-    </UnitGroupWrapper>
+    </div>
   );
 }
 
-const areEqual = (prevProps: UnitGroupProps, nextProps: UnitGroupProps) => {
+const areEqual = (
+  prevProps: CountdownUnitProps,
+  nextProps: CountdownUnitProps
+) => {
   return (
     prevProps.label === nextProps.label && prevProps.value === nextProps.value
   );
 };
 
-const MemoizedUnitGroup = React.memo(UnitGroup, areEqual);
+const MemoizedCountdownUnit = React.memo(CountdownUnit, areEqual);
 
-export default MemoizedUnitGroup;
+export default MemoizedCountdownUnit;

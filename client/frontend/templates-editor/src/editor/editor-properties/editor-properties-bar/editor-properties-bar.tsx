@@ -1,24 +1,25 @@
 import { Text } from "@chakra-ui/react";
-import { useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { BsLayoutWtf } from "@react-icons/all-files/bs/BsLayoutWtf";
 import { MdLabelOutline } from "@react-icons/all-files/md/MdLabelOutline";
 import { MdTimer10 } from "@react-icons/all-files/md/MdTimer10";
 import { MdTitle } from "@react-icons/all-files/md/MdTitle";
 import { MdViewList } from "@react-icons/all-files/md/MdViewList";
-import { BsLayoutWtf } from "@react-icons/all-files/bs/BsLayoutWtf";
+import { HiTemplate } from "@react-icons/all-files/hi/HiTemplate";
+import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
+import Countdowns from "../../../countdowns/components/countdowns/countdowns";
 import DialogWrapper from "../components/primitives/dialog-wrapper/dialog-wrapper";
 import DialogWrapperHeader from "../components/primitives/dialog-wrapper/dialog-wrapper-header/dialog-wrapper-header";
 import DigitLabelPropertiesGroup from "../properties/digit-label-properties-group/digit-label-properties-group";
 import DigitsPropertiesGroup from "../properties/digits-properties-group/digits-properties-group";
+import LayoutPropertiesGroup from "../properties/layout-properties-group/layout-properties-group";
 import SeparatorPropertiesGroup from "../properties/separator-properties-group/separator-properties-group";
+import TemplatesPropertiesGroup from "../properties/templates-properties-group/templates-properties-group";
 import TitlePropertiesGroup from "../properties/title-properties-group/title-properties-group";
 import PropertiesBar from "./components/properties-bar/properties-bar";
-import { PropertyBarItem } from "./types";
 import VerticalSeparatorIcon from "./components/vertical-separator-icon/vertical-separator-icon";
-import LayoutPicker from "../components/primitives/layout-picker/layout-picker";
-import Countdowns from "../../../countdowns/components/countdowns/countdowns";
-import LayoutPropertiesGroup from "../properties/layout-properties-group/layout-properties-group";
+import { PropertyBarItem } from "./types";
 
 export default function EditorPropertiesBar() {
   const { t } = useTranslation();
@@ -40,6 +41,13 @@ export default function EditorPropertiesBar() {
       ref: useRef(null),
       title: t("editor.propertiesGroup.layout.groupTitle"),
       component: <LayoutPropertiesGroup showGroupTitle={false} pb={5} />,
+    },
+    {
+      label: t("editor.propertiesBar.templates"),
+      icon: <HiTemplate />,
+      ref: useRef(null),
+      title: t("editor.propertiesGroup.templates.groupTitle"),
+      component: <TemplatesPropertiesGroup showGroupTitle={false} pb={5} />,
     },
     {
       label: t("editor.propertiesBar.title"),

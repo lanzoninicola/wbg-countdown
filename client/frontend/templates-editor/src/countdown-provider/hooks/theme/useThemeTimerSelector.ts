@@ -22,23 +22,10 @@ export default function useThemeTimerSelector(): UseThemeTimerSelector {
     (ctx) => ctx?.theme.setTimer
   );
 
-  const {
-    digitFontColor,
-    digitFontFamily,
-    digitFontSize,
-    digitFontWeight,
-    labelFontColor,
-    labelFontFamily,
-    labelFontSize,
-    labelFontWeight,
-    lastUnitColor,
-    separatorChar,
-    showSeparator,
-    unitsShown,
-  } = timer;
+  const { digitFontSize, labelFontSize } = timer;
 
-  function setUnitsShown(unitsShown: TimeUnits[]) {
-    setTimer({ ...timer, unitsShown });
+  function setUnitsVisible(unitsVisible: TimeUnits[]) {
+    setTimer({ ...timer, unitsVisible });
   }
 
   function setShowSeparator(showSeparator: boolean) {
@@ -92,19 +79,8 @@ export default function useThemeTimerSelector(): UseThemeTimerSelector {
   }
 
   return {
-    unitsShown,
-    showSeparator,
-    separatorChar,
-    digitFontFamily,
-    digitFontWeight,
-    digitFontSize,
-    digitFontColor,
-    lastUnitColor,
-    labelFontFamily,
-    labelFontWeight,
-    labelFontSize,
-    labelFontColor,
-    setUnitsShown,
+    ...timer,
+    setUnitsVisible,
     setShowSeparator,
     setSeparatorChar,
     setDigitFontFamily,

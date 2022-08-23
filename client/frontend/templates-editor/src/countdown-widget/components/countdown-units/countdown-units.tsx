@@ -1,7 +1,7 @@
 import useWidgetTranslation from "../../../countdown-widget-i18n/hooks/useWidgetTranslation";
 import { RemainingTime } from "../../types";
-import UnitGroup from "./unit-group/unit-group";
-import "./counter.css";
+import CountdownUnit from "./countdown-unit/countdown-unit";
+import "./countdown-units.css";
 
 export default function Counter({
   days,
@@ -17,26 +17,26 @@ export default function Counter({
   // TODO: check isDanger
 
   return (
-    <div data-role="clockdown-timer-wrapper">
-      <UnitGroup
+    <div data-role="countdown-units">
+      <CountdownUnit
         label={days === 1 ? tw("day") : tw("days")}
         value={days}
         ariaLabelDigit={tw("numberDays")}
         ariaLabelDigitLabel={tw("days")}
       />
-      <UnitGroup
+      <CountdownUnit
         label={hours === 1 ? tw("hour") : tw("hours")}
         value={hours}
         ariaLabelDigit={tw("numberHours")}
         ariaLabelDigitLabel={tw("hours")}
       />
-      <UnitGroup
+      <CountdownUnit
         label={minutes === 1 ? tw("minute") : tw("minutes")}
         value={minutes}
         ariaLabelDigit={tw("numberMinutes")}
         ariaLabelDigitLabel={tw("minutes")}
       />
-      <UnitGroup
+      <CountdownUnit
         label={seconds === 1 ? tw("second") : tw("seconds")}
         value={seconds}
         isLastDigit={true}

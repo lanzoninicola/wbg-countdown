@@ -1,46 +1,47 @@
 import useAppContext from "../../../../../countdown-provider/hooks/app/useAppContext";
 import useCurrentTokenSelector from "../../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
-import { ThemeDigitsContextData } from "../../../../../countdown-provider/types/theme/timer";
+import { ThemeDigitsLabelContextData } from "../../../../../countdown-provider/types/theme/timer";
 import useChakraBreakpoint from "../../../../hooks/useChakraBreakpoint";
-import { StringOrNumber } from "../../../../types";
-import "./digit.css";
+import "./countdown-unit-label.css";
 
-interface DigitProps {
-  value: StringOrNumber;
+interface UnitLabelProps {
+  theme: ThemeDigitsLabelContextData;
+  label: string;
   isDanger?: boolean;
   isLastDigit?: boolean;
-  theme: ThemeDigitsContextData;
   gridArea: string;
   ariaLabel: string;
   [key: string]: any;
 }
 
-export default function Digit({
-  value,
-  isDanger,
+export default function UnitLabel({
+  label,
   isLastDigit,
   theme,
   gridArea,
   ariaLabel,
-  ...props
-}: DigitProps) {
+}: UnitLabelProps) {
   const viewportToken = useChakraBreakpoint();
   const { isEditorMode } = useAppContext();
   const { currentToken: editorToken } = useCurrentTokenSelector();
 
-  const style = {
+  const editorStyle = {
     fontSize: isEditorMode
-      ? theme.digitFontSize[editorToken]
-      : theme.digitFontSize[viewportToken],
-    fontFamily: theme.digitFontFamily,
-    fontWeight: theme.digitFontWeight,
-    color: isLastDigit ? theme.lastUnitColor : theme.digitFontColor,
+      ? theme.labelFontSize[editorToken]
+      : theme.labelFontSize[viewportToken],
+    fontFamily: theme.labelFontFamily,
+    fontWeight: theme.labelFontWeight,
+    color: isLastDigit ? theme.lastUnitColor : theme.labelFontColor,
     gridArea: gridArea,
   };
 
   return (
-    <span data-role="clockdown-digit" style={style} aria-label={ariaLabel}>
-      {value}
+    <span
+      data-role="countdown-unit-label"
+      style={editorStyle}
+      aria-label={ariaLabel}
+    >
+      {label}
     </span>
   );
 }

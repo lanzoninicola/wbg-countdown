@@ -104,6 +104,7 @@ const enUS = {
         propertiesBar: {
           list: "Countodowns list",
           layout: "Choose layout",
+          templates: "Choose template",
           title: "Customize Title",
           timer: "Customize Timer Units",
           labels: "Customize Labels",
@@ -133,6 +134,9 @@ const enUS = {
               label: "Horizontal",
             },
           },
+          templates: {
+            groupTitle: "Templates",
+          },
           title: {
             groupTitle: "Title style",
             titlePlaceholder: "Countown to New Year",
@@ -150,7 +154,7 @@ const enUS = {
           },
           digits: {
             groupTitle: "Units style",
-            unitsShown: "Units shown",
+            unitsVisible: "Units visible",
             lastUnitColor: "Last unit color",
             digitsFont: "Digits font",
             digitsSize: "Digits size",

@@ -1,16 +1,16 @@
 import { useLayoutEffect, useState } from "react";
 
-import useAppContext from "../../../countdown-provider/hooks/app/useAppContext";
-import useSettingsContext from "../../../countdown-provider/hooks/settings/useSettingsContext";
-import useCountdown from "../../hooks/useCountdown";
-import CountdownWrapper from "../countdown-wrapper/countdown-wrapper";
-import CounterTitle from "../counter-title/counter-title";
-import Counter from "../counter/counter";
-import TimerSkeleton from "../timer-skeleton/timer-skeleton";
+import useAppContext from "../../countdown-provider/hooks/app/useAppContext";
+import useSettingsContext from "../../countdown-provider/hooks/settings/useSettingsContext";
+import useCountdown from "../hooks/useCountdown";
+import CountdownWrapper from "./countdown-wrapper/countdown-wrapper";
+import CountdownTitle from "./countdown-title/countdown-title";
+import CountdownUnits from "./countdown-units/countdown-units";
+import TimerSkeleton from "./timer-skeleton/timer-skeleton";
 
 // TODO: add padToZeros settings
 
-const CountdownTimer = () => {
+const Countdown = () => {
   const {
     targetDate: HTMLInputTargetDate,
     targetTimezone: HTMLInputTargetTimezone,
@@ -44,10 +44,15 @@ const CountdownTimer = () => {
 
   return (
     <CountdownWrapper>
-      <CounterTitle />
-      <Counter days={days} hours={hours} minutes={minutes} seconds={seconds} />
+      <CountdownTitle />
+      <CountdownUnits
+        days={days}
+        hours={hours}
+        minutes={minutes}
+        seconds={seconds}
+      />
     </CountdownWrapper>
   );
 };
 
-export default CountdownTimer;
+export default Countdown;

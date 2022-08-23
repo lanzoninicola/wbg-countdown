@@ -104,6 +104,7 @@ const esEs = {
         propertiesBar: {
           list: "Lista de contadores",
           layout: "Elegir diseño",
+          templates: "Elegir Plantillas",
           title: "Personalizar titulo",
           timer: "Personalizar dígitos",
           labels: "Personalizar etiquetas",
@@ -133,7 +134,9 @@ const esEs = {
               label: "Diseño horizontal",
             },
           },
-
+          templates: {
+            groupTitle: "Plantillas",
+          },
           title: {
             groupTitle: "Estilo del título",
             titlePlaceholder: "Fecha de finalización al Nuevo Año",
@@ -151,7 +154,7 @@ const esEs = {
           },
           digits: {
             groupTitle: "Estilo do Unidades",
-            unitsShown: "Unidades mostradas",
+            unitsVisible: "Unidades mostradas",
             lastUnitColor: "Color de la última unidad",
             digitsFont: "Fuente de los dígitos",
             digitsSize: "Tamaño de los dígitos",

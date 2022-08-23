@@ -104,6 +104,7 @@ const ptBR = {
         propertiesBar: {
           list: "Lista de contadores regressivos",
           layout: "Escolha o layout",
+          templates: "Escolha um modelo",
           title: "Personaliza o titulo",
           timer: "Personaliza os digitos",
           labels: "Personaliza as etiquetas",
@@ -133,6 +134,9 @@ const ptBR = {
               label: "Horizontal",
             },
           },
+          templates: {
+            groupTitle: "Modelos",
+          },
           title: {
             groupTitle: "Estilo do titulo",
             titlePlaceholder: "Contador regressivo para Ano Novo",
@@ -150,7 +154,7 @@ const ptBR = {
           },
           digits: {
             groupTitle: "Units style",
-            unitsShown: "Unidades mostradas",
+            unitsVisible: "Unidades mostradas",
             lastUnitColor: "Cor da última unidade",
             digitsFont: "Fonte dos dígitos",
             digitsSize: "Tamanho dos dígitos",

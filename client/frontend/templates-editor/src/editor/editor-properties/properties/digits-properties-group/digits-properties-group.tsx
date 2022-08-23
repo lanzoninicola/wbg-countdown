@@ -6,6 +6,7 @@ import FontColor from "../../components/common/font-color/font-color";
 import FontFamily from "../../components/common/font-family/font-family";
 import FontSize from "../../components/common/font-size/font-size";
 import UnitsVisible from "./units-visible/units-visible";
+import { PremiumFeature } from "../../../../premium-features";
 
 interface DigitsPropertiesGroupProps {
   showGroupTitle?: boolean;
@@ -22,12 +23,12 @@ export default function DigitsPropertiesGroup({
     digitFontFamily,
     digitFontSize,
     digitFontWeight,
-    unitsShown,
+    unitsVisible,
     setDigitFontColor,
     setDigitFontFamily,
     setDigitFontSize,
     setDigitFontWeight,
-    setUnitsShown,
+    setUnitsVisible,
   } = useThemeTimerSelector();
 
   return (
@@ -53,10 +54,12 @@ export default function DigitsPropertiesGroup({
         colorSelected={digitFontColor}
         onColorSelected={setDigitFontColor}
       />
-      <UnitsVisible
-        unitsShown={unitsShown}
-        onUnitsShownChange={setUnitsShown}
-      />
+      <PremiumFeature variant="modal">
+        <UnitsVisible
+          unitsVisible={unitsVisible}
+          onUnitsVisibleChange={setUnitsVisible}
+        />
+      </PremiumFeature>
     </PropertyGroupWrapper>
   );
 }

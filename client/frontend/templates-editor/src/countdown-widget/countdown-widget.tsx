@@ -3,7 +3,7 @@ import useThemeTimerSelector from "../countdown-provider/hooks/theme/useThemeTim
 import useThemeTitleSelector from "../countdown-provider/hooks/theme/useThemeTitleSelector";
 import { GoogleFontsLinkTag } from "../countdown-widget-typography/countdown-widget-typography";
 import CountdownContainer from "./components/countdown-container/countdown-container";
-import CountdownTimer from "./components/countdown-timer/countdown-timer";
+import Countdown from "./components/countdown";
 import "./countdown-widget.css";
 
 export default function CountdownWidget() {
@@ -13,13 +13,12 @@ export default function CountdownWidget() {
     useThemeTitleSelector();
   const { fitOnScreen } = useThemeLayout();
 
+  const editorStyle = {
+    width: fitOnScreen ? "100%" : "max-content",
+  };
+
   return (
-    <div
-      data-role="countdown-widget"
-      style={{
-        width: fitOnScreen ? "100%" : "max-content",
-      }}
-    >
+    <div data-role="countdown-widget" style={editorStyle}>
       <GoogleFontsLinkTag
         googleFonts={[
           { fontFamily: digitFontFamily, fontWeight: digitFontWeight },
@@ -28,7 +27,7 @@ export default function CountdownWidget() {
         ]}
       />
       <CountdownContainer>
-        <CountdownTimer />
+        <Countdown />
       </CountdownContainer>
     </div>
   );

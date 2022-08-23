@@ -1,4 +1,4 @@
-span[data-role="clockdown-digit"] {
+span[data-role="countdown-unit-number"] {
   line-height: 1.1;
   text-rendering: optimizeSpeed;
 }

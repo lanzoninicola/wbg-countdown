@@ -28,7 +28,7 @@ const THEME_INITIAL_STATE: ThemeStateData = {
     fontColor: "#000000",
   },
   timer: {
-    unitsShown: ["dd", "hh", "mm", "ss"],
+    unitsVisible: ["dd", "hh", "mm", "ss"],
     showSeparator: true,
     separatorChar: ":",
     digitFontFamily: "Inter",

@@ -103,6 +103,7 @@ const itIT = {
         propertiesBar: {
           list: "Lista dei timer",
           layout: "Scegli layout",
+          templates: "Scegli template",
           title: "Personalizza il titolo",
           timer: "Personalizza le unità",
           labels: "Personalizza le etichette",
@@ -132,6 +133,9 @@ const itIT = {
               label: "Orrizontale",
             },
           },
+          templates: {
+            groupTitle: "Modelli",
+          },
           title: {
             groupTitle: "Stile del titolo",
             titlePlaceholder: "Scadenza al Nuovo Anno",
@@ -149,7 +153,7 @@ const itIT = {
           },
           digits: {
             groupTitle: "Stile delle unità",
-            unitsShown: "Visualizza le unità",
+            unitsVisible: "Visualizza le unità",
             lastUnitColor: "Colore della ultima unità",
             digitsFont: "Font dei numeri",
             digitsSize: "Dimensioni dei numeri",
