@@ -2,7 +2,7 @@ import { Box, HStack, Link, Text, TypographyProps } from "@chakra-ui/react";
 import { forwardRef } from "react";
 import { useTranslation } from "react-i18next";
 import { BiLinkExternal } from "@react-icons/all-files/bi/BiLinkExternal";
-import usePremiumFeaturesLandingURLSelector from "../../provider/hooks/usePremiumFeaturesLandingURLSelector";
+import usePremiumFeaturesLandingURLSelector from "../../../provider/hooks/usePremiumFeaturesLandingURLSelector";
 
 //TODO: Track the click event action in analytics
 

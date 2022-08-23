@@ -1,4 +1,4 @@
-import beTheHero from "../../assets/images/be-the-hero.png";
+import beTheHero from "../../../assets/images/be-the-hero.png";
 
 interface UpgradePremiumImageProps {
   width?: string;

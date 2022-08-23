@@ -14,8 +14,8 @@ import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import beTheHero from "../../assets/images/be-the-hero.png";
-import UpgradePremiumButton from "../upgrade-premium-button/upgrade-premium-button";
-import UpgradePremiumImage from "../upgrade-premium-image/upgrade-premium-image";
+import UpgradePremiumButton from "../common/upgrade-premium-button/upgrade-premium-button";
+import UpgradePremiumImage from "../common/upgrade-premium-image/upgrade-premium-image";
 
 interface PremiumFeatureProps {
   isOpen: boolean;
@@ -42,6 +42,8 @@ export default function UpgradePremiumModal({
 
   const initialRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
+  const defaultBodyText = t("premiumFeatures.modal.body.default");
+
   return (
     <>
       <Modal
@@ -61,7 +63,7 @@ export default function UpgradePremiumModal({
             <VStack gap={8}>
               <UpgradePremiumImage width="250px" />
               <Text className="theme-font" fontSize={"sm"}>
-                {bodyText}
+                {bodyText || defaultBodyText}
               </Text>
             </VStack>
           </ModalBody>

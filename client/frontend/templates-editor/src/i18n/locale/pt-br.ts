@@ -52,6 +52,8 @@ const ptBR = {
         modal: {
           title: "Vá além de seus limites",
           body: {
+            default:
+              "Esta função só está disponível na versão premium. Conviértese em membro premium para acessá-la.",
             newCountdown:
               "Desbloqueie a versão premium para criar um número ilimitado de temporizadores: defina um timer para cada campanha de desconto planejada ou personalize o visual do timer para suas diferentes páginas de desembarque.",
           },

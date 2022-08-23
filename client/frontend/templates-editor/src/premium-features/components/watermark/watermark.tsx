@@ -1,8 +1,10 @@
 import { VStack, Text, Box, HStack, Grid } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import PremiumFeatureIcon from "../premium-feature-icon/premium-feature-icon";
-import UpgradePremiumBadge from "../upgrade-premium-badge/upgrade-premium-badge";
-import UpgradePremiumButton from "../upgrade-premium-button/upgrade-premium-button";
+import AnchorBox from "../common/anchor-box/anchor-box";
+import PremiumFeatureCockade from "../common/premium-feature-cockade/premium-feature-cockade";
+import PremiumFeatureIcon from "../common/premium-feature-icon/premium-feature-icon";
+import UpgradePremiumBadge from "../common/upgrade-premium-badge/upgrade-premium-badge";
+import UpgradePremiumButton from "../common/upgrade-premium-button/upgrade-premium-button";
 
 interface WatermarkProps {
   customText?: string | React.ReactNode;
@@ -11,16 +13,7 @@ interface WatermarkProps {
 export default function Watermark({ customText }: WatermarkProps) {
   const { t } = useTranslation();
   return (
-    <Box
-      className="premium-feat-watermark"
-      position={"absolute"}
-      inset={0}
-      zIndex={99}
-      backdropFilter={"blur(5px) saturate(0%)"}
-      display={"flex"}
-      justifyContent={"center"}
-      alignItems={"center"}
-    >
+    <AnchorBox backdropFilter={"blur(5px) saturate(0%)"}>
       <Grid
         gridTemplateColumns={"1fr auto"}
         bg="white"
@@ -30,7 +23,7 @@ export default function Watermark({ customText }: WatermarkProps) {
         gap={8}
         boxShadow={"xl"}
       >
-        <PremiumFeatureIcon />
+        <PremiumFeatureCockade />
         <VStack alignItems={"flex-start"}>
           <Text
             as="p"
@@ -44,6 +37,6 @@ export default function Watermark({ customText }: WatermarkProps) {
           <UpgradePremiumButton fontSize={".75rem"} />
         </VStack>
       </Grid>
-    </Box>
+    </AnchorBox>
   );
 }

@@ -51,6 +51,8 @@ const itIT = {
         modal: {
           title: "Supera i tuoi limiti",
           body: {
+            default:
+              "Questa funzione è disponibile solo nella versione premium. Diventa un membro premium per accedere a questa funzione.",
             newCountdown:
               "Sbloccate la versione premium per creare un numero illimitato di timer: impostate un timer per ogni campagna di sconti pianificata o personalizzate l'aspetto del timer per le vostre diverse landing page.",
           },

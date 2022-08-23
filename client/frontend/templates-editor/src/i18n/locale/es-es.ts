@@ -51,7 +51,12 @@ const esEs = {
         },
         modal: {
           title: "Actualizar a premium",
-          text: "Desbloquee la versión premium para crear un número ilimitado de temporizadores: establezca un temporizador para cada campaña de descuento planificada o personalice el aspecto del temporizador para sus diferentes páginas de destino.",
+          body: {
+            default:
+              "Esta función sólo está disponible en la versión premium. ¡Conviértete en miembro premium para acceder a ella.",
+            newCountdown:
+              "Desbloquee la versión premium para crear un número ilimitado de temporizadores: establezca un temporizador para cada campaña de descuento planificada o personalice el aspecto del temporizador para sus diferentes páginas de destino.",
+          },
         },
       },
       countdowns: {

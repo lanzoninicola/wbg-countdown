@@ -50,7 +50,10 @@ const enUS = {
         },
         modal: {
           title: "Exceed your limits",
+
           body: {
+            default:
+              "This feature is only available in the premium version. Become a premium member to unlock it.",
             newCountdown:
               "Unlock the premium version to create an unlimited number of timers: set a timer for each planned discount campaign or customize the timer look for your different landing pages.",
           },
