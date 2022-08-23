@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import useAppContext from "../../countdown-provider/hooks/app/useAppContext";
 
 import useCurrentCountdownSelector from "../../countdown-provider/hooks/app/useCurrentCountdownSelector";
 import useSettingsContext from "../../countdown-provider/hooks/settings/useSettingsContext";
@@ -8,6 +9,7 @@ import useFetchLastMutatedCountdownSettings from "./useFetchLastMutatedCountdown
 export default function useLastMutatedCountdownSettings() {
   const { currentCountdown, setCurrentCountdown } =
     useCurrentCountdownSelector();
+  const { setIsEditorMode } = useAppContext();
   const { data, isError, isLoading, error } =
     useFetchLastMutatedCountdownSettings({
       skipFetch: currentCountdown !== null,
@@ -23,6 +25,7 @@ export default function useLastMutatedCountdownSettings() {
     }
 
     setCurrentCountdown(data.id);
+    setIsEditorMode(true);
 
     if (!data?.settings) {
       return;

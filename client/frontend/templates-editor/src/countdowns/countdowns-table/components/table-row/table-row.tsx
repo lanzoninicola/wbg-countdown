@@ -21,7 +21,7 @@ interface TableRowProps {
 export default function TableRow({ countdown }: TableRowProps) {
   const { t } = useTranslation();
   const { id, name, description, created_at, updated_at } = countdown;
-  const { setCurrentCountdown, setIsEditorMode } = useAppContext();
+  const { setCurrentCountdown } = useAppContext();
 
   const createdAt = dayjs(created_at).format("DD/MM/YYYY");
   const updatedAt = updated_at && dayjs(updated_at).format("DD/MM/YYYY");
@@ -48,7 +48,6 @@ export default function TableRow({ countdown }: TableRowProps) {
             label={t("global.customize")}
             onClick={() => {
               setCurrentCountdown(id);
-              setIsEditorMode(true);
             }}
           />
           <ModalEditCountdown countdown={countdown} />
