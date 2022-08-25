@@ -27,5 +27,8 @@ export default function useCurrentCountdownSelector(): UseCurrentCountdownSelect
     }
   }, [currentCountdown]);
 
-  return { currentCountdown, setCurrentCountdown };
+  return {
+    currentCountdown,
+    setCurrentCountdown,
+  };
 }

@@ -9,6 +9,13 @@ const THEME_INITIAL_STATE: ThemeStateData = {
       height: 0,
     },
   },
+  layout: {
+    orientation: "vertical",
+    gap: 1,
+    fitOnScreen: false,
+    transparentBackground: false,
+    backgroundColor: "#ffffff",
+  },
   title: {
     text: "Countdown to New Year",
     fontFamily: "Inter",
@@ -21,7 +28,7 @@ const THEME_INITIAL_STATE: ThemeStateData = {
     fontColor: "#000000",
   },
   timer: {
-    unitsShown: ["dd", "hh", "mm", "ss"],
+    unitsVisible: ["dd", "hh", "mm", "ss"],
     showSeparator: true,
     separatorChar: ":",
     digitFontFamily: "Inter",

@@ -3,19 +3,19 @@ import {
   ThemeDigitsLabelContextData,
   ThemeSeparatorContextData,
   ThemeTimerContextData,
-  ThemeUnitsShown,
+  ThemeUnitsVisible,
 } from "../../types/theme/timer";
 import useThemeTimerSelector from "./useThemeTimerSelector";
 
 type UseThemeTimer =
-  | ThemeUnitsShown
+  | ThemeUnitsVisible
   | ThemeSeparatorContextData
   | ThemeDigitsContextData
   | ThemeDigitsLabelContextData
   | ThemeTimerContextData;
 
 type ThemeTimerSlice =
-  | "unitsShown"
+  | "unitsVisible"
   | "unit-separator"
   | "unit-digit"
   | "unit-label";
@@ -26,13 +26,13 @@ type ThemeTimerSlice =
  * @param slice The slice of the theme timer data to get.
  * @returns
  */
-function useThemeTimer(slice: "unitsShown"): ThemeUnitsShown;
+function useThemeTimer(slice: "unitsVisible"): ThemeUnitsVisible;
 function useThemeTimer(slice: "unit-separator"): ThemeSeparatorContextData;
 function useThemeTimer(slice: "unit-digit"): ThemeDigitsContextData;
 function useThemeTimer(slice: "unit-label"): ThemeDigitsLabelContextData;
 function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
   const {
-    unitsShown,
+    unitsVisible,
     showSeparator,
     separatorChar,
     digitFontFamily,
@@ -46,8 +46,8 @@ function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
     labelFontColor,
   } = useThemeTimerSelector();
 
-  if (slice === "unitsShown") {
-    return { unitsShown };
+  if (slice === "unitsVisible") {
+    return { unitsVisible };
   }
 
   if (slice === "unit-separator") {
@@ -78,7 +78,7 @@ function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
   }
 
   return {
-    unitsShown,
+    unitsVisible,
     showSeparator,
     separatorChar,
     digitFontFamily,

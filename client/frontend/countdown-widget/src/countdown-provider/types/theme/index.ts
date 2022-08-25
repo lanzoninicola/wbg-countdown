@@ -1,4 +1,5 @@
 import { ThemeGlobalContextData } from "./global";
+import { ThemeLayoutContextData } from "./layout";
 import { ThemeTimerContextData } from "./timer";
 import { ThemeTitleContextData } from "./title";
 
@@ -11,6 +12,8 @@ export type ThemeContext = ThemeStateData & ThemeStateSetter;
 export interface ThemeStateData {
   /** All style data that has not strictly relation with a specific element of the countdown */
   global: ThemeGlobalContextData;
+  /** All style data related to the layout of countdown */
+  layout: ThemeLayoutContextData;
   /** All the properties related to the customization of title */
   title: ThemeTitleContextData;
   /** All the properties related to the customization of timer */
@@ -20,6 +23,8 @@ export interface ThemeStateData {
 /** This inteface is shared with the Editor */
 export interface ThemeStateSetter {
   setGlobal: (data: ThemeGlobalContextData) => void;
+  /** Set the layout properties */
+  setLayout: (data: ThemeLayoutContextData) => void;
   /** Set the title properties */
   setTitle: (title: ThemeTitleContextData) => void;
   /** Set the timer properties */

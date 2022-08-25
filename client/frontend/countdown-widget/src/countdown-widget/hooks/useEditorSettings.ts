@@ -46,17 +46,22 @@ export default function useEditorSettings({
   const { setTimer, setTitle } = useThemeContext();
 
   useEffect(() => {
+    if (!current) {
+      setIsLoading(false);
+      return;
+    }
+
     findById(current)
       .then((res) => {
         if (res.code === "error") {
           setIsError(true);
         }
 
-        const { payload } = res;
+        const { data } = res;
 
-        if (payload) {
+        if (data && data.payload) {
           const settingsParsed: CountdownSettingsAndTheme = JSON.parse(
-            payload.settings
+            data.payload.settings
           );
 
           if (settingsParsed) {

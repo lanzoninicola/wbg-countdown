@@ -7,7 +7,7 @@
     "fontColor": "#000000"
   },
   "timer": {
-    "unitsShown": ["dd", "hh", "mm", "ss"],
+    "unitsVisible": ["dd", "hh", "mm", "ss"],
     "digitFontFamily": "Inter",
     "digitFontWeight": "400",
     "digitFontSize": 48,

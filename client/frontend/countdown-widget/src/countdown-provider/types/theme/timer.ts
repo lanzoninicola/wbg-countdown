@@ -1,11 +1,11 @@
 import { ChakraToken, ResponsiveValue } from "./responsive";
 
-export type ThemeTimerContextData = ThemeUnitsShownContextData &
+export type ThemeTimerContextData = ThemeUnitsVisibleContextData &
   ThemeSeparatorContextData &
   ThemeDigitsContextData &
   ThemeDigitsLabelContextData;
 
-export type ThemeTimerContextSetter = ThemeUnitsShownContextSetter &
+export type ThemeTimerContextSetter = ThemeUnitsVisibleContextSetter &
   ThemeSeparatorContextSetter &
   ThemeDigitsContextSetter &
   ThemeDigitsLabelContextSetter;
@@ -64,13 +64,13 @@ export interface ThemeDigitsLabelContextSetter {
   setLastUnitColor: (lastUnitColor: string) => void;
 }
 
-export interface ThemeUnitsShownContextData {
+export interface ThemeUnitsVisibleContextData {
   /** The unit visible in the timer ['dd', 'hh', 'mm', 'ss'] */
-  unitsShown: TimeUnits[];
+  unitsVisible: TimeUnits[];
 }
 
-export interface ThemeUnitsShownContextSetter {
-  setUnitsShown: (unitsShown: TimeUnits[]) => void;
+export interface ThemeUnitsVisibleContextSetter {
+  setUnitsVisible: (unitsVisible: TimeUnits[]) => void;
 }
 
 export type SecondsUnit = "ss";

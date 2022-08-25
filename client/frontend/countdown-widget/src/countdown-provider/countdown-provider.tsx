@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useReducer, useState } from "react";
+import useCountdownsList from "../countdown-rest-api/hooks/useCountdownsList";
 import { FontsizeUnit } from "../countdown-widget-typography/types";
 
 import { CountdownModel } from "../countdown-widget/types";
@@ -6,12 +7,10 @@ import APP_INITIAL_STATE from "./constants/app/initial-state";
 import SETTINGS_INITIAL_STATE from "./constants/settings/initial-state";
 import THEME_INITIAL_STATE from "./constants/theme/initial-state";
 import { CountdownContext } from "./context/countdown-context";
-import { RuntimeEnvironment } from "./types";
 
 interface CountdownProviderProps {
   children: React.ReactNode;
   current?: CountdownModel["id"] | null;
-  runtimeEnvironment?: RuntimeEnvironment;
 }
 
 /**
@@ -34,7 +33,6 @@ interface CountdownProviderProps {
 export default function CountdownProvider({
   children,
   current,
-  runtimeEnvironment,
 }: CountdownProviderProps) {
   const [currentCountdown, setCurrentCountdown] = useState<
     CountdownModel["id"] | null
@@ -44,9 +42,6 @@ export default function CountdownProvider({
   );
   const [isEditorMode, setIsEditorMode] = useState<boolean>(
     APP_INITIAL_STATE.isEditorMode
-  );
-  const [runtimeEnv, setRuntimeEnv] = useState<RuntimeEnvironment>(
-    runtimeEnvironment || APP_INITIAL_STATE.runtimeEnv
   );
   const [fontSizeUnit, setFontSizeUnit] = useState<FontsizeUnit>(
     APP_INITIAL_STATE.fontSizeUnit
@@ -67,6 +62,7 @@ export default function CountdownProvider({
   const [global, setGlobal] = useState(THEME_INITIAL_STATE.global);
   const [title, setTitle] = useState(THEME_INITIAL_STATE.title);
   const [timer, setTimer] = useState(THEME_INITIAL_STATE.timer);
+  const [layout, setLayout] = useState(THEME_INITIAL_STATE.layout);
 
   return (
     <CountdownContext.Provider
@@ -80,8 +76,6 @@ export default function CountdownProvider({
           setIsEditorMode,
           timerExpired,
           setTimerExpired,
-          runtimeEnv,
-          setRuntimeEnv,
           fontSizeUnit,
           setFontSizeUnit,
         },
@@ -96,6 +90,8 @@ export default function CountdownProvider({
         theme: {
           global,
           setGlobal,
+          layout,
+          setLayout,
           title,
           setTitle,
           timer,

@@ -1,14 +1,5 @@
-const env = process.env.NODE_ENV;
+import { getServerData } from "../../global/utils";
 
-const BASE_ENDPOINT_URL =
-  env === "development" || env === "test"
-    ? import.meta.env.VITE_REST_API_BASE_ENDPOINT_URL
-    : // @ts-ignore
-      // the clockdownLocalized variable is available only in Wordpress environment and not in dev mode on Vite
-      `${clockdownLocalized.apiURL}/`;
+const { api_url: REST_API_URL, wp_rest_nonce: WP_REST_NONCE } = getServerData();
 
-const REST_API_VERSION = "clockdown/v1/";
-
-const REST_API_URL = `${BASE_ENDPOINT_URL}${REST_API_VERSION}`;
-
-export { REST_API_URL };
+export { REST_API_URL, WP_REST_NONCE };

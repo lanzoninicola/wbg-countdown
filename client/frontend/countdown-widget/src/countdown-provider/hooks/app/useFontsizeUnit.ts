@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useContextSelector } from "use-context-selector";
+import { FontsizeUnit } from "../../../countdown-widget-typography/types";
 
 import { CountdownContext } from "../../context/countdown-context";
-import { FontsizeUnit } from "../../types/theme/responsive";
 
 interface UseFontsizeUnitProps {
   fontSizeUnit: FontsizeUnit;
