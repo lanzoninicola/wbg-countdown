@@ -119,6 +119,7 @@ class PluginSetup {
 
     /**
      * Add the options to the database.
+     * If the option already exists, it will NOT be updated.
      *
      * @return void
      */
@@ -132,6 +133,7 @@ class PluginSetup {
 
     /**
      * Remove the options from the database.
+     * The options are removed only if the plugin is uninstalled (NOT DEACTIVATE!).
      *
      * @return void
      */
