@@ -2,7 +2,6 @@
 
 namespace Clockdown\Client\Config;
 
-use Clockdown\App\Services\Onboarding;
 use Clockdown\App\Services\RestApi\RestApiEndpoint;
 use Clockdown\App\Services\RestApi\RestApiRoutes;
 use Clockdown\App\Services\RestApi\RestApiRoutesService;
@@ -147,11 +146,17 @@ class Configurator implements PluginConfigurable {
 
         $script_admin_localizer->localize(
             array(
-                'api_url'           => get_plugin_api_base_url(),
-                'language'          => get_locale(),
-                'onboarding_status' => Onboarding::get_status(),
-                'product_id'        => '1',
-                'installation_id'   => '7cg9997b-0f40-11ed-9cce-040e3caabadb',
+                'api_url'    => get_plugin_api_base_url(),
+                'language'   => get_locale(),
+                'product_id' => '1',
+            )
+        );
+
+        $script_public_localizer->localize(
+            array(
+                'api_url'    => get_plugin_api_base_url(),
+                'language'   => get_locale(),
+                'product_id' => '1',
             )
         );
 
