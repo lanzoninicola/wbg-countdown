@@ -1,16 +1,19 @@
-import { useEffect, useReducer, useState } from "react";
-import useCountdownsList from "../countdown-rest-api/hooks/useCountdownsList";
-import { FontsizeUnit } from "../countdown-widget-typography/types";
-
-import { CountdownModel } from "../countdown-widget/types";
+import useReducerLocalStorage from "../hooks/useReducerLocalStorage";
 import APP_INITIAL_STATE from "./constants/app/initial-state";
 import SETTINGS_INITIAL_STATE from "./constants/settings/initial-state";
 import THEME_INITIAL_STATE from "./constants/theme/initial-state";
 import { CountdownContext } from "./context/countdown-context";
+import appReducer from "./reducers/appReducer";
+import settingsReducer from "./reducers/settingsReducer";
+import themeReducer from "./reducers/themeReducer";
+import { CountdownSettingsAndTheme } from "./types";
+import { AppStateData } from "./types/app";
+import { SettingsStateData } from "./types/settings";
+import { ThemeStateData } from "./types/theme";
 
 interface CountdownProviderProps {
   children: React.ReactNode;
-  current?: CountdownModel["id"] | null;
+  settingsAndTheme: CountdownSettingsAndTheme | null;
 }
 
 /**
@@ -32,71 +35,62 @@ interface CountdownProviderProps {
  */
 export default function CountdownProvider({
   children,
-  current,
+  settingsAndTheme,
 }: CountdownProviderProps) {
-  const [currentCountdown, setCurrentCountdown] = useState<
-    CountdownModel["id"] | null
-  >(current || APP_INITIAL_STATE.currentCountdown);
-  const [currentToken, setCurrentToken] = useState(
-    APP_INITIAL_STATE.currentToken
-  );
-  const [isEditorMode, setIsEditorMode] = useState<boolean>(
-    APP_INITIAL_STATE.isEditorMode
-  );
-  const [fontSizeUnit, setFontSizeUnit] = useState<FontsizeUnit>(
-    APP_INITIAL_STATE.fontSizeUnit
-  );
-  const [timerExpired, setTimerExpired] = useState(
-    APP_INITIAL_STATE.timerExpired
-  );
-  const [targetDate, setTargetDate] = useState(
-    SETTINGS_INITIAL_STATE.targetDate
+  let settingsInitialState = {
+    ...SETTINGS_INITIAL_STATE,
+  };
+
+  let themeInitialState = {
+    ...THEME_INITIAL_STATE,
+  };
+
+  if (settingsAndTheme) {
+    const { global, layout, targetDate, targetTimezone, timer, title } =
+      settingsAndTheme;
+
+    settingsInitialState = {
+      targetDate,
+      targetTimezone,
+    };
+
+    themeInitialState = {
+      global,
+      layout,
+      timer,
+      title,
+    };
+  }
+
+  const [appState, appStateDispatcher] = useReducerLocalStorage<AppStateData>(
+    "__CLOCKODWN_APP_STATE__",
+    appReducer,
+    APP_INITIAL_STATE
   );
 
-  const [targetTimezone, setTargetTimezone] = useState(
-    SETTINGS_INITIAL_STATE.targetTimezone
-  );
-  const [unitLabelLanguage, setUnitLabelLanguage] = useState(
-    SETTINGS_INITIAL_STATE.unitLabelLanguage
-  );
-  const [global, setGlobal] = useState(THEME_INITIAL_STATE.global);
-  const [title, setTitle] = useState(THEME_INITIAL_STATE.title);
-  const [timer, setTimer] = useState(THEME_INITIAL_STATE.timer);
-  const [layout, setLayout] = useState(THEME_INITIAL_STATE.layout);
+  const [settingsState, settingsStateDispatcher] =
+    useReducerLocalStorage<SettingsStateData>(
+      "__CLOCKODWN_SETTINGS_STATE__",
+      settingsReducer,
+      settingsInitialState
+    );
+
+  const [themeState, themeStateDispatcher] =
+    useReducerLocalStorage<ThemeStateData>(
+      "__CLOCKODWN_THEME_STATE__",
+      themeReducer,
+      themeInitialState
+    );
 
   return (
     <CountdownContext.Provider
       value={{
-        app: {
-          currentCountdown,
-          setCurrentCountdown,
-          currentToken,
-          setCurrentToken,
-          isEditorMode,
-          setIsEditorMode,
-          timerExpired,
-          setTimerExpired,
-          fontSizeUnit,
-          setFontSizeUnit,
-        },
-        settings: {
-          targetDate,
-          setTargetDate,
-          targetTimezone,
-          setTargetTimezone,
-          unitLabelLanguage,
-          setUnitLabelLanguage,
-        },
-        theme: {
-          global,
-          setGlobal,
-          layout,
-          setLayout,
-          title,
-          setTitle,
-          timer,
-          setTimer,
-        },
+        app: appState,
+        appStateDispatcher,
+        settings: settingsState,
+        settingsStateDispatcher,
+        theme: themeState,
+        themeStateDispatcher,
       }}
     >
       {children}
