@@ -29,13 +29,13 @@ String.prototype.capitalize = function (): string {
  * tw("month"); // "Month"
  */
 export default function useWidgetTranslation(): UseWidgetTranslation {
-  const { unitLabelLanguage } = useSettingsUnitLabelLng();
+  const { labelLanguage } = useSettingsUnitLabelLng();
 
   function tw(slice: keyof WidgetTranslation): string {
-    const translation = TRANSLATIONS[unitLabelLanguage];
+    const translation = TRANSLATIONS[labelLanguage];
 
     if (!translation) {
-      throw new Error(`No translation found for locale ${unitLabelLanguage}`);
+      throw new Error(`No translation found for locale ${labelLanguage}`);
     }
 
     return translation[slice].capitalize() || "";

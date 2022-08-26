@@ -38,7 +38,7 @@ export default function useLastMutatedCountdownSettings() {
       timer,
       title,
       layout,
-      unitLabelLanguage,
+      labelLanguage,
     } = data.settings;
 
     if (targetDate) {
@@ -56,8 +56,8 @@ export default function useLastMutatedCountdownSettings() {
     if (title) {
       setTitle(title);
     }
-    if (unitLabelLanguage) {
-      setUnitLabelLanguage(unitLabelLanguage);
+    if (labelLanguage) {
+      setUnitLabelLanguage(labelLanguage);
     }
     if (layout) {
       setLayout(layout);

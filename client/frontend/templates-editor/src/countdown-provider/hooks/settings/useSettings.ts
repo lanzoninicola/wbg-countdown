@@ -12,11 +12,11 @@ export default function useSettings(): SettingsStateData {
     (ctx) => ctx?.settings
   );
 
-  const { targetDate, targetTimezone, unitLabelLanguage } = settingsContext;
+  const { targetDate, targetTimezone, labelLanguage } = settingsContext;
 
   return {
     targetDate,
     targetTimezone,
-    unitLabelLanguage,
+    labelLanguage,
   };
 }

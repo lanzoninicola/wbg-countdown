@@ -19,12 +19,12 @@ export default function useSettingsContextReset() {
   );
 
   const resetSettingsContext = () => {
-    const { targetDate, targetTimezone, unitLabelLanguage } =
+    const { targetDate, targetTimezone, labelLanguage } =
       SETTINGS_INITIAL_STATE;
 
     setTargetDate(targetDate);
     setTargetTimezone(targetTimezone);
-    setUnitLabelLanguage(unitLabelLanguage);
+    setUnitLabelLanguage(labelLanguage);
   };
 
   return {

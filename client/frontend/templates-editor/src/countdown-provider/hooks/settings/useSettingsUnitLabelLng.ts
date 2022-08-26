@@ -2,9 +2,9 @@ import { useContextSelector } from "use-context-selector";
 import { CountdownContext } from "../../context/countdown-context";
 
 export default function useSettingsUnitLabelLng() {
-  const unitLabelLanguage = useContextSelector(
+  const labelLanguage = useContextSelector(
     CountdownContext,
-    (ctx) => ctx?.settings.unitLabelLanguage
+    (ctx) => ctx?.settings.labelLanguage
   );
 
   const setUnitLabelLanguage = useContextSelector(
@@ -13,7 +13,7 @@ export default function useSettingsUnitLabelLng() {
   );
 
   return {
-    unitLabelLanguage,
+    labelLanguage,
     setUnitLabelLanguage,
   };
 }

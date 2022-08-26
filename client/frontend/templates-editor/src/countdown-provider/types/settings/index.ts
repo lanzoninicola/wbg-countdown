@@ -12,8 +12,6 @@ export interface SettingsStateData {
   targetDate: string;
   /** The timezone to which the target date refers  */
   targetTimezone: string;
-  /** The language of units labels */
-  unitLabelLanguage: Language["locale"];
 }
 
 /**
@@ -22,5 +20,4 @@ export interface SettingsStateData {
 export interface SettingsStateSetter {
   setTargetDate: (date: string) => void;
   setTargetTimezone: (timezone: string) => void;
-  setUnitLabelLanguage: (language: Language["locale"]) => void;
 }

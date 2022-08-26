@@ -1,3 +1,4 @@
+import { Language } from "../../../countdown-widget-i18n/types";
 import { ChakraToken, ResponsiveValue } from "./responsive";
 
 export type ThemeTimerContextData = ThemeUnitsVisibleContextData &
@@ -52,6 +53,8 @@ export interface ThemeDigitsLabelContextData {
   labelFontSize: ResponsiveValue;
   /** The font color of the digit label */
   labelFontColor: string;
+  /** The language of units labels */
+  labelLanguage: Language["locale"];
   /** The color of the last unit of timer text */
   lastUnitColor: string;
 }
@@ -61,6 +64,7 @@ export interface ThemeDigitsLabelContextSetter {
   setLabelFontWeight: (labelFontWeight: string) => void;
   setLabelFontSize: (token: ChakraToken, labelFontSize: number) => void;
   setLabelFontColor: (labelFontColor: string) => void;
+  setUnitLabelLanguage: (language: Language["locale"]) => void;
   setLastUnitColor: (lastUnitColor: string) => void;
 }
 

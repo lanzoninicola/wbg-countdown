@@ -47,6 +47,7 @@ const THEME_INITIAL_STATE: ThemeStateData = {
       md: 16,
       lg: 18,
     },
+    labelLanguage: "en-US",
     labelFontColor: "#000000",
   },
 };

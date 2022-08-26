@@ -65,17 +65,12 @@ export default function useEditorSettings({
           );
 
           if (settingsParsed) {
-            const {
-              targetDate,
-              targetTimezone,
-              unitLabelLanguage,
-              timer,
-              title,
-            } = settingsParsed;
+            const { targetDate, targetTimezone, labelLanguage, timer, title } =
+              settingsParsed;
 
             targetDate && setTargetDate(targetDate);
             targetTimezone && setTargetTimezone(targetTimezone);
-            unitLabelLanguage && setUnitLabelLanguage(unitLabelLanguage);
+            labelLanguage && setUnitLabelLanguage(labelLanguage);
             timer && setTimer(timer);
             title && setTitle(title);
           }

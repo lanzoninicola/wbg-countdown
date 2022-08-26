@@ -7,7 +7,7 @@ import PropertyWrapper from "../../../components/layout/property-wrapper/propert
 import Label from "../../../components/primitives/label/label";
 
 export default function UnitsLanguages() {
-  const { unitLabelLanguage, setUnitLabelLanguage } = useSettingsUnitLabelLng();
+  const { labelLanguage, setUnitLabelLanguage } = useSettingsUnitLabelLng();
   const { t } = useTranslation();
 
   return (
@@ -18,7 +18,7 @@ export default function UnitsLanguages() {
         size={"xs"}
         gridColumn={"2 / -1"}
         className="theme-font"
-        value={unitLabelLanguage}
+        value={labelLanguage}
         onChange={(e) =>
           setUnitLabelLanguage(e.target.value as Language["locale"])
         }
