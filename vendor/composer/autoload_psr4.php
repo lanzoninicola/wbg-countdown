@@ -16,6 +16,7 @@ return array(
     'Clockdown\\App\\Services\\RestApi\\' => array($baseDir . '/app/services/rest-api'),
     'Clockdown\\App\\Services\\Logger\\' => array($baseDir . '/app/services/logger'),
     'Clockdown\\App\\Services\\Database\\' => array($baseDir . '/app/services/database'),
+    'Clockdown\\App\\Services\\Analytics\\' => array($baseDir . '/app/services/analytics'),
     'Clockdown\\App\\Services\\' => array($baseDir . '/app/services'),
     'Clockdown\\App\\Interfaces\\' => array($baseDir . '/app/interfaces'),
     'Clockdown\\App\\Functions\\' => array($baseDir . '/app/functions'),

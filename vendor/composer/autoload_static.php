@@ -23,6 +23,7 @@ class ComposerStaticInit52ea3edaa65e1833e507c367577ec588
             'Clockdown\\App\\Services\\RestApi\\' => 31,
             'Clockdown\\App\\Services\\Logger\\' => 30,
             'Clockdown\\App\\Services\\Database\\' => 32,
+            'Clockdown\\App\\Services\\Analytics\\' => 33,
             'Clockdown\\App\\Services\\' => 23,
             'Clockdown\\App\\Interfaces\\' => 25,
             'Clockdown\\App\\Functions\\' => 24,
@@ -71,6 +72,10 @@ class ComposerStaticInit52ea3edaa65e1833e507c367577ec588
         'Clockdown\\App\\Services\\Database\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app/services/database',
+        ),
+        'Clockdown\\App\\Services\\Analytics\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/services/analytics',
         ),
         'Clockdown\\App\\Services\\' => 
         array (
