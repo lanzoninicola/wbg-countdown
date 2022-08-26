@@ -11,12 +11,12 @@ import useOnboardingContext from "../provider/hooks/useOnboardingContext";
  * @dependencies useOnboardingRestApi() hook
  */
 export default function useOnboardingCheckStatus() {
-  const isRequiredRef = useRef<boolean | null>(null);
+  const isOnboardingRequiredRef = useRef<boolean | null>(null);
   const { dispatch, installationId, onboardingStatus } = useOnboardingContext();
   const { shouldOnboardingRequired } = useOnboardingRestApi();
 
   useEffect(() => {
-    if (isRequiredRef.current !== null) {
+    if (isOnboardingRequiredRef.current !== null) {
       return;
     }
 
@@ -24,26 +24,23 @@ export default function useOnboardingCheckStatus() {
       const res = await shouldOnboardingRequired(installationId);
 
       if (res.data.status > 400) {
-        // setStatus("pending");
         dispatch({ type: "ONBOARDING_PRE_CHECK_STATUS_RESPONSE_FAILED" });
-        isRequiredRef.current = true;
+        isOnboardingRequiredRef.current = true;
         return;
       }
 
       if (res.data.status === 200) {
         // TODO: move the following logic to server side
         if (res.data.payload?.product_installation?.wp_user_id === null) {
-          // setStatus("pending");
           dispatch({
             type: "ONBOARDING_PRE_CHECK_STATUS_RESPONSE_FAILED",
           });
-          isRequiredRef.current = true;
+          isOnboardingRequiredRef.current = true;
           return;
         }
 
-        // setStatus("completed");
         dispatch({ type: "ONBOARDING_PRE_CHECK_STATUS_RESPONSE_SUCCESS" });
-        isRequiredRef.current = false;
+        isOnboardingRequiredRef.current = false;
       }
     }
 
