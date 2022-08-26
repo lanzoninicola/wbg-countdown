@@ -17,8 +17,6 @@ export interface CountdownSettingsAndThemeModel {
   updated_at: string;
 }
 
-export type CountdownSettingsAndTheme = SettingsStateData & ThemeStateData;
-
 export type StringOrNumber = string | number;
 
 export type Milliseconds = number;
