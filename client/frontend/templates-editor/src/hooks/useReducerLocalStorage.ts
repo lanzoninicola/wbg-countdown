@@ -1,4 +1,17 @@
-import { useEffect, useReducer } from "react";
+import { useCallback, useReducer } from "react";
+
+const getInitialState =
+  (key: string, onError?: (error: any) => void) => (initialState: any) => {
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialState;
+    } catch (error) {
+      console.log(error);
+
+      onError?.(error);
+      return initialState;
+    }
+  };
 
 /**
  * useReducer hook with localStorage persistence.
@@ -8,68 +21,30 @@ import { useEffect, useReducer } from "react";
  * @param key  The key to use for local storage
  * @param reducer  The reducer function
  * @param initialState  The initial state
- * @param options  The options for the hook:
- * - initialStateActionName: The initial state action name to dispatch when the state is loaded from local storage (default: INIT_STATE)
- * - onErrorLocalStorage: The function to call when there is an error loading the state from local storage (default: console.error)
+ * @param onError - Optional The function to call when there is an error loading the state from local storage (default: console.error)
  *
  * @returns
  */
-export default function useReducerLocalStorage<T>(
+export default function useReducerLocalStorage<T, Action>(
   key: string,
   reducer: (state: T, action: any) => T,
   initialState: T,
-  options?: {
-    initStateActionName?: string;
-    onErrorLocalStorage?: (error: Error | any) => void;
-  }
+  onError?: (error: any) => void
 ) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const wrappedReducer = useCallback((state: T, action: Action) => {
+    const newState = reducer(state, action);
+    try {
+      window.localStorage.setItem(key, JSON.stringify(newState));
+    } catch (error) {
+      console.log(error);
 
-  /** init memory state from the local storage state */
-  useEffect(() => {
-    const statePersisted = localStorageGetItem();
-    const statePersistedIsValid =
-      statePersisted && Object.keys(statePersisted).length > 0;
-
-    const initState = statePersistedIsValid ? statePersisted : initialState;
-
-    dispatch({
-      type: options?.initStateActionName ?? "INIT_STATE",
-      payload: initState,
-    });
+      onError?.(error);
+    }
+    return newState;
   }, []);
-
-  /** Every time the state change it stores into the localstorage */
-  useEffect(() => {
-    localStorageSetItem(state);
-  }, [state]);
-
-  function localStorageGetItem() {
-    if (typeof window === "undefined") {
-      return;
-    }
-    try {
-      const item = localStorage.getItem(key);
-
-      return item ? JSON.parse(item) : null;
-    } catch (e) {
-      console.log(e);
-
-      options?.onErrorLocalStorage?.(e);
-    }
-  }
-
-  function localStorageSetItem(nextState: any) {
-    try {
-      if (typeof window !== "undefined") {
-        window.localStorage.setItem(key, JSON.stringify(nextState));
-      }
-    } catch (e) {
-      console.log(e);
-
-      options?.onErrorLocalStorage?.(e);
-    }
-  }
-
-  return [state, dispatch] as const;
+  return useReducer(
+    wrappedReducer,
+    initialState,
+    getInitialState(key, onError)
+  );
 }
