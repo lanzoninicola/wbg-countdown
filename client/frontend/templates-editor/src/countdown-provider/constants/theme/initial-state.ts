@@ -1,15 +1,11 @@
-// TODO: define the props in PRO licensing e verify if they are used. But HOW?. Limit client hacking.
-
 import { ThemeStateData } from "../../types/theme";
 
 const THEME_INITIAL_STATE: ThemeStateData = {
-  global: {
+  layout: {
     containerSize: {
       width: 0,
       height: 0,
     },
-  },
-  layout: {
     orientation: "vertical",
     gap: 1,
     fitOnScreen: false,
@@ -28,28 +24,31 @@ const THEME_INITIAL_STATE: ThemeStateData = {
     fontColor: "#000000",
   },
   timer: {
-    unitsVisible: ["dd", "hh", "mm", "ss"],
     showSeparator: true,
     separatorChar: ":",
-    digitFontFamily: "Inter",
-    digitFontWeight: "400",
-    digitFontSize: {
+    hideHours: false,
+    hideSeconds: false,
+    padWithZero: true,
+    unitNumberFontFamily: "Inter",
+    unitNumberFontWeight: "400",
+    unitNumberFontSize: {
       sm: 14,
       md: 16,
       lg: 18,
     },
-    digitFontColor: "#000000",
+    unitNumberFontColor: "#000000",
     lastUnitColor: "#e10b0b",
-    labelFontFamily: "Inter",
-    labelFontWeight: "400",
-    labelFontSize: {
+    unitLabelFontFamily: "Inter",
+    unitLabelFontWeight: "400",
+    unitLabelFontSize: {
       sm: 14,
       md: 16,
       lg: 18,
     },
-    labelLanguage: "en-US",
-    labelFontColor: "#000000",
+    unitLabelLanguage: "en-US",
+    unitLabelFontColor: "#000000",
   },
+  actionDispatched: "",
 };
 
 export default THEME_INITIAL_STATE;

@@ -2,7 +2,7 @@ import { ChakraToken } from "../theme/responsive";
 import { CountdownModel } from "../../../countdown-widget/types";
 import { FontsizeUnit } from "../../../countdown-widget-typography/types";
 
-export type AppContext = AppStateData & AppStateSetter;
+export type AppContext = AppStateData;
 
 /**
  * This is the shape of the data used for the logic of app.
@@ -18,13 +18,4 @@ export interface AppStateData {
   isEditorMode: boolean;
   /** Global unit used for the fontsize */
   fontSizeUnit: FontsizeUnit;
-}
-
-export interface AppStateSetter {
-  setCurrentCountdown: (countdown: CountdownModel["id"] | null) => void;
-  /** Set the current token */
-  setCurrentToken: (token: ChakraToken) => void;
-  setTimerExpired: (timerExpired: boolean) => void;
-  setIsEditorMode: (isEditorMode: boolean) => void;
-  setFontSizeUnit: (fontSizeUnit: FontsizeUnit) => void;
 }

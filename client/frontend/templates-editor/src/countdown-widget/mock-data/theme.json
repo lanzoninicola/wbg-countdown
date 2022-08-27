@@ -8,12 +8,12 @@
   },
   "timer": {
     "unitsVisible": ["dd", "hh", "mm", "ss"],
-    "digitFontFamily": "Inter",
-    "digitFontWeight": "400",
-    "digitFontSize": 48,
-    "digitFontColor": "#000000",
+    "unitNumberFontFamily": "Inter",
+    "unitNumberFontWeight": "400",
+    "unitNumberFontSize": 48,
+    "unitNumberFontColor": "#000000",
     "lastUnitColor": "#e10b0b",
-    "labelFontFamily": "Inter",
-    "labelFontWeight": "400"
+    "unitLabelFontFamily": "Inter",
+    "unitLabelFontWeight": "400"
   }
 }

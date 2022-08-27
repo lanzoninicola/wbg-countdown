@@ -152,17 +152,22 @@ const ptBR = {
             separatorCharLabel: "Separador",
             separatorCharAriaLabel: "Define o separador do contador regressivo",
           },
-          digits: {
+          unitNumber: {
             groupTitle: "Units style",
-            unitsVisible: "Unidades mostradas",
+            visibility: {
+              label: "Unidades mostradas",
+              hideHours: "Ocultar horas",
+              hideSeconds: "Ocultar segundos",
+            },
             lastUnitColor: "Cor da última unidade",
             digitsFont: "Fonte dos dígitos",
             digitsSize: "Tamanho dos dígitos",
             digitsColor: "Cor dos dígitos",
+            padWithZero: "Preencher com zero",
           },
-          digitLabel: {
+          unitLabel: {
             groupTitle: "Units label style",
-            labelLanguage: "Idioma da etiqueta",
+            unitLabelLanguage: "Idioma da etiqueta",
             labelFont: "Fonte da etiqueta",
             labelSize: "Tamanho da etiqueta",
             labelColor: "Cor da etiqueta",

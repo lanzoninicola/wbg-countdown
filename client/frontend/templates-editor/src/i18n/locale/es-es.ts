@@ -152,17 +152,23 @@ const esEs = {
             separatorCharLabel: "Separador",
             separatorCharAriaLabel: "Define el separador",
           },
-          digits: {
+          unitNumber: {
             groupTitle: "Estilo do Unidades",
             unitsVisible: "Unidades mostradas",
+            visibility: {
+              label: "Visibility",
+              hideHours: "Ocultar horas",
+              hideSeconds: "Ocultar segundos",
+            },
             lastUnitColor: "Color de la última unidad",
             digitsFont: "Fuente de los dígitos",
             digitsSize: "Tamaño de los dígitos",
             digitsColor: "Color de los dígitos",
+            padWithZero: "Rellenar con ceros",
           },
-          digitLabel: {
+          unitLabel: {
             groupTitle: "Estilo de las etiquetas",
-            labelLanguage: "Idioma",
+            unitLabelLanguage: "Idioma",
             labelFont: "Fuente",
             labelSize: "Tamaño",
             labelColor: "Color",

@@ -1,23 +1,23 @@
 import {
-  ThemeDigitsContextData,
-  ThemeDigitsLabelContextData,
+  ThemeUnitNumberContextData,
+  ThemeUnitLabelContextData,
   ThemeSeparatorContextData,
   ThemeTimerContextData,
-  ThemeUnitsVisible,
+  ThemeUnitVisibilityContextData,
 } from "../../types/theme/timer";
 import useThemeTimerSelector from "./useThemeTimerSelector";
 
 type UseThemeTimer =
-  | ThemeUnitsVisible
+  | ThemeUnitVisibilityContextData
   | ThemeSeparatorContextData
-  | ThemeDigitsContextData
-  | ThemeDigitsLabelContextData
+  | ThemeUnitNumberContextData
+  | ThemeUnitLabelContextData
   | ThemeTimerContextData;
 
 type ThemeTimerSlice =
-  | "unitsVisible"
+  | "unit-visible"
   | "unit-separator"
-  | "unit-digit"
+  | "unit-number"
   | "unit-label";
 
 /**
@@ -26,28 +26,31 @@ type ThemeTimerSlice =
  * @param slice The slice of the theme timer data to get.
  * @returns
  */
-function useThemeTimer(slice: "unitsVisible"): ThemeUnitsVisible;
+function useThemeTimer(slice: "unit-visible"): ThemeUnitVisibilityContextData;
 function useThemeTimer(slice: "unit-separator"): ThemeSeparatorContextData;
-function useThemeTimer(slice: "unit-digit"): ThemeDigitsContextData;
-function useThemeTimer(slice: "unit-label"): ThemeDigitsLabelContextData;
+function useThemeTimer(slice: "unit-number"): ThemeUnitNumberContextData;
+function useThemeTimer(slice: "unit-label"): ThemeUnitLabelContextData;
 function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
   const {
-    unitsVisible,
+    hideHours,
+    hideSeconds,
+    padWithZero,
     showSeparator,
     separatorChar,
-    digitFontFamily,
-    digitFontWeight,
-    digitFontSize,
-    digitFontColor,
+    unitNumberFontFamily,
+    unitNumberFontWeight,
+    unitNumberFontSize,
+    unitNumberFontColor,
     lastUnitColor,
-    labelFontFamily,
-    labelFontWeight,
-    labelFontSize,
-    labelFontColor,
+    unitLabelFontFamily,
+    unitLabelFontWeight,
+    unitLabelFontSize,
+    unitLabelFontColor,
+    unitLabelLanguage,
   } = useThemeTimerSelector();
 
-  if (slice === "unitsVisible") {
-    return { unitsVisible };
+  if (slice === "unit-visible") {
+    return { hideHours, hideSeconds };
   }
 
   if (slice === "unit-separator") {
@@ -57,39 +60,41 @@ function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
     };
   }
 
-  if (slice === "unit-digit") {
+  if (slice === "unit-number") {
     return {
-      digitFontFamily,
-      digitFontWeight,
-      digitFontSize,
-      digitFontColor,
+      unitNumberFontFamily,
+      unitNumberFontWeight,
+      unitNumberFontSize,
+      unitNumberFontColor,
       lastUnitColor,
+      padWithZero,
     };
   }
 
   if (slice === "unit-label") {
     return {
-      labelFontFamily,
-      labelFontWeight,
-      labelFontSize,
-      labelFontColor,
+      unitLabelFontFamily,
+      unitLabelFontWeight,
+      unitLabelFontSize,
+      unitLabelFontColor,
+      unitLabelLanguage,
       lastUnitColor,
     };
   }
 
   return {
-    unitsVisible,
     showSeparator,
     separatorChar,
-    digitFontFamily,
-    digitFontWeight,
-    digitFontSize,
-    digitFontColor,
+    unitNumberFontFamily,
+    unitNumberFontWeight,
+    unitNumberFontSize,
+    unitNumberFontColor,
     lastUnitColor,
-    labelFontFamily,
-    labelFontWeight,
-    labelFontSize,
-    labelFontColor,
+    unitLabelFontFamily,
+    unitLabelFontWeight,
+    unitLabelFontSize,
+    unitLabelFontColor,
+    unitLabelLanguage,
   };
 }
 

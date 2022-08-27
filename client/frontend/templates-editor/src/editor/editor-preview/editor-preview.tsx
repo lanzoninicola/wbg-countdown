@@ -1,14 +1,15 @@
 import { Box, VStack } from "@chakra-ui/react";
 
-import useCurrentTokenSelector from "../../countdown-provider/hooks/app/useCurrentTokenSelector";
+import useAppContext from "../../countdown-provider/hooks/app/useAppContext";
 import CountdownWidget from "../../countdown-widget/countdown-widget";
 import pattern from "./assets/imgs/tiny-checkers.png";
 import BreakpointInfoMessage from "./components/breakpoint-info-message/breakpoint-info-message";
 import BreakpointsBar from "./components/breakpoints-bar/breakpoints-bar";
 import Preview from "./components/preview/preview";
 
+// TODO: (Reducers) need to refactor
 export default function EditorPreview() {
-  const { currentToken, setCurrentToken } = useCurrentTokenSelector();
+  const { currentToken } = useAppContext();
 
   return (
     <>

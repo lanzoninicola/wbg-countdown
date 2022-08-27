@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import useCurrentCountdownSelector from "../../countdown-provider/hooks/app/useCurrentCountdownSelector";
-import useSettings from "../../countdown-provider/hooks/settings/useSettings";
+import useSettingsContext from "../../countdown-provider/hooks/settings/useSettingsContext";
 import useTheme from "../../countdown-provider/hooks/theme/useTheme";
 import { create as createCountdown } from "../../countdown-rest-api/services/countdowns";
 import {
@@ -15,6 +15,8 @@ import useNotifications from "../../notifications/hooks/useNotifications";
 interface UseSaveSettingsProps {
   showNotification?: boolean;
 }
+
+// TODO: (reducers) need to be refactored
 
 export default function useSaveSettings({
   showNotification = true,
@@ -31,7 +33,7 @@ export default function useSaveSettings({
 
   const { t } = useTranslation();
 
-  const settings = useSettings();
+  const settings = useSettingsContext();
   const theme = useTheme();
   const savePayload: CountdownSettingsAndTheme = {
     ...settings,

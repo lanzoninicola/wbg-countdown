@@ -1,12 +1,13 @@
 import { Text } from "@chakra-ui/react";
-import useFontsizeUnitSelector from "../../../../../../countdown-provider/hooks/app/useFontsizeUnit";
+
+import useAppContext from "../../../../../../countdown-provider/hooks/app/useAppContext";
 
 interface FontSizePreviewProps {
   size?: number;
 }
 
 export default function FontSizePreview({ size }: FontSizePreviewProps) {
-  const { fontSizeUnit } = useFontsizeUnitSelector();
+  const { fontSizeUnit } = useAppContext();
 
   return (
     <Text

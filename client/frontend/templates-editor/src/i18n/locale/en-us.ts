@@ -152,17 +152,22 @@ const enUS = {
             separatorCharLabel: "Separator",
             separatorCharAriaLabel: "Define the separator character",
           },
-          digits: {
+          unitNumber: {
             groupTitle: "Units style",
-            unitsVisible: "Units visible",
+            visibility: {
+              label: "Visibility",
+              hideHours: "Hide hours",
+              hideSeconds: "Hide seconds",
+            },
             lastUnitColor: "Last unit color",
             digitsFont: "Digits font",
             digitsSize: "Digits size",
             digitsColor: "Digits color",
+            padWithZero: "Pad with zero",
           },
-          digitLabel: {
+          unitLabel: {
             groupTitle: "Units label style",
-            labelLanguage: "Label language",
+            unitLabelLanguage: "Label language",
             labelFont: "Label font",
             labelSize: "Label size",
             labelColor: "Label color",

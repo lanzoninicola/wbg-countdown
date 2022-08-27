@@ -21,7 +21,7 @@ export type StringOrNumber = string | number;
 
 export type Milliseconds = number;
 
-/** Values can be string or number depending if the user decide to pad with zeros the digits  */
+/** Values can be string or number depending if the user decide to pad with zeros the unitNumber  */
 export interface RemainingTime {
   /** The number of seconds in the countdown */
   seconds: StringOrNumber;

@@ -1,4 +1,4 @@
-import withImportant from "../../utils/withImportant";
+import withImportant from "./withImportant";
 
 /** It returns given style and add the prop !important if the condition is true */
 export default function useImportantCSS(condition: boolean, ...args: any[]) {

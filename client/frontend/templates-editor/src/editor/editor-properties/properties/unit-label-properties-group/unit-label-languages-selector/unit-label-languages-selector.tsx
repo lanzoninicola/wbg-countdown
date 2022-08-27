@@ -1,26 +1,30 @@
 import { Select } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import useSettingsUnitLabelLng from "../../../../../countdown-provider/hooks/settings/useSettingsUnitLabelLng";
+
+import useThemeTimerSelector from "../../../../../countdown-provider/hooks/theme/useThemeTimerSelector";
 import LANGUAGES from "../../../../../countdown-widget-i18n/constants/languages";
-import { Language } from "../../../../../countdown-widget-i18n/types";
 import PropertyWrapper from "../../../components/layout/property-wrapper/property-wrapper";
 import Label from "../../../components/primitives/label/label";
 
-export default function UnitsLanguages() {
-  const { labelLanguage, setUnitLabelLanguage } = useSettingsUnitLabelLng();
+export default function UnitLabelLanguagesSelector() {
+  const { unitLabelLanguage, themeDispatcher } = useThemeTimerSelector();
+
   const { t } = useTranslation();
 
   return (
     <PropertyWrapper>
-      <Label>{t("editor.propertiesGroup.digitLabel.labelLanguage")}</Label>
+      <Label>{t("editor.propertiesGroup.unitLabel.unitLabelLanguage")}</Label>
       <Select
         variant="outline"
         size={"xs"}
         gridColumn={"2 / -1"}
         className="theme-font"
-        value={labelLanguage}
+        value={unitLabelLanguage}
         onChange={(e) =>
-          setUnitLabelLanguage(e.target.value as Language["locale"])
+          themeDispatcher({
+            type: "THEME_TIMER_ON_CHANGE_UNIT_LABEL_LANGUAGE",
+            payload: e.target.value,
+          })
         }
         bg={"white"}
       >

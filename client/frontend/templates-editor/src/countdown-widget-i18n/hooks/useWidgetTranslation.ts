@@ -1,4 +1,5 @@
-import useSettingsUnitLabelLng from "../../countdown-provider/hooks/settings/useSettingsUnitLabelLng";
+import useThemeTimer from "../../countdown-provider/hooks/theme/useThemeTimer";
+import useThemeTimerSelector from "../../countdown-provider/hooks/theme/useThemeTimerSelector";
 import TRANSLATIONS from "../constants/translations";
 import { WidgetTranslation } from "../types";
 
@@ -29,13 +30,13 @@ String.prototype.capitalize = function (): string {
  * tw("month"); // "Month"
  */
 export default function useWidgetTranslation(): UseWidgetTranslation {
-  const { labelLanguage } = useSettingsUnitLabelLng();
+  const { unitLabelLanguage } = useThemeTimer("unit-label");
 
   function tw(slice: keyof WidgetTranslation): string {
-    const translation = TRANSLATIONS[labelLanguage];
+    const translation = TRANSLATIONS[unitLabelLanguage];
 
     if (!translation) {
-      throw new Error(`No translation found for locale ${labelLanguage}`);
+      throw new Error(`No translation found for locale ${unitLabelLanguage}`);
     }
 
     return translation[slice].capitalize() || "";

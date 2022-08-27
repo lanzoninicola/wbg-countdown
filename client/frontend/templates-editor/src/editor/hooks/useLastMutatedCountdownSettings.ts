@@ -7,8 +7,7 @@ import useThemeContext from "../../countdown-provider/hooks/theme/useThemeContex
 import useFetchLastMutatedCountdownSettings from "./useFetchLastMutatedCountdownSettings";
 
 export default function useLastMutatedCountdownSettings() {
-  const { currentCountdown, setCurrentCountdown } =
-    useCurrentCountdownSelector();
+  const { currentCountdown } = useAppContext();
   const { setIsEditorMode } = useAppContext();
   const { data, isError, isLoading, error } =
     useFetchLastMutatedCountdownSettings({
@@ -38,7 +37,7 @@ export default function useLastMutatedCountdownSettings() {
       timer,
       title,
       layout,
-      labelLanguage,
+      unitLabelLanguage,
     } = data.settings;
 
     if (targetDate) {
@@ -56,8 +55,8 @@ export default function useLastMutatedCountdownSettings() {
     if (title) {
       setTitle(title);
     }
-    if (labelLanguage) {
-      setUnitLabelLanguage(labelLanguage);
+    if (unitLabelLanguage) {
+      setUnitLabelLanguage(unitLabelLanguage);
     }
     if (layout) {
       setLayout(layout);

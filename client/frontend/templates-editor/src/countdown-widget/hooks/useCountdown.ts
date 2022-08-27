@@ -1,36 +1,37 @@
 import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
 import { useEffect, useRef, useState } from "react";
+
+import useAppContext from "../../countdown-provider/hooks/app/useAppContext";
 import { RemainingTime } from "../types";
+import padWithZeros from "../utils/padWithZeros";
 import {
   DEFAULT_REMAINING_TIME,
   diff,
   diffInSeconds,
 } from "../utils/time-calculation";
-import padWithZeros from "../utils/padWithZeros";
-import useSettingsContextReset from "../../countdown-provider/hooks/settings/useSettingsContextReset";
-import useSettingsContext from "../../countdown-provider/hooks/settings/useSettingsContext";
-import useAppContext from "../../countdown-provider/hooks/app/useAppContext";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
 // isExpired days + hours + minutes + seconds <= 0
 
+// TODO: (reducers) need to be refactored
+
 interface UseCountdownProps {
   /** The target date from the (input type="datetime-local") editor*/
   HTMLInputTargetDate: string;
   /** the timezone of the target date */
   HTMLInputTargetTimezone: string;
-  /** flag that indicates if need to add 0 to the digits. It depends on the editor settings */
+  /** flag that indicates if need to add 0 to the unitNumber. It depends on the editor settings */
   withZeros?: boolean;
 }
 
 /**
  * @param {string} HTMLInputTargetDate the target date/time in the desired timezone
  * @param {string} HTMLInputTargetTimezone the desired timezone
- * @param {boolean} withZeros flag that indicates if need to add 0 to the digits. It depends on the editor settings
+ * @param {boolean} withZeros flag that indicates if need to add 0 to the unitNumber. It depends on the editor settings
  * @returns the difference between the target and the current date/time in time units (seconds, minutes, hours, days)
  */
 export default function useCountdown({
@@ -57,8 +58,8 @@ export default function useCountdown({
     setRemainingTime(diff(todayLocalTime(), targetLocalTime()));
   }
 
-  function shouldPadWithZeros(number: number, digits: number = 2) {
-    return withZeros ? padWithZeros(number, digits) : number;
+  function shouldPadWithZeros(number: number, unitNumber: number = 2) {
+    return withZeros ? padWithZeros(number, unitNumber) : number;
   }
 
   function shouldTimerExpired() {

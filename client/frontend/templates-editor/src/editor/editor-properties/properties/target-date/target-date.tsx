@@ -1,6 +1,7 @@
 import { Input, ThemingProps } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import useSettingsContext from "../../../../countdown-provider/hooks/settings/useSettingsContext";
+import useSettingsSelector from "../../../../countdown-provider/hooks/settings/useSettingsSelector";
 
 import PropertyWrapper from "../../components/layout/property-wrapper/property-wrapper";
 import Label from "../../components/primitives/label/label";
@@ -11,11 +12,7 @@ interface TargetDateProps {
 
 export default function TargetDate({ size }: TargetDateProps) {
   const { t } = useTranslation();
-  const { targetDate, setTargetDate } = useSettingsContext();
-
-  function onChangeDate(e: React.ChangeEvent<HTMLInputElement>) {
-    setTargetDate(e.target.value);
-  }
+  const { targetDate, settingsDispatcher } = useSettingsSelector();
 
   return (
     <PropertyWrapper firstColumnW="120px" columns={4}>
@@ -25,7 +22,12 @@ export default function TargetDate({ size }: TargetDateProps) {
         type="datetime-local"
         id="target-date"
         name="target-date"
-        onChange={onChangeDate}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          settingsDispatcher({
+            type: "SETTINGS_ON_CHANGE_TARGET_DATE",
+            payload: e.target.value,
+          });
+        }}
         gridColumn={"2 / 5"}
         className="theme-font"
         fontSize={"sm"}

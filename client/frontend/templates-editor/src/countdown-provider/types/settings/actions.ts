@@ -5,4 +5,17 @@ interface SettingsInitStateAction {
   payload: SettingsStateData;
 }
 
-export type SettingsStateAction = SettingsInitStateAction;
+interface SettingsOnChangeTargetDateAction {
+  type: "SETTINGS_ON_CHANGE_TARGET_DATE";
+  payload: string;
+}
+
+interface SettingsOnChangeTimezoneAction {
+  type: "SETTINGS_ON_CHANGE_TIMEZONE";
+  payload: string;
+}
+
+export type SettingsStateAction =
+  | SettingsInitStateAction
+  | SettingsOnChangeTargetDateAction
+  | SettingsOnChangeTimezoneAction;

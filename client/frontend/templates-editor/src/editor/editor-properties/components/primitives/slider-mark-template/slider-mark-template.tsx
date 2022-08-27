@@ -7,9 +7,6 @@ import {
   SliderTrack,
   Text,
 } from "@chakra-ui/react";
-import useCurrentTokenSelector from "../../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
-
-import { ChakraToken } from "../../../../../countdown-provider/types/theme/responsive";
 
 interface SliderMarkTemplateProps {
   min: number;

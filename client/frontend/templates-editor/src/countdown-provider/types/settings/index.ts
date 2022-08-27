@@ -1,6 +1,4 @@
-import { Language } from "../../../countdown-widget-i18n/types";
-
-export type SettingsContext = SettingsStateData & SettingsStateSetter;
+export type SettingsContext = SettingsStateData;
 
 /**
  *  This inteface describes the shape of data coming from the Editor (General Section)
@@ -12,12 +10,7 @@ export interface SettingsStateData {
   targetDate: string;
   /** The timezone to which the target date refers  */
   targetTimezone: string;
-}
 
-/**
- * This inteface describes the group of setters for the CountdownModel Settings
- */
-export interface SettingsStateSetter {
-  setTargetDate: (date: string) => void;
-  setTargetTimezone: (timezone: string) => void;
+  /** The last action dispatched that changed the state */
+  actionDispatched: string;
 }

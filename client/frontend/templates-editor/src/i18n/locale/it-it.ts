@@ -151,17 +151,22 @@ const itIT = {
             separatorCharLabel: "Separatore",
             separatorCharAriaLabel: "Definisci il separatore",
           },
-          digits: {
+          unitNumber: {
             groupTitle: "Stile delle unità",
-            unitsVisible: "Visualizza le unità",
+            visibility: {
+              label: "Visibilità unità",
+              hideHours: "Nascondere ore",
+              hideSeconds: "Nascondere secondi",
+            },
             lastUnitColor: "Colore della ultima unità",
             digitsFont: "Font dei numeri",
             digitsSize: "Dimensioni dei numeri",
             digitsColor: "Colore dei numeri",
+            padWithZero: "Riempi con zero",
           },
-          digitLabel: {
+          unitLabel: {
             groupTitle: "Stile delle etichette",
-            labelLanguage: "Lingua delle etichette",
+            unitLabelLanguage: "Lingua delle etichette",
             labelFont: "Font delle etichette",
             labelSize: "Dimensioni delle etichette",
             labelColor: "Colore delle etichette",

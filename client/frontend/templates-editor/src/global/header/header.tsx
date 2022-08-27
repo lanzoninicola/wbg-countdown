@@ -1,7 +1,6 @@
 import { Box, Grid, HStack } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import useCurrentCountdownSelector from "../../countdown-provider/hooks/app/useCurrentCountdownSelector";
 import { ModalNewCountdown } from "../../countdowns/components";
 import { EditorSave } from "../../editor/components";
 import { Languages } from "../../i18n/types";
@@ -18,7 +17,6 @@ const lngs: Languages = {
 
 export default function Header() {
   const { t } = useTranslation();
-  const { currentCountdown } = useCurrentCountdownSelector();
 
   return (
     <Grid
@@ -43,9 +41,6 @@ export default function Header() {
             </PremiumFeature>
           </HStack>
           <HStack spacing={4}>
-            {currentCountdown && (
-              <ShortcodePreview countdownId={currentCountdown!} />
-            )}
             <EditorSave />
           </HStack>
         </HStack>

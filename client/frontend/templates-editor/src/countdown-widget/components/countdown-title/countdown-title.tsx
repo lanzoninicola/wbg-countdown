@@ -1,10 +1,10 @@
+import "./countdown-title.css";
+
 import React from "react";
 
 import useAppContext from "../../../countdown-provider/hooks/app/useAppContext";
-import useCurrentTokenSelector from "../../../countdown-provider/hooks/app/useCurrentTokenSelector";
 import useThemeTitleSelector from "../../../countdown-provider/hooks/theme/useThemeTitleSelector";
 import useChakraBreakpoint from "../../hooks/useChakraBreakpoint";
-import "./countdown-title.css";
 
 // TODO: way to refactor due added logic to the component
 
@@ -15,7 +15,7 @@ function CountdownTitle() {
   const viewportToken = useChakraBreakpoint();
 
   const { isEditorMode } = useAppContext();
-  const { currentToken: editorToken } = useCurrentTokenSelector();
+  const { currentToken: editorToken } = useAppContext();
 
   const editorStyle = {
     fontFamily: fontFamily,

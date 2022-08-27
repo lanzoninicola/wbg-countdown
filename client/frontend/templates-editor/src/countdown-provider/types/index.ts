@@ -6,9 +6,9 @@ import { ThemeStateData, ThemeStateSetter } from "./theme";
 import { ThemeStateAction } from "./theme/actions";
 
 export interface CountdownContextDataWithDispatch extends CountdownContextData {
-  appStateDispatcher: React.Dispatch<AppStateAction>;
-  settingsStateDispatcher: React.Dispatch<SettingsStateAction>;
-  themeStateDispatcher: React.Dispatch<ThemeStateAction>;
+  appDispatcher: React.Dispatch<AppStateAction>;
+  settingsDispatcher: React.Dispatch<SettingsStateAction>;
+  themeDispatcher: React.Dispatch<ThemeStateAction>;
 }
 
 /**

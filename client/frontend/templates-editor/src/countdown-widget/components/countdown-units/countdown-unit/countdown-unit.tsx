@@ -26,7 +26,7 @@ function CountdownUnit({
   ariaLabelDigit,
   ariaLabelDigitLabel,
 }: CountdownUnitProps) {
-  const digitTheme = useThemeTimer("unit-digit");
+  const digitTheme = useThemeTimer("unit-number");
   const labelTheme = useThemeTimer("unit-label");
   const separatorTheme = useThemeTimer("unit-separator");
 

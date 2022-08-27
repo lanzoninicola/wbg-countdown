@@ -1,15 +1,15 @@
+import "./countdown-unit-number.css";
+
 import useAppContext from "../../../../../countdown-provider/hooks/app/useAppContext";
-import useCurrentTokenSelector from "../../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
-import { ThemeDigitsContextData } from "../../../../../countdown-provider/types/theme/timer";
+import { ThemeUnitNumberContextData } from "../../../../../countdown-provider/types/theme/timer";
 import useChakraBreakpoint from "../../../../hooks/useChakraBreakpoint";
 import { StringOrNumber } from "../../../../types";
-import "./countdown-unit-number.css";
 
 interface CountdownUnitNumberProps {
   value: StringOrNumber;
   isDanger?: boolean;
   isLastDigit?: boolean;
-  theme: ThemeDigitsContextData;
+  theme: ThemeUnitNumberContextData;
   gridArea: string;
   ariaLabel: string;
   [key: string]: any;
@@ -26,15 +26,15 @@ export default function CountdownUnitNumber({
 }: CountdownUnitNumberProps) {
   const viewportToken = useChakraBreakpoint();
   const { isEditorMode } = useAppContext();
-  const { currentToken: editorToken } = useCurrentTokenSelector();
+  const { currentToken: editorToken } = useAppContext();
 
   const editorStyle = {
     fontSize: isEditorMode
-      ? theme.digitFontSize[editorToken]
-      : theme.digitFontSize[viewportToken],
-    fontFamily: theme.digitFontFamily,
-    fontWeight: theme.digitFontWeight,
-    color: isLastDigit ? theme.lastUnitColor : theme.digitFontColor,
+      ? theme.unitNumberFontSize[editorToken]
+      : theme.unitNumberFontSize[viewportToken],
+    fontFamily: theme.unitNumberFontFamily,
+    fontWeight: theme.unitNumberFontWeight,
+    color: isLastDigit ? theme.lastUnitColor : theme.unitNumberFontColor,
     gridArea: gridArea,
   };
 

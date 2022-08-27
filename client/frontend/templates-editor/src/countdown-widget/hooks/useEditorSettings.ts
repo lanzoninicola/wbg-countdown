@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import useSettingsContext from "../../countdown-provider/hooks/settings/useSettingsContext";
 import { findById } from "../../countdown-rest-api/services/widget/find-by-id";
 import { ThemeStateData } from "../../countdown-provider/types/theme";
-import { CountdownModel, CountdownSettingsAndTheme } from "../types";
+import { CountdownModel } from "../types";
 import { SettingsStateData } from "../../countdown-provider/types/settings";
 import useThemeContext from "../../countdown-provider/hooks/theme/useThemeContext";
+import { CountdownSettingsAndTheme } from "../../countdown-provider/types";
 
 interface UseEditorSettingsProps {
   /** if true load the mock data of the editor settings */
@@ -65,12 +66,17 @@ export default function useEditorSettings({
           );
 
           if (settingsParsed) {
-            const { targetDate, targetTimezone, labelLanguage, timer, title } =
-              settingsParsed;
+            const {
+              targetDate,
+              targetTimezone,
+              unitLabelLanguage,
+              timer,
+              title,
+            } = settingsParsed;
 
             targetDate && setTargetDate(targetDate);
             targetTimezone && setTargetTimezone(targetTimezone);
-            labelLanguage && setUnitLabelLanguage(labelLanguage);
+            unitLabelLanguage && setUnitLabelLanguage(unitLabelLanguage);
             timer && setTimer(timer);
             title && setTitle(title);
           }

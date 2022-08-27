@@ -46,51 +46,51 @@ export default function CountdownProvider({
   };
 
   if (settingsAndTheme) {
-    const { global, layout, targetDate, targetTimezone, timer, title } =
+    const { layout, targetDate, targetTimezone, timer, title } =
       settingsAndTheme;
 
     settingsInitialState = {
       targetDate,
       targetTimezone,
+      actionDispatched: "",
     };
 
     themeInitialState = {
-      global,
       layout,
       timer,
       title,
+      actionDispatched: "",
     };
   }
 
-  const [appState, appStateDispatcher] = useReducerLocalStorage<AppStateData>(
+  const [appState, appDispatcher] = useReducerLocalStorage<AppStateData>(
     "__CLOCKODWN_APP_STATE__",
     appReducer,
     APP_INITIAL_STATE
   );
 
-  const [settingsState, settingsStateDispatcher] =
+  const [settingsState, settingsDispatcher] =
     useReducerLocalStorage<SettingsStateData>(
       "__CLOCKODWN_SETTINGS_STATE__",
       settingsReducer,
       settingsInitialState
     );
 
-  const [themeState, themeStateDispatcher] =
-    useReducerLocalStorage<ThemeStateData>(
-      "__CLOCKODWN_THEME_STATE__",
-      themeReducer,
-      themeInitialState
-    );
+  const [themeState, themeDispatcher] = useReducerLocalStorage<ThemeStateData>(
+    "__CLOCKODWN_THEME_STATE__",
+    themeReducer,
+    themeInitialState
+  );
 
   return (
     <CountdownContext.Provider
       value={{
         app: appState,
-        appStateDispatcher,
+        appDispatcher,
         settings: settingsState,
-        settingsStateDispatcher,
+        settingsDispatcher,
         theme: themeState,
-        themeStateDispatcher,
+        themeDispatcher,
       }}
     >
       {children}

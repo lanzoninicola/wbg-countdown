@@ -1,7 +1,7 @@
 import { SettingsStateData } from "../types/settings";
 import { SettingsStateAction } from "../types/settings/actions";
 
-export default function clockdownReducer(
+export default function settingsReducer(
   state: SettingsStateData,
   action: SettingsStateAction
 ): SettingsStateData {
@@ -11,6 +11,21 @@ export default function clockdownReducer(
         ...state,
         ...action.payload,
       };
+
+    case "SETTINGS_ON_CHANGE_TARGET_DATE":
+      return {
+        ...state,
+        targetDate: action.payload,
+        actionDispatched: action.type,
+      };
+
+    case "SETTINGS_ON_CHANGE_TIMEZONE":
+      return {
+        ...state,
+        targetTimezone: action.payload,
+        actionDispatched: action.type,
+      };
+
     default:
       return state;
   }

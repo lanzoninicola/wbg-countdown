@@ -1,10 +1,10 @@
 import { Select, ThemingProps } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import useSettingsContext from "../../../../countdown-provider/hooks/settings/useSettingsContext";
-import TIMEZONES_LIST from "../../constants/timezones";
+import useSettingsSelector from "../../../../countdown-provider/hooks/settings/useSettingsSelector";
 import PropertyWrapper from "../../components/layout/property-wrapper/property-wrapper";
 import Label from "../../components/primitives/label/label";
+import TIMEZONES_LIST from "../../constants/timezones";
 
 interface TargetTimezoneProps {
   size: ThemingProps<"FormLabel">["size"] | ThemingProps<"Input">["size"];
@@ -12,11 +12,7 @@ interface TargetTimezoneProps {
 
 export default function TimezonePicker({ size }: TargetTimezoneProps) {
   const { t } = useTranslation();
-  const { targetTimezone, setTargetTimezone } = useSettingsContext();
-
-  function onChangeTimezone(e: React.ChangeEvent<HTMLSelectElement>) {
-    setTargetTimezone(e.target.value);
-  }
+  const { targetTimezone, settingsDispatcher } = useSettingsSelector();
 
   return (
     <PropertyWrapper firstColumnW="120px" columns={4}>
@@ -29,7 +25,12 @@ export default function TimezonePicker({ size }: TargetTimezoneProps) {
         placeholder="Select option"
         gridColumn={"2 / 5"}
         value={targetTimezone}
-        onChange={onChangeTimezone}
+        onChange={(e) => {
+          settingsDispatcher({
+            type: "SETTINGS_ON_CHANGE_TIMEZONE",
+            payload: e.target.value,
+          });
+        }}
         className="theme-font"
         fontSize={"sm !important"}
         borderRadius={"md !important"}
