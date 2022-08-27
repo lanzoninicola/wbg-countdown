@@ -9,7 +9,7 @@ import {
   ModalOverlay,
   VStack,
 } from "@chakra-ui/react";
-import { cloneElement, useEffect, useRef } from "react";
+import { cloneElement, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import Heeading from "../../../global/common/layout/heeading/heeading";

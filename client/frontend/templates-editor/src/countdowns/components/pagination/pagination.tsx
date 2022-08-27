@@ -1,4 +1,4 @@
-import { Box, VStack } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
 import { cloneElement, useState } from "react";
 
 import PaginationControls from "./pagination-controls/pagination-controls";

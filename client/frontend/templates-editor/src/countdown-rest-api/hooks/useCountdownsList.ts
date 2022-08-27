@@ -13,7 +13,7 @@ interface UseCountdownListSWR {
 }
 
 export default function useCountdownsList(): UseCountdownListSWR {
-  let { data: response, error } = useSWR<APIResponse<CountdownModel[]>>(
+  const { data: response, error } = useSWR<APIResponse<CountdownModel[]>>(
     COUNTDOWNS_REST_API_ENDPOINTS.findAll.endpoint(),
     findAll
   );
@@ -22,7 +22,7 @@ export default function useCountdownsList(): UseCountdownListSWR {
     error || (response && response.data && response.data?.status >= 400);
 
   return {
-    countdowns: response?.data?.payload!,
+    countdowns: response?.data.payload ?? undefined,
     isLoading: !error && !response,
     isError: shouldError,
     errorMessage: shouldError && response?.message,

@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import ColorPicker from "../../primitives/color-picker/color-picker";
 import Label from "../../primitives/label/label";
 

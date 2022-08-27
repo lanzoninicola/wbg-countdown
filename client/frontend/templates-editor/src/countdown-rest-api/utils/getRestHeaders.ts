@@ -1,6 +1,6 @@
 import { WP_REST_NONCE } from "../constants";
 
-export default function useRestHeaders() {
+export default function getRestHeaders() {
   const disabledNonce = process.env.NODE_ENV === "development" && true;
   const headers = {
     "Content-Type": "application/json",

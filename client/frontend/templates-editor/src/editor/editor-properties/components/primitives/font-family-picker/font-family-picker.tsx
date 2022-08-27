@@ -1,5 +1,4 @@
 import { HStack, VStack } from "@chakra-ui/react";
-import { useRef, useState } from "react";
 
 import GoogleFontPicker from "../google-font-picker/google-font-picker";
 import TextPreview from "../google-font-picker/text-preview/text-preview";
@@ -22,8 +21,8 @@ export default function FontFamilyPicker({
   fontFamily,
   fontWeight,
   onSelectFontFamily,
-  onSelectFontWeight,
-}: FontFamilyPicker) {
+}: // onSelectFontWeight,
+FontFamilyPicker) {
   return (
     <VStack gap="2">
       <HStack gap={1}>

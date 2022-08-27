@@ -1,9 +1,8 @@
-import { VStack, Text, Box, HStack, Grid } from "@chakra-ui/react";
+import { Grid, Text, VStack } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
+
 import AnchorBox from "../common/anchor-box/anchor-box";
 import PremiumFeatureCockade from "../common/premium-feature-cockade/premium-feature-cockade";
-import PremiumFeatureIcon from "../common/premium-feature-icon/premium-feature-icon";
-import UpgradePremiumBadge from "../common/upgrade-premium-badge/upgrade-premium-badge";
 import UpgradePremiumButton from "../common/upgrade-premium-button/upgrade-premium-button";
 
 interface WatermarkProps {

@@ -1,4 +1,4 @@
-import { Box, Flex, useDisclosure } from "@chakra-ui/react";
+import { Flex, useDisclosure } from "@chakra-ui/react";
 import React from "react";
 
 import usePremiumFeaturesContext from "../../provider/hooks/usePremiumFeaturesContext";

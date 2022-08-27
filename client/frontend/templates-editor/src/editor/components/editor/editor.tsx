@@ -1,6 +1,3 @@
-import { Text } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-
 import useEditorSettings from "../../../countdown-widget/hooks/useEditorSettings";
 import { CountdownModel } from "../../../countdown-widget/types";
 import EditorPreview from "../../editor-preview/editor-preview";
@@ -10,7 +7,6 @@ import TimezonePicker from "../../editor-properties/properties/timezone/timezone
 import BoxRadiusLg from "../../layout/box-radius-lg/box-radius-lg";
 import CenterContent from "../../layout/center-content/center-content";
 import EditorWrapper from "../../layout/editor-wrapper/editor-wrapper";
-import RightSidebar from "../../layout/right-sidebar/right-sidebar";
 import EditorSkeleton from "../editor-skeleton.tsx/editor-skeleton";
 
 interface EditorProps {

@@ -10,6 +10,7 @@ const ButtonLanguage = forwardRef(
     return (
       <Tooltip label={label}>
         <Button
+          ref={ref}
           leftIcon={<IoLanguage />}
           variant="solid"
           size={"sm"}

@@ -12,6 +12,7 @@ interface UpgradePremiumButtonProps {
   fontSize?: TypographyProps["fontSize"];
 }
 
+// eslint-disable-next-line react/display-name
 const UpgradePremiumButton = forwardRef(
   (
     { textVariant = 1, alternativeText, fontSize }: UpgradePremiumButtonProps,

@@ -1,6 +1,3 @@
-import { Box } from "@chakra-ui/react";
-import premiumFeatIcon from "../assets/premium-feature-icon.svg";
-
 export default function PremiumFeatureCockade() {
   return (
     <svg

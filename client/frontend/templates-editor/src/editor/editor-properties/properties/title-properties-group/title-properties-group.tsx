@@ -17,7 +17,7 @@ export default function TitlePropertiesGroup({
   ...props
 }: TitlePropertiesGroupProps) {
   const { t } = useTranslation();
-  const { fontColor, fontFamily, fontSize, fontWeight, text, themeDispatcher } =
+  const { fontColor, fontFamily, fontSize, fontWeight, themeDispatcher } =
     useThemeTitleSelector();
 
   return (

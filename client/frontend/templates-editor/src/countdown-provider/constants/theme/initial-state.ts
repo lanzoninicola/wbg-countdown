@@ -28,7 +28,7 @@ const THEME_INITIAL_STATE: ThemeStateData = {
     separatorChar: ":",
     hideHours: false,
     hideSeconds: false,
-    padWithZero: true,
+    padWithZero: false,
     unitNumberFontFamily: "Inter",
     unitNumberFontWeight: "400",
     unitNumberFontSize: {

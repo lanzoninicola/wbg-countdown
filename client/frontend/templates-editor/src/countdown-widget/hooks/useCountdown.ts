@@ -58,7 +58,7 @@ export default function useCountdown({
     setRemainingTime(diff(todayLocalTime(), targetLocalTime()));
   }
 
-  function shouldPadWithZeros(number: number, unitNumber: number = 2) {
+  function shouldPadWithZeros(number: number, unitNumber = 2) {
     return withZeros ? padWithZeros(number, unitNumber) : number;
   }
 

@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { ElementSize } from "../../types/theme/global";
+import { useEffect, useState } from "react";
+import { ElementSize } from "../types/theme/layout";
 
 type HTMLElement = HTMLDivElement;
 
@@ -12,7 +12,7 @@ export default function useElementSize(
   });
 
   const resizeObserver = new ResizeObserver((entries) => {
-    for (let entry of entries) {
+    for (const entry of entries) {
       if (entry.contentBoxSize) {
         // Firefox implements `contentBoxSize` as a single content rect, rather than an array
         const contentBoxSize: ResizeObserverSize = Array.isArray(

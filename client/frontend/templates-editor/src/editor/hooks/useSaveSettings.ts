@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import useAppContext from "../../countdown-provider/hooks/app/useAppContext";
 
-import useCurrentCountdownSelector from "../../countdown-provider/hooks/app/useCurrentCountdownSelector";
 import useSettingsContext from "../../countdown-provider/hooks/settings/useSettingsContext";
-import useTheme from "../../countdown-provider/hooks/theme/useTheme";
+import useThemeContext from "../../countdown-provider/hooks/theme/useThemeContext";
+import { CountdownSettingsAndTheme } from "../../countdown-provider/types";
 import { create as createCountdown } from "../../countdown-rest-api/services/countdowns";
 import {
   create as createCountdownSettings,
   update,
 } from "../../countdown-rest-api/services/editor";
-import { CountdownSettingsAndTheme } from "../../countdown-widget/types";
 import useNotifications from "../../notifications/hooks/useNotifications";
 
 interface UseSaveSettingsProps {
@@ -21,8 +21,7 @@ interface UseSaveSettingsProps {
 export default function useSaveSettings({
   showNotification = true,
 }: UseSaveSettingsProps = {}) {
-  const { currentCountdown, setCurrentCountdown } =
-    useCurrentCountdownSelector();
+  const { currentCountdown } = useAppContext();
   const { success: successnotification, error: errorNotification } =
     useNotifications();
 
@@ -34,7 +33,7 @@ export default function useSaveSettings({
   const { t } = useTranslation();
 
   const settings = useSettingsContext();
-  const theme = useTheme();
+  const theme = useThemeContext();
   const savePayload: CountdownSettingsAndTheme = {
     ...settings,
     ...theme,
@@ -106,7 +105,9 @@ export default function useSaveSettings({
           setIsError(true);
           setError("Generic error");
         } else {
-          setCurrentCountdown(id);
+          // TODO: set the new countdown as the current one
+          // setCurrentCountdown(id);
+
           return createCountdownSettings(id, savePayload);
         }
       })

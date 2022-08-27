@@ -14,7 +14,7 @@ export default function LayoutOrientation({
   orientationSelected,
 }: LayoutOrientationProps) {
   const [showDialog, setShowDialog] = useState(false);
-  let ref = useRef(null);
+  const ref = useRef(null);
   const { t } = useTranslation();
 
   const orientationBtnLabel =

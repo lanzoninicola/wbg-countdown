@@ -5,7 +5,7 @@ import { ModalNewCountdown } from "../../countdowns/components";
 import { EditorSave } from "../../editor/components";
 import { Languages } from "../../i18n/types";
 import { PremiumFeature } from "../../premium-features";
-import { Logo, LanguagesBar, ShortcodePreview } from "../common";
+import { Logo, LanguagesBar } from "../common";
 
 //TODO: detect language from Wordpress
 const lngs: Languages = {

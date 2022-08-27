@@ -1,6 +1,3 @@
-import { SettingsStateData } from "../../countdown-provider/types/settings";
-import { ThemeStateData } from "../../countdown-provider/types/theme";
-
 export interface CountdownModel {
   id: StringOrNumber;
   name: string;

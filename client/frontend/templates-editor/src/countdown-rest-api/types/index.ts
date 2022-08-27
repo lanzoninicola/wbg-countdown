@@ -47,9 +47,11 @@ export interface SuccessResponseWithPayload<T> {
 export interface MissingParameterResponse {
   status: 400;
   params: string[];
+  payload: undefined;
 }
 
 /** Payload when server error occured */
 export interface ErrorResponse {
   status: 500;
+  payload: undefined;
 }

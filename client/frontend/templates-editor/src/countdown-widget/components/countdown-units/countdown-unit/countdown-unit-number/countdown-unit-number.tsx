@@ -17,12 +17,10 @@ interface CountdownUnitNumberProps {
 
 export default function CountdownUnitNumber({
   value,
-  isDanger,
   isLastDigit,
   theme,
   gridArea,
   ariaLabel,
-  ...props
 }: CountdownUnitNumberProps) {
   const viewportToken = useChakraBreakpoint();
   const { isEditorMode } = useAppContext();

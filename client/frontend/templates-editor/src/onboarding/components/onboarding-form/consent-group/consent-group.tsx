@@ -1,5 +1,4 @@
-import { VStack, Checkbox, Text } from "@chakra-ui/react";
-import { t } from "i18next";
+import { VStack, Checkbox } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import useOnboardingModalForm from "../../../hooks/useOnboardingModalForm";
 import FormRequiredIndicator from "../form-required-indicator/form-required-indicator";

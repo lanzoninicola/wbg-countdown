@@ -14,8 +14,7 @@ function CountdownTitle() {
 
   const viewportToken = useChakraBreakpoint();
 
-  const { isEditorMode } = useAppContext();
-  const { currentToken: editorToken } = useAppContext();
+  const { currentToken: editorToken, isEditorMode } = useAppContext();
 
   const editorStyle = {
     fontFamily: fontFamily,

@@ -8,7 +8,7 @@ type AppStateDataWithDispatcher = AppStateData & {
   appDispatcher: React.Dispatch<AppStateAction>;
 };
 
-export default function useAppContext(): AppStateDataWithDispatcher {
+export default function useAppSelector(): AppStateDataWithDispatcher {
   const state = useContextSelector(CountdownContext, (state) => state.app);
 
   const appDispatcher = useContextSelector(

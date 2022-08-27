@@ -1,8 +1,8 @@
-import { AppStateData, AppStateSetter } from "./app";
+import { AppStateData } from "./app";
 import { AppStateAction } from "./app/actions";
-import { SettingsStateData, SettingsStateSetter } from "./settings";
+import { SettingsStateData } from "./settings";
 import { SettingsStateAction } from "./settings/actions";
-import { ThemeStateData, ThemeStateSetter } from "./theme";
+import { ThemeStateData } from "./theme";
 import { ThemeStateAction } from "./theme/actions";
 
 export interface CountdownContextDataWithDispatch extends CountdownContextData {

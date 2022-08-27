@@ -9,6 +9,7 @@ const ButtonClose = forwardRef(({ label, ...props }: ButtonCloseProps, ref) => {
   return (
     <Tooltip label={label}>
       <Button
+        ref={ref}
         leftIcon={<FiX />}
         variant="solid"
         size="sm"

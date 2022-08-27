@@ -8,12 +8,15 @@ import settingsReducer from "./reducers/settingsReducer";
 import themeReducer from "./reducers/themeReducer";
 import { CountdownSettingsAndTheme } from "./types";
 import { AppStateData } from "./types/app";
+import { AppStateAction } from "./types/app/actions";
 import { SettingsStateData } from "./types/settings";
+import { SettingsStateAction } from "./types/settings/actions";
 import { ThemeStateData } from "./types/theme";
+import { ThemeStateAction } from "./types/theme/actions";
 
 interface CountdownProviderProps {
   children: React.ReactNode;
-  settingsAndTheme: CountdownSettingsAndTheme | null;
+  settingsAndTheme?: CountdownSettingsAndTheme;
 }
 
 /**
@@ -63,24 +66,20 @@ export default function CountdownProvider({
     };
   }
 
-  const [appState, appDispatcher] = useReducerLocalStorage<AppStateData>(
-    "__CLOCKODWN_APP_STATE__",
-    appReducer,
-    APP_INITIAL_STATE
-  );
+  const [appState, appDispatcher] = useReducerLocalStorage<
+    AppStateData,
+    AppStateAction
+  >("__CLOCKODWN_APP_STATE__", appReducer, APP_INITIAL_STATE);
 
-  const [settingsState, settingsDispatcher] =
-    useReducerLocalStorage<SettingsStateData>(
-      "__CLOCKODWN_SETTINGS_STATE__",
-      settingsReducer,
-      settingsInitialState
-    );
+  const [settingsState, settingsDispatcher] = useReducerLocalStorage<
+    SettingsStateData,
+    SettingsStateAction
+  >("__CLOCKODWN_SETTINGS_STATE__", settingsReducer, settingsInitialState);
 
-  const [themeState, themeDispatcher] = useReducerLocalStorage<ThemeStateData>(
-    "__CLOCKODWN_THEME_STATE__",
-    themeReducer,
-    themeInitialState
-  );
+  const [themeState, themeDispatcher] = useReducerLocalStorage<
+    ThemeStateData,
+    ThemeStateAction
+  >("__CLOCKODWN_THEME_STATE__", themeReducer, themeInitialState);
 
   return (
     <CountdownContext.Provider

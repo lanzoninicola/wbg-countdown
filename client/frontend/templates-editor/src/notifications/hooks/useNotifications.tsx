@@ -46,6 +46,7 @@ export default function useNotifications() {
   function successWithButton(message: string, options?: NotificationOptions) {
     toast({
       duration: options?.duration || 9000,
+      // eslint-disable-next-line react-hooks/rules-of-hooks
       render: () => {
         const { isOpen: isVisible, onClose } = useDisclosure({
           defaultIsOpen: true,

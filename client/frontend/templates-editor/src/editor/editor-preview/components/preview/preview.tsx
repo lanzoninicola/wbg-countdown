@@ -12,7 +12,7 @@ interface PreviewWrapperProps extends FlexProps {
 }
 
 const Preview = forwardRef(
-  ({ currentToken, children, ...props }: PreviewWrapperProps, ref) => {
+  ({ currentToken, children }: PreviewWrapperProps, ref) => {
     const { t } = useTranslation();
 
     return (

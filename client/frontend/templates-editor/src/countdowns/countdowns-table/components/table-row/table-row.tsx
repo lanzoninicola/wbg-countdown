@@ -1,16 +1,13 @@
 import { HStack, Td, Tr } from "@chakra-ui/react";
-import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 
-import useAppContext from "../../../../countdown-provider/hooks/app/useAppContext";
+import useAppSelector from "../../../../countdown-provider/hooks/app/useAppSelector";
 import { CountdownModel } from "../../../../countdown-widget/types";
+import ShortcodePreview from "../../../../global/common/shortcode-preview/shortcode-preview";
 import DeleteModal from "../../../components/modal-delete-countdown/modal-delete-countdown";
 import ModalEditCountdown from "../../../components/modal-edit-countdown/modal-edit-countdown";
-import ShortcodePreview from "../../../../global/common/shortcode-preview/shortcode-preview";
-import ButtonSettings from "../../primitives/button-settings/button-settings";
-import ButtonShortcode from "../../../../global/common/shortcode-preview/button-shortcode/button-shortcode";
-import TableCellText from "../../primitives/table-cell-text/table-cell-text";
 import ButtonEdit from "../../primitives/button-edit/button-edit";
+import TableCellText from "../../primitives/table-cell-text/table-cell-text";
 
 interface TableRowProps {
   countdown: CountdownModel;
@@ -20,11 +17,13 @@ interface TableRowProps {
 
 export default function TableRow({ countdown }: TableRowProps) {
   const { t } = useTranslation();
-  const { id, name, description, created_at, updated_at } = countdown;
-  const { setCurrentCountdown } = useAppContext();
+  const { id, name, description } = countdown;
+  const { appDispatcher } = useAppSelector();
 
+  /**
   const createdAt = dayjs(created_at).format("DD/MM/YYYY");
   const updatedAt = updated_at && dayjs(updated_at).format("DD/MM/YYYY");
+   */
 
   return (
     <Tr>
@@ -47,7 +46,10 @@ export default function TableRow({ countdown }: TableRowProps) {
           <ButtonEdit
             label={t("global.customize")}
             onClick={() => {
-              setCurrentCountdown(id);
+              appDispatcher({
+                type: "APP_SET_CURRENT_COUNTDOWN",
+                payload: id,
+              });
             }}
           />
           <ModalEditCountdown countdown={countdown} />
