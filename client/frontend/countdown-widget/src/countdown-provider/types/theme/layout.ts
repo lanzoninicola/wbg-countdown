@@ -1,4 +1,5 @@
 export interface ThemeLayoutContextData {
+  containerSize: ElementSize;
   /** The text used for the countdown title */
   orientation: CountdownLayoutOrientation;
   /** The space between the title and timer (1)space-evenly (2)space-around (3)space-between */
@@ -11,12 +12,9 @@ export interface ThemeLayoutContextData {
   backgroundColor: string;
 }
 
-export interface ThemeLayoutContextSetter {
-  setOrientation: (orientation: CountdownLayoutOrientation) => void;
-  setGap: (gap: number) => void;
-  setFitOnScreen: (fitOnScreen: boolean) => void;
-  setTransparentBackground: (transparentBackground: boolean) => void;
-  setBackgroundColor: (backgroundColor: string) => void;
-}
-
 export type CountdownLayoutOrientation = "vertical" | "horizontal";
+
+export interface ElementSize {
+  width: number;
+  height: number;
+}

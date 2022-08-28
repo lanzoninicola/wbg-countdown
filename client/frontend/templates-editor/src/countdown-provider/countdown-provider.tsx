@@ -1,4 +1,4 @@
-import useReducerLocalStorage from "../hooks/useReducerLocalStorage";
+import useReducerLocalStorage from "./utils/useReducerLocalStorage";
 import APP_INITIAL_STATE from "./constants/app/initial-state";
 import SETTINGS_INITIAL_STATE from "./constants/settings/initial-state";
 import THEME_INITIAL_STATE from "./constants/theme/initial-state";
@@ -13,10 +13,12 @@ import { SettingsStateData } from "./types/settings";
 import { SettingsStateAction } from "./types/settings/actions";
 import { ThemeStateData } from "./types/theme";
 import { ThemeStateAction } from "./types/theme/actions";
+import { decrypt } from "./utils/crypto";
 
 interface CountdownProviderProps {
   children: React.ReactNode;
-  settingsAndTheme?: CountdownSettingsAndTheme;
+  settings?: string;
+  theme?: string;
 }
 
 /**
@@ -38,7 +40,8 @@ interface CountdownProviderProps {
  */
 export default function CountdownProvider({
   children,
-  settingsAndTheme,
+  settings,
+  theme,
 }: CountdownProviderProps) {
   let settingsInitialState = {
     ...SETTINGS_INITIAL_STATE,
@@ -48,21 +51,19 @@ export default function CountdownProvider({
     ...THEME_INITIAL_STATE,
   };
 
-  if (settingsAndTheme) {
-    const { layout, targetDate, targetTimezone, timer, title } =
-      settingsAndTheme;
-
+  if (settings) {
+    const settingsDecoded = decrypt(settings);
     settingsInitialState = {
-      targetDate,
-      targetTimezone,
-      actionDispatched: "",
+      ...settingsInitialState,
+      ...JSON.parse(settingsDecoded),
     };
+  }
 
+  if (theme) {
+    const themeDecoded = decrypt(theme);
     themeInitialState = {
-      layout,
-      timer,
-      title,
-      actionDispatched: "",
+      ...themeInitialState,
+      ...JSON.parse(themeDecoded),
     };
   }
 

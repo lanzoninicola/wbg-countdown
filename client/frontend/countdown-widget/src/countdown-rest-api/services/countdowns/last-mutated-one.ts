@@ -1,6 +1,6 @@
 import { CountdownSettingsAndThemeModel } from "../../../countdown-widget/types";
 import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../constants/countdowns/endpoints";
-import { useRestHeaders } from "../../hooks";
+import { getRestHeaders } from "../../utils";
 import { APIResponse } from "../../types";
 
 /**
@@ -12,7 +12,7 @@ const lastMutatedOne = async (): Promise<
   APIResponse<CountdownSettingsAndThemeModel>
 > => {
   const { endpoint, method } = COUNTDOWNS_REST_API_ENDPOINTS.lastMutatedOne;
-  const headers = useRestHeaders();
+  const headers = getRestHeaders();
 
   return await (
     await fetch(endpoint(), {

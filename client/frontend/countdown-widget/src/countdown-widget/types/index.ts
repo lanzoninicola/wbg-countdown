@@ -1,6 +1,3 @@
-import { SettingsStateData } from "../../countdown-provider/types/settings";
-import { ThemeStateData } from "../../countdown-provider/types/theme";
-
 export interface CountdownModel {
   id: StringOrNumber;
   name: string;
@@ -17,13 +14,11 @@ export interface CountdownSettingsAndThemeModel {
   updated_at: string;
 }
 
-export type CountdownSettingsAndTheme = SettingsStateData & ThemeStateData;
-
 export type StringOrNumber = string | number;
 
 export type Milliseconds = number;
 
-/** Values can be string or number depending if the user decide to pad with zeros the digits  */
+/** Values can be string or number depending if the user decide to pad with zeros the unitNumber  */
 export interface RemainingTime {
   /** The number of seconds in the countdown */
   seconds: StringOrNumber;

@@ -37,6 +37,7 @@ const itIT = {
         },
         customize: "Personalizza",
         edit: "Modifica",
+        htmlEmbeddedCode: "Codice HTML",
       },
       premiumFeatures: {
         badgeText: "Funzione premium",

@@ -3,7 +3,7 @@ import {
   CountdownSettingsAndTheme,
 } from "../../../countdown-widget/types";
 import { EDITOR_REST_API_ENDPOINTS } from "../../constants/editor/endpoints";
-import { useRestHeaders } from "../../hooks";
+import { getRestHeaders } from "../../utils";
 import { APIResponse } from "../../types";
 
 /**
@@ -24,7 +24,7 @@ const update = async (
   payload: CountdownSettingsAndTheme
 ): Promise<APIResponse> => {
   const { endpoint, method } = EDITOR_REST_API_ENDPOINTS.update;
-  const headers = useRestHeaders();
+  const headers = getRestHeaders();
 
   return await (
     await fetch(endpoint(id), {

@@ -37,6 +37,10 @@ const enUS = {
         },
         customize: "Customize",
         edit: "Edit",
+        htmlEmbeddedCode: {
+          buttonLabel: "Generate",
+          modalTitle: "HTML code",
+        },
       },
       premiumFeatures: {
         badgeText: "Premium feature",

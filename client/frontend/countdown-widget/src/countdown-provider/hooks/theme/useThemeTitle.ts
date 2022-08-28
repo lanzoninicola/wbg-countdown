@@ -8,13 +8,7 @@ import useThemeTitleSelector from "./useThemeTitleSelector";
  * @returns
  */
 export default function useThemeTitle(): Omit<ThemeTitleContextData, "text"> {
-  const { fontFamily, fontWeight, fontSize, fontColor } =
-    useThemeTitleSelector();
+  const title = useThemeTitleSelector();
 
-  return {
-    fontFamily,
-    fontWeight,
-    fontSize,
-    fontColor,
-  };
+  return { ...title };
 }

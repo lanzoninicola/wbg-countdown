@@ -38,6 +38,7 @@ const ptBR = {
         },
         customize: "Personalizar",
         edit: "Editar",
+        htmlEmbeddedCode: "Código HTML",
       },
       premiumFeatures: {
         badgeText: "Função premium",

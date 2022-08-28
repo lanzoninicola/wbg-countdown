@@ -13,7 +13,7 @@ export default function Counter({
 
   //TODO: based on configuration some values might be hidden
   // TODO: check the responsiveness of the timer
-  //TODO: check if the digit has two digits
+  //TODO: check if the digit has two unitNumber
   // TODO: check isDanger
 
   return (

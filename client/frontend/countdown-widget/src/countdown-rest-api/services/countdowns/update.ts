@@ -1,6 +1,6 @@
 import { CountdownModel } from "../../../countdown-widget/types";
 import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../constants/countdowns/endpoints";
-import { useRestHeaders } from "../../hooks";
+import { getRestHeaders } from "../../utils";
 import { APIResponse } from "../../types";
 
 /**
@@ -13,7 +13,7 @@ const update = async (
   payload: Omit<CountdownModel, "id" | "created_at" | "updated_at">
 ): Promise<APIResponse<string | null>> => {
   const { endpoint, method } = COUNTDOWNS_REST_API_ENDPOINTS.update;
-  const headers = useRestHeaders();
+  const headers = getRestHeaders();
 
   return await (
     await fetch(endpoint(id), {

@@ -38,6 +38,7 @@ const esEs = {
         },
         customize: "Personalizar",
         edit: "Editar",
+        htmlEmbeddedCode: "Código HTML",
       },
       premiumFeatures: {
         badgeText: "Función premium",

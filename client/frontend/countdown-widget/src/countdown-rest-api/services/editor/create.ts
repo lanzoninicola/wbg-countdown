@@ -1,12 +1,11 @@
+import { CountdownSettingsAndTheme } from "../../../countdown-provider/types";
 import {
   CountdownModel,
-  CountdownSettingsAndTheme,
   CountdownSettingsAndThemeModel,
 } from "../../../countdown-widget/types";
-import { WP_REST_NONCE } from "../../constants";
 import { EDITOR_REST_API_ENDPOINTS } from "../../constants/editor/endpoints";
-import { useRestHeaders } from "../../hooks";
 import { APIResponse } from "../../types";
+import { getRestHeaders } from "../../utils";
 
 /**
  * Creates a new editor settings record for the given countdown id.
@@ -27,7 +26,7 @@ const create = async (
   settings?: CountdownSettingsAndTheme
 ): Promise<APIResponse<CountdownSettingsAndThemeModel["id"]>> => {
   const { endpoint, method } = EDITOR_REST_API_ENDPOINTS.create;
-  const headers = useRestHeaders();
+  const headers = getRestHeaders();
 
   return await (
     await fetch(endpoint(id), {

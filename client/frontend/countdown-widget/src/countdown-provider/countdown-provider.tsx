@@ -1,16 +1,24 @@
-import { useEffect, useReducer, useState } from "react";
-import useCountdownsList from "../countdown-rest-api/hooks/useCountdownsList";
-import { FontsizeUnit } from "../countdown-widget-typography/types";
-
-import { CountdownModel } from "../countdown-widget/types";
+import useReducerLocalStorage from "./utils/useReducerLocalStorage";
 import APP_INITIAL_STATE from "./constants/app/initial-state";
 import SETTINGS_INITIAL_STATE from "./constants/settings/initial-state";
 import THEME_INITIAL_STATE from "./constants/theme/initial-state";
 import { CountdownContext } from "./context/countdown-context";
+import appReducer from "./reducers/appReducer";
+import settingsReducer from "./reducers/settingsReducer";
+import themeReducer from "./reducers/themeReducer";
+import { CountdownSettingsAndTheme } from "./types";
+import { AppStateData } from "./types/app";
+import { AppStateAction } from "./types/app/actions";
+import { SettingsStateData } from "./types/settings";
+import { SettingsStateAction } from "./types/settings/actions";
+import { ThemeStateData } from "./types/theme";
+import { ThemeStateAction } from "./types/theme/actions";
+import { decrypt } from "./utils/crypto";
 
 interface CountdownProviderProps {
   children: React.ReactNode;
-  current?: CountdownModel["id"] | null;
+  settings?: string;
+  theme?: string;
 }
 
 /**
@@ -32,71 +40,63 @@ interface CountdownProviderProps {
  */
 export default function CountdownProvider({
   children,
-  current,
+  settings,
+  theme,
 }: CountdownProviderProps) {
-  const [currentCountdown, setCurrentCountdown] = useState<
-    CountdownModel["id"] | null
-  >(current || APP_INITIAL_STATE.currentCountdown);
-  const [currentToken, setCurrentToken] = useState(
-    APP_INITIAL_STATE.currentToken
-  );
-  const [isEditorMode, setIsEditorMode] = useState<boolean>(
-    APP_INITIAL_STATE.isEditorMode
-  );
-  const [fontSizeUnit, setFontSizeUnit] = useState<FontsizeUnit>(
-    APP_INITIAL_STATE.fontSizeUnit
-  );
-  const [timerExpired, setTimerExpired] = useState(
-    APP_INITIAL_STATE.timerExpired
-  );
-  const [targetDate, setTargetDate] = useState(
-    SETTINGS_INITIAL_STATE.targetDate
-  );
+  let settingsInitialState = {
+    ...SETTINGS_INITIAL_STATE,
+  };
 
-  const [targetTimezone, setTargetTimezone] = useState(
-    SETTINGS_INITIAL_STATE.targetTimezone
-  );
-  const [unitLabelLanguage, setUnitLabelLanguage] = useState(
-    SETTINGS_INITIAL_STATE.unitLabelLanguage
-  );
-  const [global, setGlobal] = useState(THEME_INITIAL_STATE.global);
-  const [title, setTitle] = useState(THEME_INITIAL_STATE.title);
-  const [timer, setTimer] = useState(THEME_INITIAL_STATE.timer);
-  const [layout, setLayout] = useState(THEME_INITIAL_STATE.layout);
+  let themeInitialState = {
+    ...THEME_INITIAL_STATE,
+  };
+
+  if (settings) {
+    const settingsDecoded = decrypt(settings);
+    settingsInitialState = {
+      ...settingsInitialState,
+      ...JSON.parse(settingsDecoded),
+    };
+
+    console.log({
+      settingsEncrypt: settings,
+      settingsDecrypt: settingsDecoded,
+      settingsDecryptParse: JSON.parse(settingsDecoded),
+    });
+  }
+
+  if (theme) {
+    const themeDecoded = decrypt(theme);
+    themeInitialState = {
+      ...themeInitialState,
+      ...JSON.parse(themeDecoded),
+    };
+  }
+
+  const [appState, appDispatcher] = useReducerLocalStorage<
+    AppStateData,
+    AppStateAction
+  >("__CLOCKODWN_APP_STATE__", appReducer, APP_INITIAL_STATE);
+
+  const [settingsState, settingsDispatcher] = useReducerLocalStorage<
+    SettingsStateData,
+    SettingsStateAction
+  >("__CLOCKODWN_SETTINGS_STATE__", settingsReducer, settingsInitialState);
+
+  const [themeState, themeDispatcher] = useReducerLocalStorage<
+    ThemeStateData,
+    ThemeStateAction
+  >("__CLOCKODWN_THEME_STATE__", themeReducer, themeInitialState);
 
   return (
     <CountdownContext.Provider
       value={{
-        app: {
-          currentCountdown,
-          setCurrentCountdown,
-          currentToken,
-          setCurrentToken,
-          isEditorMode,
-          setIsEditorMode,
-          timerExpired,
-          setTimerExpired,
-          fontSizeUnit,
-          setFontSizeUnit,
-        },
-        settings: {
-          targetDate,
-          setTargetDate,
-          targetTimezone,
-          setTargetTimezone,
-          unitLabelLanguage,
-          setUnitLabelLanguage,
-        },
-        theme: {
-          global,
-          setGlobal,
-          layout,
-          setLayout,
-          title,
-          setTitle,
-          timer,
-          setTimer,
-        },
+        app: appState,
+        appDispatcher,
+        settings: settingsState,
+        settingsDispatcher,
+        theme: themeState,
+        themeDispatcher,
       }}
     >
       {children}
