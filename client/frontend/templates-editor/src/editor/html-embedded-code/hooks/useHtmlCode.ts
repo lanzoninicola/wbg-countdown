@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useConfig } from "../../../config";
 import useSettingsContext from "../../../countdown-provider/hooks/settings/useSettingsContext";
 import useThemeContext from "../../../countdown-provider/hooks/theme/useThemeContext";
 import { encrypt } from "../../../countdown-provider/utils/crypto";
@@ -6,6 +7,7 @@ import { encrypt } from "../../../countdown-provider/utils/crypto";
 export default function useHtmlCode() {
   const { layout, timer, title } = useThemeContext();
   const { targetDate, targetTimezone } = useSettingsContext();
+  const { clockdown_public_url } = useConfig();
 
   return useMemo(() => {
     const settingsEnc = encrypt(
@@ -29,8 +31,7 @@ export default function useHtmlCode() {
     htmlCode += `data-theme="${themeEnc}"`;
     htmlCode += "></div>";
 
-    const BASE_DOMAIN = "http://localhost/bb-melhor-envio";
-    const BASE_ASSETS_URL = `${BASE_DOMAIN}/wp-content/plugins/clockdown/client/frontend/public/clockdown-widget/assets`;
+    const BASE_ASSETS_URL = `${clockdown_public_url}/wp-content/plugins/clockdown/client/frontend/public/clockdown-widget/assets`;
 
     // script tag
     htmlCode += `<script `;

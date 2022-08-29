@@ -1,14 +1,10 @@
 import { useReducer } from "react";
-import { getServerData } from "../../global/utils";
+import { useConfig } from "../../config";
+import getConfig from "../../config/hooks/getConfig";
 
 import INITIAL_STATE from "./constants/initial-state";
 import { OnboardingContext } from "./context/onboarding-context";
 import { onboardingReducer } from "./reducers/onboarding-reducer";
-
-/** START: Info localized by Wordpress */
-const { product_id: productId, installation_id: installationId } =
-  getServerData();
-/** END: Info localized by Wordpress */
 
 interface OnboardingProviderProps {
   children: React.ReactNode;
@@ -17,6 +13,8 @@ interface OnboardingProviderProps {
 export default function OnboardingProvider({
   children,
 }: OnboardingProviderProps) {
+  const { product_id: productId, installation_id: installationId } =
+    useConfig();
   const [state, dispatch] = useReducer(onboardingReducer, {
     ...INITIAL_STATE,
     installationId,

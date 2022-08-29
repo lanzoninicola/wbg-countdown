@@ -6,7 +6,7 @@ import { EditorSave } from "../../editor/components";
 import { Languages } from "../../i18n/types";
 import { PremiumFeature } from "../../premium-features";
 import { LanguagesBar, Logo } from "../common";
-import HtmlEmbeddedCode from "../html-embedded-code/html-embedded-code";
+import HtmlEmbeddedCode from "../../editor/html-embedded-code/html-embedded-code";
 
 //TODO: detect language from Wordpress
 const lngs: Languages = {

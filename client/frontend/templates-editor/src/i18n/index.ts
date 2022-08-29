@@ -5,13 +5,13 @@ import ptBR from "./locale/pt-br";
 import enUS from "./locale/en-us";
 import esEs from "./locale/es-es";
 import itIT from "./locale/it-it";
-import { getServerData } from "../global/utils";
+import { getConfig } from "../config";
 
 const env = process.env.NODE_ENV;
 const isDev = env === "development";
 
 // the default language from wordpress configuration
-const { language: wordpressLocale } = getServerData();
+const { language: wordpressLocale } = getConfig();
 
 i18n
   // detect user language
