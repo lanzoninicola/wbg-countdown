@@ -38,7 +38,12 @@ const esEs = {
         },
         customize: "Personalizar",
         edit: "Editar",
-        htmlEmbeddedCode: "Código HTML",
+        htmlEmbeddedCode: {
+          buttonLabel: "Generar contador",
+          modalTitle: "HTML code",
+          modalDescription:
+            "Inserte el contador en su sitio web. Pulse el botón de abajo para copiar el código.",
+        },
       },
       premiumFeatures: {
         badgeText: "Función premium",
@@ -158,6 +163,7 @@ const esEs = {
             unitsVisible: "Unidades mostradas",
             visibility: {
               label: "Visibility",
+              hideDays: "Ocultar días",
               hideHours: "Ocultar horas",
               hideSeconds: "Ocultar segundos",
             },
@@ -171,8 +177,8 @@ const esEs = {
             groupTitle: "Estilo de las etiquetas",
             unitLabelLanguage: "Idioma",
             labelFont: "Fuente",
-            labelSize: "Tamaño",
-            labelColor: "Color",
+            labelSize: "Tamaño do texto",
+            labelColor: "Color do texto",
           },
         },
         breakpointInfoMessage: {

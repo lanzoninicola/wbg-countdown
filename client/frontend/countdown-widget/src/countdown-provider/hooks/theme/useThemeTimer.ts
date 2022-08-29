@@ -32,6 +32,7 @@ function useThemeTimer(slice: "unit-number"): ThemeUnitNumberContextData;
 function useThemeTimer(slice: "unit-label"): ThemeUnitLabelContextData;
 function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
   const {
+    hideDays,
     hideHours,
     hideSeconds,
     padWithZero,
@@ -50,7 +51,7 @@ function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
   } = useThemeTimerSelector();
 
   if (slice === "unit-visible") {
-    return { hideHours, hideSeconds };
+    return { hideDays, hideHours, hideSeconds };
   }
 
   if (slice === "unit-separator") {

@@ -8,7 +8,7 @@ interface UnitLabelProps {
   theme: ThemeUnitLabelContextData;
   label: string;
   isDanger?: boolean;
-  isLastDigit?: boolean;
+  isLastUnit?: boolean;
   gridArea: string;
   ariaLabel: string;
   [key: string]: any;
@@ -16,7 +16,7 @@ interface UnitLabelProps {
 
 export default function UnitLabel({
   label,
-  isLastDigit,
+  isLastUnit,
   theme,
   gridArea,
   ariaLabel,
@@ -31,7 +31,7 @@ export default function UnitLabel({
       : theme.unitLabelFontSize[viewportToken],
     fontFamily: theme.unitLabelFontFamily,
     fontWeight: theme.unitLabelFontWeight,
-    color: isLastDigit ? theme.lastUnitColor : theme.unitLabelFontColor,
+    color: isLastUnit ? theme.lastUnitColor : theme.unitLabelFontColor,
     gridArea: gridArea,
   };
 

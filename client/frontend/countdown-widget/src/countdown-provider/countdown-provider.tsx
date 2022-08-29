@@ -57,12 +57,6 @@ export default function CountdownProvider({
       ...settingsInitialState,
       ...JSON.parse(settingsDecoded),
     };
-
-    console.log({
-      settingsEncrypt: settings,
-      settingsDecrypt: settingsDecoded,
-      settingsDecryptParse: JSON.parse(settingsDecoded),
-    });
   }
 
   if (theme) {

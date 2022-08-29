@@ -7,18 +7,22 @@ import {
 } from "@chakra-ui/react";
 import { FiSave } from "@react-icons/all-files/fi/FiSave";
 
+import useIsPremiumInstallation from "../../../premium-features/provider/hooks/useIsPremiumInstallation";
+
 interface ButtonSaveProps
   extends Omit<ComponentWithAs<"button", ButtonProps>, "aria-label"> {
   label: string;
 }
 
 const ButtonSave = forwardRef(({ label, ...props }: ButtonSaveProps, ref) => {
+  const isPremium = useIsPremiumInstallation();
+
   return (
     <Tooltip label={label}>
       <Button
         ref={ref}
         leftIcon={<FiSave />}
-        variant="solid"
+        variant={isPremium ? "solid" : "outline"}
         size="sm"
         aria-label={label}
         className="theme-font"

@@ -38,8 +38,10 @@ const enUS = {
         customize: "Customize",
         edit: "Edit",
         htmlEmbeddedCode: {
-          buttonLabel: "Generate",
+          buttonLabel: "Generate countdown",
           modalTitle: "HTML code",
+          modalDescription:
+            "Embed the countdown in your website. Press the button below to copy the code.",
         },
       },
       premiumFeatures: {
@@ -160,6 +162,7 @@ const enUS = {
             groupTitle: "Units style",
             visibility: {
               label: "Visibility",
+              hideDays: "Hide days",
               hideHours: "Hide hours",
               hideSeconds: "Hide seconds",
             },
@@ -171,10 +174,10 @@ const enUS = {
           },
           unitLabel: {
             groupTitle: "Units label style",
-            unitLabelLanguage: "Label language",
-            labelFont: "Label font",
-            labelSize: "Label size",
-            labelColor: "Label color",
+            unitLabelLanguage: "Language",
+            labelFont: "Font family",
+            labelSize: "Text size",
+            labelColor: "Text color",
           },
         },
         breakpointInfoMessage: {

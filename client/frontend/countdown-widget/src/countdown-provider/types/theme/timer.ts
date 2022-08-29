@@ -44,6 +44,7 @@ export interface ThemeUnitLabelContextData {
 }
 
 export interface ThemeUnitVisibilityContextData {
+  hideDays: boolean;
   hideHours: boolean;
   hideSeconds: boolean;
 }

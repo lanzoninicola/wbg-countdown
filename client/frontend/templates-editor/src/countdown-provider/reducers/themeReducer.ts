@@ -107,6 +107,16 @@ export default function themeReducer(
         actionDispatched: action.type,
       };
 
+    case "THEME_TIMER_ON_CHANGE_VISIBILITY_DAYS":
+      return {
+        ...state,
+        timer: {
+          ...state.timer,
+          hideDays: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
     case "THEME_TIMER_ON_CHANGE_VISIBILITY_HOURS":
       return {
         ...state,

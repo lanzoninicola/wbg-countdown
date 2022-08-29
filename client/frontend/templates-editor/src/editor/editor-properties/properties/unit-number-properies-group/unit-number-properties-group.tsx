@@ -23,6 +23,7 @@ export default function UnitNumberPropertiesGroup({
     unitNumberFontFamily,
     unitNumberFontSize,
     unitNumberFontWeight,
+    hideDays,
     hideHours,
     hideSeconds,
     padWithZero,
@@ -75,6 +76,19 @@ export default function UnitNumberPropertiesGroup({
           });
         }}
       />
+      <PremiumFeature variant="modal">
+        <CheckboxSingleOption
+          id="hide-days"
+          label={t("editor.propertiesGroup.unitNumber.visibility.hideDays")}
+          onChange={(checked) => {
+            themeDispatcher({
+              type: "THEME_TIMER_ON_CHANGE_VISIBILITY_DAYS",
+              payload: checked,
+            });
+          }}
+          value={hideDays}
+        />
+      </PremiumFeature>
       <PremiumFeature variant="modal">
         <CheckboxSingleOption
           id="hide-hours"

@@ -8,7 +8,7 @@ import { StringOrNumber } from "../../../../types";
 interface CountdownUnitNumberProps {
   value: StringOrNumber;
   isDanger?: boolean;
-  isLastDigit?: boolean;
+  isLastUnit?: boolean;
   theme: ThemeUnitNumberContextData;
   gridArea: string;
   ariaLabel: string;
@@ -17,7 +17,7 @@ interface CountdownUnitNumberProps {
 
 export default function CountdownUnitNumber({
   value,
-  isLastDigit,
+  isLastUnit,
   theme,
   gridArea,
   ariaLabel,
@@ -32,7 +32,7 @@ export default function CountdownUnitNumber({
       : theme.unitNumberFontSize[viewportToken],
     fontFamily: theme.unitNumberFontFamily,
     fontWeight: theme.unitNumberFontWeight,
-    color: isLastDigit ? theme.lastUnitColor : theme.unitNumberFontColor,
+    color: isLastUnit ? theme.lastUnitColor : theme.unitNumberFontColor,
     gridArea: gridArea,
   };
 

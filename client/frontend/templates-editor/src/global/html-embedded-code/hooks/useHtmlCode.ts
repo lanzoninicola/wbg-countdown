@@ -29,6 +29,19 @@ export default function useHtmlCode() {
     htmlCode += `data-theme="${themeEnc}"`;
     htmlCode += "></div>";
 
+    const BASE_DOMAIN = "http://localhost/bb-melhor-envio";
+    const BASE_ASSETS_URL = `${BASE_DOMAIN}/wp-content/plugins/clockdown/client/frontend/public/clockdown-widget/assets`;
+
+    // script tag
+    htmlCode += `<script `;
+    htmlCode += `src="${BASE_ASSETS_URL}/index.js"`;
+    htmlCode += `></script>`;
+
+    // style tag
+    htmlCode += `<link rel="stylesheet" `;
+    htmlCode += `href="${BASE_ASSETS_URL}/index.css"`;
+    htmlCode += `/>`;
+
     return htmlCode;
   }, [layout, timer, title, targetDate, targetTimezone]);
 }

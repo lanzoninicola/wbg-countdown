@@ -26,6 +26,7 @@ const THEME_INITIAL_STATE: ThemeStateData = {
   timer: {
     showSeparator: true,
     separatorChar: ":",
+    hideDays: false,
     hideHours: false,
     hideSeconds: false,
     padWithZero: false,

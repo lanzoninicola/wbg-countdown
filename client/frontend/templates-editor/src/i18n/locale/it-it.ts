@@ -37,7 +37,12 @@ const itIT = {
         },
         customize: "Personalizza",
         edit: "Modifica",
-        htmlEmbeddedCode: "Codice HTML",
+        htmlEmbeddedCode: {
+          buttonLabel: "Crea timer",
+          modalTitle: "HTML code",
+          modalDescription:
+            "Incorpora il timer nel tuo sito web. Premi il pulsante qui sotto per copiare il codice.",
+        },
       },
       premiumFeatures: {
         badgeText: "Funzione premium",
@@ -156,6 +161,7 @@ const itIT = {
             groupTitle: "Stile delle unità",
             visibility: {
               label: "Visibilità unità",
+              hideDays: "Nascondi giorni",
               hideHours: "Nascondere ore",
               hideSeconds: "Nascondere secondi",
             },
@@ -167,10 +173,10 @@ const itIT = {
           },
           unitLabel: {
             groupTitle: "Stile delle etichette",
-            unitLabelLanguage: "Lingua delle etichette",
-            labelFont: "Font delle etichette",
-            labelSize: "Dimensioni delle etichette",
-            labelColor: "Colore delle etichette",
+            unitLabelLanguage: "Lingua",
+            labelFont: "Font",
+            labelSize: "Dimensioni del testo",
+            labelColor: "Colore del testo",
           },
         },
         breakpointInfoMessage: {

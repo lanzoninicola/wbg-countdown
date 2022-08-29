@@ -1,5 +1,8 @@
-const INITIAL_STATE = {
-  isPremium: false,
+import { PremiumFeaturesStateData } from "../types";
+
+const INITIAL_STATE: PremiumFeaturesStateData = {
+  isPro: false,
+  isAgency: false,
   landingPageURL: "",
 };
 
