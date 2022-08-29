@@ -1,6 +1,6 @@
 import { CountdownModel } from "../../../countdown-widget/types";
 import { EDITOR_REST_API_ENDPOINTS } from "../../constants/editor/endpoints";
-import { useRestHeaders } from "../../hooks";
+import { getRestHeaders } from "../../utils";
 import { APIResponse } from "../../types";
 
 /**
@@ -14,7 +14,7 @@ import { APIResponse } from "../../types";
  */
 const remove = async (id: CountdownModel["id"]): Promise<APIResponse> => {
   const { endpoint, method } = EDITOR_REST_API_ENDPOINTS.delete;
-  const headers = useRestHeaders();
+  const headers = getRestHeaders();
 
   return await (
     await fetch(endpoint(id), {

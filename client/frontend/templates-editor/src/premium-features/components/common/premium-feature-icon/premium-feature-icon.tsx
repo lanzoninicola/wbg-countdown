@@ -1,4 +1,4 @@
-import { Box, Flex, LayoutProps } from "@chakra-ui/react";
+import { Flex, LayoutProps } from "@chakra-ui/react";
 
 interface PremiumFeatureIconProps {
   w?: LayoutProps["w"];

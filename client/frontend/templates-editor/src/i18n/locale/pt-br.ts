@@ -38,6 +38,12 @@ const ptBR = {
         },
         customize: "Personalizar",
         edit: "Editar",
+        htmlEmbeddedCode: {
+          buttonLabel: "Gerar contador",
+          modalTitle: "HTML code",
+          modalDescription:
+            "Incorpore o contador regressivo em seu site. Pressione o botão abaixo para copiar o código.",
+        },
       },
       premiumFeatures: {
         badgeText: "Função premium",
@@ -152,20 +158,26 @@ const ptBR = {
             separatorCharLabel: "Separador",
             separatorCharAriaLabel: "Define o separador do contador regressivo",
           },
-          digits: {
-            groupTitle: "Units style",
-            unitsVisible: "Unidades mostradas",
+          unitNumber: {
+            groupTitle: "Estilo dos digitos",
+            visibility: {
+              label: "Unidades mostradas",
+              hideDays: "Ocultar dias",
+              hideHours: "Ocultar horas",
+              hideSeconds: "Ocultar segundos",
+            },
             lastUnitColor: "Cor da última unidade",
-            digitsFont: "Fonte dos dígitos",
-            digitsSize: "Tamanho dos dígitos",
-            digitsColor: "Cor dos dígitos",
+            digitsFont: "Fonte",
+            digitsSize: "Tamanho do numero",
+            digitsColor: "Cor do numero",
+            padWithZero: "Preencher com zero",
           },
-          digitLabel: {
-            groupTitle: "Units label style",
-            labelLanguage: "Idioma da etiqueta",
-            labelFont: "Fonte da etiqueta",
-            labelSize: "Tamanho da etiqueta",
-            labelColor: "Cor da etiqueta",
+          unitLabel: {
+            groupTitle: "Estilo das etiquetas",
+            unitLabelLanguage: "Idioma",
+            labelFont: "Fonte",
+            labelSize: "Tamanho do texto",
+            labelColor: "Cor do texto",
           },
         },
         breakpointInfoMessage: {

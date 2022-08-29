@@ -10,17 +10,15 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
-
-import ButtonEdit from "../../countdowns-table/primitives/button-edit/button-edit";
-
-import EditForm from "./edit-form/edit-form";
-import { CountdownModel } from "../../../countdown-widget/types";
 import { useTranslation } from "react-i18next";
-import { update as updateCountdown } from "../../../countdown-rest-api/services/countdowns";
-import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdown-rest-api/constants/countdowns/endpoints";
 import { useSWRConfig } from "swr";
+
+import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdown-rest-api/constants/countdowns/endpoints";
+import { update as updateCountdown } from "../../../countdown-rest-api/services/countdowns";
+import { CountdownModel } from "../../../countdown-widget/types";
 import { useNotifications } from "../../../notifications";
 import ButtonSettings from "../../countdowns-table/primitives/button-settings/button-settings";
+import EditForm from "./edit-form/edit-form";
 
 interface ModalEditCountdownProps {
   countdown: CountdownModel;

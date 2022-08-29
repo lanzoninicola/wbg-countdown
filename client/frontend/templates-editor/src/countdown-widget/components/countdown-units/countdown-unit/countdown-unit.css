@@ -1,7 +1,7 @@
 div[data-role="countdown-unit"] {
   display: grid;
   grid-template-areas:
-    "digit separator"
+    "number separator"
     "label empty";
   -webkit-align-items: center;
   -webkit-box-align: center;

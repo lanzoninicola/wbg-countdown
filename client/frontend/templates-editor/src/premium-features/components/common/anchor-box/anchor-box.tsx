@@ -1,5 +1,4 @@
 import { Box } from "@chakra-ui/react";
-import { useTranslation } from "react-i18next";
 
 interface AnchorBoxProps {
   children?: React.ReactNode;
@@ -7,7 +6,6 @@ interface AnchorBoxProps {
 }
 
 export default function AnchorBox({ children, ...props }: AnchorBoxProps) {
-  const { t } = useTranslation();
   return (
     <Box
       className="premium-feat-watermark"

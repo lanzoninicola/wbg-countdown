@@ -1,19 +1,17 @@
 import {
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
   ModalBody,
+  ModalCloseButton,
+  ModalContent,
   ModalFooter,
-  Button,
-  VStack,
+  ModalHeader,
+  ModalOverlay,
   Text,
+  VStack,
 } from "@chakra-ui/react";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 
-import beTheHero from "../../assets/images/be-the-hero.png";
 import UpgradePremiumButton from "../common/upgrade-premium-button/upgrade-premium-button";
 import UpgradePremiumImage from "../common/upgrade-premium-image/upgrade-premium-image";
 

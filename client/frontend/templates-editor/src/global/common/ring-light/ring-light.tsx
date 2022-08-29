@@ -16,6 +16,7 @@ export default function RingLight({
       border={isVisible ? "2px solid" : undefined}
       borderColor={isVisible ? "blue.200" : undefined}
       borderRadius={isVisible ? "md" : undefined}
+      {...props}
     >
       {children}
     </Box>

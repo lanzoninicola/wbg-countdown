@@ -19,8 +19,8 @@ export default function useElementPosition(
     return { top: AUTO, left: AUTO, right: AUTO, bottom: AUTO };
   }
 
-  let { top, left, right, bottom } = getPosition(ref.current);
-  let [ElementPosition, setElementPosition] = useState({
+  const { top, left, right, bottom } = getPosition(ref.current);
+  const [ElementPosition, setElementPosition] = useState({
     top: top,
     left: left,
     right: right,

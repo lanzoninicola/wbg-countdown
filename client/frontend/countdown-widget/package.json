@@ -10,6 +10,7 @@
     "build": "cross-env BABEL_ENV=default NODE_ENV=production webpack"
   },
   "dependencies": {
+    "crypto-js": "^4.1.1",
     "dayjs": "^1.11.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",

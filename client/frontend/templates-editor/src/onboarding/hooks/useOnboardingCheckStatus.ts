@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useOnboardingRestApi } from "../../onboarding-rest-api";
 import useOnboardingContext from "../provider/hooks/useOnboardingContext";
 

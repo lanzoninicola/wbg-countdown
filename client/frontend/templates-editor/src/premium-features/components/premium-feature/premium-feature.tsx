@@ -1,5 +1,6 @@
-import { Box, Flex, useDisclosure } from "@chakra-ui/react";
+import { Flex, useDisclosure } from "@chakra-ui/react";
 import React from "react";
+import useIsPremiumInstallation from "../../provider/hooks/useIsPremiumInstallation";
 
 import usePremiumFeaturesContext from "../../provider/hooks/usePremiumFeaturesContext";
 import PremiumFeatureIcon from "../common/premium-feature-icon/premium-feature-icon";
@@ -35,7 +36,7 @@ export default function PremiumFeature({
   customText,
 }: PremiumFeatureProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { isPremium } = usePremiumFeaturesContext();
+  const isPremium = useIsPremiumInstallation();
 
   function mightOpenModal(e: React.SyntheticEvent) {
     e.stopPropagation();

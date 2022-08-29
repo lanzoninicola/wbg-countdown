@@ -38,6 +38,12 @@ const esEs = {
         },
         customize: "Personalizar",
         edit: "Editar",
+        htmlEmbeddedCode: {
+          buttonLabel: "Generar contador",
+          modalTitle: "HTML code",
+          modalDescription:
+            "Inserte el contador en su sitio web. Pulse el botón de abajo para copiar el código.",
+        },
       },
       premiumFeatures: {
         badgeText: "Función premium",
@@ -152,20 +158,27 @@ const esEs = {
             separatorCharLabel: "Separador",
             separatorCharAriaLabel: "Define el separador",
           },
-          digits: {
+          unitNumber: {
             groupTitle: "Estilo do Unidades",
             unitsVisible: "Unidades mostradas",
+            visibility: {
+              label: "Visibility",
+              hideDays: "Ocultar días",
+              hideHours: "Ocultar horas",
+              hideSeconds: "Ocultar segundos",
+            },
             lastUnitColor: "Color de la última unidad",
             digitsFont: "Fuente de los dígitos",
             digitsSize: "Tamaño de los dígitos",
             digitsColor: "Color de los dígitos",
+            padWithZero: "Rellenar con ceros",
           },
-          digitLabel: {
+          unitLabel: {
             groupTitle: "Estilo de las etiquetas",
-            labelLanguage: "Idioma",
+            unitLabelLanguage: "Idioma",
             labelFont: "Fuente",
-            labelSize: "Tamaño",
-            labelColor: "Color",
+            labelSize: "Tamaño do texto",
+            labelColor: "Color do texto",
           },
         },
         breakpointInfoMessage: {

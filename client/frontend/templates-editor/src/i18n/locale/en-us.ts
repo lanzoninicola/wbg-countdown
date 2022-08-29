@@ -37,6 +37,12 @@ const enUS = {
         },
         customize: "Customize",
         edit: "Edit",
+        htmlEmbeddedCode: {
+          buttonLabel: "Generate countdown",
+          modalTitle: "HTML code",
+          modalDescription:
+            "Embed the countdown in your website. Press the button below to copy the code.",
+        },
       },
       premiumFeatures: {
         badgeText: "Premium feature",
@@ -152,20 +158,26 @@ const enUS = {
             separatorCharLabel: "Separator",
             separatorCharAriaLabel: "Define the separator character",
           },
-          digits: {
+          unitNumber: {
             groupTitle: "Units style",
-            unitsVisible: "Units visible",
+            visibility: {
+              label: "Visibility",
+              hideDays: "Hide days",
+              hideHours: "Hide hours",
+              hideSeconds: "Hide seconds",
+            },
             lastUnitColor: "Last unit color",
             digitsFont: "Digits font",
             digitsSize: "Digits size",
             digitsColor: "Digits color",
+            padWithZero: "Pad with zero",
           },
-          digitLabel: {
+          unitLabel: {
             groupTitle: "Units label style",
-            labelLanguage: "Label language",
-            labelFont: "Label font",
-            labelSize: "Label size",
-            labelColor: "Label color",
+            unitLabelLanguage: "Language",
+            labelFont: "Font family",
+            labelSize: "Text size",
+            labelColor: "Text color",
           },
         },
         breakpointInfoMessage: {

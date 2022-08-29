@@ -37,6 +37,12 @@ const itIT = {
         },
         customize: "Personalizza",
         edit: "Modifica",
+        htmlEmbeddedCode: {
+          buttonLabel: "Crea timer",
+          modalTitle: "HTML code",
+          modalDescription:
+            "Incorpora il timer nel tuo sito web. Premi il pulsante qui sotto per copiare il codice.",
+        },
       },
       premiumFeatures: {
         badgeText: "Funzione premium",
@@ -151,20 +157,26 @@ const itIT = {
             separatorCharLabel: "Separatore",
             separatorCharAriaLabel: "Definisci il separatore",
           },
-          digits: {
+          unitNumber: {
             groupTitle: "Stile delle unità",
-            unitsVisible: "Visualizza le unità",
+            visibility: {
+              label: "Visibilità unità",
+              hideDays: "Nascondi giorni",
+              hideHours: "Nascondere ore",
+              hideSeconds: "Nascondere secondi",
+            },
             lastUnitColor: "Colore della ultima unità",
             digitsFont: "Font dei numeri",
             digitsSize: "Dimensioni dei numeri",
             digitsColor: "Colore dei numeri",
+            padWithZero: "Riempi con zero",
           },
-          digitLabel: {
+          unitLabel: {
             groupTitle: "Stile delle etichette",
-            labelLanguage: "Lingua delle etichette",
-            labelFont: "Font delle etichette",
-            labelSize: "Dimensioni delle etichette",
-            labelColor: "Colore delle etichette",
+            unitLabelLanguage: "Lingua",
+            labelFont: "Font",
+            labelSize: "Dimensioni del testo",
+            labelColor: "Colore del testo",
           },
         },
         breakpointInfoMessage: {

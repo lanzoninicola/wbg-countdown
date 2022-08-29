@@ -1,5 +1,4 @@
 import { FormControl, FormLabel, Grid, Input, VStack } from "@chakra-ui/react";
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import useOnboardingModalForm from "../../hooks/useOnboardingModalForm";

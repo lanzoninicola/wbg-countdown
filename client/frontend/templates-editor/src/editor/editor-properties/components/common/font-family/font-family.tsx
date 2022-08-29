@@ -19,12 +19,12 @@ export default function FontFamily({
   fontFamily,
   fontWeight,
   onSelectFontFamily,
-  onSelectFontWeight,
-}: FontFamilyProps) {
+}: // onSelectFontWeight,
+FontFamilyProps) {
   const [pickerFontFamily, setPickerFontFamily] = useState<string>(fontFamily);
   const [pickerFontWeight, setPickerFontWeight] = useState<string>(fontWeight);
   const [showDialog, setShowDialog] = useState(false);
-  let ref = useRef(null);
+  const ref = useRef(null);
 
   const onCloseDialog = () => {
     // Update the global state

@@ -6,7 +6,7 @@ import Label from "../../../components/primitives/label/label";
 
 export default function CountdownTitleText() {
   const { t } = useTranslation();
-  const { text, setText } = useThemeTitleSelector();
+  const { text, themeDispatcher } = useThemeTitleSelector();
 
   return (
     <PropertyWrapper>
@@ -19,7 +19,12 @@ export default function CountdownTitleText() {
         placeholder={t("editor.propertiesGroup.title.titlePlaceholder")}
         gridColumn={"2 / -1"}
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={(e) => {
+          themeDispatcher({
+            type: "THEME_TITLE_ON_CHANGE_TEXT",
+            payload: e.target.value,
+          });
+        }}
         className="theme-font"
       />
     </PropertyWrapper>

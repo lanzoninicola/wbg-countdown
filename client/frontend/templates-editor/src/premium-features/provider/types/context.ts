@@ -1,7 +1,8 @@
 import { PremiumFeaturesAction } from "./actions";
 
 export interface PremiumFeaturesStateData {
-  isPremium: boolean;
+  isPro: boolean;
+  isAgency: boolean;
   landingPageURL: string;
 }
 

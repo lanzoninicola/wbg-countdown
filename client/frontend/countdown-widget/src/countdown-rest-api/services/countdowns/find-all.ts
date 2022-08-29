@@ -1,6 +1,6 @@
 import { CountdownModel } from "../../../countdown-widget/types";
 import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../constants/countdowns/endpoints";
-import { useRestHeaders } from "../../hooks";
+import { getRestHeaders } from "../../utils";
 import { APIResponse } from "../../types";
 
 /**
@@ -19,7 +19,7 @@ import { APIResponse } from "../../types";
 
 const findAll = async (): Promise<APIResponse<CountdownModel[]>> => {
   const { endpoint, method } = COUNTDOWNS_REST_API_ENDPOINTS.findAll;
-  const headers = useRestHeaders();
+  const headers = getRestHeaders();
 
   return await (
     await fetch(endpoint(), {

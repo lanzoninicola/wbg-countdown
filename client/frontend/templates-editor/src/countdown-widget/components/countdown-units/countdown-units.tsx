@@ -13,7 +13,7 @@ export default function Counter({
 
   //TODO: based on configuration some values might be hidden
   // TODO: check the responsiveness of the timer
-  //TODO: check if the digit has two digits
+  //TODO: check if the digit has two unitNumber
   // TODO: check isDanger
 
   return (
@@ -21,27 +21,27 @@ export default function Counter({
       <CountdownUnit
         label={days === 1 ? tw("day") : tw("days")}
         value={days}
-        ariaLabelDigit={tw("numberDays")}
-        ariaLabelDigitLabel={tw("days")}
+        ariaLabelUnitNumber={tw("numberDays")}
+        ariaLabelUnitLabel={tw("days")}
       />
       <CountdownUnit
         label={hours === 1 ? tw("hour") : tw("hours")}
         value={hours}
-        ariaLabelDigit={tw("numberHours")}
-        ariaLabelDigitLabel={tw("hours")}
+        ariaLabelUnitNumber={tw("numberHours")}
+        ariaLabelUnitLabel={tw("hours")}
       />
       <CountdownUnit
         label={minutes === 1 ? tw("minute") : tw("minutes")}
         value={minutes}
-        ariaLabelDigit={tw("numberMinutes")}
-        ariaLabelDigitLabel={tw("minutes")}
+        ariaLabelUnitNumber={tw("numberMinutes")}
+        ariaLabelUnitLabel={tw("minutes")}
       />
       <CountdownUnit
         label={seconds === 1 ? tw("second") : tw("seconds")}
         value={seconds}
-        isLastDigit={true}
-        ariaLabelDigit={tw("numberSeconds")}
-        ariaLabelDigitLabel={tw("seconds")}
+        isLastUnit={true}
+        ariaLabelUnitNumber={tw("numberSeconds")}
+        ariaLabelUnitLabel={tw("seconds")}
       />
     </div>
   );

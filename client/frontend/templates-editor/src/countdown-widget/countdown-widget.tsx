@@ -7,8 +7,12 @@ import Countdown from "./components/countdown";
 import "./countdown-widget.css";
 
 export default function CountdownWidget() {
-  const { digitFontFamily, digitFontWeight, labelFontFamily, labelFontWeight } =
-    useThemeTimerSelector();
+  const {
+    unitNumberFontFamily,
+    unitNumberFontWeight,
+    unitLabelFontFamily,
+    unitLabelFontWeight,
+  } = useThemeTimerSelector();
   const { fontFamily: titleFontFamily, fontWeight: titleFontWeight } =
     useThemeTitleSelector();
   const { fitOnScreen } = useThemeLayout();
@@ -21,8 +25,11 @@ export default function CountdownWidget() {
     <div data-role="countdown-widget" style={editorStyle}>
       <GoogleFontsLinkTag
         googleFonts={[
-          { fontFamily: digitFontFamily, fontWeight: digitFontWeight },
-          { fontFamily: labelFontFamily, fontWeight: labelFontWeight },
+          {
+            fontFamily: unitNumberFontFamily,
+            fontWeight: unitNumberFontWeight,
+          },
+          { fontFamily: unitLabelFontFamily, fontWeight: unitLabelFontWeight },
           { fontFamily: titleFontFamily, fontWeight: titleFontWeight },
         ]}
       />

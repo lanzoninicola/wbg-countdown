@@ -1,50 +1,26 @@
 import { useContextSelector } from "use-context-selector";
+
 import { CountdownContext } from "../../context/countdown-context";
-import {
-  CountdownLayoutOrientation,
-  ThemeLayoutContextData,
-  ThemeLayoutContextSetter,
-} from "../../types/theme/layout";
+import { ThemeStateAction } from "../../types/theme/actions";
+import { ThemeLayoutContextData } from "../../types/theme/layout";
 
-type useThemeLayoutSelector = ThemeLayoutContextSetter & ThemeLayoutContextData;
+type ThemeLayoutContextDataWithDispatcher = ThemeLayoutContextData & {
+  themeDispatcher: React.Dispatch<ThemeStateAction>;
+};
 
-export default function useThemeLayoutSelector(): useThemeLayoutSelector {
+export default function useThemeLayoutSelector(): ThemeLayoutContextDataWithDispatcher {
   const layout = useContextSelector(
     CountdownContext,
     (ctx) => ctx?.theme.layout
   );
 
-  const setLayout = useContextSelector(
+  const themeDispatcher = useContextSelector(
     CountdownContext,
-    (ctx) => ctx?.theme.setLayout
+    (ctx) => ctx?.themeDispatcher
   );
 
-  function setOrientation(orientation: CountdownLayoutOrientation) {
-    setLayout({ ...layout, orientation });
-  }
-
-  function setGap(gap: number) {
-    setLayout({ ...layout, gap });
-  }
-
-  function setFitOnScreen(fitOnScreen: boolean) {
-    setLayout({ ...layout, fitOnScreen });
-  }
-
-  function setTransparentBackground(transparentBackground: boolean) {
-    setLayout({ ...layout, transparentBackground });
-  }
-
-  function setBackgroundColor(backgroundColor: string) {
-    setLayout({ ...layout, backgroundColor });
-  }
-
   return {
-    setOrientation,
-    setGap,
-    setFitOnScreen,
-    setTransparentBackground,
-    setBackgroundColor,
     ...layout,
+    themeDispatcher,
   };
 }

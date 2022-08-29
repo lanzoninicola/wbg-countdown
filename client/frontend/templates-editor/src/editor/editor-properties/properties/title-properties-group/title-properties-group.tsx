@@ -17,7 +17,8 @@ export default function TitlePropertiesGroup({
   ...props
 }: TitlePropertiesGroupProps) {
   const { t } = useTranslation();
-  const themeTitle = useThemeTitleSelector();
+  const { fontColor, fontFamily, fontSize, fontWeight, themeDispatcher } =
+    useThemeTitleSelector();
 
   return (
     <PropertyGroupWrapper
@@ -28,20 +29,43 @@ export default function TitlePropertiesGroup({
       <CountdownTitleText />
       <FontFamily
         label={t("editor.propertiesGroup.title.textFont")}
-        fontFamily={themeTitle.fontFamily}
-        fontWeight={themeTitle.fontWeight}
-        onSelectFontFamily={themeTitle.setFontFamily}
-        onSelectFontWeight={themeTitle.setFontWeight}
+        fontFamily={fontFamily}
+        fontWeight={fontWeight}
+        onSelectFontFamily={(fontFamily) => {
+          themeDispatcher({
+            type: "THEME_TITLE_ON_CHANGE_FONT_FAMILY",
+            payload: fontFamily,
+          });
+        }}
+        onSelectFontWeight={(fontWeight) => {
+          themeDispatcher({
+            type: "THEME_TITLE_ON_CHANGE_FONT_WEIGHT",
+            payload: fontWeight,
+          });
+        }}
       />
       <FontSize
         label={t("editor.propertiesGroup.title.textSize")}
-        fontSizeChanged={themeTitle.fontSize}
-        onChangeFontSize={themeTitle.setFontSize}
+        fontSizeChanged={fontSize}
+        onChangeFontSize={(token, fontSizeChanged) => {
+          themeDispatcher({
+            type: "THEME_TITLE_ON_CHANGE_FONT_SIZE",
+            payload: {
+              token,
+              size: fontSizeChanged,
+            },
+          });
+        }}
       />
       <FontColor
         label={t("editor.propertiesGroup.title.textColor")}
-        colorSelected={themeTitle.fontColor}
-        onColorSelected={themeTitle.setFontColor}
+        colorSelected={fontColor}
+        onColorSelected={(colorSelected) => {
+          themeDispatcher({
+            type: "THEME_TITLE_ON_CHANGE_FONT_COLOR",
+            payload: colorSelected,
+          });
+        }}
       />
     </PropertyGroupWrapper>
   );

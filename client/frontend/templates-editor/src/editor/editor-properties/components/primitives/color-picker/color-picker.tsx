@@ -14,7 +14,7 @@ export default function ColorPicker({
   onColorSelected,
 }: ColorPickerProps) {
   const [showDialog, setShowDialog] = useState(false);
-  let ref = useRef(null);
+  const ref = useRef(null);
 
   return (
     <>

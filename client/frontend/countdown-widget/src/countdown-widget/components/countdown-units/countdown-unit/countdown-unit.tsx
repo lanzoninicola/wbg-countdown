@@ -11,43 +11,43 @@ interface CountdownUnitProps {
   label: string;
   value: StringOrNumber;
   isDanger?: boolean;
-  isLastDigit?: boolean;
-  /** aria-label attribute for the digit */
-  ariaLabelDigit: string;
-  /** aria-label attribute for the digit label */
-  ariaLabelDigitLabel: string;
+  isLastUnit?: boolean;
+  /** aria-label attribute for the number of timer unit */
+  ariaLabelUnitNumber: string;
+  /** aria-label attribute for the label of timer unit */
+  ariaLabelUnitLabel: string;
 }
 
 function CountdownUnit({
   label,
   value,
   isDanger,
-  isLastDigit,
-  ariaLabelDigit,
-  ariaLabelDigitLabel,
+  isLastUnit,
+  ariaLabelUnitNumber,
+  ariaLabelUnitLabel,
 }: CountdownUnitProps) {
-  const digitTheme = useThemeTimer("unit-digit");
-  const labelTheme = useThemeTimer("unit-label");
+  const unitNumberTheme = useThemeTimer("unit-number");
+  const unitLabelTheme = useThemeTimer("unit-label");
   const separatorTheme = useThemeTimer("unit-separator");
 
   return (
     <div data-role="countdown-unit" data-unit-type={`${label.toLowerCase()}`}>
       <CountdownUnitNumber
-        gridArea={"digit"}
+        gridArea={"number"}
         value={value}
         isDanger={isDanger}
-        isLastDigit={isLastDigit}
-        theme={digitTheme}
-        ariaLabel={ariaLabelDigit}
+        isLastUnit={isLastUnit}
+        theme={unitNumberTheme}
+        ariaLabel={ariaLabelUnitNumber}
       />
       <UnitLabel
         gridArea={"label"}
         label={label}
-        isLastDigit={isLastDigit}
-        theme={labelTheme}
-        ariaLabel={ariaLabelDigitLabel}
+        isLastUnit={isLastUnit}
+        theme={unitLabelTheme}
+        ariaLabel={ariaLabelUnitLabel}
       />
-      {!isLastDigit && separatorTheme.showSeparator && (
+      {!isLastUnit && separatorTheme.showSeparator && (
         <CountdownUnitSeparator
           gridArea={"separator"}
           separatorText={separatorTheme.separatorChar}

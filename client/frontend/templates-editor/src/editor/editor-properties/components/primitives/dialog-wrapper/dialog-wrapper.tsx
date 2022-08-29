@@ -31,7 +31,6 @@ interface DialogWrapperProps {
 
 export default function DialogWrapper({
   callerRef,
-  isOpen = false,
   showCloseButton = true,
   closeButtonLabel,
   onCloseDialog,
@@ -42,7 +41,7 @@ export default function DialogWrapper({
   minW,
 }: DialogWrapperProps) {
   const { t } = useTranslation();
-  let callerPosition = useElementPosition(callerRef);
+  const callerPosition = useElementPosition(callerRef);
 
   const { top, right, bottom, left } = callerPosition;
 

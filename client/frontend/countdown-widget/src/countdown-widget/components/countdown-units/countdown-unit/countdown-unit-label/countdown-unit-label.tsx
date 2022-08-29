@@ -1,14 +1,14 @@
-import useAppContext from "../../../../../countdown-provider/hooks/app/useAppContext";
-import useCurrentTokenSelector from "../../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
-import { ThemeDigitsLabelContextData } from "../../../../../countdown-provider/types/theme/timer";
-import useChakraBreakpoint from "../../../../hooks/useChakraBreakpoint";
 import "./countdown-unit-label.css";
 
+import useAppContext from "../../../../../countdown-provider/hooks/app/useAppContext";
+import { ThemeUnitLabelContextData } from "../../../../../countdown-provider/types/theme/timer";
+import useChakraBreakpoint from "../../../../hooks/useChakraBreakpoint";
+
 interface UnitLabelProps {
-  theme: ThemeDigitsLabelContextData;
+  theme: ThemeUnitLabelContextData;
   label: string;
   isDanger?: boolean;
-  isLastDigit?: boolean;
+  isLastUnit?: boolean;
   gridArea: string;
   ariaLabel: string;
   [key: string]: any;
@@ -16,22 +16,22 @@ interface UnitLabelProps {
 
 export default function UnitLabel({
   label,
-  isLastDigit,
+  isLastUnit,
   theme,
   gridArea,
   ariaLabel,
 }: UnitLabelProps) {
   const viewportToken = useChakraBreakpoint();
   const { isEditorMode } = useAppContext();
-  const { currentToken: editorToken } = useCurrentTokenSelector();
+  const { currentToken: editorToken } = useAppContext();
 
   const editorStyle = {
     fontSize: isEditorMode
-      ? theme.labelFontSize[editorToken]
-      : theme.labelFontSize[viewportToken],
-    fontFamily: theme.labelFontFamily,
-    fontWeight: theme.labelFontWeight,
-    color: isLastDigit ? theme.lastUnitColor : theme.labelFontColor,
+      ? theme.unitLabelFontSize[editorToken]
+      : theme.unitLabelFontSize[viewportToken],
+    fontFamily: theme.unitLabelFontFamily,
+    fontWeight: theme.unitLabelFontWeight,
+    color: isLastUnit ? theme.lastUnitColor : theme.unitLabelFontColor,
     gridArea: gridArea,
   };
 

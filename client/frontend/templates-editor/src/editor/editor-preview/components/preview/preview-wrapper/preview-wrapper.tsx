@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import { useRef, useEffect } from "react";
+
 import { ChakraToken } from "../../../../../countdown-provider/types/theme/responsive";
 import useCustomScrollbar from "../../../../../hooks/useCustomScrollbar";
 import DEFAULT_BREAKPOINTS from "../../../constants/default-breakpoints";

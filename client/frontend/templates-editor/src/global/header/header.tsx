@@ -1,12 +1,12 @@
 import { Box, Grid, HStack } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import useCurrentCountdownSelector from "../../countdown-provider/hooks/app/useCurrentCountdownSelector";
 import { ModalNewCountdown } from "../../countdowns/components";
 import { EditorSave } from "../../editor/components";
 import { Languages } from "../../i18n/types";
 import { PremiumFeature } from "../../premium-features";
-import { Logo, LanguagesBar, ShortcodePreview } from "../common";
+import { LanguagesBar, Logo } from "../common";
+import HtmlEmbeddedCode from "../html-embedded-code/html-embedded-code";
 
 //TODO: detect language from Wordpress
 const lngs: Languages = {
@@ -18,7 +18,6 @@ const lngs: Languages = {
 
 export default function Header() {
   const { t } = useTranslation();
-  const { currentCountdown } = useCurrentCountdownSelector();
 
   return (
     <Grid
@@ -43,10 +42,10 @@ export default function Header() {
             </PremiumFeature>
           </HStack>
           <HStack spacing={4}>
-            {currentCountdown && (
-              <ShortcodePreview countdownId={currentCountdown!} />
-            )}
-            <EditorSave />
+            <HtmlEmbeddedCode />
+            <PremiumFeature variant="modal">
+              <EditorSave />
+            </PremiumFeature>
           </HStack>
         </HStack>
       </Box>

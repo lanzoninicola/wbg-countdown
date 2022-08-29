@@ -1,5 +1,6 @@
 import { FormControl, FormLabel, Input, Textarea } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
+
 import { CountdownModel } from "../../../../countdown-widget/types";
 
 interface EditFormProps {
@@ -18,7 +19,6 @@ export default function EditForm({
   onDescriptionChange,
 }: EditFormProps) {
   const { t } = useTranslation();
-  function handleTask() {}
 
   return (
     <>

@@ -1,13 +1,12 @@
 import { useTranslation } from "react-i18next";
-import useThemeLayout from "../../../../countdown-provider/hooks/theme/useThemeLayout";
+
+import useThemeLayoutSelector from "../../../../countdown-provider/hooks/theme/useThemeLayoutSelector";
 import { PremiumFeature } from "../../../../premium-features";
-import PremiumFeatureIcon from "../../../../premium-features/components/common/premium-feature-icon/premium-feature-icon";
+import BackgroundColor from "../../components/common/background-color/background-color";
 import PropertyGroupWrapper from "../../components/layout/property-group-wrapper/property-group-wrapper";
-import BackgroundColorSelector from "./background-color-selector/background-color-selector";
-import BackgroundTransparentSelector from "./background-transparent-selector/background-transparent-selector";
+import CheckboxSingleOption from "../../components/primitives/checkbox-single-option/checkbox-single-option";
 import GapSelector from "./gap-selector/gap-selector";
 import LayoutOrientation from "./layout-orientation/layout-orientation";
-import StretchSelector from "./stretch-selector/stretch-selector";
 
 interface LayoutPropertiesGroupProps {
   showGroupTitle?: boolean;
@@ -18,7 +17,13 @@ export default function LayoutPropertiesGroup({
   showGroupTitle,
   ...props
 }: LayoutPropertiesGroupProps) {
-  const { orientation } = useThemeLayout();
+  const {
+    orientation,
+    fitOnScreen,
+    transparentBackground,
+    backgroundColor,
+    themeDispatcher,
+  } = useThemeLayoutSelector();
   const { t } = useTranslation();
 
   return (
@@ -29,10 +34,41 @@ export default function LayoutPropertiesGroup({
     >
       <LayoutOrientation orientationSelected={orientation} />
       <GapSelector />
-      {orientation === "horizontal" && <StretchSelector />}
-      <BackgroundTransparentSelector />
+      {orientation === "horizontal" && (
+        <CheckboxSingleOption
+          id="fit-on-screen-checker"
+          label={t("editor.propertiesGroup.layout.stretchProp")}
+          onChange={(checked) => {
+            themeDispatcher({
+              type: "THEME_LAYOUT_ON_CHANGE_FIT_ON_SCREEN",
+              payload: checked,
+            });
+          }}
+          value={fitOnScreen}
+        />
+      )}
+      <CheckboxSingleOption
+        id="transparent-background-checker"
+        label={t("editor.propertiesGroup.layout.transparentProp")}
+        onChange={(checked) => {
+          themeDispatcher({
+            type: "THEME_LAYOUT_ON_CHANGE_BACKGROUND_TRANSPARENT",
+            payload: checked,
+          });
+        }}
+        value={transparentBackground}
+      />
       <PremiumFeature variant="modal">
-        <BackgroundColorSelector />
+        <BackgroundColor
+          colorSelected={backgroundColor}
+          onColorSelected={(color) => {
+            themeDispatcher({
+              type: "THEME_LAYOUT_ON_CHANGE_BACKGROUND_COLOR",
+              payload: color,
+            });
+          }}
+          label={t("editor.propertiesGroup.layout.backgroundColorProp")}
+        />
       </PremiumFeature>
     </PropertyGroupWrapper>
   );

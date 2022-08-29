@@ -13,7 +13,6 @@ import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useSWR, { useSWRConfig } from "swr";
 
-import useCurrentCountdownSelector from "../../../countdown-provider/hooks/app/useCurrentCountdownSelector";
 import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdown-rest-api/constants/countdowns/endpoints";
 import { create as createCountdownRecord } from "../../../countdown-rest-api/services/countdowns";
 import { create as createCountdownSettingsRecord } from "../../../countdown-rest-api/services/editor";
@@ -40,61 +39,58 @@ export default function ModalNewCountdown() {
   const { successWithButton: successNotification, error: errorNotification } =
     useNotifications();
 
-  const { setCurrentCountdown } = useCurrentCountdownSelector();
-
   const { mutate } = useSWRConfig();
 
   // TODO: refactor this chain
   function createCountdown() {
-    setIsSuspense(true);
-    createCountdownRecord({ name, description })
-      .then((res) => {
-        if (!res || !res.data) throw new Error();
-        if (res?.data?.status >= 400) throw new Error();
-
-        createCountdownSettings(res);
-      })
-      .catch((e) => {
-        errorNotification(t("global.error"), {
-          title: t("global.errorTitle"),
-        });
-      });
+    // setIsSuspense(true);
+    // createCountdownRecord({ name, description })
+    //   .then((res) => {
+    //     if (!res || !res.data) throw new Error();
+    //     if (res?.data?.status >= 400) throw new Error();
+    //     createCountdownSettings(res);
+    //   })
+    //   .catch((e) => {
+    //     errorNotification(t("global.error"), {
+    //       title: t("global.errorTitle"),
+    //     });
+    //   });
   }
 
-  function createCountdownSettings(
-    res: APIResponse<{
-      id: StringOrNumber;
-    }>
-  ) {
-    if (!res || !res.data) return;
+  // function createCountdownSettings(
+  //   res: APIResponse<{
+  //     id: StringOrNumber;
+  //   }>
+  // ) {
+  //   if (!res || !res.data) return;
 
-    const { id } = JSON.parse(JSON.stringify(res.data.payload));
+  //   const { id } = JSON.parse(JSON.stringify(res.data.payload));
 
-    createCountdownSettingsRecord(id)
-      .then((res) => {
-        if (!res || !res.data) throw new Error();
-        if (res?.data?.status >= 400) throw new Error();
+  //   createCountdownSettingsRecord(id)
+  //     .then((res) => {
+  //       if (!res || !res.data) throw new Error();
+  //       if (res?.data?.status >= 400) throw new Error();
 
-        onClose();
+  //       onClose();
 
-        successNotification(t("countdown_edit_new.createSuccess"), {
-          title: t("countdown_edit_new.createSuccessTitle"),
-          buttonProps: {
-            children: t("countdown_edit_new.openEditor"),
-            onClick: () => setCurrentCountdown(id),
-          },
-        });
-      })
-      .catch(() =>
-        errorNotification(t("global.error"), {
-          title: t("global.errorTitle"),
-        })
-      )
-      .finally(() => {
-        setIsSuspense(false);
-        mutate(COUNTDOWNS_REST_API_ENDPOINTS.findAll.endpoint());
-      });
-  }
+  //       successNotification(t("countdown_edit_new.createSuccess"), {
+  //         title: t("countdown_edit_new.createSuccessTitle"),
+  //         buttonProps: {
+  //           children: t("countdown_edit_new.openEditor"),
+  //           onClick: () => setCurrentCountdown(id),
+  //         },
+  //       });
+  //     })
+  //     .catch(() =>
+  //       errorNotification(t("global.error"), {
+  //         title: t("global.errorTitle"),
+  //       })
+  //     )
+  //     .finally(() => {
+  //       setIsSuspense(false);
+  //       mutate(COUNTDOWNS_REST_API_ENDPOINTS.findAll.endpoint());
+  //     });
+  // }
 
   return (
     <>

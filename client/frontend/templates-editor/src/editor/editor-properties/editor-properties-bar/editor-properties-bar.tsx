@@ -11,8 +11,8 @@ import { useTranslation } from "react-i18next";
 import Countdowns from "../../../countdowns/components/countdowns/countdowns";
 import DialogWrapper from "../components/primitives/dialog-wrapper/dialog-wrapper";
 import DialogWrapperHeader from "../components/primitives/dialog-wrapper/dialog-wrapper-header/dialog-wrapper-header";
-import DigitLabelPropertiesGroup from "../properties/digit-label-properties-group/digit-label-properties-group";
-import DigitsPropertiesGroup from "../properties/digits-properties-group/digits-properties-group";
+import UnitLabelPropertiesGroup from "../properties/unit-label-properties-group/unit-label-properties-group";
+import UnitNumberPropertiesGroup from "../properties/unit-number-properies-group/unit-number-properties-group";
 import LayoutPropertiesGroup from "../properties/layout-properties-group/layout-properties-group";
 import SeparatorPropertiesGroup from "../properties/separator-properties-group/separator-properties-group";
 import TemplatesPropertiesGroup from "../properties/templates-properties-group/templates-properties-group";
@@ -60,15 +60,15 @@ export default function EditorPropertiesBar() {
       label: t("editor.propertiesBar.timer"),
       icon: <MdTimer10 />,
       ref: useRef(null),
-      title: t("editor.propertiesGroup.digits.groupTitle"),
-      component: <DigitsPropertiesGroup showGroupTitle={false} pb={5} />,
+      title: t("editor.propertiesGroup.unitNumber.groupTitle"),
+      component: <UnitNumberPropertiesGroup showGroupTitle={false} pb={5} />,
     },
     {
       label: t("editor.propertiesBar.labels"),
       icon: <MdLabelOutline />,
       ref: useRef(null),
-      title: t("editor.propertiesGroup.digitLabel.groupTitle"),
-      component: <DigitLabelPropertiesGroup showGroupTitle={false} pb={5} />,
+      title: t("editor.propertiesGroup.unitLabel.groupTitle"),
+      component: <UnitLabelPropertiesGroup showGroupTitle={false} pb={5} />,
     },
     {
       label: t("editor.propertiesGroup.separator.groupTitle"),
