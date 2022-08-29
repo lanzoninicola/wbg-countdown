@@ -8,14 +8,23 @@ import horizontalLayout from "./assets/images/horizontal-layout.png";
 import verticalLayout from "./assets/images/vertical-layout.png";
 import Label from "../label/label";
 import OptionContainer from "./option-container/option-container";
+import { CountdownLayoutOrientation } from "../../../../../countdown-provider/types/theme/layout";
 
 export default function LayoutPicker() {
   const { t } = useTranslation();
-  const { orientation, setOrientation } = useThemeLayoutSelector();
+  const { orientation, themeDispatcher } = useThemeLayoutSelector();
 
   return (
     <VStack alignItems={"flex-start"} gap={0}>
-      <OptionContainer onClick={() => setOrientation("vertical")}>
+      <OptionContainer
+        value="vertical"
+        onClick={(optionValue) => {
+          themeDispatcher({
+            type: "THEME_LAYOUT_ON_CHANGE_ORIENTATION",
+            payload: optionValue as CountdownLayoutOrientation,
+          });
+        }}
+      >
         <Label textTransform={"uppercase"} pl={0}>
           {t("editor.propertiesGroup.layout.vertical.title")}
         </Label>
@@ -26,7 +35,15 @@ export default function LayoutPicker() {
           <img src={verticalLayout} alt="vertical layout" />
         </RingLight>
       </OptionContainer>
-      <OptionContainer onClick={() => setOrientation("horizontal")}>
+      <OptionContainer
+        value="horizontal"
+        onClick={(optionValue) => {
+          themeDispatcher({
+            type: "THEME_LAYOUT_ON_CHANGE_ORIENTATION",
+            payload: optionValue as CountdownLayoutOrientation,
+          });
+        }}
+      >
         <Label textTransform={"uppercase"} pl={0}>
           {t("editor.propertiesGroup.layout.horizontal.title")}
         </Label>

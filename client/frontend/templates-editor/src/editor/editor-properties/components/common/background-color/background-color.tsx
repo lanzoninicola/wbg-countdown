@@ -1,3 +1,4 @@
+import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
 import ColorPicker from "../../primitives/color-picker/color-picker";
 import Label from "../../primitives/label/label";
 
@@ -13,12 +14,12 @@ export default function BackgroundColor({
   onColorSelected,
 }: BackgroundColorProps) {
   return (
-    <>
+    <PropertyWrapper>
       <Label>{label}</Label>
       <ColorPicker
         colorSelected={colorSelected}
         onColorSelected={onColorSelected}
       />
-    </>
+    </PropertyWrapper>
   );
 }

@@ -1,6 +1,6 @@
 import { ThemeStateData } from ".";
 import { Language } from "../../../countdown-widget-i18n/types";
-import { ElementSize } from "./layout";
+import { CountdownLayoutOrientation, ElementSize } from "./layout";
 
 interface ThemeInitStateAction {
   type: "THEME_INIT_STATE";
@@ -63,6 +63,11 @@ interface ThemeTimerOnChangeUnitNumberFontColorAction {
   payload: string;
 }
 
+interface ThemeTimerOnChangeVisibilityDaysAction {
+  type: "THEME_TIMER_ON_CHANGE_VISIBILITY_DAYS";
+  payload: boolean;
+}
+
 interface ThemeTimerOnChangeVisibilityHoursAction {
   type: "THEME_TIMER_ON_CHANGE_VISIBILITY_HOURS";
   payload: boolean;
@@ -103,7 +108,7 @@ interface ThemeLayoutOnChangeContainerSizeAction {
 
 interface ThemeLayoutOnChangeOrientationAction {
   type: "THEME_LAYOUT_ON_CHANGE_ORIENTATION";
-  payload: "horizontal" | "vertical";
+  payload: CountdownLayoutOrientation;
 }
 
 interface ThemeLayoutOnChangeGapAction {
@@ -169,6 +174,7 @@ export type ThemeStateAction =
   | ThemeTimerOnChangeUnitNumberFontFamilyAction
   | ThemeTimerOnChangeUnitNumberFontWeightAction
   | ThemeTimerOnChangeUnitNumberFontColorAction
+  | ThemeTimerOnChangeVisibilityDaysAction
   | ThemeTimerOnChangeVisibilityHoursAction
   | ThemeTimerOnChangeVisibilitySecondsAction
   | ThemeTimerOnChangePadWithZeroAction

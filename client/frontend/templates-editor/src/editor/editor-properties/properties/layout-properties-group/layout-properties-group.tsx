@@ -33,7 +33,6 @@ export default function LayoutPropertiesGroup({
       {...props}
     >
       <LayoutOrientation orientationSelected={orientation} />
-      <GapSelector />
       {orientation === "horizontal" && (
         <CheckboxSingleOption
           id="fit-on-screen-checker"
@@ -47,6 +46,8 @@ export default function LayoutPropertiesGroup({
           value={fitOnScreen}
         />
       )}
+      {fitOnScreen && <GapSelector />}
+
       <CheckboxSingleOption
         id="transparent-background-checker"
         label={t("editor.propertiesGroup.layout.transparentProp")}

@@ -2,13 +2,15 @@ import { Box, VStack } from "@chakra-ui/react";
 
 interface OptionContainerProps {
   children: React.ReactNode;
-  onClick?: () => void;
+  value: string;
+  onClick?: (optionValue: string) => void | undefined;
   [key: string]: any;
 }
 
 export default function OptionContainer({
   children,
   onClick,
+  value,
   ...props
 }: OptionContainerProps) {
   return (
@@ -18,7 +20,7 @@ export default function OptionContainer({
         backgroundColor: "gray.100",
         cursor: "pointer",
       }}
-      onClick={onClick}
+      onClick={onClick ? () => onClick(value) : undefined}
       borderRadius={"5px"}
       {...props}
     >

@@ -1,4 +1,4 @@
-import { Checkbox } from "@chakra-ui/react";
+import { Checkbox, Switch } from "@chakra-ui/react";
 
 import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
 import Label from "../label/label";
@@ -23,10 +23,10 @@ export default function CheckboxSingleOption({
   return (
     <PropertyWrapper>
       <Label htmlFor={id}>{label}</Label>
-      <Checkbox
+      <Switch
         id={id}
         name={id}
-        size="sm"
+        size="md"
         isChecked={value}
         onChange={(e) => onChange(e.target.checked)}
         aria-label={label}

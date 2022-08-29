@@ -13,7 +13,7 @@ export default function PropertyGroupWrapper({
   ...props
 }: PropertyGroupWrapperProps) {
   return (
-    <Flex flexDirection={"column"} gap=".5rem" {...props}>
+    <Flex flexDirection={"column"} gap="1rem" {...props}>
       {showGroupTitle && <GroupTitle>{title}</GroupTitle>}
       {children}
     </Flex>
