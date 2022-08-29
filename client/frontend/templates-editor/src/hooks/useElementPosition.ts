@@ -1,11 +1,11 @@
-import { useLayoutEffect, useState } from "react";
+import { useCallback, useLayoutEffect, useState } from "react";
 import { StringOrNumber } from "../countdown-widget/types";
 
 const AUTO = "auto";
 
 type AutoOrNumber = StringOrNumber | "auto";
 
-interface UseElementPosition {
+interface ElementPosition {
   top: AutoOrNumber;
   left: AutoOrNumber;
   right: AutoOrNumber;
@@ -14,27 +14,23 @@ interface UseElementPosition {
 
 export default function useElementPosition(
   ref: React.RefObject<HTMLElement> | undefined | null
-): UseElementPosition {
-  if (!ref) {
-    return { top: AUTO, left: AUTO, right: AUTO, bottom: AUTO };
-  }
-
-  const { top, left, right, bottom } = getPosition(ref.current);
-  const [ElementPosition, setElementPosition] = useState({
-    top: top,
-    left: left,
-    right: right,
-    bottom: bottom,
+): ElementPosition {
+  const [ElementPosition, setElementPosition] = useState<ElementPosition>({
+    top: "auto",
+    left: "auto",
+    right: "auto",
+    bottom: "auto",
   });
 
-  function handleChangePosition() {
+  const handleChangePosition = useCallback(() => {
     if (ref && ref.current) {
       setElementPosition(getPosition(ref.current));
     }
-  }
+  }, [ref]);
 
   useLayoutEffect(() => {
     handleChangePosition();
+
     document.addEventListener("resize", handleChangePosition);
 
     return () => {
@@ -100,19 +96,19 @@ function getPosition(el: HTMLElement | null) {
   const elLeftPos = offset.left - parentOffset.left - marginLeft;
 
   /*
-   *   if the calling element is below 50% of the display window,
+   *   if the calling element is below 75% of the display window,
    *   the element that will use the offset of the calling element to determine its position
    *   should be displayed above the calling element, to avoid scrolling to make the element visible
    */
   const doc = el.ownerDocument;
   const win: Window = doc.defaultView || window;
   const winViewportH = win.innerHeight;
-  if (el.getBoundingClientRect().top > winViewportH * 0.5) {
+  if (el.getBoundingClientRect().top > winViewportH * 0.75) {
     return {
       top: AUTO,
       left: elLeftPos,
       right: AUTO,
-      bottom: 0,
+      bottom: 10,
     };
   }
 
