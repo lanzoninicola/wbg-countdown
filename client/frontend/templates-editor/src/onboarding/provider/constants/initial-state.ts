@@ -1,10 +1,7 @@
 import { OnboardingStateData } from "../types";
 
 const INITIAL_STATE: OnboardingStateData = {
-  productId: "",
-  installationId: "",
-  onboardingStatus: "pending",
-  onboardingResult: null,
+  status: "pending",
   formState: {
     fullname: "",
     email: "",

@@ -3,10 +3,7 @@ import { OnboardingAction } from "./actions";
 export type OnboardingContextData = OnboardingStateData & OnboardingStateSetter;
 
 export interface OnboardingStateData {
-  productId: string;
-  installationId: string;
-  onboardingStatus: "pending" | "completed";
-  onboardingResult: "success" | "failed" | null;
+  status: "pending" | "completed";
   formState: OnboardingFormState;
 }
 

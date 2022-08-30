@@ -1,4 +1,5 @@
 import { Box, Button, Flex, FlexProps } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import useElementPosition from "../../../../../hooks/useElementPosition";

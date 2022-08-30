@@ -8,11 +8,6 @@ export default function useOnboardingFormStateSelector() {
     (ctx) => ctx.formState
   );
 
-  const dispatchFormAction = useContextSelector(
-    OnboardingContext,
-    (ctx) => ctx.dispatchFormAction
-  );
-
   useEffect(() => {
     formState === undefined &&
       console.error(
@@ -22,6 +17,5 @@ export default function useOnboardingFormStateSelector() {
 
   return {
     formState,
-    dispatchFormAction,
   };
 }

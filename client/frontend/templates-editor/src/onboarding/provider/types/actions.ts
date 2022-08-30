@@ -20,11 +20,11 @@ export interface OnboardingFormFailureAction {
 }
 
 export interface OnboardingPreCheckStatusResponseFailedAction {
-  type: "ONBOARDING_PRE_CHECK_STATUS_RESPONSE_FAILED";
+  type: "ONBOARDING_CHECK_STATUS_RESPONSE_IS_REQUIRED";
 }
 
 export interface OnboardingPreCheckStatusResponseSuccessAction {
-  type: "ONBOARDING_PRE_CHECK_STATUS_RESPONSE_SUCCESS";
+  type: "ONBOARDING_CHECK_STATUS_RESPONSE_IS_NOT_REQUIRED";
 }
 
 export type OnboardingAction =

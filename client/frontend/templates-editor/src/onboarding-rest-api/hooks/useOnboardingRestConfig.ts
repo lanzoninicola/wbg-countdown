@@ -13,7 +13,7 @@ export default function useOnboardingRestConfig() {
 
   const shouldOnboardingRequiredConfig: WithEndpointParamsId = {
     method: "GET",
-    endpoint: (id: string) => `${REST_API_URL}/analytics/installations/${id}`,
+    endpoint: (email: string) => `${REST_API_URL}/onboarding?email=${email}`,
     headers,
   };
 

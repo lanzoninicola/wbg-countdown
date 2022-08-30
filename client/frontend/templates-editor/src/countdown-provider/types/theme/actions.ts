@@ -83,6 +83,11 @@ interface ThemeTimerOnChangePadWithZeroAction {
   payload: boolean;
 }
 
+interface ThemeTimerOnChangeLastUnitColorAction {
+  type: "THEME_TIMER_ON_CHANGE_LAST_UNIT_COLOR";
+  payload: string;
+}
+
 /** END UNITS NUMBER ACTIONS */
 
 /** START SEPARATOR ACTIONS */
@@ -190,4 +195,5 @@ export type ThemeStateAction =
   | ThemeTitleOnChangeFontSizeAction
   | ThemeTitleOnChangeFontFamilyAction
   | ThemeTitleOnChangeFontWeightAction
-  | ThemeTitleOnChangeFontColorAction;
+  | ThemeTitleOnChangeFontColorAction
+  | ThemeTimerOnChangeLastUnitColorAction;

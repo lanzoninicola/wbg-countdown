@@ -4,8 +4,6 @@ export interface OnboardingRequestPayload {
   consent_newsletter: boolean;
   consent_privacy: boolean;
   consent_terms: boolean;
-  product_id: number;
-  installation_id: string;
 }
 
 export interface APIResponse<T = unknown> {
@@ -58,7 +56,7 @@ export interface BaseRestApiRequestConfig {
 }
 
 export interface WithEndpointParamsId extends BaseRestApiRequestConfig {
-  endpoint: (installationId: string) => string;
+  endpoint: (email: string) => string;
 }
 
 export interface WithEndpointEmptyParams extends BaseRestApiRequestConfig {

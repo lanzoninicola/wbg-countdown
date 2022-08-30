@@ -102,19 +102,19 @@ export default function UnitNumberPropertiesGroup({
           value={hideHours}
         />
       </PremiumFeature>
-      <PremiumFeature variant="modal">
-        <CheckboxSingleOption
-          id="hide-seconds"
-          label={t("editor.propertiesGroup.unitNumber.visibility.hideSeconds")}
-          onChange={(checked) => {
-            themeDispatcher({
-              type: "THEME_TIMER_ON_CHANGE_VISIBILITY_SECONDS",
-              payload: checked,
-            });
-          }}
-          value={hideSeconds}
-        />
-      </PremiumFeature>
+      {/* <PremiumFeature variant="modal"> 
+      <CheckboxSingleOption
+        id="hide-seconds"
+        label={t("editor.propertiesGroup.unitNumber.visibility.hideSeconds")}
+        onChange={(checked) => {
+          themeDispatcher({
+            type: "THEME_TIMER_ON_CHANGE_VISIBILITY_SECONDS",
+            payload: checked,
+          });
+        }}
+        value={hideSeconds}
+      />
+       </PremiumFeature> */}
       <PremiumFeature variant="modal">
         <CheckboxSingleOption
           id="pad-with-zero"
@@ -126,6 +126,18 @@ export default function UnitNumberPropertiesGroup({
             });
           }}
           value={padWithZero}
+        />
+      </PremiumFeature>
+      <PremiumFeature variant="modal">
+        <FontColor
+          label={t("editor.propertiesGroup.unitNumber.lastUnitColor")}
+          colorSelected={unitNumberFontColor}
+          onColorSelected={(color) => {
+            themeDispatcher({
+              type: "THEME_TIMER_ON_CHANGE_LAST_UNIT_COLOR",
+              payload: color,
+            });
+          }}
         />
       </PremiumFeature>
     </PropertyGroupWrapper>

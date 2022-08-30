@@ -72,6 +72,10 @@ function get_commerce_api_base_url() {
     return 'http://localhost/bb-melhor-envio/wp-json/commerce/v1';
 }
 
+function get_clockdown_public_url() {
+    return 'https://clockdown.lanzoninicola.com.br';
+}
+
 register_activation_hook( __FILE__, array( 'Clockdown\Client\Config\Activator', 'activate' ) );
 register_deactivation_hook( __FILE__, array( 'Clockdown\Client\Config\Deactivator', 'deactivate' ) );
 register_uninstall_hook( __FILE__, array( 'Clockdown\Client\Config\Uninstaller', 'uninstall' ) );

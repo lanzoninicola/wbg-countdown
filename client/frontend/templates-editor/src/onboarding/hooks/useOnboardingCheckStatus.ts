@@ -10,9 +10,9 @@ import useOnboardingContext from "../provider/hooks/useOnboardingContext";
  *
  * @dependencies useOnboardingRestApi() hook
  */
-export default function useOnboardingCheckStatus() {
+export default function useOnboardingCheckStatus(email: string) {
   const isOnboardingRequiredRef = useRef<boolean | null>(null);
-  const { dispatch, installationId, onboardingStatus } = useOnboardingContext();
+  const { dispatch, status } = useOnboardingContext();
   const { shouldOnboardingRequired } = useOnboardingRestApi();
 
   useEffect(() => {
@@ -21,31 +21,30 @@ export default function useOnboardingCheckStatus() {
     }
 
     async function shouldRequired() {
-      const res = await shouldOnboardingRequired(installationId);
+      const res = await shouldOnboardingRequired(email);
 
       if (res.data.status > 400) {
-        dispatch({ type: "ONBOARDING_PRE_CHECK_STATUS_RESPONSE_FAILED" });
+        dispatch({ type: "ONBOARDING_CHECK_STATUS_RESPONSE_IS_REQUIRED" });
         isOnboardingRequiredRef.current = true;
         return;
       }
 
       if (res.data.status === 200) {
-        // TODO: move the following logic to server side
-        if (res.data.payload?.product_installation?.wp_user_id === null) {
+        if (res.data.payload === true) {
           dispatch({
-            type: "ONBOARDING_PRE_CHECK_STATUS_RESPONSE_FAILED",
+            type: "ONBOARDING_CHECK_STATUS_RESPONSE_IS_REQUIRED",
           });
           isOnboardingRequiredRef.current = true;
           return;
         }
 
-        dispatch({ type: "ONBOARDING_PRE_CHECK_STATUS_RESPONSE_SUCCESS" });
+        dispatch({ type: "ONBOARDING_CHECK_STATUS_RESPONSE_IS_NOT_REQUIRED" });
         isOnboardingRequiredRef.current = false;
       }
     }
 
     shouldRequired();
-  }, [installationId]);
+  }, [email]);
 
-  return onboardingStatus;
+  return status;
 }

@@ -24,8 +24,7 @@ export const onboardingReducer = (
     case "ONBOARDING_FORM_SUCCESS_RESPONSE":
       return {
         ...state,
-        onboardingStatus: "completed",
-        onboardingResult: "success",
+        status: "completed",
         formState: {
           ...state.formState,
           isLoading: false,
@@ -34,7 +33,6 @@ export const onboardingReducer = (
     case "ONBOARDING_FORM_FAILURE_RESPONSE":
       return {
         ...state,
-        onboardingResult: "failed",
         formState: {
           ...state.formState,
           isLoading: false,
@@ -43,16 +41,16 @@ export const onboardingReducer = (
         },
       };
 
-    case "ONBOARDING_PRE_CHECK_STATUS_RESPONSE_FAILED":
+    case "ONBOARDING_CHECK_STATUS_RESPONSE_IS_REQUIRED":
       return {
         ...state,
-        onboardingStatus: "pending",
+        status: "pending",
       };
 
-    case "ONBOARDING_PRE_CHECK_STATUS_RESPONSE_SUCCESS":
+    case "ONBOARDING_CHECK_STATUS_RESPONSE_IS_NOT_REQUIRED":
       return {
         ...state,
-        onboardingStatus: "completed",
+        status: "completed",
       };
 
     default:

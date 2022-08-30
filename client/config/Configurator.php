@@ -16,8 +16,11 @@ use Clockdown\Core\ScriptsEnqueuer;
 use Clockdown\Core\ShortcodesLoader;
 use function Clockdown\App\Functions\add_menu;
 use function Clockdown\App\Functions\add_submenu;
+use function Clockdown\get_clockdown_public_url;
+use function Clockdown\get_commerce_api_base_url;
 use function Clockdown\get_plugin_api_base_url;
 use function Clockdown\get_plugin_base_url_path;
+use function Clockdown\get_plugin_id;
 use function Clockdown\get_plugin_text_domain;
 
 class Configurator implements PluginConfigurable {
@@ -146,17 +149,21 @@ class Configurator implements PluginConfigurable {
 
         $script_admin_localizer->localize(
             array(
-                'api_url'    => get_plugin_api_base_url(),
-                'language'   => get_locale(),
-                'product_id' => '1',
+                'api_url'              => get_plugin_api_base_url(),
+                'language'             => get_locale(),
+                'product_id'           => get_plugin_id(),
+                'commerce_api_url'     => get_commerce_api_base_url(),
+                'clockdown_public_url' => get_clockdown_public_url(),
             )
         );
 
         $script_public_localizer->localize(
             array(
-                'api_url'    => get_plugin_api_base_url(),
-                'language'   => get_locale(),
-                'product_id' => '1',
+                'api_url'              => get_plugin_api_base_url(),
+                'language'             => get_locale(),
+                'product_id'           => get_plugin_id(),
+                'commerce_api_url'     => get_commerce_api_base_url(),
+                'clockdown_public_url' => get_clockdown_public_url(),
             )
         );
 

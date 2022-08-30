@@ -1,10 +1,8 @@
-import { useReducer } from "react";
-import { useConfig } from "../../config";
-import getConfig from "../../config/hooks/getConfig";
-
 import INITIAL_STATE from "./constants/initial-state";
 import { OnboardingContext } from "./context/onboarding-context";
+import useReducerLocalStorage from "./hooks/useReducerLocalStorage";
 import { onboardingReducer } from "./reducers/onboarding-reducer";
+import { OnboardingAction, OnboardingStateData } from "./types";
 
 interface OnboardingProviderProps {
   children: React.ReactNode;
@@ -13,13 +11,10 @@ interface OnboardingProviderProps {
 export default function OnboardingProvider({
   children,
 }: OnboardingProviderProps) {
-  const { product_id: productId, installation_id: installationId } =
-    useConfig();
-  const [state, dispatch] = useReducer(onboardingReducer, {
-    ...INITIAL_STATE,
-    installationId,
-    productId,
-  });
+  const [state, dispatch] = useReducerLocalStorage<
+    OnboardingStateData,
+    OnboardingAction
+  >("__CLOCKDOWN_ONBOARDING_STATE__", onboardingReducer, INITIAL_STATE);
 
   return (
     <OnboardingContext.Provider

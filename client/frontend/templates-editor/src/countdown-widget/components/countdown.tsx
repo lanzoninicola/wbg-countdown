@@ -7,8 +7,8 @@ import CountdownWrapper from "./countdown-wrapper/countdown-wrapper";
 import CountdownTitle from "./countdown-title/countdown-title";
 import CountdownUnits from "./countdown-units/countdown-units";
 import TimerSkeleton from "./timer-skeleton/timer-skeleton";
-
-// TODO: add padToZeros settings
+import useThemeTimerSelector from "../../countdown-provider/hooks/theme/useThemeTimerSelector";
+import useThemeTimer from "../../countdown-provider/hooks/theme/useThemeTimer";
 
 const Countdown = () => {
   const {
@@ -18,10 +18,12 @@ const Countdown = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   const { timerExpired } = useAppContext();
+  const { padWithZero } = useThemeTimer("unit-number");
 
   const { days, hours, minutes, seconds } = useCountdown({
     HTMLInputTargetDate,
     HTMLInputTargetTimezone,
+    withZeros: padWithZero,
   });
 
   useLayoutEffect(() => {

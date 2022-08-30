@@ -3,7 +3,7 @@ import timezone from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
 import { useEffect, useRef, useState } from "react";
 
-import useAppContext from "../../countdown-provider/hooks/app/useAppContext";
+import useAppSelector from "../../countdown-provider/hooks/app/useAppSelector";
 import { RemainingTime } from "../types";
 import padWithZeros from "../utils/padWithZeros";
 import {
@@ -16,8 +16,6 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 
 // isExpired days + hours + minutes + seconds <= 0
-
-// TODO: (reducers) need to be refactored
 
 interface UseCountdownProps {
   /** The target date from the (input type="datetime-local") editor*/
@@ -40,7 +38,7 @@ export default function useCountdown({
   withZeros,
 }: UseCountdownProps): RemainingTime {
   const intervalRef = useRef<number>();
-  const { setTimerExpired } = useAppContext();
+  const { appDispatcher } = useAppSelector();
   const [remainingTime, setRemainingTime] = useState(DEFAULT_REMAINING_TIME);
 
   useEffect(() => {
@@ -66,7 +64,10 @@ export default function useCountdown({
     const seconds = diffInSeconds(todayLocalTime(), targetLocalTime());
     if (seconds <= 0) {
       clearInterval(intervalRef.current);
-      setTimerExpired(true);
+      appDispatcher({
+        type: "APP_ON_CHANGE_IS_TIMER_EXPIRED_FLAG",
+        payload: true,
+      });
     }
   }
 

@@ -4,7 +4,6 @@ import React from "react";
 import { useNotifications } from "../../notifications";
 import { useOnboardingRestApi } from "../../onboarding-rest-api";
 import useOnboardingContext from "../provider/hooks/useOnboardingContext";
-import useProductInfo from "../provider/hooks/useProductInfo";
 import { OnboardingFormState } from "../provider/types/context";
 
 export default function useOnboardingModalForm() {
@@ -13,7 +12,6 @@ export default function useOnboardingModalForm() {
     onOpen: onOpenModal,
     onClose: onCloseModal,
   } = useDisclosure();
-  const { productId, installationId } = useProductInfo();
   const { formState, dispatch } = useOnboardingContext();
   const { doOnboarding } = useOnboardingRestApi();
   const { error: errorNotification } = useNotifications();
@@ -47,8 +45,6 @@ export default function useOnboardingModalForm() {
     } = formState;
 
     doOnboarding({
-      product_id: Number(productId),
-      installation_id: installationId,
       fullname,
       email,
       consent_terms,
