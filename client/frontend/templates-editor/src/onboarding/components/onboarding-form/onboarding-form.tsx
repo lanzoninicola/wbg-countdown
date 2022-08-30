@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import useOnboardingModalForm from "../../hooks/useOnboardingModalForm";
 import ConsentGroup from "./consent-group/consent-group";
 
-interface OnboardingFormProps {
+export interface OnboardingFormProps {
   /** Used to focus on an input field */
   initialFocusRef?: React.MutableRefObject<HTMLInputElement>;
 }

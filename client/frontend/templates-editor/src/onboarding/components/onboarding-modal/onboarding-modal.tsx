@@ -17,6 +17,7 @@ import error from "../../assets/images/error.png";
 import steppingUp from "../../assets/images/stepping-up.png";
 import thankyou from "../../assets/images/thank-you.png";
 import useOnboardingModalForm from "../../hooks/useOnboardingModalForm";
+import useOnboardingContext from "../../provider/hooks/useOnboardingContext";
 import FormSubmitButton from "../onboarding-form/form-submit-button/form-submit-button";
 import OnboardingForm from "../onboarding-form/onboarding-form";
 import ModalImage from "./modal-image/modal-image";
@@ -24,8 +25,6 @@ import ModalImage from "./modal-image/modal-image";
 interface OnboardingModalProps {
   /** The button component that will open the modal */
   children?: React.ReactElement;
-  /** Different configuration of the modal */
-  config: "onboardingForm" | "success" | "failed";
   /** Component to render on the modal body. if undefined it renders the form to proceed to onboarding the user */
   body?: React.ReactElement;
 }
@@ -33,21 +32,21 @@ interface OnboardingModalProps {
 /**
  * The onboarding modal is a modal that is used to onboard a user to the site.
  *
- * @param children the button component that will open the modal. The onOpenModal is passed via React.cloneElement()
+ * This modal can wrap any component. When the component is clicked the modal will open.
  */
 export default function OnboardingModal({
   children,
-  config,
   body,
 }: OnboardingModalProps) {
   const { isModalOpen, onOpenModal, onCloseModal } = useOnboardingModalForm();
+  const { status, formState } = useOnboardingContext();
 
   const { t } = useTranslation();
 
   const initialRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
   const configs = {
-    onboardingForm: {
+    idle: {
       title: t("onboarding.title"),
       subtitle: t("onboarding.subtitle"),
       image: steppingUp,
@@ -70,9 +69,31 @@ export default function OnboardingModal({
     },
   };
 
+  function onChildrenClick(e: React.SyntheticEvent) {
+    e.stopPropagation();
+    onOpenModal();
+  }
+
+  function getConfig() {
+    if (formState.isError) {
+      return configs.failed;
+    }
+
+    if (status === "completed") {
+      return configs.success;
+    }
+
+    return configs.idle;
+  }
+
   return (
     <>
-      {children && cloneElement(children, { onClick: onOpenModal })}
+      <div
+        data-role={"modal-children-wrapper"}
+        onClickCapture={onChildrenClick}
+      >
+        {children}
+      </div>
 
       <Modal
         isCentered
@@ -85,25 +106,23 @@ export default function OnboardingModal({
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader className="theme-font">
-            {configs[config].title}
-          </ModalHeader>
+          <ModalHeader className="theme-font">{getConfig().title}</ModalHeader>
           <ModalBody>
             <HStack spacing={8}>
               <Box flex={1}>
-                <ModalImage image={configs[config].image} />
+                <ModalImage image={getConfig().image} />
               </Box>
 
               <VStack spacing={8} alignItems={"flex-start"} flex={1}>
                 <Heeading as="h2" fontSize={"md"}>
-                  {configs[config].subtitle}
+                  {getConfig().subtitle}
                 </Heeading>
-                {body || configs[config].body}
+                {getConfig().body}
               </VStack>
             </HStack>
           </ModalBody>
 
-          <ModalFooter>{configs[config].footer}</ModalFooter>
+          <ModalFooter>{getConfig().footer}</ModalFooter>
         </ModalContent>
       </Modal>
     </>
