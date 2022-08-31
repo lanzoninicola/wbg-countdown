@@ -68,12 +68,12 @@ function get_plugin_api_base_url() {
     return home_url( '/wp-json/clockdown/v1' );
 }
 
-function get_commerce_api_base_url() {
-    return 'http://localhost/bb-melhor-envio/wp-json/commerce/v1';
+function get_plugin_public_website_url() {
+    return 'https://clockdown.lanzoninicola.com.br';
 }
 
-function get_clockdown_public_url() {
-    return 'https://clockdown.lanzoninicola.com.br';
+function get_commerce_api_base_url() {
+    return 'http://localhost/bb-melhor-envio/wp-json/commerce/v1';
 }
 
 register_activation_hook( __FILE__, array( 'Clockdown\Client\Config\Activator', 'activate' ) );

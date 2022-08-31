@@ -12,7 +12,7 @@ import {
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 
-import UpgradePremiumButton from "../common/upgrade-premium-button/upgrade-premium-button";
+import PremiumButton from "../../premium-button/premium-button";
 import UpgradePremiumImage from "../common/upgrade-premium-image/upgrade-premium-image";
 
 interface PremiumFeatureProps {
@@ -67,7 +67,11 @@ export default function UpgradePremiumModal({
           </ModalBody>
 
           <ModalFooter display={"flex"} justifyContent={"center"} pb={8}>
-            <UpgradePremiumButton ref={initialRef} textVariant={ctaVariant} />
+            <PremiumButton
+              ref={initialRef}
+              textVariant={ctaVariant}
+              borderWidth={"inherit"}
+            />
           </ModalFooter>
         </ModalContent>
       </Modal>

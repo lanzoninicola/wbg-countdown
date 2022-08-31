@@ -8,7 +8,7 @@ import FakeWrapper from "./FakeWrapper";
 import "./style/global.css";
 import createDevRoot from "./main.dev";
 import { OnboardingProvider } from "./onboarding";
-import PremiumFeatureProvider from "./premium-features/provider/premium-features-provider";
+import PremiumFeatureProvider from "./premium-features-provider/premium-features-provider";
 
 const env = process.env.NODE_ENV;
 
@@ -32,7 +32,7 @@ const ClockdownApp = () => (
     <OnboardingProvider>
       <PremiumFeatureProvider
         config={{
-          landingPageUrl: "https://clockdown.io/premium-features",
+          landingPageUrl: "https://clockdown.lanzoninicola.com.br",
         }}
       >
         <CountdownProvider>

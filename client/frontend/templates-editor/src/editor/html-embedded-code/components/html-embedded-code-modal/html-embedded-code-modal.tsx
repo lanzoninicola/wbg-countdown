@@ -20,7 +20,7 @@ import useHtmlCode from "../../hooks/useHtmlCode";
 import HtmlEmbeddedCodeForm from "../html-embedded-code-form/html-embedded-code-form";
 import { BiCode } from "@react-icons/all-files/bi/BiCode";
 import { BiCopy } from "@react-icons/all-files/bi/BiCopy";
-import useIsPremiumInstallation from "../../../../premium-features/provider/hooks/useIsPremiumInstallation";
+import useIsPremiumInstallation from "../../../../premium-features/hooks/useIsPremiumInstallation";
 
 export default function HtmlEmbeddedCodeModal() {
   const { t } = useTranslation();

@@ -54,6 +54,10 @@ const esEs = {
           variant2: "Vea las funciones",
           variant3: "Desbloquea todas las funciones",
           variant4: "Aumente sus ventas",
+          popover: {
+            title: "Usuario premium",
+            body: "Convertirse en usuario premium le permitirá personalizar y administrar sus contadores sin ninguna limitación.",
+          },
         },
         modal: {
           title: "Actualizar a premium",

@@ -49,10 +49,14 @@ const enUS = {
         additionalText:
           "This feature is only available in the premium version. Become a premium member to unlock it.",
         upgradeCTA: {
-          variant1: "Upgrade to premium",
+          variant1: "Upgrade to premium now",
           variant2: "Take a look at the features",
           variant3: "Unlock all the features",
           variant4: "Increase your sales",
+          popover: {
+            title: "Premium User",
+            body: "Becoming a premium user will let you customize and manage your countdowns without any limitations.",
+          },
         },
         modal: {
           title: "Exceed your limits",

@@ -1,11 +1,11 @@
 import { Flex, useDisclosure } from "@chakra-ui/react";
 import React from "react";
 
-import useIsPremiumInstallation from "../../provider/hooks/useIsPremiumInstallation";
-import PremiumFeatureIcon from "../common/premium-feature-icon/premium-feature-icon";
-import ShadeOfGray from "../shade-of-gray/shade-of-gray";
-import UpgradePremiumModal from "../upgrade-premium-modal/upgrade-premium-modal";
-import Watermark from "../watermark/watermark";
+import useIsPremiumInstallation from "../hooks/useIsPremiumInstallation";
+import PremiumFeatureIcon from "../components/common/premium-feature-icon/premium-feature-icon";
+import ShadeOfGray from "../components/shade-of-gray/shade-of-gray";
+import UpgradePremiumModal from "../components/upgrade-premium-modal/upgrade-premium-modal";
+import Watermark from "../components/watermark/watermark";
 
 interface PremiumFeatureGuardProps {
   children: React.ReactNode;

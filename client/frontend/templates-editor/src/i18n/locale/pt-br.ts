@@ -54,6 +54,10 @@ const ptBR = {
           variant2: "Veja as funcionalidades",
           variant3: "Desbloqueie todas as funcionalidades",
           variant4: "Aumente suas vendas",
+          popover: {
+            title: "Usuário premium",
+            body: "Conviértese em usuário premium para personalizar e gerenciar seus contadores sem limitações.",
+          },
         },
         modal: {
           title: "Vá além de seus limites",

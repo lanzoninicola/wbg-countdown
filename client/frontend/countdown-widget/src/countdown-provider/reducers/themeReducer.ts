@@ -167,6 +167,16 @@ export default function themeReducer(
         actionDispatched: action.type,
       };
 
+    case "THEME_TIMER_ON_CHANGE_LAST_UNIT_COLOR":
+      return {
+        ...state,
+        timer: {
+          ...state.timer,
+          lastUnitColor: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
     case "THEME_LAYOUT_ON_CHANGE_CONTAINER_SIZE":
       return {
         ...state,

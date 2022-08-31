@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { FiSave } from "@react-icons/all-files/fi/FiSave";
 
-import useIsPremiumInstallation from "../../../premium-features/provider/hooks/useIsPremiumInstallation";
+import useIsPremiumInstallation from "../../../premium-features/hooks/useIsPremiumInstallation";
 
 interface ButtonSaveProps
   extends Omit<ComponentWithAs<"button", ButtonProps>, "aria-label"> {

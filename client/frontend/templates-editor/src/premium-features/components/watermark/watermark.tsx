@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import AnchorBox from "../common/anchor-box/anchor-box";
 import PremiumFeatureCockade from "../common/premium-feature-cockade/premium-feature-cockade";
-import UpgradePremiumButton from "../common/upgrade-premium-button/upgrade-premium-button";
+import PremiumButton from "../../premium-button/premium-button";
 
 interface WatermarkProps {
   customText?: string | React.ReactNode;
@@ -33,7 +33,7 @@ export default function Watermark({ customText }: WatermarkProps) {
           >
             {customText || t("premiumFeatures.additionalText")}
           </Text>
-          <UpgradePremiumButton fontSize={".75rem"} />
+          <PremiumButton fontSize={".75rem"} />
         </VStack>
       </Grid>
     </AnchorBox>

@@ -18,12 +18,12 @@ export const premiumFeatureReducer = (
     case "PREMIUM_FEATURES_CHECK_STATUS_RESPONSE_SUCCESS":
       return {
         ...state,
-        isPremium: true,
+        isPro: action.payload.isPro,
+        isAgency: action.payload.isAgency,
       };
     case "PREMIUM_FEATURES_CHECK_STATUS_RESPONSE_FAILED":
       return {
         ...state,
-        isPremium: false,
       };
 
     default:

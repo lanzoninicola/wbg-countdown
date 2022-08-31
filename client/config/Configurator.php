@@ -16,11 +16,11 @@ use Clockdown\Core\ScriptsEnqueuer;
 use Clockdown\Core\ShortcodesLoader;
 use function Clockdown\App\Functions\add_menu;
 use function Clockdown\App\Functions\add_submenu;
-use function Clockdown\get_clockdown_public_url;
 use function Clockdown\get_commerce_api_base_url;
 use function Clockdown\get_plugin_api_base_url;
 use function Clockdown\get_plugin_base_url_path;
 use function Clockdown\get_plugin_id;
+use function Clockdown\get_plugin_public_website_url;
 use function Clockdown\get_plugin_text_domain;
 
 class Configurator implements PluginConfigurable {
@@ -68,7 +68,7 @@ class Configurator implements PluginConfigurable {
             array(
                 'id'  => 'clockdown-widget-script',
                 'src' => get_plugin_base_url_path() . 'client/frontend/public/clockdown-widget/assets/index.js',
-                'ver' => '1.0.0',
+                'ver' => '0.0.1',
             )
         );
 
@@ -77,7 +77,7 @@ class Configurator implements PluginConfigurable {
             array(
                 'id'   => 'clockdown-widget-style',
                 'href' => get_plugin_base_url_path() . 'client/frontend/public/clockdown-widget/assets/index.css',
-                'ver'  => '1.0.0',
+                'ver'  => '0.0.1',
             )
         );
 
@@ -97,14 +97,14 @@ class Configurator implements PluginConfigurable {
             'templates-editor-style',
             get_plugin_base_url_path() . 'client/frontend/public/templates-editor/assets/index.css',
             array(),
-            '1.0.0'
+            '0.0.1'
         );
 
         $scripts_enqueuer->add_admin_script(
             'templates-editor-script',
             get_plugin_base_url_path() . 'client/frontend/public/templates-editor/assets/index.js',
             array(),
-            '1.0.0',
+            '0.0.1',
             false
         );
 
@@ -153,7 +153,7 @@ class Configurator implements PluginConfigurable {
                 'language'             => get_locale(),
                 'product_id'           => get_plugin_id(),
                 'commerce_api_url'     => get_commerce_api_base_url(),
-                'clockdown_public_url' => get_clockdown_public_url(),
+                'clockdown_public_url' => get_plugin_public_website_url(),
             )
         );
 
@@ -163,7 +163,7 @@ class Configurator implements PluginConfigurable {
                 'language'             => get_locale(),
                 'product_id'           => get_plugin_id(),
                 'commerce_api_url'     => get_commerce_api_base_url(),
-                'clockdown_public_url' => get_clockdown_public_url(),
+                'clockdown_public_url' => get_plugin_public_website_url(),
             )
         );
 

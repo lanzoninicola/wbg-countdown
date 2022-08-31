@@ -53,6 +53,10 @@ const itIT = {
           variant2: "Dai un'occhiata alle funzioni",
           variant3: "Sblocca tutte le funzioni",
           variant4: "Aumenta le tue vendite",
+          popover: {
+            title: "Utente premium",
+            body: "Diventando un utente premium potrai personalizzare e gestire i tuoi timer senza limitazioni.",
+          },
         },
         modal: {
           title: "Supera i tuoi limiti",

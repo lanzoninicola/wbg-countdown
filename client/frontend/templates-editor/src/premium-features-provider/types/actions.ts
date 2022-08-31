@@ -10,6 +10,11 @@ interface PremiumFeaturesCheckStatus {
 
 interface PremiumFeaturesCheckStatusResponseSuccess {
   type: "PREMIUM_FEATURES_CHECK_STATUS_RESPONSE_SUCCESS";
+  /** the premium features status */
+  payload: {
+    isPro: boolean;
+    isAgency: boolean;
+  };
 }
 
 interface PremiumFeaturesCheckStatusResponseFailed {

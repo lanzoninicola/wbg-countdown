@@ -1,12 +1,15 @@
-import { Box, Grid, HStack } from "@chakra-ui/react";
+import { Box, Flex, Grid, HStack } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
 import { ModalNewCountdown } from "../../countdowns/components";
 import { EditorSave } from "../../editor/components";
-import { Languages } from "../../i18n/types";
-import { PremiumFeatureGuard } from "../../premium-features";
-import { LanguagesBar, Logo } from "../common";
 import HtmlEmbeddedCode from "../../editor/html-embedded-code/html-embedded-code";
+import { Languages } from "../../i18n/types";
+import {
+  PremiumButtonWithPopover,
+  PremiumFeatureGuard,
+} from "../../premium-features";
+import { LanguagesBar, Logo } from "../common";
 
 //TODO: detect language from Wordpress
 const lngs: Languages = {
@@ -25,6 +28,7 @@ export default function Header() {
       paddingInline="1rem"
       alignItems={"center"}
       minH="50px"
+      columnGap={"1rem"}
     >
       <Logo />
       <Box>
@@ -49,6 +53,9 @@ export default function Header() {
           </HStack>
         </HStack>
       </Box>
+      <Flex justifySelf={"flex-end"} alignItems={"center"}>
+        <PremiumButtonWithPopover />
+      </Flex>
     </Grid>
   );
 }
