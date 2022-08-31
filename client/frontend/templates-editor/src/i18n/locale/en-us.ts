@@ -206,12 +206,14 @@ const enUS = {
           "Your terms and conditions are acceptable to me.",
         success: {
           title: "Thank you!",
-          subtitle: "You are now registered.",
+          subtitle:
+            "You are now registered. Now you can create your first countdown.",
+          submitButtonLabel: "Continue",
         },
         failed: {
           title: "Oops!",
-          subtitle:
-            "Sorry, something went wrong. Save your changes and we will try again later.",
+          subtitle: "Sorry, something went wrong. Please try again.",
+          submitButtonLabel: "Try again",
         },
       },
     },

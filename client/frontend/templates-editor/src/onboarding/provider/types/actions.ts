@@ -1,9 +1,23 @@
 import { OnboardingFormState } from "./context";
 
+export interface OnboardingPendingAction {
+  type: "ONBOARDING_PENDING";
+  payload: string;
+}
+
+export interface OnboardingShowModalAction {
+  type: "ONBOARDING_SHOW_MODAL";
+}
+
+export interface OnboardingHideModalAction {
+  type: "ONBOARDING_HIDE_MODAL";
+}
 export interface OnboardingFormChangeAction {
   type: "ONBOARDING_FORM_ON_CHANGE";
-  name: keyof OnboardingFormState;
-  value: string | boolean;
+  payload: {
+    name: keyof OnboardingFormState;
+    value: string | boolean;
+  };
 }
 
 export interface OnboardingFormSubmitAction {
@@ -16,7 +30,7 @@ export interface OnboardingFormSuccessAction {
 
 export interface OnboardingFormFailureAction {
   type: "ONBOARDING_FORM_FAILURE_RESPONSE";
-  error: string;
+  payload: string;
 }
 
 export interface OnboardingPreCheckStatusResponseFailedAction {
@@ -27,10 +41,18 @@ export interface OnboardingPreCheckStatusResponseSuccessAction {
   type: "ONBOARDING_CHECK_STATUS_RESPONSE_IS_NOT_REQUIRED";
 }
 
+export interface OnboardingSkipDueError {
+  type: "ONBOARDING_SKIP_DUE_ERROR";
+}
+
 export type OnboardingAction =
+  | OnboardingPendingAction
+  | OnboardingShowModalAction
+  | OnboardingHideModalAction
   | OnboardingFormChangeAction
   | OnboardingFormSubmitAction
   | OnboardingFormSuccessAction
   | OnboardingFormFailureAction
   | OnboardingPreCheckStatusResponseFailedAction
-  | OnboardingPreCheckStatusResponseSuccessAction;
+  | OnboardingPreCheckStatusResponseSuccessAction
+  | OnboardingSkipDueError;

@@ -5,6 +5,8 @@ export type OnboardingContextData = OnboardingStateData & OnboardingStateSetter;
 export interface OnboardingStateData {
   status: "pending" | "completed";
   formState: OnboardingFormState;
+  isModalOpen: boolean;
+  actionDispatched: string;
 }
 
 export interface OnboardingStateSetter {
@@ -19,5 +21,7 @@ export interface OnboardingFormState {
   consent_terms: boolean;
   isError: boolean;
   error: string;
+  failureCount: number;
   isLoading: boolean;
+  isSuccessful: boolean;
 }

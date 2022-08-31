@@ -202,6 +202,16 @@ const itIT = {
           "Ho letto l'informativa sulla privacy. Sono consapevole che avete a cuore la mia privacy e che non condividerete mai i miei dati con nessuno. Questo è il link a:",
         termsAndConditionsConsent:
           "I vostri termini e condizioni sono accettabili per me.",
+        success: {
+          title: "Benvenuto!",
+          subtitle: "Ora puoi creare il tuo primo timer.",
+          submitButtonLabel: "Continua",
+        },
+        failed: {
+          title: "Oops!",
+          subtitle: "Qualcosa é andato storto. Riprova più tardi.",
+          submitButtonLabel: "Riprova",
+        },
       },
     },
   },

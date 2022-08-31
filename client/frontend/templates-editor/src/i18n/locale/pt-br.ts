@@ -203,6 +203,16 @@ const ptBR = {
           "Eu li a política de privacidade. Estou ciente de que você se preocupa com minha privacidade e nunca compartilhará meus dados com ninguém. Este é o link para:",
         termsAndConditionsConsent:
           "Seus termos e condições são aceitáveis para mim.",
+        success: {
+          title: "Obrigado por se cadastrar!",
+          subtitle: "Agora você pode criar seu primeiro contador regressivo.",
+          submitButtonLabel: "Continuar",
+        },
+        failed: {
+          title: "Oops!",
+          subtitle: "Algo deu errado. Por favor, tente novamente.",
+          submitButtonLabel: "Tentar novamente",
+        },
       },
     },
   },

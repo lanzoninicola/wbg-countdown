@@ -7,11 +7,6 @@ import useOnboardingContext from "../provider/hooks/useOnboardingContext";
 import { OnboardingFormState } from "../provider/types/context";
 
 export default function useOnboardingModalForm() {
-  const {
-    isOpen: isModalOpen,
-    onOpen: onOpenModal,
-    onClose: onCloseModal,
-  } = useDisclosure();
   const { formState, dispatch } = useOnboardingContext();
   const { doOnboarding } = useOnboardingRestApi();
   const { error: errorNotification } = useNotifications();
@@ -19,16 +14,21 @@ export default function useOnboardingModalForm() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: "ONBOARDING_FORM_ON_CHANGE",
-      name: e.target.name as keyof OnboardingFormState,
-      value: e.target.value.trim(),
+      payload: {
+        name: e.target.name as keyof OnboardingFormState,
+        value: e.target.value.trim(),
+      },
     });
   };
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: "ONBOARDING_FORM_ON_CHANGE",
-      name: e.target.name as keyof OnboardingFormState,
-      value: e.target.checked,
+
+      payload: {
+        name: e.target.name as keyof OnboardingFormState,
+        value: e.target.checked,
+      },
     });
   };
 
@@ -52,7 +52,12 @@ export default function useOnboardingModalForm() {
       consent_privacy,
     })
       .then((res) => {
-        if (res.data.status > 400) {
+        if (res.data.status >= 400 && formState.failureCount >= 1) {
+          dispatch({ type: "ONBOARDING_SKIP_DUE_ERROR" });
+          return;
+        }
+
+        if (res.data.status >= 400) {
           throw new Error(res.message);
         }
 
@@ -60,10 +65,19 @@ export default function useOnboardingModalForm() {
           dispatch({ type: "ONBOARDING_FORM_SUCCESS_RESPONSE" });
         }
       })
-      .catch((error) => {
-        dispatch({ type: "ONBOARDING_FORM_FAILURE_RESPONSE", error });
+      .catch((err) => {
+        let errorMessage = "ERROR: ";
 
-        errorNotification(error.message);
+        err instanceof Error
+          ? (errorMessage += err.message)
+          : typeof err === "string"
+          ? (errorMessage += err)
+          : (errorMessage += "Something went wrong");
+
+        dispatch({
+          type: "ONBOARDING_FORM_FAILURE_RESPONSE",
+          payload: errorMessage,
+        });
       });
   };
 
@@ -72,8 +86,5 @@ export default function useOnboardingModalForm() {
     handleInputChange,
     handleCheckboxChange,
     handleSubmit,
-    isModalOpen,
-    onOpenModal,
-    onCloseModal,
   };
 }

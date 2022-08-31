@@ -3,22 +3,25 @@ import {
   HStack,
   Modal,
   ModalBody,
+  ModalCloseButton,
   ModalContent,
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  useDisclosure,
   VStack,
 } from "@chakra-ui/react";
 import { cloneElement, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import Heeading from "../../../global/common/layout/heeading/heeading";
+import Teext from "../../../global/common/layout/teext/teext";
 import error from "../../assets/images/error.png";
 import steppingUp from "../../assets/images/stepping-up.png";
 import thankyou from "../../assets/images/thank-you.png";
 import useOnboardingModalForm from "../../hooks/useOnboardingModalForm";
 import useOnboardingContext from "../../provider/hooks/useOnboardingContext";
-import FormSubmitButton from "../onboarding-form/form-submit-button/form-submit-button";
+import OnboardingSubmitButton from "../onboarding-submit-button/onboarding-submit-button";
 import OnboardingForm from "../onboarding-form/onboarding-form";
 import ModalImage from "./modal-image/modal-image";
 
@@ -26,7 +29,7 @@ interface OnboardingModalProps {
   /** The button component that will open the modal */
   children?: React.ReactElement;
   /** Component to render on the modal body. if undefined it renders the form to proceed to onboarding the user */
-  body?: React.ReactElement;
+  customBody?: React.ReactElement;
 }
 
 /**
@@ -36,10 +39,14 @@ interface OnboardingModalProps {
  */
 export default function OnboardingModal({
   children,
-  body,
+  customBody,
 }: OnboardingModalProps) {
-  const { isModalOpen, onOpenModal, onCloseModal } = useOnboardingModalForm();
-  const { status, formState } = useOnboardingContext();
+  const {
+    isOpen: isModalOpen,
+    onOpen: onOpenModal,
+    onClose: onCloseModal,
+  } = useDisclosure();
+  const { status, formState, dispatch } = useOnboardingContext();
 
   const { t } = useTranslation();
 
@@ -51,46 +58,62 @@ export default function OnboardingModal({
       subtitle: t("onboarding.subtitle"),
       image: steppingUp,
       body: <OnboardingForm />,
-      footer: <FormSubmitButton />,
+      footer: <OnboardingSubmitButton />,
     },
     success: {
       title: t("onboarding.success.title"),
       subtitle: t("onboarding.success.subtitle"),
       image: thankyou,
       body: null,
-      footer: null,
+      footer: (
+        <OnboardingSubmitButton
+          label={t("onboarding.success.submitButtonLabel")}
+          onClick={onCloseModal}
+        />
+      ),
     },
     failed: {
       title: t("onboarding.failed.title"),
       subtitle: t("onboarding.failed.subtitle"),
       image: error,
-      body: null,
-      footer: null,
+      body: (
+        <Teext fontSize={"small"} color="red.600">
+          {formState.error}
+        </Teext>
+      ),
+      footer: (
+        <OnboardingSubmitButton
+          label={t("onboarding.failed.submitButtonLabel")}
+        />
+      ),
     },
   };
-
-  function onChildrenClick(e: React.SyntheticEvent) {
-    e.stopPropagation();
-    onOpenModal();
-  }
 
   function getConfig() {
     if (formState.isError) {
       return configs.failed;
     }
 
-    if (status === "completed") {
+    if (formState.isSuccessful) {
       return configs.success;
     }
 
     return configs.idle;
   }
 
+  if (status === "completed") {
+    return children;
+  }
+
   return (
     <>
       <div
         data-role={"modal-children-wrapper"}
-        onClickCapture={onChildrenClick}
+        onClickCapture={(e: React.SyntheticEvent) => {
+          e.stopPropagation();
+          onOpenModal();
+          dispatch({ type: "ONBOARDING_SHOW_MODAL" });
+        }}
       >
         {children}
       </div>
@@ -99,14 +122,18 @@ export default function OnboardingModal({
         isCentered
         initialFocusRef={initialRef}
         isOpen={isModalOpen}
-        onClose={onCloseModal}
-        closeOnOverlayClick={false}
+        onClose={() => {
+          onCloseModal();
+          dispatch({ type: "ONBOARDING_HIDE_MODAL" });
+        }}
+        closeOnOverlayClick={formState.isSuccessful ? true : false}
         blockScrollOnMount={true}
-        size="xl"
+        size="3xl"
       >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader className="theme-font">{getConfig().title}</ModalHeader>
+          {formState.isSuccessful && <ModalCloseButton />}
           <ModalBody>
             <HStack spacing={8}>
               <Box flex={1}>
@@ -114,10 +141,10 @@ export default function OnboardingModal({
               </Box>
 
               <VStack spacing={8} alignItems={"flex-start"} flex={1}>
-                <Heeading as="h2" fontSize={"md"}>
+                <Heeading as="h2" fontSize={"md"} lineHeight={1.3}>
                   {getConfig().subtitle}
                 </Heeading>
-                {getConfig().body}
+                {customBody || getConfig().body}
               </VStack>
             </HStack>
           </ModalBody>

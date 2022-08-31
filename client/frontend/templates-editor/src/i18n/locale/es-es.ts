@@ -210,6 +210,16 @@ const esEs = {
         privacyConsent:
           "He leído la política de privacidad. Soy consciente de que os preocupáis por mi privacidad y de que nunca compartiréis mis datos con nadie. Este es el enlace a:",
         termsAndConditionsConsent: "Sus condiciones son aceptables para mí.",
+        success: {
+          title: "¡Bienvenido!",
+          subtitle: "Ahora puedes crear tu primer contador.",
+          submitButtonLabel: "Continuar",
+        },
+        failed: {
+          title: "Oops!",
+          subtitle: "Algo salió mal. Por favor, inténtalo de nuevo.",
+          submitButtonLabel: "Volver a intentarlo",
+        },
       },
     },
   },

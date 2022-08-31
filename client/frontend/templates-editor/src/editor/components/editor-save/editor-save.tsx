@@ -1,10 +1,5 @@
-import { OnboardingModal } from "../../../onboarding";
 import EditorSaveButton from "./editor-save-button/editor-save-button";
 
 export default function EditorSave() {
-  return (
-    <OnboardingModal>
-      <EditorSaveButton />
-    </OnboardingModal>
-  );
+  return <EditorSaveButton />;
 }

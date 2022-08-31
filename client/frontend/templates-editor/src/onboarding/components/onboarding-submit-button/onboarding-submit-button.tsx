@@ -1,8 +1,18 @@
 import { Button } from "@chakra-ui/react";
 import { t } from "i18next";
-import useOnboardingModalForm from "../../../hooks/useOnboardingModalForm";
+import useOnboardingModalForm from "../../hooks/useOnboardingModalForm";
 
-export default function FormSubmitButton() {
+interface OnboardingSubmitButton {
+  /** The button label */
+  label?: string;
+  /** The onClick event */
+  onClick?: () => void;
+}
+
+export default function OnboardingSubmitButton({
+  label,
+  onClick,
+}: OnboardingSubmitButton) {
   const { formState, handleSubmit } = useOnboardingModalForm();
   const { fullname, email, consent_terms, consent_privacy } = formState;
 
@@ -19,10 +29,10 @@ export default function FormSubmitButton() {
       className="theme-font"
       colorScheme="blue"
       size={"sm"}
-      onClick={handleSubmit}
+      onClick={onClick || handleSubmit}
       data-test="onboarding-form-submit"
     >
-      {t("onboarding.buttonLabel").capitalize()}
+      {label || t("onboarding.buttonLabel").capitalize()}
     </Button>
   );
 }
