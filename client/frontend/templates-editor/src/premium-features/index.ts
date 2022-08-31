@@ -1,4 +1,4 @@
-import PremiumFeature from "./components/premium-feature/premium-feature";
+import PremiumFeatureGuard from "./components/premium-feature-guard/premium-feature-guard";
 import PremiumFeaturesProvider from "./provider/premium-features-provider";
 
-export { PremiumFeature, PremiumFeaturesProvider };
+export { PremiumFeatureGuard, PremiumFeaturesProvider };

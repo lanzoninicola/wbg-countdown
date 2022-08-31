@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 import useThemeTimerSelector from "../../../../countdown-provider/hooks/theme/useThemeTimerSelector";
-import { PremiumFeature } from "../../../../premium-features";
+import { PremiumFeatureGuard } from "../../../../premium-features";
 import PropertyGroupWrapper from "../../components/layout/property-group-wrapper/property-group-wrapper";
 import CheckboxSingleOption from "../../components/primitives/checkbox-single-option/checkbox-single-option";
 import SeparatorChar from "./separator-char/separator-char";
@@ -25,7 +25,7 @@ export default function SeparatorPropertiesGroup({
       title={t("editor.propertiesGroup.separator.groupTitle")}
       {...props}
     >
-      <PremiumFeature variant="modal">
+      <PremiumFeatureGuard variant="modal">
         <CheckboxSingleOption
           id="show-separator-checker"
           label={t("editor.propertiesGroup.separator.showSeparatorLabel")}
@@ -37,8 +37,8 @@ export default function SeparatorPropertiesGroup({
           }}
           value={showSeparator}
         />
-      </PremiumFeature>
-      <PremiumFeature variant="modal">
+      </PremiumFeatureGuard>
+      <PremiumFeatureGuard variant="modal">
         <SeparatorChar
           showSeparator={showSeparator}
           separatorChar={separatorChar}
@@ -49,7 +49,7 @@ export default function SeparatorPropertiesGroup({
             });
           }}
         />
-      </PremiumFeature>
+      </PremiumFeatureGuard>
     </PropertyGroupWrapper>
   );
 }

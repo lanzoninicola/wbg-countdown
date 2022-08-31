@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 import useThemeTimerSelector from "../../../../countdown-provider/hooks/theme/useThemeTimerSelector";
-import { PremiumFeature } from "../../../../premium-features";
+import { PremiumFeatureGuard } from "../../../../premium-features";
 import FontColor from "../../components/common/font-color/font-color";
 import FontFamily from "../../components/common/font-family/font-family";
 import FontSize from "../../components/common/font-size/font-size";
@@ -76,7 +76,7 @@ export default function UnitNumberPropertiesGroup({
           });
         }}
       />
-      <PremiumFeature variant="modal">
+      <PremiumFeatureGuard variant="modal">
         <CheckboxSingleOption
           id="hide-days"
           label={t("editor.propertiesGroup.unitNumber.visibility.hideDays")}
@@ -88,8 +88,8 @@ export default function UnitNumberPropertiesGroup({
           }}
           value={hideDays}
         />
-      </PremiumFeature>
-      <PremiumFeature variant="modal">
+      </PremiumFeatureGuard>
+      <PremiumFeatureGuard variant="modal">
         <CheckboxSingleOption
           id="hide-hours"
           label={t("editor.propertiesGroup.unitNumber.visibility.hideHours")}
@@ -101,8 +101,8 @@ export default function UnitNumberPropertiesGroup({
           }}
           value={hideHours}
         />
-      </PremiumFeature>
-      {/* <PremiumFeature variant="modal"> 
+      </PremiumFeatureGuard>
+      {/* <PremiumFeatureGuard variant="modal"> 
       <CheckboxSingleOption
         id="hide-seconds"
         label={t("editor.propertiesGroup.unitNumber.visibility.hideSeconds")}
@@ -114,8 +114,8 @@ export default function UnitNumberPropertiesGroup({
         }}
         value={hideSeconds}
       />
-       </PremiumFeature> */}
-      <PremiumFeature variant="modal">
+       </PremiumFeatureGuard> */}
+      <PremiumFeatureGuard variant="modal">
         <CheckboxSingleOption
           id="pad-with-zero"
           label={t("editor.propertiesGroup.unitNumber.padWithZero")}
@@ -127,8 +127,8 @@ export default function UnitNumberPropertiesGroup({
           }}
           value={padWithZero}
         />
-      </PremiumFeature>
-      <PremiumFeature variant="modal">
+      </PremiumFeatureGuard>
+      <PremiumFeatureGuard variant="modal">
         <FontColor
           label={t("editor.propertiesGroup.unitNumber.lastUnitColor")}
           colorSelected={unitNumberFontColor}
@@ -139,7 +139,7 @@ export default function UnitNumberPropertiesGroup({
             });
           }}
         />
-      </PremiumFeature>
+      </PremiumFeatureGuard>
     </PropertyGroupWrapper>
   );
 }

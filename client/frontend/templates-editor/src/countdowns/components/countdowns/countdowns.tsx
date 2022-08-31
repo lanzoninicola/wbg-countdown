@@ -2,7 +2,7 @@ import { Flex, Heading, VStack } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
 import useCountdownsList from "../../../countdown-rest-api/hooks/useCountdownsList";
-import { PremiumFeature } from "../../../premium-features";
+import { PremiumFeatureGuard } from "../../../premium-features";
 import CountdownsTable from "../../countdowns-table/countdown-table";
 import ModalFirstCountdown from "../modal-first-countdown/modal-first-countdown";
 import Pagination from "../pagination/pagination";
@@ -24,7 +24,7 @@ export default function Countdowns() {
       ) : (
         <>
           {countdowns && countdowns.length > 0 ? (
-            <PremiumFeature
+            <PremiumFeatureGuard
               customText={t("premiumFeatures.modal.body.newCountdown", {
                 maxCountdowns: "1",
               })}
@@ -34,7 +34,7 @@ export default function Countdowns() {
                   <CountdownsTable />
                 </Pagination>
               </VStack>
-            </PremiumFeature>
+            </PremiumFeatureGuard>
           ) : (
             <ModalFirstCountdown />
           )}

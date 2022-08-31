@@ -1,14 +1,13 @@
 import { Flex, useDisclosure } from "@chakra-ui/react";
 import React from "react";
-import useIsPremiumInstallation from "../../provider/hooks/useIsPremiumInstallation";
 
-import usePremiumFeaturesContext from "../../provider/hooks/usePremiumFeaturesContext";
+import useIsPremiumInstallation from "../../provider/hooks/useIsPremiumInstallation";
 import PremiumFeatureIcon from "../common/premium-feature-icon/premium-feature-icon";
 import ShadeOfGray from "../shade-of-gray/shade-of-gray";
 import UpgradePremiumModal from "../upgrade-premium-modal/upgrade-premium-modal";
 import Watermark from "../watermark/watermark";
 
-interface PremiumFeatureProps {
+interface PremiumFeatureGuardProps {
   children: React.ReactNode;
   flexDirection?: "column" | "row";
   hide?: boolean;
@@ -27,14 +26,14 @@ interface PremiumFeatureProps {
  * @param {string | React.ReactNode} customText - Add a custom text to the modal body if variant is "modal"
  * @returns
  */
-export default function PremiumFeature({
+export default function PremiumFeatureGuard({
   children,
   flexDirection = "row",
   hide = false,
   variant = "watermark",
   ctaVariant = 1,
   customText,
-}: PremiumFeatureProps) {
+}: PremiumFeatureGuardProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isPremium = useIsPremiumInstallation();
 

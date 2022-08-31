@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 import useThemeLayoutSelector from "../../../../countdown-provider/hooks/theme/useThemeLayoutSelector";
-import { PremiumFeature } from "../../../../premium-features";
+import { PremiumFeatureGuard } from "../../../../premium-features";
 import BackgroundColor from "../../components/common/background-color/background-color";
 import PropertyGroupWrapper from "../../components/layout/property-group-wrapper/property-group-wrapper";
 import CheckboxSingleOption from "../../components/primitives/checkbox-single-option/checkbox-single-option";
@@ -59,7 +59,7 @@ export default function LayoutPropertiesGroup({
         }}
         value={transparentBackground}
       />
-      <PremiumFeature variant="modal">
+      <PremiumFeatureGuard variant="modal">
         <BackgroundColor
           colorSelected={backgroundColor}
           onColorSelected={(color) => {
@@ -70,7 +70,7 @@ export default function LayoutPropertiesGroup({
           }}
           label={t("editor.propertiesGroup.layout.backgroundColorProp")}
         />
-      </PremiumFeature>
+      </PremiumFeatureGuard>
     </PropertyGroupWrapper>
   );
 }

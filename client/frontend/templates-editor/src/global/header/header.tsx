@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { ModalNewCountdown } from "../../countdowns/components";
 import { EditorSave } from "../../editor/components";
 import { Languages } from "../../i18n/types";
-import { PremiumFeature } from "../../premium-features";
+import { PremiumFeatureGuard } from "../../premium-features";
 import { LanguagesBar, Logo } from "../common";
 import HtmlEmbeddedCode from "../../editor/html-embedded-code/html-embedded-code";
 
@@ -31,7 +31,7 @@ export default function Header() {
         <HStack justifyContent={"space-between"}>
           <HStack>
             <LanguagesBar languages={lngs} />
-            <PremiumFeature
+            <PremiumFeatureGuard
               variant="modal"
               customText={t("premiumFeatures.modal.body.newCountdown", {
                 maxCountdowns: "one",
@@ -39,13 +39,13 @@ export default function Header() {
               ctaVariant={4}
             >
               <ModalNewCountdown />
-            </PremiumFeature>
+            </PremiumFeatureGuard>
           </HStack>
           <HStack spacing={4}>
             <HtmlEmbeddedCode />
-            <PremiumFeature variant="modal">
+            <PremiumFeatureGuard variant="modal">
               <EditorSave />
-            </PremiumFeature>
+            </PremiumFeatureGuard>
           </HStack>
         </HStack>
       </Box>
