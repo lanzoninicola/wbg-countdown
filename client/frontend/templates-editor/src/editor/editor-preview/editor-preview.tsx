@@ -2,53 +2,38 @@ import { Box, VStack } from "@chakra-ui/react";
 
 import useAppSelector from "../../countdown-provider/hooks/app/useAppSelector";
 import CountdownWidget from "../../countdown-widget/countdown-widget";
-import pattern from "./assets/imgs/tiny-checkers.png";
-import BreakpointInfoMessage from "./components/breakpoint-info-message/breakpoint-info-message";
-import BreakpointsBar from "./components/breakpoints-bar/breakpoints-bar";
+import HtmlEmbeddedCode from "../html-embedded-code/html-embedded-code";
+import BoxRadiusLg from "../layout/box-radius-lg/box-radius-lg";
+import LaptopVector from "./components/laptop-vector/laptop-vector";
+import MobileVector from "./components/mobile-vector/mobile-vector";
 import Preview from "./components/preview/preview";
+import TabletVector from "./components/tablet-vector/tablet-vector";
 
 export default function EditorPreview() {
-  const { currentToken, appDispatcher } = useAppSelector();
+  const { currentToken } = useAppSelector();
 
   return (
-    <>
-      <Box
-        bgImage={`url(${pattern})`}
-        bgSize={"20px 20px"}
-        bgColor={"gray.50"}
-        p="5rem"
-        borderRadius={"xl"}
-        boxShadow={"sm"}
-        position="relative"
-      >
-        <Preview currentToken={currentToken}>
-          <CountdownWidget />
-        </Preview>
-      </Box>
+    <VStack position="relative" w={"100%"} data-element="editor-preview">
+      <Preview currentToken={currentToken}>
+        {currentToken === "lg" && <LaptopVector />}
+        {currentToken === "md" && <TabletVector />}
+        {currentToken === "sm" && <MobileVector />}
 
-      <VStack spacing={2}>
-        <BreakpointInfoMessage />
-        <BreakpointsBar
-          onClickDesktop={() => {
-            appDispatcher({
-              type: "APP_EDITOR_ON_CHANGE_TOKEN_LAYOUT_RESPONSIVE",
-              payload: "lg",
-            });
-          }}
-          onClickMobile={() => {
-            appDispatcher({
-              type: "APP_EDITOR_ON_CHANGE_TOKEN_LAYOUT_RESPONSIVE",
-              payload: "sm",
-            });
-          }}
-          onClickTablet={() => {
-            appDispatcher({
-              type: "APP_EDITOR_ON_CHANGE_TOKEN_LAYOUT_RESPONSIVE",
-              payload: "md",
-            });
-          }}
-        />
-      </VStack>
-    </>
+        <Box
+          zIndex={1}
+          mt={
+            currentToken === "lg"
+              ? "10rem"
+              : currentToken === "md"
+              ? "15rem"
+              : "10rem"
+          }
+        >
+          <CountdownWidget />
+        </Box>
+      </Preview>
+
+      <HtmlEmbeddedCode />
+    </VStack>
   );
 }

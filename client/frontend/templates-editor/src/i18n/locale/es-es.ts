@@ -40,6 +40,7 @@ const esEs = {
         edit: "Editar",
         htmlEmbeddedCode: {
           buttonLabel: "Generar contador",
+          hideCode: "Ocultar código",
           modalTitle: "HTML code",
           modalDescription:
             "Inserte el contador en su sitio web. Pulse el botón de abajo para copiar el código.",

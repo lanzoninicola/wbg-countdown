@@ -40,6 +40,7 @@ const ptBR = {
         edit: "Editar",
         htmlEmbeddedCode: {
           buttonLabel: "Gerar contador",
+          hideCode: "Ocultar código",
           modalTitle: "HTML code",
           modalDescription:
             "Incorpore o contador regressivo em seu site. Pressione o botão abaixo para copiar o código.",

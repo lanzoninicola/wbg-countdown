@@ -18,13 +18,13 @@ export default function PreviewWrapper({
 
   return (
     <Flex
+      data-element="preview-wrapper"
       justifyContent={"center"}
-      border={"1px solid black"}
-      borderColor="gray.300"
-      borderStyle={"dotted"}
-      w={DEFAULT_BREAKPOINTS[currentToken]}
+      height={"100%"}
+      // w={DEFAULT_BREAKPOINTS[currentToken]}
       overflowX={"auto"}
       css={scrollbar}
+      position="relative"
       {...props}
     >
       {children}

@@ -46,8 +46,7 @@ export default function Header() {
             </PremiumFeatureGuard>
           </HStack>
           <HStack spacing={4}>
-            <HtmlEmbeddedCode />
-            <PremiumFeatureGuard variant="modal">
+            <PremiumFeatureGuard hide>
               <EditorSave />
             </PremiumFeatureGuard>
           </HStack>

@@ -13,7 +13,7 @@ export default function PropertiesBar({
   onItemSelected,
 }: PropertyBarProps) {
   return (
-    <VStack position="absolute" top={5} left={5} spacing={4} zIndex={1}>
+    <>
       {items.map((item, index) => {
         return (
           <PropertyButton
@@ -25,6 +25,6 @@ export default function PropertiesBar({
           />
         );
       })}
-    </VStack>
+    </>
   );
 }

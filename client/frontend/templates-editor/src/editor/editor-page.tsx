@@ -13,5 +13,5 @@ export default function EditorPage() {
     });
   }, []);
 
-  return <Editor currentCountdown={currentCountdown} />;
+  return <Editor />;
 }

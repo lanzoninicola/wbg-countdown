@@ -39,6 +39,7 @@ const itIT = {
         edit: "Modifica",
         htmlEmbeddedCode: {
           buttonLabel: "Crea timer",
+          hideCode: "Nascondi codice",
           modalTitle: "HTML code",
           modalDescription:
             "Incorpora il timer nel tuo sito web. Premi il pulsante qui sotto per copiare il codice.",

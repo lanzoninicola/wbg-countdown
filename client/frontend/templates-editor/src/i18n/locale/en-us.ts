@@ -39,6 +39,7 @@ const enUS = {
         edit: "Edit",
         htmlEmbeddedCode: {
           buttonLabel: "Generate countdown",
+          hideCode: "Hide code",
           modalTitle: "HTML code",
           modalDescription:
             "Embed the countdown in your website. Press the button below to copy the code.",

@@ -1,4 +1,4 @@
-import { VStack } from "@chakra-ui/react";
+import { Grid, VStack } from "@chakra-ui/react";
 
 interface CenterContentProps {
   children: React.ReactNode;
@@ -9,13 +9,16 @@ export default function CenterContent({
   ...props
 }: CenterContentProps) {
   return (
-    <VStack
-      id="center-content"
-      justifyContent={"space-around"}
+    <Grid
+      gridTemplateRows={"auto 1fr"}
+      justifyItems="center"
+      rowGap={8}
+      data-element="center-content"
       bg="gray.50"
+      maxH={"100vh"}
       {...props}
     >
       {children}
-    </VStack>
+    </Grid>
   );
 }
