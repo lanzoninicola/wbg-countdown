@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import useIsPremiumInstallation from "../../../../premium-features/hooks/useIsPremiumInstallation";
-import BoxRadiusLg from "../../../layout/box-radius-lg/box-radius-lg";
 import useHtmlCode from "../../hooks/useHtmlCode";
 import HtmlEmbeddedCodeForm from "../html-embedded-code-form/html-embedded-code-form";
 
