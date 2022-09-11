@@ -102,7 +102,7 @@ export default function OnboardingModal({
   }
 
   if (status === "completed") {
-    return children;
+    return <>{children}</>;
   }
 
   return (
