@@ -1,6 +1,6 @@
 import { Input, ThemingProps } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import useSettingsSelector from "../../../../countdown-provider/hooks/settings/useSettingsSelector";
+import useSettingsSelector from "../../../../countdown-state-management/hooks/settings/useSettingsSelector";
 
 import PropertyWrapper from "../../components/layout/property-wrapper/property-wrapper";
 import Label from "../../components/primitives/label/label";

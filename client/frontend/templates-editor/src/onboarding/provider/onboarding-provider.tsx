@@ -6,15 +6,23 @@ import { OnboardingAction, OnboardingStateData } from "./types";
 
 interface OnboardingProviderProps {
   children: React.ReactNode;
+  config: {
+    productPublicWebsiteURL: string;
+    commercerApiURL: string;
+  };
 }
 
 export default function OnboardingProvider({
   children,
+  config,
 }: OnboardingProviderProps) {
   const [state, dispatch] = useReducerLocalStorage<
     OnboardingStateData,
     OnboardingAction
-  >("__CLOCKDOWN_ONBOARDING_STATE__", onboardingReducer, INITIAL_STATE);
+  >("__CLOCKDOWN_ONBOARDING_STATE__", onboardingReducer, {
+    ...INITIAL_STATE,
+    ...config,
+  });
 
   return (
     <OnboardingContext.Provider

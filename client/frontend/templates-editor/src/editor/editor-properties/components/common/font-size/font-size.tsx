@@ -1,11 +1,11 @@
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-import useAppContext from "../../../../../countdown-provider/hooks/app/useAppContext";
+import useAppContext from "../../../../../countdown-state-management/hooks/app/useAppContext";
 import {
   ChakraToken,
   ResponsiveValue,
-} from "../../../../../countdown-provider/types/theme/responsive";
+} from "../../../../../countdown-state-management/types/theme/responsive";
 import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
 import Label from "../../primitives/label/label";
 import SliderMarkTemplate from "../../primitives/slider-mark-template/slider-mark-template";

@@ -21,7 +21,7 @@ export default function PremiumFeatureProvider({
   useEffect(() => {
     dispatch({
       type: "PREMIUM_FEATURES_INIT_LANDING_PAGE",
-      payload: config.landingPageUrl,
+      payload: config.productPublicWebsiteURL,
     });
   }, [config]);
 

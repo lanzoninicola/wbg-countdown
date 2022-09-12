@@ -6,10 +6,10 @@ import {
   RenderResult,
 } from "@testing-library/react";
 import React from "react";
-import CountdownProvider from "../../countdown-provider/countdown-provider";
+import EditorProvider from "../../countdown-state-management/providers/editor-provider/editor-provider";
 
 const Wrapper = ({ children }: { children: React.ReactElement }) => {
-  return <CountdownProvider>{children}</CountdownProvider>;
+  return <EditorProvider>{children}</EditorProvider>;
 };
 
 function render<

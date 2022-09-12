@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import useAppSelector from "../countdown-provider/hooks/app/useAppSelector";
+import useAppSelector from "../countdown-state-management/hooks/app/useAppSelector";
 import Editor from "./components/editor/editor";
 
 export default function EditorPage() {

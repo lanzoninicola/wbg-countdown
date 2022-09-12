@@ -1,6 +1,6 @@
 import { Text } from "@chakra-ui/react";
 
-import useAppContext from "../../../../../../countdown-provider/hooks/app/useAppContext";
+import useAppContext from "../../../../../../countdown-state-management/hooks/app/useAppContext";
 
 interface FontSizePreviewProps {
   size?: number;

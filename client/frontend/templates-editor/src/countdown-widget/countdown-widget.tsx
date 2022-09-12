@@ -1,10 +1,11 @@
-import useThemeLayout from "../countdown-provider/hooks/theme/useThemeLayout";
-import useThemeTimerSelector from "../countdown-provider/hooks/theme/useThemeTimerSelector";
-import useThemeTitleSelector from "../countdown-provider/hooks/theme/useThemeTitleSelector";
+import useThemeLayout from "../countdown-state-management/hooks/theme/useThemeLayout";
+import useThemeTimerSelector from "../countdown-state-management/hooks/theme/useThemeTimerSelector";
+import useThemeTitleSelector from "../countdown-state-management/hooks/theme/useThemeTitleSelector";
 import { GoogleFontsLinkTag } from "../countdown-widget-typography/countdown-widget-typography";
 import CountdownContainer from "./components/countdown-container/countdown-container";
 import Countdown from "./components/countdown";
 import "./countdown-widget.css";
+import useAppContext from "../countdown-state-management/hooks/app/useAppContext";
 
 export default function CountdownWidget() {
   const {
@@ -16,26 +17,34 @@ export default function CountdownWidget() {
   const { fontFamily: titleFontFamily, fontWeight: titleFontWeight } =
     useThemeTitleSelector();
   const { fitOnScreen } = useThemeLayout();
+  const { productPublicWebsiteURL } = useAppContext();
 
   const editorStyle = {
     width: fitOnScreen ? "100%" : "max-content",
   };
 
+  console.log(productPublicWebsiteURL);
+
   return (
-    <div data-role="countdown-widget" style={editorStyle}>
-      <GoogleFontsLinkTag
-        googleFonts={[
-          {
-            fontFamily: unitNumberFontFamily,
-            fontWeight: unitNumberFontWeight,
-          },
-          { fontFamily: unitLabelFontFamily, fontWeight: unitLabelFontWeight },
-          { fontFamily: titleFontFamily, fontWeight: titleFontWeight },
-        ]}
-      />
-      <CountdownContainer>
-        <Countdown />
-      </CountdownContainer>
-    </div>
+    <a href={productPublicWebsiteURL}>
+      <div data-role="countdown-widget" style={editorStyle}>
+        <GoogleFontsLinkTag
+          googleFonts={[
+            {
+              fontFamily: unitNumberFontFamily,
+              fontWeight: unitNumberFontWeight,
+            },
+            {
+              fontFamily: unitLabelFontFamily,
+              fontWeight: unitLabelFontWeight,
+            },
+            { fontFamily: titleFontFamily, fontWeight: titleFontWeight },
+          ]}
+        />
+        <CountdownContainer>
+          <Countdown />
+        </CountdownContainer>
+      </div>
+    </a>
   );
 }

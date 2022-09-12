@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import useThemeLayoutSelector from "../../../../../countdown-provider/hooks/theme/useThemeLayoutSelector";
+import useThemeLayoutSelector from "../../../../../countdown-state-management/hooks/theme/useThemeLayoutSelector";
 
 import PropertyWrapper from "../../../components/layout/property-wrapper/property-wrapper";
 import Label from "../../../components/primitives/label/label";

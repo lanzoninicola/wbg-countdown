@@ -2,7 +2,7 @@ import { FaLaptop } from "@react-icons/all-files/fa/FaLaptop";
 import { FaMobileAlt } from "@react-icons/all-files/fa/FaMobileAlt";
 import { FaTabletAlt } from "@react-icons/all-files/fa/FaTabletAlt";
 import { useTranslation } from "react-i18next";
-import useAppSelector from "../../../../countdown-provider/hooks/app/useAppSelector";
+import useAppSelector from "../../../../countdown-state-management/hooks/app/useAppSelector";
 import PropertyButton from "../../../editor-properties/editor-properties-bar/components/property-button/property-button";
 
 import BoxRadiusLg from "../../../layout/box-radius-lg/box-radius-lg";

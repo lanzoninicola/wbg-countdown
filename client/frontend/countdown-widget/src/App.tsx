@@ -1,4 +1,4 @@
-import CountdownWidget from "../src/countdown-widget/countdown-widget";
+import CountdownWidget from "./countdown-widget/countdown-widget";
 
 function App() {
   return <CountdownWidget />;

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
-import useElementSize from "../../../countdown-provider/utils/useElementSize";
-import useThemeLayoutSelector from "../../../countdown-provider/hooks/theme/useThemeLayoutSelector";
+import useThemeLayoutSelector from "../../../countdown-state-management/hooks/theme/useThemeLayoutSelector";
+import useElementSize from "../../../countdown-state-management/utils/useElementSize";
 
 interface CountdownContainerProps {
   children: React.ReactNode;

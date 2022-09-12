@@ -3,12 +3,12 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { ChakraProvider } from "@chakra-ui/react";
 import { theme } from "./chackra-ui/theme/theme";
-import CountdownProvider from "./countdown-provider/countdown-provider";
 import FakeWrapper from "./FakeWrapper";
 import "./style/global.css";
 import createDevRoot from "./main.dev";
 import { OnboardingProvider } from "./onboarding";
 import PremiumFeatureProvider from "./premium-features-provider/premium-features-provider";
+import { EditorProvider } from "./countdown-state-management/providers";
 
 const env = process.env.NODE_ENV;
 
@@ -29,15 +29,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const ClockdownApp = () => (
   <ChakraProvider theme={theme}>
-    <OnboardingProvider>
+    <OnboardingProvider
+      config={{
+        productPublicWebsiteURL: "https://clockdown.lanzoninicola.com.br",
+        commercerApiURL:
+          "https://commerce.lanzoninicola.com.br/wp-json/commerce/v1",
+      }}
+    >
       <PremiumFeatureProvider
         config={{
-          landingPageUrl: "https://clockdown.lanzoninicola.com.br",
+          productPublicWebsiteURL: "https://clockdown.lanzoninicola.com.br",
         }}
       >
-        <CountdownProvider>
+        <EditorProvider
+          config={{
+            productPublicWebsiteURL: "https://clockdown.lanzoninicola.com.br",
+          }}
+        >
           <App />
-        </CountdownProvider>
+        </EditorProvider>
       </PremiumFeatureProvider>
     </OnboardingProvider>
   </ChakraProvider>

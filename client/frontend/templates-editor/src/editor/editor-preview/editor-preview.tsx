@@ -1,6 +1,6 @@
-import { Box, VStack } from "@chakra-ui/react";
+import { Box, Flex, VStack } from "@chakra-ui/react";
 
-import useAppSelector from "../../countdown-provider/hooks/app/useAppSelector";
+import useAppSelector from "../../countdown-state-management/hooks/app/useAppSelector";
 import CountdownWidget from "../../countdown-widget/countdown-widget";
 import HtmlEmbeddedCode from "../html-embedded-code/html-embedded-code";
 import BoxRadiusLg from "../layout/box-radius-lg/box-radius-lg";
@@ -8,6 +8,7 @@ import LaptopVector from "./components/laptop-vector/laptop-vector";
 import MobileVector from "./components/mobile-vector/mobile-vector";
 import Preview from "./components/preview/preview";
 import TabletVector from "./components/tablet-vector/tablet-vector";
+import DEFAULT_BREAKPOINTS from "./constants/default-breakpoints";
 
 export default function EditorPreview() {
   const { currentToken } = useAppSelector();
@@ -19,8 +20,8 @@ export default function EditorPreview() {
         {currentToken === "md" && <TabletVector />}
         {currentToken === "sm" && <MobileVector />}
 
-        <Box
-          zIndex={1}
+        <Flex
+          zIndex={10}
           mt={
             currentToken === "lg"
               ? "10rem"
@@ -28,9 +29,11 @@ export default function EditorPreview() {
               ? "15rem"
               : "10rem"
           }
+          width={DEFAULT_BREAKPOINTS[currentToken]}
+          justifyContent="center"
         >
           <CountdownWidget />
-        </Box>
+        </Flex>
       </Preview>
 
       <HtmlEmbeddedCode />

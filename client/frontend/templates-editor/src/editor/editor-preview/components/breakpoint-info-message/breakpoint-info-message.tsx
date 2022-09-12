@@ -1,7 +1,7 @@
 import { Text } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import useAppContext from "../../../../countdown-provider/hooks/app/useAppContext";
+import useAppContext from "../../../../countdown-state-management/hooks/app/useAppContext";
 import BoxRadiusLg from "../../../layout/box-radius-lg/box-radius-lg";
 
 export default function BreakpointInfoMessage() {

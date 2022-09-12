@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import useThemeTimerSelector from "../../../../countdown-provider/hooks/theme/useThemeTimerSelector";
+import useThemeTimerSelector from "../../../../countdown-state-management/hooks/theme/useThemeTimerSelector";
 import { PremiumFeatureGuard } from "../../../../premium-features";
 import PropertyGroupWrapper from "../../components/layout/property-group-wrapper/property-group-wrapper";
 import CheckboxSingleOption from "../../components/primitives/checkbox-single-option/checkbox-single-option";

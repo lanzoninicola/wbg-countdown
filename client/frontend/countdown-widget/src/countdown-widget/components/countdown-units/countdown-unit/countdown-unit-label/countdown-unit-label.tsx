@@ -1,7 +1,7 @@
 import "./countdown-unit-label.css";
 
-import useAppContext from "../../../../../countdown-provider/hooks/app/useAppContext";
-import { ThemeUnitLabelContextData } from "../../../../../countdown-provider/types/theme/timer";
+import useAppContext from "../../../../../countdown-state-management/hooks/app/useAppContext";
+import { ThemeUnitLabelContextData } from "../../../../../countdown-state-management/types/theme/timer";
 import useChakraBreakpoint from "../../../../hooks/useChakraBreakpoint";
 
 interface UnitLabelProps {

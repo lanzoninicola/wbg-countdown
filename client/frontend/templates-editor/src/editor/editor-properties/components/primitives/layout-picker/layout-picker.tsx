@@ -1,14 +1,14 @@
 import { VStack } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import useThemeLayoutSelector from "../../../../../countdown-provider/hooks/theme/useThemeLayoutSelector";
+import useThemeLayoutSelector from "../../../../../countdown-state-management/hooks/theme/useThemeLayoutSelector";
 import Teext from "../../../../../global/common/layout/teext/teext";
 import RingLight from "../../../../../global/common/ring-light/ring-light";
 import horizontalLayout from "./assets/images/horizontal-layout.png";
 import verticalLayout from "./assets/images/vertical-layout.png";
 import Label from "../label/label";
 import OptionContainer from "./option-container/option-container";
-import { CountdownLayoutOrientation } from "../../../../../countdown-provider/types/theme/layout";
+import { CountdownLayoutOrientation } from "../../../../../countdown-state-management/types/theme/layout";
 
 export default function LayoutPicker() {
   const { t } = useTranslation();

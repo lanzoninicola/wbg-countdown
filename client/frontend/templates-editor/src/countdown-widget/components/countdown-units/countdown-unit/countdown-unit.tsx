@@ -1,6 +1,6 @@
 import React from "react";
 
-import useThemeTimer from "../../../../countdown-provider/hooks/theme/useThemeTimer";
+import useThemeTimer from "../../../../countdown-state-management/hooks/theme/useThemeTimer";
 import { StringOrNumber } from "../../../types";
 import CountdownUnitNumber from "./countdown-unit-number/countdown-unit-number";
 import UnitLabel from "./countdown-unit-label/countdown-unit-label";

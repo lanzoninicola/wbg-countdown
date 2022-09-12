@@ -1,6 +1,8 @@
 import { OnboardingStateData } from "../types";
 
 const INITIAL_STATE: OnboardingStateData = {
+  productPublicWebsiteURL: "",
+  commercerApiURL: "",
   status: "pending",
   formState: {
     fullname: "",

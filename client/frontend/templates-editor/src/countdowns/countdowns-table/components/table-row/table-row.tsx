@@ -1,7 +1,7 @@
 import { HStack, Td, Tr } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import useAppSelector from "../../../../countdown-provider/hooks/app/useAppSelector";
+import useAppSelector from "../../../../countdown-state-management/hooks/app/useAppSelector";
 import { CountdownModel } from "../../../../countdown-widget/types";
 import ShortcodePreview from "../../../../global/common/shortcode-preview/shortcode-preview";
 import DeleteModal from "../../../components/modal-delete-countdown/modal-delete-countdown";

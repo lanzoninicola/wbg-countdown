@@ -1,4 +1,4 @@
-import useThemeTimer from "../../../countdown-provider/hooks/theme/useThemeTimer";
+import useThemeTimer from "../../../countdown-state-management/hooks/theme/useThemeTimer";
 import useWidgetTranslation from "../../../countdown-widget-i18n/hooks/useWidgetTranslation";
 import { RemainingTime } from "../../types";
 import CountdownUnit from "./countdown-unit/countdown-unit";

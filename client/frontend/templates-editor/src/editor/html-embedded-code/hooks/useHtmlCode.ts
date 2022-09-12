@@ -1,13 +1,14 @@
 import { useMemo } from "react";
-import { useConfig } from "../../../config";
-import useSettingsContext from "../../../countdown-provider/hooks/settings/useSettingsContext";
-import useThemeContext from "../../../countdown-provider/hooks/theme/useThemeContext";
-import { encrypt } from "../../../countdown-provider/utils/crypto";
+
+import useAppContext from "../../../countdown-state-management/hooks/app/useAppContext";
+import useSettingsContext from "../../../countdown-state-management/hooks/settings/useSettingsContext";
+import useThemeContext from "../../../countdown-state-management/hooks/theme/useThemeContext";
+import { encrypt } from "../../../countdown-state-management/utils/crypto";
 
 export default function useHtmlCode() {
   const { layout, timer, title } = useThemeContext();
   const { targetDate, targetTimezone } = useSettingsContext();
-  const { clockdown_public_url } = useConfig();
+  const { productPublicWebsiteURL } = useAppContext();
 
   return useMemo(() => {
     const settingsEnc = encrypt(
@@ -31,7 +32,7 @@ export default function useHtmlCode() {
     htmlCode += `data-theme="${themeEnc}"`;
     htmlCode += "></div>";
 
-    const BASE_ASSETS_URL = `${clockdown_public_url}/wp-content/plugins/clockdown/client/frontend/public/clockdown-widget/assets`;
+    const BASE_ASSETS_URL = `${productPublicWebsiteURL}/wp-content/plugins/clockdown/client/frontend/public/clockdown-widget/assets`;
 
     // script tag
     htmlCode += `<script `;

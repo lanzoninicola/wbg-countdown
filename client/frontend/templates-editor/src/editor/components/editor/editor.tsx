@@ -13,7 +13,7 @@ import EditorWrapper from "../../layout/editor-wrapper/editor-wrapper";
 export default function Editor() {
   return (
     <EditorWrapper>
-      <VStack position="absolute" top={5} left={5} spacing={4} zIndex={1}>
+      <VStack position="absolute" top={5} left={5} spacing={4} zIndex={40}>
         <EditorPropertiesBar />
       </VStack>
       <CenterContent>
@@ -23,7 +23,7 @@ export default function Editor() {
         </BoxRadiusLg>
         <EditorPreview />
       </CenterContent>
-      <VStack position="absolute" top={5} right={5} spacing={4} zIndex={1}>
+      <VStack position="absolute" top={5} right={5} spacing={4} zIndex={40}>
         <BreakpointsBar />
       </VStack>
     </EditorWrapper>

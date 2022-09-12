@@ -3,6 +3,10 @@ import { OnboardingAction } from "./actions";
 export type OnboardingContextData = OnboardingStateData & OnboardingStateSetter;
 
 export interface OnboardingStateData {
+  /** The public website URL of clockdown product */
+  productPublicWebsiteURL: string;
+  /** The URL of commerce REST-API */
+  commercerApiURL: string;
   /** The onboarding status. If "pending" the onboarding is required, if "completed" not */
   status: "pending" | "completed";
   /** The onboarding form state */

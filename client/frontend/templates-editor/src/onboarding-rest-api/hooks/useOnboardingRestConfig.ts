@@ -1,19 +1,20 @@
-import { REST_API_URL } from "../constants";
+import useOnboardingContext from "../../onboarding/provider/hooks/useOnboardingContext";
 import { WithEndpointEmptyParams, WithEndpointParamsId } from "../types";
 import useOnboardingRestHeaders from "./useOnboardingRestHeaders";
 
 export default function useOnboardingRestConfig() {
   const headers = useOnboardingRestHeaders();
+  const { commercerApiURL } = useOnboardingContext();
 
   const doOnboardingConfig: WithEndpointEmptyParams = {
     method: "POST",
-    endpoint: () => `${REST_API_URL}/onboarding`,
+    endpoint: () => `${commercerApiURL}/onboarding`,
     headers,
   };
 
   const shouldOnboardingRequiredConfig: WithEndpointParamsId = {
     method: "GET",
-    endpoint: (email: string) => `${REST_API_URL}/onboarding?email=${email}`,
+    endpoint: (email: string) => `${commercerApiURL}/onboarding?email=${email}`,
     headers,
   };
 

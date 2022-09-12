@@ -3,7 +3,7 @@ import timezone from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
 import { useEffect, useRef, useState } from "react";
 
-import useAppSelector from "../../countdown-provider/hooks/app/useAppSelector";
+import useAppSelector from "../../countdown-state-management/hooks/app/useAppSelector";
 import { RemainingTime } from "../types";
 import padWithZeros from "../utils/padWithZeros";
 import {

@@ -1,6 +1,6 @@
-import useThemeLayout from "../countdown-provider/hooks/theme/useThemeLayout";
-import useThemeTimerSelector from "../countdown-provider/hooks/theme/useThemeTimerSelector";
-import useThemeTitleSelector from "../countdown-provider/hooks/theme/useThemeTitleSelector";
+import useThemeLayout from "../countdown-state-management/hooks/theme/useThemeLayout";
+import useThemeTimerSelector from "../countdown-state-management/hooks/theme/useThemeTimerSelector";
+import useThemeTitleSelector from "../countdown-state-management/hooks/theme/useThemeTitleSelector";
 import { GoogleFontsLinkTag } from "../countdown-widget-typography/countdown-widget-typography";
 import CountdownContainer from "./components/countdown-container/countdown-container";
 import Countdown from "./components/countdown";

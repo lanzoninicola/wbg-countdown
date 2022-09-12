@@ -1,5 +1,3 @@
-import { VStack } from "@chakra-ui/react";
-
 import { PropertyBarItem } from "../../types";
 import PropertyButton from "../property-button/property-button";
 

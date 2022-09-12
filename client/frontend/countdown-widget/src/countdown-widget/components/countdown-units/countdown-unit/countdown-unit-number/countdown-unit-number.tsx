@@ -1,7 +1,7 @@
 import "./countdown-unit-number.css";
 
-import useAppContext from "../../../../../countdown-provider/hooks/app/useAppContext";
-import { ThemeUnitNumberContextData } from "../../../../../countdown-provider/types/theme/timer";
+import useAppContext from "../../../../../countdown-state-management/hooks/app/useAppContext";
+import { ThemeUnitNumberContextData } from "../../../../../countdown-state-management/types/theme/timer";
 import useChakraBreakpoint from "../../../../hooks/useChakraBreakpoint";
 import { StringOrNumber } from "../../../../types";
 

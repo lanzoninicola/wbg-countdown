@@ -1,4 +1,4 @@
-import useThemeLayout from "../../../countdown-provider/hooks/theme/useThemeLayout";
+import useThemeLayout from "../../../countdown-state-management/hooks/theme/useThemeLayout";
 import "./countdown-wrapper.css";
 
 interface CountdownWrapperProps {

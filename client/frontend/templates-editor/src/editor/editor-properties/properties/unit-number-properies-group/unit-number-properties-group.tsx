@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import useThemeTimerSelector from "../../../../countdown-provider/hooks/theme/useThemeTimerSelector";
+import useThemeTimerSelector from "../../../../countdown-state-management/hooks/theme/useThemeTimerSelector";
 import { PremiumFeatureGuard } from "../../../../premium-features";
 import FontColor from "../../components/common/font-color/font-color";
 import FontFamily from "../../components/common/font-family/font-family";

@@ -1,5 +1,5 @@
 import { useLayoutEffect, useState } from "react";
-import { ChakraToken } from "../../countdown-provider/types/theme/responsive";
+import { ChakraToken } from "../../countdown-state-management/types/theme/responsive";
 
 type ChakraBreakpoints = Record<ChakraToken, number>;
 

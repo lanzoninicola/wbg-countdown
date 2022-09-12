@@ -1,4 +1,4 @@
-import useThemeTimer from "../../countdown-provider/hooks/theme/useThemeTimer";
+import useThemeTimer from "../../countdown-state-management/hooks/theme/useThemeTimer";
 import TRANSLATIONS from "../constants/translations";
 import { WidgetTranslation } from "../types";
 

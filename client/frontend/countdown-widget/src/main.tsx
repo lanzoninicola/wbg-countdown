@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import CountdownProvider from "./countdown-provider/countdown-provider";
+import { CountdownWidgetProvider } from "./countdown-state-management/providers/index";
 
 const env = process.env.NODE_ENV;
 
@@ -23,9 +23,15 @@ function renderWithReact(nodes: NodeListOf<HTMLDivElement>) {
     if (settings && theme) {
       ReactDOM.createRoot(widgetNode).render(
         <React.StrictMode>
-          <CountdownProvider settings={settings} theme={theme}>
+          <CountdownWidgetProvider
+            settings={settings}
+            theme={theme}
+            config={{
+              productPublicWebsiteURL: "https://clockdown.lanzoninicola.com.br",
+            }}
+          >
             <App />
-          </CountdownProvider>
+          </CountdownWidgetProvider>
         </React.StrictMode>
       );
     }

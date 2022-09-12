@@ -2,8 +2,8 @@ import "./countdown-title.css";
 
 import React from "react";
 
-import useAppContext from "../../../countdown-provider/hooks/app/useAppContext";
-import useThemeTitleSelector from "../../../countdown-provider/hooks/theme/useThemeTitleSelector";
+import useAppContext from "../../../countdown-state-management/hooks/app/useAppContext";
+import useThemeTitleSelector from "../../../countdown-state-management/hooks/theme/useThemeTitleSelector";
 import useChakraBreakpoint from "../../hooks/useChakraBreakpoint";
 
 // TODO: way to refactor due added logic to the component

@@ -12,7 +12,6 @@ export default function getConfig(): Config {
       language: "en",
       product_id: "1",
       commerce_api_url: "http://localhost/bb-melhor-envio/wp-json/commerce/v1",
-      clockdown_public_url: "https://clockdown.lanzoninicola.com.br",
       nonce: "8c768e9eba",
       wp_rest_nonce: "c586eb8fa5",
     };
