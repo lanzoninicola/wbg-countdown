@@ -1,4 +1,4 @@
-div[data-role="countdown-wrapper"] {
+div[data-element="countdown-wrapper"] {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

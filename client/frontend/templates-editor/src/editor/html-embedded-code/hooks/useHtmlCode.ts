@@ -27,7 +27,7 @@ export default function useHtmlCode() {
     );
 
     let htmlCode = "<div ";
-    htmlCode += 'data-role="clockdown-widget"';
+    htmlCode += 'data-element="clockdown-widget"';
     htmlCode += `data-settings="${settingsEnc}"`;
     htmlCode += `data-theme="${themeEnc}"`;
     htmlCode += "></div>";

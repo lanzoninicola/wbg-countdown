@@ -1,4 +1,4 @@
-div[data-role="countdown-units"] {
+div[data-element="countdown-units"] {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

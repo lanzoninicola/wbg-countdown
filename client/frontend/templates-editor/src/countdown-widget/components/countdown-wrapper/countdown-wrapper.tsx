@@ -26,7 +26,7 @@ export default function CountdownWrapper({ children }: CountdownWrapperProps) {
   };
 
   return (
-    <div data-role="countdown-wrapper" style={editorStyle}>
+    <div data-element="countdown-wrapper" style={editorStyle}>
       {children}
     </div>
   );

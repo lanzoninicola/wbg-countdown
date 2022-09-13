@@ -37,7 +37,7 @@ export default function UnitLabel({
 
   return (
     <span
-      data-role="countdown-unit-label"
+      data-element="countdown-unit-label"
       style={editorStyle}
       aria-label={ariaLabel}
     >

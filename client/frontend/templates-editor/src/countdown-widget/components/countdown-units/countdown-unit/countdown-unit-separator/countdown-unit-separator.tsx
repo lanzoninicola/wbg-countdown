@@ -13,7 +13,7 @@ export default function CountdownUnitSeparator({
   };
 
   return (
-    <span data-role="countdown-unit-separator" style={editorStyle}>
+    <span data-element="countdown-unit-separator" style={editorStyle}>
       {separatorText}
     </span>
   );

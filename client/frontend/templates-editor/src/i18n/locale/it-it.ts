@@ -129,6 +129,8 @@ const itIT = {
             orientationLabelProp: "Seleziona orientamento",
             gapLabelProp: "Spazio tra testo e timer",
             stretchProp: "Adatta alla larghezza della pagina",
+            removeLink: "Rimuovi link al timer",
+            linkTarget: "Pagina di destinazione",
             transparentProp: "Fondo trasparente",
             backgroundColorProp: "Colore di sfondo",
             vertical: {

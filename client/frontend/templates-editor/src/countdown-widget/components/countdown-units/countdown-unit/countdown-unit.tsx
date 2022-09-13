@@ -31,7 +31,10 @@ function CountdownUnit({
   const separatorTheme = useThemeTimer("unit-separator");
 
   return (
-    <div data-role="countdown-unit" data-unit-type={`${label.toLowerCase()}`}>
+    <div
+      data-element="countdown-unit"
+      data-unit-type={`${label.toLowerCase()}`}
+    >
       <CountdownUnitNumber
         gridArea={"number"}
         value={value}

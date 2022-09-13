@@ -14,7 +14,7 @@ export default function Counter({
   const { hideDays, hideHours } = useThemeTimer("unit-visible");
 
   return (
-    <div data-role="countdown-units">
+    <div data-element="countdown-units">
       {hideDays === false && (
         <CountdownUnit
           label={days === 1 ? tw("day") : tw("days")}

@@ -130,6 +130,8 @@ const enUS = {
             orientationLabelProp: "Choose orientation",
             gapLabelProp: "Gap between text and timer",
             stretchProp: "Fit the screen",
+            removeLink: "Remove link to countdown",
+            linkTarget: "Link target",
             transparentProp: "Transparent background",
             backgroundColorProp: "Background color",
             vertical: {

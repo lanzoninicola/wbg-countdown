@@ -25,7 +25,7 @@ function CountdownTitle() {
   };
 
   return (
-    <h2 style={editorStyle} data-role="countdown-title" aria-label={text}>
+    <h2 style={editorStyle} data-element="countdown-title" aria-label={text}>
       {text}
     </h2>
   );

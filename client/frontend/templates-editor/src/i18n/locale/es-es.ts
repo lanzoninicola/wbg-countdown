@@ -130,6 +130,8 @@ const esEs = {
             orientationLabelProp: "Elegir orientación",
             gapLabelProp: "Espacio entre el texto y el temporizador",
             stretchLabelProp: "Ajustar al ancho de la página",
+            removeLink: "Eliminar enlace",
+            linkTarget: "Enlace de destino",
             transparentProp: "Fondo transparente",
             backgroundColorProp: "Color de fondo",
             vertical: {

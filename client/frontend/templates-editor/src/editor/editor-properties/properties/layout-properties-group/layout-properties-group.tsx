@@ -1,3 +1,4 @@
+import { link } from "fs";
 import { useTranslation } from "react-i18next";
 
 import useThemeLayoutSelector from "../../../../countdown-state-management/hooks/theme/useThemeLayoutSelector";
@@ -5,6 +6,7 @@ import { PremiumFeatureGuard } from "../../../../premium-features";
 import BackgroundColor from "../../components/common/background-color/background-color";
 import PropertyGroupWrapper from "../../components/layout/property-group-wrapper/property-group-wrapper";
 import CheckboxSingleOption from "../../components/primitives/checkbox-single-option/checkbox-single-option";
+import InputSingleOption from "../../components/primitives/input-single-option/input-single-option";
 import GapSelector from "./gap-selector/gap-selector";
 import LayoutOrientation from "./layout-orientation/layout-orientation";
 
@@ -22,6 +24,8 @@ export default function LayoutPropertiesGroup({
     fitOnScreen,
     transparentBackground,
     backgroundColor,
+    removeLink,
+    linkTarget,
     themeDispatcher,
   } = useThemeLayoutSelector();
   const { t } = useTranslation();
@@ -32,6 +36,35 @@ export default function LayoutPropertiesGroup({
       title={t("editor.propertiesGroup.layout.groupTitle")}
       {...props}
     >
+      <PremiumFeatureGuard variant="modal">
+        <CheckboxSingleOption
+          id="remove-link"
+          label={t("editor.propertiesGroup.layout.removeLink")}
+          onChange={(checked) => {
+            themeDispatcher({
+              type: "THEME_LAYOUT_ON_CHANGE_REMOVE_LINK",
+              payload: checked,
+            });
+          }}
+          value={removeLink}
+        />
+      </PremiumFeatureGuard>
+      <PremiumFeatureGuard variant="modal">
+        <InputSingleOption
+          id="link-target"
+          label={t("editor.propertiesGroup.layout.linkTarget")}
+          onChange={(e) => {
+            themeDispatcher({
+              type: "THEME_LAYOUT_ON_CHANGE_LINK_TARGET",
+              payload: e.target.value,
+            });
+          }}
+          value={linkTarget}
+          placeholder={"http://yourawesomelandingpage.com"}
+          inputName={"linkTarget"}
+        />
+      </PremiumFeatureGuard>
+
       <LayoutOrientation orientationSelected={orientation} />
       {orientation === "horizontal" && (
         <CheckboxSingleOption

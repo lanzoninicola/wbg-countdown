@@ -1,5 +1,7 @@
+import { Box } from "@chakra-ui/react";
 import { t } from "i18next";
 import PropertyGroupWrapper from "../../components/layout/property-group-wrapper/property-group-wrapper";
+import monospace from "./asset/monospace.jpg";
 
 interface TemplatesPropertiesGroupProps {
   showGroupTitle?: boolean;
@@ -15,6 +17,10 @@ export default function TemplatesPropertiesGroup({
       showGroupTitle={showGroupTitle}
       title={t("editor.propertiesGroup.templates.groupTitle")}
       {...props}
-    ></PropertyGroupWrapper>
+    >
+      <Box maxW="300px">
+        <img src={monospace} alt="monospace template" />
+      </Box>
+    </PropertyGroupWrapper>
   );
 }

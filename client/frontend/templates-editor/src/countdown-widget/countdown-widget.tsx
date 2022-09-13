@@ -6,6 +6,7 @@ import CountdownContainer from "./components/countdown-container/countdown-conta
 import Countdown from "./components/countdown";
 import "./countdown-widget.css";
 import useAppContext from "../countdown-state-management/hooks/app/useAppContext";
+import CountdownLinkWrapper from "./components/countdown-link-wrapper/countdown-link-wrapper";
 
 export default function CountdownWidget() {
   const {
@@ -17,17 +18,20 @@ export default function CountdownWidget() {
   const { fontFamily: titleFontFamily, fontWeight: titleFontWeight } =
     useThemeTitleSelector();
   const { fitOnScreen } = useThemeLayout();
-  const { productPublicWebsiteURL } = useAppContext();
 
   const editorStyle = {
     width: fitOnScreen ? "100%" : "max-content",
   };
 
-  console.log(productPublicWebsiteURL);
+  const csslongstyle = `div[data-element="countdown-widget"] {
+    background: red;
+    border-radius: 10px;
+  }
+    `;
 
   return (
-    <a href={productPublicWebsiteURL}>
-      <div data-role="countdown-widget" style={editorStyle}>
+    <CountdownLinkWrapper>
+      <div data-element="countdown-widget" style={editorStyle}>
         <GoogleFontsLinkTag
           googleFonts={[
             {
@@ -44,7 +48,8 @@ export default function CountdownWidget() {
         <CountdownContainer>
           <Countdown />
         </CountdownContainer>
+        <style>{csslongstyle}</style>
       </div>
-    </a>
+    </CountdownLinkWrapper>
   );
 }

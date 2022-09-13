@@ -108,7 +108,7 @@ export default function OnboardingModal({
   return (
     <>
       <div
-        data-role={"modal-children-wrapper"}
+        data-element={"modal-children-wrapper"}
         onClickCapture={(e: React.SyntheticEvent) => {
           e.stopPropagation();
           onOpenModal();

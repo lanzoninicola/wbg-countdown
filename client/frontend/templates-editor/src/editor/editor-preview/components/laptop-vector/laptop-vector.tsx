@@ -54,7 +54,7 @@ export default function LaptopVector() {
           x2="1241"
           y2="103"
           stroke="black"
-          stroke-width="4"
+          strokeWidth="4"
         />
         <line
           x1="1219.01"
@@ -62,7 +62,7 @@ export default function LaptopVector() {
           x2="1241.01"
           y2="111"
           stroke="black"
-          stroke-width="4"
+          strokeWidth="4"
         />
         <line
           x1="1219.02"
@@ -70,7 +70,7 @@ export default function LaptopVector() {
           x2="1241.01"
           y2="119"
           stroke="black"
-          stroke-width="4"
+          strokeWidth="4"
         />
       </svg>
     </Box>

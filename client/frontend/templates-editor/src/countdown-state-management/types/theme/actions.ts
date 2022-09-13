@@ -106,6 +106,21 @@ interface ThemeTimerOnChangeSeparatorCharAction {
 
 /** START LAYOUT ACTIONS */
 
+interface ThemeLayoutOnChangeRemoveLinkAction {
+  type: "THEME_LAYOUT_ON_CHANGE_REMOVE_LINK";
+  payload: boolean;
+}
+
+interface ThemeLayoutOnChangeLinkTargetAction {
+  type: "THEME_LAYOUT_ON_CHANGE_LINK_TARGET";
+  payload: string;
+}
+
+interface ThemeLayoutOnChangeContainerSizeAction {
+  type: "THEME_LAYOUT_ON_CHANGE_CONTAINER_SIZE";
+  payload: ElementSize;
+}
+
 interface ThemeLayoutOnChangeContainerSizeAction {
   type: "THEME_LAYOUT_ON_CHANGE_CONTAINER_SIZE";
   payload: ElementSize;
@@ -137,6 +152,18 @@ interface ThemeLayoutOnChangeBackgroundColorAction {
 }
 
 /** END LAYOUT ACTIONS */
+
+/** START TEMPLATE ACTIONS */
+
+interface ThemeTemplateOnChangeTemplateAction {
+  type: "THEME_TEMPLATE_ON_CHANGE_TEMPLATE";
+  payload: {
+    name: string;
+    style: string;
+  };
+}
+
+/** END TEMPLATE ACTIONS */
 
 /** START THEME TITLE ACTIONS */
 
@@ -185,12 +212,15 @@ export type ThemeStateAction =
   | ThemeTimerOnChangePadWithZeroAction
   | ThemeTimerOnChangeShowSeparatorAction
   | ThemeTimerOnChangeSeparatorCharAction
+  | ThemeLayoutOnChangeRemoveLinkAction
+  | ThemeLayoutOnChangeLinkTargetAction
   | ThemeLayoutOnChangeContainerSizeAction
   | ThemeLayoutOnChangeOrientationAction
   | ThemeLayoutOnChangeGapAction
   | ThemeLayoutOnChangeFitOnScreenAction
   | ThemeLayoutOnChangeBackgroundTransparentAction
   | ThemeLayoutOnChangeBackgroundColorAction
+  | ThemeTemplateOnChangeTemplateAction
   | ThemeTitleOnChangeTextAction
   | ThemeTitleOnChangeFontSizeAction
   | ThemeTitleOnChangeFontFamilyAction

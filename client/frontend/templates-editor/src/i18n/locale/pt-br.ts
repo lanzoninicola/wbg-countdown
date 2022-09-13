@@ -130,6 +130,8 @@ const ptBR = {
             orientationLabelProp: "Seleçiona orientação",
             gapLabelProp: "Selecione o espaçamento entre o timer e o texto",
             stretchProp: "Ajustar à largura da página",
+            removeLink: "Remover link",
+            linkTarget: "Pagína de destino",
             transparentProp: "Fundo transparente",
             backgroundColorProp: "Cor de fundo",
             vertical: {

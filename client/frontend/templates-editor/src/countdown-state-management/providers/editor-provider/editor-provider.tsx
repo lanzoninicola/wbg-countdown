@@ -15,7 +15,7 @@ import useReducerLocalStorage from "../../utils/useReducerLocalStorage";
 
 interface EditorProviderProps {
   children: React.ReactNode;
-  config: {
+  config?: {
     productPublicWebsiteURL: string;
   };
 }

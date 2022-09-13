@@ -1,4 +1,4 @@
-div[data-role="countdown-unit"] {
+div[data-element="countdown-unit"] {
   display: grid;
   grid-template-areas:
     "number separator"
