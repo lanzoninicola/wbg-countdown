@@ -206,10 +206,10 @@ const ptBR = {
         emailPlaceholder: "Seu melhor email",
         newsletterConsent:
           "Eu gostaria de assinar seu boletim informativo, mas somente se você prometer não me incomodar (aproximadamente 1-2 por mês). Estou ciente de que posso cancelar minha assinatura sempre que quiser.",
-        privacyConsent:
-          "Eu li a política de privacidade. Estou ciente de que você se preocupa com minha privacidade e nunca compartilhará meus dados com ninguém. Este é o link para:",
-        termsAndConditionsConsent:
-          "Seus termos e condições são aceitáveis para mim.",
+        privacyAndTermsConsent:
+          "Seus termos e condições são aceitáveis para mim. Eu li a política de privacidade. Estou ciente de que você se preocupa com minha privacidade e nunca compartilhará meus dados com ninguém.",
+        privacyPolicy: "Política de privacidade",
+        termsOfService: "Termos de serviço",
         success: {
           title: "Obrigado por se cadastrar!",
           subtitle: "Agora você pode criar seu primeiro contador regressivo.",
@@ -219,6 +219,13 @@ const ptBR = {
           title: "Oops!",
           subtitle: "Algo deu errado. Por favor, tente novamente.",
           submitButtonLabel: "Tentar novamente",
+        },
+        failure_max: {
+          title: "Duplo oops!",
+          subtitle:
+            "Algo deu errado. Mas não se preocupe, você já pode criar seu primeiro contador regressivo.",
+          text: "Vamos lá!",
+          submitButtonLabel: "Continuar",
         },
       },
     },

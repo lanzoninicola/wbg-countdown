@@ -36,24 +36,21 @@ export default function useOnboardingModalForm() {
     e.preventDefault();
     dispatch({ type: "ONBOARDING_FORM_SUBMIT" });
 
-    const {
-      fullname,
-      email,
-      consent_terms,
-      consent_newsletter,
-      consent_privacy,
-    } = formState;
+    const { fullname, email, consent_terms_privacy, consent_newsletter } =
+      formState;
 
     doOnboarding({
       fullname,
       email,
-      consent_terms,
+      consent_terms_privacy,
       consent_newsletter,
-      consent_privacy,
     })
       .then((res) => {
-        if (res.data.status >= 400 && formState.failureCount >= 1) {
-          dispatch({ type: "ONBOARDING_SKIP_DUE_ERROR" });
+        if (res.data.status >= 400) {
+          dispatch({
+            type: "ONBOARDING_FORM_FAILURE_RESPONSE",
+            payload: "Generic error",
+          });
           return;
         }
 

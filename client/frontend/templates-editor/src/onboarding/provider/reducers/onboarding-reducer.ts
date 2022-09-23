@@ -47,6 +47,7 @@ export const onboardingReducer = (
           isError: false,
           error: "",
           failureCount: 0,
+          modalConfig: "success",
         },
         actionDispatched: action.type,
       };
@@ -59,6 +60,7 @@ export const onboardingReducer = (
           isError: true,
           failureCount: state.formState.failureCount + 1,
           error: action.payload,
+          modalConfig: "failure",
         },
         actionDispatched: action.type,
       };
@@ -77,14 +79,26 @@ export const onboardingReducer = (
         actionDispatched: action.type,
       };
 
-    case "ONBOARDING_SKIP_DUE_ERROR":
+    case "ONBOARDING_FORM_FAILURE_MAX":
       return {
         ...state,
         formState: {
           ...state.formState,
           isLoading: false,
+          modalConfig: "failure_max",
         },
-        status: "completed",
+        actionDispatched: action.type,
+      };
+
+    case "ONBOARDING_SKIP_DUE_ERROR":
+      return {
+        ...state,
+        formState: {
+          ...state.formState,
+          failureCount: 0,
+        },
+        status: "skipped",
+        actionDispatched: action.type,
       };
 
     default:

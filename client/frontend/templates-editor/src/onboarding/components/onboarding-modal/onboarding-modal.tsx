@@ -11,11 +11,12 @@ import {
   useDisclosure,
   VStack,
 } from "@chakra-ui/react";
-import { cloneElement, useRef } from "react";
+import { cloneElement, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import Heeading from "../../../global/common/layout/heeading/heeading";
 import Teext from "../../../global/common/layout/teext/teext";
+import failure_max from "../../assets/images/failure_max.png";
 import error from "../../assets/images/error.png";
 import steppingUp from "../../assets/images/stepping-up.png";
 import thankyou from "../../assets/images/thank-you.png";
@@ -24,6 +25,8 @@ import useOnboardingContext from "../../provider/hooks/useOnboardingContext";
 import OnboardingSubmitButton from "../onboarding-submit-button/onboarding-submit-button";
 import OnboardingForm from "../onboarding-form/onboarding-form";
 import ModalImage from "./modal-image/modal-image";
+import useOnboardingConfig from "../../provider/hooks/useOnboardingConfig";
+import { UIModalConfig } from "../../provider/types/context";
 
 interface OnboardingModalProps {
   /** The button component that will open the modal */
@@ -47,13 +50,20 @@ export default function OnboardingModal({
     onClose: onCloseModal,
   } = useDisclosure();
   const { status, formState, dispatch } = useOnboardingContext();
+  const { maxFailureCount } = useOnboardingConfig();
+
+  useEffect(() => {
+    if (formState.failureCount >= maxFailureCount) {
+      dispatch({ type: "ONBOARDING_FORM_FAILURE_MAX" });
+    }
+  }, [formState.failureCount]);
 
   const { t } = useTranslation();
 
   const initialRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
-  const configs = {
-    idle: {
+  const configs: UIModalConfig = {
+    default: {
       title: t("onboarding.title"),
       subtitle: t("onboarding.subtitle"),
       image: steppingUp,
@@ -72,7 +82,7 @@ export default function OnboardingModal({
         />
       ),
     },
-    failed: {
+    failure: {
       title: t("onboarding.failed.title"),
       subtitle: t("onboarding.failed.subtitle"),
       image: error,
@@ -87,21 +97,27 @@ export default function OnboardingModal({
         />
       ),
     },
+    failure_max: {
+      title: t("onboarding.failure_max.title"),
+      subtitle: t("onboarding.failure_max.subtitle"),
+      image: failure_max,
+      body: (
+        <Teext fontSize={"small"} color="black">
+          {t("onboarding.failure_max.text")}
+        </Teext>
+      ),
+      footer: (
+        <OnboardingSubmitButton
+          label={t("onboarding.failure_max.submitButtonLabel")}
+          onClick={() => {
+            dispatch({ type: "ONBOARDING_SKIP_DUE_ERROR" });
+          }}
+        />
+      ),
+    },
   };
 
-  function getConfig() {
-    if (formState.isError) {
-      return configs.failed;
-    }
-
-    if (formState.isSuccessful) {
-      return configs.success;
-    }
-
-    return configs.idle;
-  }
-
-  if (status === "completed") {
+  if (status === "completed" || status === "skipped") {
     return <>{children}</>;
   }
 
@@ -132,24 +148,26 @@ export default function OnboardingModal({
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader className="theme-font">{getConfig().title}</ModalHeader>
+          <ModalHeader className="theme-font">
+            {configs[formState["modalConfig"]].title}
+          </ModalHeader>
           {formState.isSuccessful && <ModalCloseButton />}
           <ModalBody>
             <HStack spacing={8}>
               <Box flex={1}>
-                <ModalImage image={getConfig().image} />
+                <ModalImage image={configs[formState["modalConfig"]].image} />
               </Box>
 
               <VStack spacing={8} alignItems={"flex-start"} flex={1}>
                 <Heeading as="h2" fontSize={"md"} lineHeight={1.3}>
-                  {getConfig().subtitle}
+                  {configs[formState["modalConfig"]].subtitle}
                 </Heeading>
-                {customBody || getConfig().body}
+                {customBody || configs[formState["modalConfig"]].body}
               </VStack>
             </HStack>
           </ModalBody>
 
-          <ModalFooter>{getConfig().footer}</ModalFooter>
+          <ModalFooter>{configs[formState["modalConfig"]].footer}</ModalFooter>
         </ModalContent>
       </Modal>
     </>

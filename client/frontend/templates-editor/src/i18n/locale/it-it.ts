@@ -205,10 +205,10 @@ const itIT = {
         emailPlaceholder: "La tua migliore email",
         newsletterConsent:
           "Vorrei iscrivermi alla vostra newsletter, ma solo se mi promettete di non disturbarmi (circa 1-2 al mese). Sono consapevole di potermi cancellare quando voglio.",
-        privacyConsent:
-          "Ho letto l'informativa sulla privacy. Sono consapevole che avete a cuore la mia privacy e che non condividerete mai i miei dati con nessuno. Questo è il link a:",
-        termsAndConditionsConsent:
-          "I vostri termini e condizioni sono accettabili per me.",
+        privacyAndTermsConsent:
+          "I vostri termini e condizioni sono accettabili per me. Ho letto l'informativa sulla privacy. Sono consapevole che avete a cuore la mia privacy e che non condividerete mai i miei dati con nessuno.",
+        privacyPolicy: "Informativa sulla privacy",
+        termsAndConditions: "Termini e condizioni",
         success: {
           title: "Benvenuto!",
           subtitle: "Ora puoi creare il tuo primo timer.",
@@ -218,6 +218,13 @@ const itIT = {
           title: "Oops!",
           subtitle: "Qualcosa é andato storto. Riprova più tardi.",
           submitButtonLabel: "Riprova",
+        },
+        failure_max: {
+          title: "Doppio oops!",
+          subtitle:
+            "Qualcosa é andato storto. Non ti preoccupare, puoi continuare a usare la nostra fantastica applicazione.",
+          text: "Vai, crea il tuo primo timer!",
+          submitButtonLabel: "Continua",
         },
       },
     },

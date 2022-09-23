@@ -3,13 +3,11 @@ import { OnboardingContext } from "./context/onboarding-context";
 import useReducerLocalStorage from "./hooks/useReducerLocalStorage";
 import { onboardingReducer } from "./reducers/onboarding-reducer";
 import { OnboardingAction, OnboardingStateData } from "./types";
+import { OnboardingModuleConfig } from "./types/context";
 
 interface OnboardingProviderProps {
   children: React.ReactNode;
-  config: {
-    productPublicWebsiteURL: string;
-    commercerApiURL: string;
-  };
+  config: OnboardingModuleConfig;
 }
 
 export default function OnboardingProvider({
@@ -21,7 +19,7 @@ export default function OnboardingProvider({
     OnboardingAction
   >("__CLOCKDOWN_ONBOARDING_STATE__", onboardingReducer, {
     ...INITIAL_STATE,
-    ...config,
+    config,
   });
 
   return (

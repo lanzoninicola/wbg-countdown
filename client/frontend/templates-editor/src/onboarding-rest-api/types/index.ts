@@ -2,8 +2,7 @@ export interface OnboardingRequestPayload {
   fullname: string;
   email: string;
   consent_newsletter: boolean;
-  consent_privacy: boolean;
-  consent_terms: boolean;
+  consent_terms_privacy: boolean;
 }
 
 export interface APIResponse<T = unknown> {

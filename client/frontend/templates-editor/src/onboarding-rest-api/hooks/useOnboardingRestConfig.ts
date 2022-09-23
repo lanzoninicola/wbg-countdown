@@ -1,10 +1,10 @@
-import useOnboardingContext from "../../onboarding/provider/hooks/useOnboardingContext";
+import useOnboardingConfig from "../../onboarding/provider/hooks/useOnboardingConfig";
 import { WithEndpointEmptyParams, WithEndpointParamsId } from "../types";
 import useOnboardingRestHeaders from "./useOnboardingRestHeaders";
 
 export default function useOnboardingRestConfig() {
   const headers = useOnboardingRestHeaders();
-  const { commercerApiURL } = useOnboardingContext();
+  const { commercerApiURL } = useOnboardingConfig();
 
   const doOnboardingConfig: WithEndpointEmptyParams = {
     method: "POST",

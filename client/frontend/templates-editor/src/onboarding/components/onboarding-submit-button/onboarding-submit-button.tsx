@@ -14,16 +14,13 @@ export default function OnboardingSubmitButton({
   onClick,
 }: OnboardingSubmitButton) {
   const { formState, handleSubmit } = useOnboardingModalForm();
-  const { fullname, email, consent_terms, consent_privacy } = formState;
+  const { fullname, email, consent_terms_privacy } = formState;
 
   return (
     <Button
       isLoading={formState.isLoading}
       isDisabled={
-        fullname === "" ||
-        email === "" ||
-        consent_terms === false ||
-        consent_privacy === false
+        fullname === "" || email === "" || consent_terms_privacy === false
       }
       loadingText={t("global.saving").capitalize()}
       className="theme-font"

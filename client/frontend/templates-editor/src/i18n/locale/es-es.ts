@@ -214,9 +214,10 @@ const esEs = {
         emailPlaceholder: "Correo electrónico",
         newsletterConsent:
           "Me gustaría suscribirme a su boletín de noticias, pero sólo si prometen no molestarme (aproximadamente 1-2 al mes). Soy consciente de que puedo darme de baja cuando quiera.",
-        privacyConsent:
-          "He leído la política de privacidad. Soy consciente de que os preocupáis por mi privacidad y de que nunca compartiréis mis datos con nadie. Este es el enlace a:",
-        termsAndConditionsConsent: "Sus condiciones son aceptables para mí.",
+        privacyAndTermsConsent:
+          "Sus condiciones son aceptables para mí.He leído la política de privacidad. Soy consciente de que os preocupáis por mi privacidad y de que nunca compartiréis mis datos con nadie.",
+        privacyPolicy: "Política de privacidad",
+        termsOfService: "Términos de servicio",
         success: {
           title: "¡Bienvenido!",
           subtitle: "Ahora puedes crear tu primer contador.",
@@ -226,6 +227,13 @@ const esEs = {
           title: "Oops!",
           subtitle: "Algo salió mal. Por favor, inténtalo de nuevo.",
           submitButtonLabel: "Volver a intentarlo",
+        },
+        failure_max: {
+          title: "Doble oops!",
+          subtitle:
+            "Nos enfrentamos a algunos problemas. No te preocupes, puedes seguir utilizando nuestra fantástica aplicación.",
+          text: "Vamos, crea tu primer temporizador!",
+          submitButtonLabel: "Continuar",
         },
       },
     },

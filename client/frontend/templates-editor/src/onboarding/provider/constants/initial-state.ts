@@ -1,20 +1,25 @@
 import { OnboardingStateData } from "../types";
 
 const INITIAL_STATE: OnboardingStateData = {
-  productPublicWebsiteURL: "",
-  commercerApiURL: "",
+  config: {
+    productPublicWebsiteURL: "",
+    commercerApiURL: "",
+    termsAndConditionsURL: "",
+    privacyPolicyURL: "",
+    maxFailureCount: 2,
+  },
   status: "pending",
   formState: {
     fullname: "",
     email: "",
     consent_newsletter: false,
-    consent_privacy: false,
-    consent_terms: false,
+    consent_terms_privacy: false,
     isError: false,
     error: "",
     failureCount: 0,
     isLoading: false,
     isSuccessful: false,
+    modalConfig: "default",
   },
   isModalOpen: false,
   actionDispatched: "",

@@ -207,10 +207,10 @@ const enUS = {
         emailPlaceholder: "Your best email",
         newsletterConsent:
           "I would like to sign up for your newsletter, but only if you promise not to bother me (approx. 1-2 per month). I am aware that I can unsubscribe whenever I choose.",
-        privacyConsent:
-          "I read the privacy policy. I am aware that you care about my privacy and will never share my data with anyone. This is the link to:",
-        termsAndConditionsConsent:
-          "Your terms and conditions are acceptable to me.",
+        privacyAndTermsConsent:
+          "Your terms and conditions are acceptable to me. I read the privacy policy, I am aware that you care about my privacy and will never share my data with anyone.",
+        privacyPolicy: "Privacy Policy",
+        termsAndConditions: "Terms and Conditions",
         success: {
           title: "Thank you!",
           subtitle:
@@ -221,6 +221,13 @@ const enUS = {
           title: "Oops!",
           subtitle: "Sorry, something went wrong. Please try again.",
           submitButtonLabel: "Try again",
+        },
+        failure_max: {
+          title: "Double oops!",
+          subtitle:
+            "We are facing some issues. Don't worry, you can still use our fantastic app.",
+          text: "Go on, create your first countdown!",
+          submitButtonLabel: "Continue",
         },
       },
     },

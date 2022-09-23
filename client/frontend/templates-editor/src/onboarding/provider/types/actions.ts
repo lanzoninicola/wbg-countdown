@@ -41,6 +41,10 @@ export interface OnboardingPreCheckStatusResponseSuccessAction {
   type: "ONBOARDING_CHECK_STATUS_RESPONSE_IS_NOT_REQUIRED";
 }
 
+export interface OnboardingFormFailureMaxAction {
+  type: "ONBOARDING_FORM_FAILURE_MAX";
+}
+
 export interface OnboardingSkipDueError {
   type: "ONBOARDING_SKIP_DUE_ERROR";
 }
@@ -53,6 +57,7 @@ export type OnboardingAction =
   | OnboardingFormSubmitAction
   | OnboardingFormSuccessAction
   | OnboardingFormFailureAction
+  | OnboardingFormFailureMaxAction
   | OnboardingPreCheckStatusResponseFailedAction
   | OnboardingPreCheckStatusResponseSuccessAction
   | OnboardingSkipDueError;
