@@ -46,7 +46,11 @@ const ClockdownApp = () => (
           productPublicWebsiteURL: "https://clockdown.lanzoninicola.com.br",
         }}
       >
-        <EditorProvider>
+        <EditorProvider
+          config={{
+            productPublicWebsiteURL: "https://clockdown.lanzoninicola.com.br",
+          }}
+        >
           <App />
         </EditorProvider>
       </PremiumFeatureProvider>

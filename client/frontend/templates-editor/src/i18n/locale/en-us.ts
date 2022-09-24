@@ -40,9 +40,14 @@ const enUS = {
         htmlEmbeddedCode: {
           buttonLabel: "Generate countdown",
           hideCode: "Hide code",
-          modalTitle: "HTML code",
+          modalTitle: "Embed code",
           modalDescription:
             "Embed the countdown in your website. Press the button below to copy the code.",
+          linkDisclaimer:
+            "The timer contains a link to our website, you can remove it upgrading to the premium version.",
+          linkDisclaimerButton: "Upgrade to premium",
+          howToText:
+            "Add the timer to your website, choose your platform and follow the instructions:",
         },
       },
       premiumFeatures: {

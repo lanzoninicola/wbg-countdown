@@ -21,7 +21,7 @@ export default function HtmlEmbeddedCodeForm({
   const { t } = useTranslation();
 
   return (
-    <FormControl>
+    <FormControl minW={"700px"}>
       <FormLabel
         htmlFor="countdown-html"
         className="theme-font"
