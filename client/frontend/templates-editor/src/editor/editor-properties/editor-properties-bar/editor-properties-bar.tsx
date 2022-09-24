@@ -1,4 +1,4 @@
-import { Text } from "@chakra-ui/react";
+import { Text, useDisclosure } from "@chakra-ui/react";
 import { BsLayoutWtf } from "@react-icons/all-files/bs/BsLayoutWtf";
 import { MdLabelOutline } from "@react-icons/all-files/md/MdLabelOutline";
 import { MdTimer10 } from "@react-icons/all-files/md/MdTimer10";
@@ -26,6 +26,7 @@ export default function EditorPropertiesBar() {
   const [itemSelected, setItemSelected] = useState<PropertyBarItem | null>(
     null
   );
+  const {} = useDisclosure();
 
   const items = [
     {
@@ -34,6 +35,7 @@ export default function EditorPropertiesBar() {
       ref: useRef(null),
       title: t("editor.propertiesGroup.list.groupTitle"),
       component: <Countdowns />,
+      isPremium: true,
     },
     {
       label: t("editor.propertiesBar.layout"),
@@ -41,6 +43,7 @@ export default function EditorPropertiesBar() {
       ref: useRef(null),
       title: t("editor.propertiesGroup.layout.groupTitle"),
       component: <LayoutPropertiesGroup showGroupTitle={false} pb={5} />,
+      isPremium: false,
     },
     {
       label: t("editor.propertiesBar.templates"),
@@ -48,6 +51,7 @@ export default function EditorPropertiesBar() {
       ref: useRef(null),
       title: t("editor.propertiesGroup.templates.groupTitle"),
       component: <TemplatesPropertiesGroup showGroupTitle={false} pb={5} />,
+      isPremium: false,
     },
     {
       label: t("editor.propertiesBar.title"),
@@ -55,6 +59,7 @@ export default function EditorPropertiesBar() {
       ref: useRef(null),
       title: t("editor.propertiesGroup.title.groupTitle"),
       component: <TitlePropertiesGroup showGroupTitle={false} pb={5} />,
+      isPremium: false,
     },
     {
       label: t("editor.propertiesBar.timer"),
@@ -62,6 +67,7 @@ export default function EditorPropertiesBar() {
       ref: useRef(null),
       title: t("editor.propertiesGroup.unitNumber.groupTitle"),
       component: <UnitNumberPropertiesGroup showGroupTitle={false} pb={5} />,
+      isPremium: false,
     },
     {
       label: t("editor.propertiesBar.labels"),
@@ -69,6 +75,7 @@ export default function EditorPropertiesBar() {
       ref: useRef(null),
       title: t("editor.propertiesGroup.unitLabel.groupTitle"),
       component: <UnitLabelPropertiesGroup showGroupTitle={false} pb={5} />,
+      isPremium: false,
     },
     {
       label: t("editor.propertiesGroup.separator.groupTitle"),
@@ -76,6 +83,7 @@ export default function EditorPropertiesBar() {
       ref: useRef(null),
       title: t("editor.propertiesGroup.separator.groupTitle"),
       component: <SeparatorPropertiesGroup showGroupTitle={false} pb={5} />,
+      isPremium: false,
     },
   ];
 
@@ -85,7 +93,6 @@ export default function EditorPropertiesBar() {
       {itemSelected && (
         <DialogWrapper
           callerRef={itemSelected?.ref}
-          isOpen={itemSelected !== null}
           showCloseButton={false}
           offset={{
             left: 100,

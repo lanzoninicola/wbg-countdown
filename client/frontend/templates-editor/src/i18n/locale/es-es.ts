@@ -44,6 +44,11 @@ const esEs = {
           modalTitle: "HTML code",
           modalDescription:
             "Inserte el contador en su sitio web. Pulse el botón de abajo para copiar el código.",
+          linkDisclaimer:
+            "El temporizador contiene un enlace a nuestro sitio web, puede eliminarlo actualizando a la versión premium.",
+          linkDisclaimerButton: "Actualizar a premium",
+          howToText:
+            "Agregue el temporizador a su sitio web, elija su plataforma y siga las instrucciones:",
         },
       },
       premiumFeatures: {

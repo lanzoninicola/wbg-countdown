@@ -6,4 +6,5 @@ export interface PropertyBarItem {
   ref?: React.RefObject<any>;
   title?: string;
   component: React.ReactElement;
+  isPremium?: boolean;
 }

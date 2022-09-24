@@ -44,6 +44,11 @@ const ptBR = {
           modalTitle: "HTML code",
           modalDescription:
             "Incorpore o contador regressivo em seu site. Pressione o botão abaixo para copiar o código.",
+          linkDisclaimer:
+            "O contador contém um link para nosso site, você pode removê-lo atualizando para a versão premium.",
+          linkDisclaimerButton: "Atualizar para premium",
+          howToText:
+            "Adicione o contador regressivo ao seu site, escolha sua plataforma e siga as instruções:",
         },
       },
       premiumFeatures: {

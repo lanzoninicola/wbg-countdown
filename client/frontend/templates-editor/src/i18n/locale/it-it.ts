@@ -43,6 +43,11 @@ const itIT = {
           modalTitle: "HTML code",
           modalDescription:
             "Incorpora il timer nel tuo sito web. Premi il pulsante qui sotto per copiare il codice.",
+          linkDisclaimer:
+            "Il timer contiene un link al nostro sito web, puoi rimuoverlo aggiornando alla versione premium.",
+          linkDisclaimerButton: "Passa alla versione premium",
+          howToText:
+            "Aggiungi il timer al tuo sito web, scegli la tua piattaforma e segui le istruzioni:",
         },
       },
       premiumFeatures: {

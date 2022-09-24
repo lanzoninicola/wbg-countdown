@@ -118,7 +118,7 @@ const enUS = {
         targetDate: "Target date",
         countdownStyle: "Countdown style",
         propertiesBar: {
-          list: "Countodowns list",
+          list: "Countdowns list",
           layout: "Choose layout",
           templates: "Choose template",
           title: "Customize Title",

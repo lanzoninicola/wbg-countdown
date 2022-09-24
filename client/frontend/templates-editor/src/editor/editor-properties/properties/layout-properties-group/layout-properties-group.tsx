@@ -36,35 +36,6 @@ export default function LayoutPropertiesGroup({
       title={t("editor.propertiesGroup.layout.groupTitle")}
       {...props}
     >
-      <PremiumFeatureGuard variant="modal">
-        <CheckboxSingleOption
-          id="remove-link"
-          label={t("editor.propertiesGroup.layout.removeLink")}
-          onChange={(checked) => {
-            themeDispatcher({
-              type: "THEME_LAYOUT_ON_CHANGE_REMOVE_LINK",
-              payload: checked,
-            });
-          }}
-          value={removeLink}
-        />
-      </PremiumFeatureGuard>
-      <PremiumFeatureGuard variant="modal">
-        <InputSingleOption
-          id="link-target"
-          label={t("editor.propertiesGroup.layout.linkTarget")}
-          onChange={(e) => {
-            themeDispatcher({
-              type: "THEME_LAYOUT_ON_CHANGE_LINK_TARGET",
-              payload: e.target.value,
-            });
-          }}
-          value={linkTarget}
-          placeholder={"http://yourawesomelandingpage.com"}
-          inputName={"linkTarget"}
-        />
-      </PremiumFeatureGuard>
-
       <LayoutOrientation orientationSelected={orientation} />
       {orientation === "horizontal" && (
         <CheckboxSingleOption
@@ -92,16 +63,42 @@ export default function LayoutPropertiesGroup({
         }}
         value={transparentBackground}
       />
+      <BackgroundColor
+        colorSelected={backgroundColor}
+        onColorSelected={(color) => {
+          themeDispatcher({
+            type: "THEME_LAYOUT_ON_CHANGE_BACKGROUND_COLOR",
+            payload: color,
+          });
+        }}
+        label={t("editor.propertiesGroup.layout.backgroundColorProp")}
+      />
       <PremiumFeatureGuard variant="modal">
-        <BackgroundColor
-          colorSelected={backgroundColor}
-          onColorSelected={(color) => {
+        <CheckboxSingleOption
+          id="remove-link"
+          label={t("editor.propertiesGroup.layout.removeLink")}
+          onChange={(checked) => {
             themeDispatcher({
-              type: "THEME_LAYOUT_ON_CHANGE_BACKGROUND_COLOR",
-              payload: color,
+              type: "THEME_LAYOUT_ON_CHANGE_REMOVE_LINK",
+              payload: checked,
             });
           }}
-          label={t("editor.propertiesGroup.layout.backgroundColorProp")}
+          value={removeLink}
+        />
+      </PremiumFeatureGuard>
+      <PremiumFeatureGuard variant="modal">
+        <InputSingleOption
+          id="link-target"
+          label={t("editor.propertiesGroup.layout.linkTarget")}
+          onChange={(e) => {
+            themeDispatcher({
+              type: "THEME_LAYOUT_ON_CHANGE_LINK_TARGET",
+              payload: e.target.value,
+            });
+          }}
+          value={linkTarget}
+          placeholder={"http://yourawesomelandingpage.com"}
+          inputName={"linkTarget"}
         />
       </PremiumFeatureGuard>
     </PropertyGroupWrapper>

@@ -23,6 +23,8 @@ const PropertyButton = forwardRef(
           isRound={true}
           colorScheme="gray"
           boxShadow={"lg"}
+          _hover={{ background: "blue.200" }}
+          _active={{ background: "blue.300" }}
         />
       </Tooltip>
     );
