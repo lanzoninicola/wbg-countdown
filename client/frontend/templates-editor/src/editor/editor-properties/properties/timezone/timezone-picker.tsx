@@ -15,7 +15,7 @@ export default function TimezonePicker({ size }: TargetTimezoneProps) {
   const { targetTimezone, settingsDispatcher } = useSettingsSelector();
 
   return (
-    <PropertyWrapper firstColumnW="120px" columns={4}>
+    <PropertyWrapper firstColumnW="120px" columns={4} bg={"transparent"}>
       <Label size={size} htmlFor="timezone">
         {t("editor.timezone").capitalize()}
       </Label>

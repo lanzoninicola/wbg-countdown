@@ -14,7 +14,7 @@ export default function TargetDate({ size }: TargetDateProps) {
   const { targetDate, settingsDispatcher } = useSettingsSelector();
 
   return (
-    <PropertyWrapper firstColumnW="120px" columns={4}>
+    <PropertyWrapper firstColumnW="120px" columns={4} bg={"transparent"}>
       <Label size={size}>{t("editor.targetDate").capitalize()}</Label>
       <Input
         size={size as ThemingProps<"Input">["size"]}

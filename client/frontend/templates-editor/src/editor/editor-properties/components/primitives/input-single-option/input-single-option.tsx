@@ -24,7 +24,7 @@ export default function InputSingleOption({
       <Label>{label}</Label>
       <Input
         id={id}
-        size={"xs"}
+        size={"sm"}
         type="text"
         title={inputName}
         name={inputName}

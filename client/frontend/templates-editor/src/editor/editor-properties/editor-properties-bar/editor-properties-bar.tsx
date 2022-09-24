@@ -1,11 +1,11 @@
-import { Text, useDisclosure } from "@chakra-ui/react";
+import { Box, Text, useDisclosure } from "@chakra-ui/react";
 import { BsLayoutWtf } from "@react-icons/all-files/bs/BsLayoutWtf";
 import { MdLabelOutline } from "@react-icons/all-files/md/MdLabelOutline";
 import { MdTimer10 } from "@react-icons/all-files/md/MdTimer10";
 import { MdTitle } from "@react-icons/all-files/md/MdTitle";
 import { MdViewList } from "@react-icons/all-files/md/MdViewList";
 import { HiTemplate } from "@react-icons/all-files/hi/HiTemplate";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import Countdowns from "../../../countdowns/components/countdowns/countdowns";
@@ -26,7 +26,6 @@ export default function EditorPropertiesBar() {
   const [itemSelected, setItemSelected] = useState<PropertyBarItem | null>(
     null
   );
-  const {} = useDisclosure();
 
   const items = [
     {
@@ -95,11 +94,12 @@ export default function EditorPropertiesBar() {
           callerRef={itemSelected?.ref}
           showCloseButton={false}
           offset={{
-            left: 100,
+            left: 70,
             top: 15,
           }}
           borderTopColor={"blue.500"}
-          minW={"370px"}
+          minW={"450px"}
+          onCloseDialog={() => setItemSelected(null)}
         >
           <DialogWrapperHeader onClose={() => setItemSelected(null)}>
             <Text as="h3" className="theme-font" fontWeight={600}>

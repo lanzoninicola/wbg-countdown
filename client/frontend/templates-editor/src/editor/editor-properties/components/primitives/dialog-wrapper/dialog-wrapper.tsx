@@ -56,12 +56,23 @@ export default function DialogWrapper({
 
   return (
     <>
+      <Box
+        position={"fixed"}
+        top={0}
+        left={0}
+        w="100vw"
+        h="100vh"
+        zIndex={100}
+        bg={"blackAlpha.100"}
+        overflow={"auto"}
+        onClick={onCloseDialog}
+        data-element="dialog-overlay"
+      ></Box>
       <Flex
         role="dialog"
         data-element="dialog-wrapper"
         flexDirection={"column"}
         h="max-content"
-        maxH="500px"
         minW={minWidth || minW}
         bg="white"
         position={"absolute"}
@@ -69,7 +80,7 @@ export default function DialogWrapper({
         left={leftPosition}
         bottom={bottomPosition}
         right={rightPosition}
-        zIndex={99}
+        zIndex={110}
         borderBottomLeftRadius={"lg"}
         borderBottomRightRadius={"lg"}
         borderTop={borderTopColor && "5px solid"}

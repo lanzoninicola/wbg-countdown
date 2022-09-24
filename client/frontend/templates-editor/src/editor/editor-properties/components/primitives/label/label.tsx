@@ -1,7 +1,7 @@
 import { FormLabel, FormLabelProps } from "@chakra-ui/react";
 
 export default function Label({
-  size = "xs",
+  size = "sm",
   children,
   ...props
 }: FormLabelProps) {
@@ -13,6 +13,7 @@ export default function Label({
       pl={1}
       fontWeight={500}
       m={0}
+      lineHeight="1.2"
       {...props}
     >
       {children}

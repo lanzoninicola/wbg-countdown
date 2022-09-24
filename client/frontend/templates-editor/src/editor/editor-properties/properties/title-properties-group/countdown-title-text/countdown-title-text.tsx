@@ -12,7 +12,7 @@ export default function CountdownTitleText() {
     <PropertyWrapper>
       <Label>{t("editor.propertiesGroup.title.text")}</Label>
       <Input
-        size={"xs"}
+        size={"sm"}
         type="text"
         title="countdownName"
         name="countdownName"

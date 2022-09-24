@@ -1,5 +1,7 @@
+import { Box } from "@chakra-ui/react";
 import { link } from "fs";
 import { useTranslation } from "react-i18next";
+import { useAppContext } from "../../../../countdown-state-management";
 
 import useThemeLayoutSelector from "../../../../countdown-state-management/hooks/theme/useThemeLayoutSelector";
 import { PremiumFeatureGuard } from "../../../../premium-features";
@@ -28,6 +30,7 @@ export default function LayoutPropertiesGroup({
     linkTarget,
     themeDispatcher,
   } = useThemeLayoutSelector();
+  const { currentToken } = useAppContext();
   const { t } = useTranslation();
 
   return (
@@ -36,8 +39,10 @@ export default function LayoutPropertiesGroup({
       title={t("editor.propertiesGroup.layout.groupTitle")}
       {...props}
     >
-      <LayoutOrientation orientationSelected={orientation} />
-      {orientation === "horizontal" && (
+      {currentToken !== "sm" && (
+        <LayoutOrientation orientationSelected={orientation} />
+      )}
+      {orientation === "horizontal" && currentToken !== "sm" && (
         <CheckboxSingleOption
           id="fit-on-screen-checker"
           label={t("editor.propertiesGroup.layout.stretchProp")}
@@ -50,8 +55,7 @@ export default function LayoutPropertiesGroup({
           value={fitOnScreen}
         />
       )}
-      {fitOnScreen && <GapSelector />}
-
+      {fitOnScreen && currentToken !== "sm" && <GapSelector />}
       <CheckboxSingleOption
         id="transparent-background-checker"
         label={t("editor.propertiesGroup.layout.transparentProp")}

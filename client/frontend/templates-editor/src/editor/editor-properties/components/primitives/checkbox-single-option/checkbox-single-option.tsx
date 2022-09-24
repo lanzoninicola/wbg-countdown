@@ -26,7 +26,7 @@ export default function CheckboxSingleOption({
       <Switch
         id={id}
         name={id}
-        size="md"
+        size="lg"
         isChecked={value}
         onChange={(e) => onChange(e.target.checked)}
         aria-label={label}
