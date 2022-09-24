@@ -14,19 +14,18 @@ import {
 import { cloneElement, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
+import { BoxImage } from "../../../global/common";
 import Heeading from "../../../global/common/layout/heeading/heeading";
 import Teext from "../../../global/common/layout/teext/teext";
-import failure_max from "../../assets/images/failure_max.png";
 import error from "../../assets/images/error.png";
+import failure_max from "../../assets/images/failure_max.png";
 import steppingUp from "../../assets/images/stepping-up.png";
 import thankyou from "../../assets/images/thank-you.png";
-import useOnboardingModalForm from "../../hooks/useOnboardingModalForm";
-import useOnboardingContext from "../../provider/hooks/useOnboardingContext";
-import OnboardingSubmitButton from "../onboarding-submit-button/onboarding-submit-button";
-import OnboardingForm from "../onboarding-form/onboarding-form";
-import ModalImage from "./modal-image/modal-image";
 import useOnboardingConfig from "../../provider/hooks/useOnboardingConfig";
+import useOnboardingContext from "../../provider/hooks/useOnboardingContext";
 import { UIModalConfig } from "../../provider/types/context";
+import OnboardingForm from "../onboarding-form/onboarding-form";
+import OnboardingSubmitButton from "../onboarding-submit-button/onboarding-submit-button";
 
 interface OnboardingModalProps {
   /** The button component that will open the modal */
@@ -155,7 +154,12 @@ export default function OnboardingModal({
           <ModalBody>
             <HStack spacing={8}>
               <Box flex={1}>
-                <ModalImage image={configs[formState["modalConfig"]].image} />
+                <BoxImage
+                  image={configs[formState["modalConfig"]].image}
+                  bgSize={"250px"}
+                  w="100%"
+                  h="400px"
+                />
               </Box>
 
               <VStack spacing={8} alignItems={"flex-start"} flex={1}>
