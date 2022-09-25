@@ -5,7 +5,6 @@ import { StringOrNumber } from "../../../types";
 import CountdownUnitNumber from "./countdown-unit-number/countdown-unit-number";
 import UnitLabel from "./countdown-unit-label/countdown-unit-label";
 import CountdownUnitSeparator from "./countdown-unit-separator/countdown-unit-separator";
-import "./countdown-unit.css";
 
 interface CountdownUnitProps {
   label: string;

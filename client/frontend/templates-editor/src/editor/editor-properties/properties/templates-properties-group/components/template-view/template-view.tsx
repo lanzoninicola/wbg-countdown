@@ -1,16 +1,20 @@
 import { Box, Tooltip } from "@chakra-ui/react";
-import useThemeContext from "../../../../../countdown-state-management/hooks/theme/useThemeContext";
-import TEMPLATE_STYLES from "../constants/template-styles";
+import { useThemeLayoutSelector } from "../../../../../../countdown-state-management";
+
+import {
+  TEMPLATES,
+  TEMPLATES_BASE_ASSET_PATH,
+} from "../../constants/templates";
 
 interface TemplateProps {
   src: string;
   alt: string;
   /** The name of template */
-  name: string;
+  name: keyof typeof TEMPLATES;
 }
 
-export default function Template({ src, alt, name }: TemplateProps) {
-  const {} = useThemeContext();
+export default function TemplateView({ src, alt, name }: TemplateProps) {
+  const { themeDispatcher } = useThemeLayoutSelector();
 
   return (
     <Tooltip label={name} placement="top">
@@ -22,12 +26,12 @@ export default function Template({ src, alt, name }: TemplateProps) {
             type: "THEME_TEMPLATE_ON_CHANGE_TEMPLATE",
             payload: {
               name,
-              style: TEMPLATE_STYLES[name as keyof typeof TEMPLATE_STYLES],
+              style: TEMPLATES[name.toLowerCase()].style,
             },
           });
         }}
       >
-        <img src={src} alt={alt} />
+        <img src={`${TEMPLATES_BASE_ASSET_PATH}${src}.jpg`} alt={alt} />
       </Box>
     </Tooltip>
   );

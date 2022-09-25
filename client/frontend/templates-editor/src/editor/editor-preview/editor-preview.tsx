@@ -21,6 +21,7 @@ export default function EditorPreview() {
         {currentToken === "sm" && <MobileVector />}
 
         <Flex
+          data-element="editor-preview-flex"
           zIndex={10}
           mt={
             currentToken === "lg"

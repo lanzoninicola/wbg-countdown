@@ -6,7 +6,7 @@ interface PropertyItemProps {
 
 export default function PropertyItem({ children }: PropertyItemProps) {
   return (
-    <Box pl={".35rem"} _hover={{ background: "blue.200" }}>
+    <Box pl={".35rem"} cursor="pointer" _hover={{ background: "blue.200" }}>
       <Box bg={"white"}>{children}</Box>
     </Box>
   );
