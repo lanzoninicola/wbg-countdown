@@ -8,7 +8,7 @@ import { encrypt } from "../../../countdown-state-management/utils/crypto";
 export default function useHtmlCode() {
   const { layout, timer, title } = useThemeContext();
   const { targetDate, targetTimezone } = useSettingsContext();
-  const { productPublicWebsiteURL } = useAppContext();
+  const app = useAppContext();
 
   return useMemo(() => {
     const settingsEnc = encrypt(
@@ -26,13 +26,22 @@ export default function useHtmlCode() {
       })
     );
 
-    let htmlCode = "<div ";
+    const appEnc = encrypt(
+      JSON.stringify({
+        ...app,
+      })
+    );
+
+    let htmlCode = "<div data-widget='clockdown'>";
+
+    htmlCode += "<div ";
     htmlCode += 'data-element="clockdown-widget"';
     htmlCode += `data-settings="${settingsEnc}"`;
     htmlCode += `data-theme="${themeEnc}"`;
+    htmlCode += `data-app="${appEnc}"`;
     htmlCode += "></div>";
 
-    const BASE_ASSETS_URL = `${productPublicWebsiteURL}/wp-content/plugins/clockdown/client/frontend/public/clockdown-widget/assets`;
+    const BASE_ASSETS_URL = `${app.productPublicWebsiteURL}/wp-content/plugins/clockdown/client/frontend/public/clockdown-widget/assets`;
 
     // script tag
     htmlCode += `<script `;
@@ -44,6 +53,8 @@ export default function useHtmlCode() {
     htmlCode += `href="${BASE_ASSETS_URL}/index.css"`;
     htmlCode += `/>`;
 
+    htmlCode += "</div>";
+
     return htmlCode;
-  }, [layout, timer, title, targetDate, targetTimezone]);
+  }, [app, layout, timer, title, targetDate, targetTimezone]);
 }

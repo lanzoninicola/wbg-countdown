@@ -1,7 +1,7 @@
 import {
   Typography,
   useGoogleFontsUtils,
-} from "../../../../../countdown-widget-typography/countdown-widget-typography";
+} from "../../../countdown-widget-typography/countdown-widget-typography";
 
 /**
  * This renders the <link> tag for the Google Fonts API

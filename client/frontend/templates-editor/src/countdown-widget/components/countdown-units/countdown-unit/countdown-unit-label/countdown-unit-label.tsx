@@ -17,16 +17,8 @@ export default function UnitLabel({
   gridArea,
   ariaLabel,
 }: UnitLabelProps) {
-  const editorStyle = {
-    color: isLastUnit ? theme.lastUnitColor : theme.unitLabelFontColor,
-  };
-
   return (
-    <span
-      data-element="countdown-unit-label"
-      style={editorStyle}
-      aria-label={ariaLabel}
-    >
+    <span data-element="countdown-unit-label" aria-label={ariaLabel}>
       {label}
     </span>
   );

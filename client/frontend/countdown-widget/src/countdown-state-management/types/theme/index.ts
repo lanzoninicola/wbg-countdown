@@ -1,4 +1,5 @@
 import { ThemeLayoutContextData } from "./layout";
+import { ThemeTemplateContextData } from "./template";
 import { ThemeTimerContextData } from "./timer";
 import { ThemeTitleContextData } from "./title";
 
@@ -9,6 +10,7 @@ export type ThemeContext = ThemeStateData;
  * This is used in the Editor component to maintain syncrhronized between them.
  */
 export interface ThemeStateData {
+  template: ThemeTemplateContextData;
   /** All style data related to the layout of countdown */
   layout: ThemeLayoutContextData;
   /** All the properties related to the customization of title */

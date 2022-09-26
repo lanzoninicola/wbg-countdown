@@ -11,6 +11,7 @@ export default function themeReducer(
         ...state,
         ...action.payload,
       };
+
     case "THEME_TIMER_ON_CHANGE_UNIT_LABEL_FONT_FAMILY":
       return {
         ...state,
@@ -177,6 +178,26 @@ export default function themeReducer(
         actionDispatched: action.type,
       };
 
+    case "THEME_LAYOUT_ON_CHANGE_REMOVE_LINK":
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          removeLink: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
+    case "THEME_LAYOUT_ON_CHANGE_LINK_TARGET":
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          linkTarget: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
     case "THEME_LAYOUT_ON_CHANGE_CONTAINER_SIZE":
       return {
         ...state,
@@ -234,6 +255,17 @@ export default function themeReducer(
         layout: {
           ...state.layout,
           backgroundColor: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
+    case "THEME_TEMPLATE_ON_CHANGE_TEMPLATE":
+      return {
+        ...state,
+        template: {
+          ...state.template,
+          name: action.payload.name,
+          style: action.payload.style,
         },
         actionDispatched: action.type,
       };

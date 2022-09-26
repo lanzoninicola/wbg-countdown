@@ -7,7 +7,8 @@ import shopify from "../../assets/images/shopify.png";
 import squarespace from "../../assets/images/squarespace.png";
 import wix from "../../assets/images/wix.png";
 import woocommerce from "../../assets/images/woocommerce.png";
-import wordpress from "../../assets/images/wordpress.svg";
+import wordpress from "../../assets/images/wordpress.png";
+import webflow from "../../assets/images/webflow.png";
 
 export default function Platforms() {
   const { productPublicWebsiteURL } = useAppContext();
@@ -42,6 +43,11 @@ export default function Platforms() {
       name: "Wix",
       icon: wix,
       setupPage: `${productPublicWebsiteURL}/setup/wix`,
+    },
+    {
+      name: "Webflow",
+      icon: webflow,
+      setupPage: `${productPublicWebsiteURL}/setup/webflow`,
     },
     // { name: "Joomla", icon: "joomla" },
     // { name: "Drupal", icon: "drupal" },

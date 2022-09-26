@@ -1,7 +1,13 @@
 import { ThemeStateData } from "../../types/theme";
 
 const THEME_INITIAL_STATE: ThemeStateData = {
+  template: {
+    name: "default",
+    style: "",
+  },
   layout: {
+    removeLink: false,
+    linkTarget: "https://clockdown.lanzoninicola.com.br",
     containerSize: {
       width: 0,
       height: 0,

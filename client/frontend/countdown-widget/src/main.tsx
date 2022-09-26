@@ -9,7 +9,7 @@ if (env === "development") {
   createWidgetNode();
 }
 const widgetNodes: NodeListOf<HTMLDivElement> = document.querySelectorAll(
-  '[data-role="clockdown-widget"]'
+  '[data-element="clockdown-widget"]'
 );
 renderWithReact(widgetNodes);
 
@@ -19,6 +19,8 @@ function renderWithReact(nodes: NodeListOf<HTMLDivElement>) {
     // get the widget id from the iframe attribute
     const settings = widgetNode.getAttribute("data-settings");
     const theme = widgetNode.getAttribute("data-theme");
+
+    console.log(settings, theme);
 
     if (settings && theme) {
       ReactDOM.createRoot(widgetNode).render(

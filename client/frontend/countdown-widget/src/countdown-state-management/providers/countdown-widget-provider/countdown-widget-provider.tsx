@@ -1,6 +1,5 @@
 import { useState } from "react";
 import APP_INITIAL_STATE from "../../constants/app/initial-state";
-
 import SETTINGS_INITIAL_STATE from "../../constants/settings/initial-state";
 import THEME_INITIAL_STATE from "../../constants/theme/initial-state";
 import { CountdownWidgetContext } from "../../context/countdown-widget-context/countdown-widget-context";
@@ -13,6 +12,7 @@ interface CountdownWidgetProviderProps {
   children: React.ReactNode;
   settings?: string;
   theme?: string;
+  app?: string;
   config: {
     productPublicWebsiteURL: string;
   };
@@ -39,6 +39,7 @@ export default function CountdownWidgetProvider({
   children,
   settings,
   theme,
+  app,
   config,
 }: CountdownWidgetProviderProps) {
   let settingsInitialState = {
@@ -47,6 +48,10 @@ export default function CountdownWidgetProvider({
 
   let themeInitialState = {
     ...THEME_INITIAL_STATE,
+  };
+
+  let appInitialState = {
+    ...APP_INITIAL_STATE,
   };
 
   if (settings) {
@@ -65,9 +70,17 @@ export default function CountdownWidgetProvider({
     };
   }
 
+  if (app) {
+    const appDecoded = decrypt(app);
+    appInitialState = {
+      ...appInitialState,
+      ...JSON.parse(appDecoded),
+    };
+  }
+
   const [appState, appDispatcher] = useState<AppStateData>({
-    ...APP_INITIAL_STATE,
     ...config,
+    ...appInitialState,
   });
 
   const [settingsState, setSettingsState] =
@@ -75,6 +88,8 @@ export default function CountdownWidgetProvider({
 
   const [themeState, setThemState] =
     useState<ThemeStateData>(themeInitialState);
+
+  console.log(appState);
 
   return (
     <CountdownWidgetContext.Provider

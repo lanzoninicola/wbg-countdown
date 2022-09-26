@@ -2,7 +2,7 @@ import { Grid, Input, Flex, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { Typography } from "../../../../../../countdown-widget-typography/types";
 
-import GoogleFontsLinkTag from "../../google-fonts-link-tag/google-fonts-link-tag";
+import GoogleFontsLinkTag from "../../../../../../countdown-widget/components/google-fonts-link-tag/google-fonts-link-tag";
 
 export default function TextPreview({
   fontSelected,

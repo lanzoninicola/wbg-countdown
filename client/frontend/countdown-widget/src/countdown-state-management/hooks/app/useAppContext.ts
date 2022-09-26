@@ -6,10 +6,12 @@ import { AppStateData } from "../../types/app";
 export default function useAppContext(): AppStateData {
   const state = useContextSelector(EditorContext, (state) => state.app);
 
+  console.log(state);
+
   useEffect(() => {
-    state.currentCountdown === undefined &&
+    state.currentToken === undefined &&
       console.error("useAppContext hook must be used within a EditorProvider");
-  }, [state.currentCountdown]);
+  }, [state.currentToken]);
 
   return {
     ...state,

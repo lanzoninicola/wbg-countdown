@@ -2,7 +2,6 @@ import useThemeTimer from "../../../countdown-state-management/hooks/theme/useTh
 import useWidgetTranslation from "../../../countdown-widget-i18n/hooks/useWidgetTranslation";
 import { RemainingTime } from "../../types";
 import CountdownUnit from "./countdown-unit/countdown-unit";
-import "./countdown-units.css";
 
 export default function Counter({
   days,
@@ -14,7 +13,7 @@ export default function Counter({
   const { hideDays, hideHours } = useThemeTimer("unit-visible");
 
   return (
-    <div data-role="countdown-units">
+    <div data-element="countdown-units">
       {hideDays === false && (
         <CountdownUnit
           label={days === 1 ? tw("day") : tw("days")}

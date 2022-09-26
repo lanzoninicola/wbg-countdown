@@ -18,16 +18,8 @@ export default function CountdownUnitNumber({
   gridArea,
   ariaLabel,
 }: CountdownUnitNumberProps) {
-  const editorStyle = {
-    color: isLastUnit ? theme.lastUnitColor : theme.unitNumberFontColor,
-  };
-
   return (
-    <span
-      data-element="countdown-unit-number"
-      style={editorStyle}
-      aria-label={ariaLabel}
-    >
+    <span data-element="countdown-unit-number" aria-label={ariaLabel}>
       {value}
     </span>
   );

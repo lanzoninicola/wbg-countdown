@@ -1,5 +1,5 @@
 import { GOOGLE_FONTS_LIST } from "../../../constants/typography";
-import GoogleFontsLinkTag from "../google-fonts-link-tag/google-fonts-link-tag";
+import GoogleFontsLinkTag from "../../../../../countdown-widget/components/google-fonts-link-tag/google-fonts-link-tag";
 import FontList from "./font-list/font-list";
 
 interface GoogleFontPicker {
