@@ -1,6 +1,6 @@
 import { Input, ThemingProps } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import useSettingsSelector from "../../../../countdown-state-management/hooks/settings/useSettingsSelector";
+import useWidgetSelector from "../../../../countdown-state-management/hooks/widget/useWidgetSelector";
 
 import PropertyWrapper from "../../components/layout/property-wrapper/property-wrapper";
 import Label from "../../components/primitives/label/label";
@@ -11,7 +11,7 @@ interface TargetDateProps {
 
 export default function TargetDate({ size }: TargetDateProps) {
   const { t } = useTranslation();
-  const { targetDate, settingsDispatcher } = useSettingsSelector();
+  const { targetDate, widgetDispatcher } = useWidgetSelector();
 
   return (
     <PropertyWrapper firstColumnW="120px" columns={4} bg={"transparent"}>
@@ -22,8 +22,8 @@ export default function TargetDate({ size }: TargetDateProps) {
         id="target-date"
         name="target-date"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          settingsDispatcher({
-            type: "SETTINGS_ON_CHANGE_TARGET_DATE",
+          widgetDispatcher({
+            type: "WIDGET_ON_CHANGE_TARGET_DATE",
             payload: e.target.value,
           });
         }}

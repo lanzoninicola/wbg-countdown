@@ -1,23 +1,21 @@
 import { useLayoutEffect, useState } from "react";
 
-import useAppContext from "../../countdown-state-management/hooks/app/useAppContext";
-import useSettingsContext from "../../countdown-state-management/hooks/settings/useSettingsContext";
+import useEditorContext from "../../countdown-state-management/hooks/editor/useEditorContext";
+import useWidgetContext from "../../countdown-state-management/hooks/widget/useWidgetContext";
 import useCountdown from "../hooks/useCountdown";
-import CountdownWrapper from "./countdown-wrapper/countdown-wrapper";
 import CountdownTitle from "./countdown-title/countdown-title";
 import CountdownUnits from "./countdown-units/countdown-units";
 import TimerSkeleton from "./timer-skeleton/timer-skeleton";
-import useThemeTimerSelector from "../../countdown-state-management/hooks/theme/useThemeTimerSelector";
 import useThemeTimer from "../../countdown-state-management/hooks/theme/useThemeTimer";
 
 const Countdown = () => {
   const {
     targetDate: HTMLInputTargetDate,
     targetTimezone: HTMLInputTargetTimezone,
-  } = useSettingsContext();
+  } = useWidgetContext();
 
   const [isLoading, setIsLoading] = useState(true);
-  const { timerExpired } = useAppContext();
+  const { isTimerExpired } = useWidgetContext();
   const { padWithZero } = useThemeTimer("unit-number");
 
   const { days, hours, minutes, seconds } = useCountdown({
@@ -28,9 +26,9 @@ const Countdown = () => {
 
   useLayoutEffect(() => {
     if (
-      (timerExpired === false &&
+      (isTimerExpired === false &&
         (days > 0 || hours > 0 || minutes > 0 || seconds > 0)) ||
-      (timerExpired === true &&
+      (isTimerExpired === true &&
         days === 0 &&
         hours === 0 &&
         minutes === 0 &&
@@ -38,14 +36,14 @@ const Countdown = () => {
     ) {
       setIsLoading(false);
     }
-  }, [timerExpired, days, hours, minutes, seconds]);
+  }, [isTimerExpired, days, hours, minutes, seconds]);
 
   if (isLoading) {
     return <TimerSkeleton />;
   }
 
   return (
-    <CountdownWrapper>
+    <div data-element="countdown-wrapper">
       <CountdownTitle />
       <CountdownUnits
         days={days}
@@ -53,7 +51,7 @@ const Countdown = () => {
         minutes={minutes}
         seconds={seconds}
       />
-    </CountdownWrapper>
+    </div>
   );
 };
 

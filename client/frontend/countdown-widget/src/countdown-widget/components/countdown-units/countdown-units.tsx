@@ -11,6 +11,7 @@ export default function Counter({
 }: RemainingTime) {
   const { tw } = useWidgetTranslation();
   const { hideDays, hideHours } = useThemeTimer("unit-visible");
+  const separatorTheme = useThemeTimer("unit-separator");
 
   return (
     <div data-element="countdown-units">
@@ -22,12 +23,29 @@ export default function Counter({
           ariaLabelUnitLabel={tw("days")}
         />
       )}
+
+      {separatorTheme.showSeparator && (
+        <CountdownUnit
+          value={separatorTheme.separatorChar}
+          ariaLabelUnitNumber={"separator"}
+          ariaLabelUnitLabel={"separator"}
+        />
+      )}
+
       {hideHours === false && (
         <CountdownUnit
           label={hours === 1 ? tw("hour") : tw("hours")}
           value={hours}
           ariaLabelUnitNumber={tw("numberHours")}
           ariaLabelUnitLabel={tw("hours")}
+        />
+      )}
+
+      {separatorTheme.showSeparator && (
+        <CountdownUnit
+          value={separatorTheme.separatorChar}
+          ariaLabelUnitNumber={"separator"}
+          ariaLabelUnitLabel={"separator"}
         />
       )}
 
@@ -38,10 +56,17 @@ export default function Counter({
         ariaLabelUnitLabel={tw("minutes")}
       />
 
+      {separatorTheme.showSeparator && (
+        <CountdownUnit
+          value={separatorTheme.separatorChar}
+          ariaLabelUnitNumber={"separator"}
+          ariaLabelUnitLabel={"separator"}
+        />
+      )}
+
       <CountdownUnit
         label={seconds === 1 ? tw("second") : tw("seconds")}
         value={seconds}
-        isLastUnit={true}
         ariaLabelUnitNumber={tw("numberSeconds")}
         ariaLabelUnitLabel={tw("seconds")}
       />

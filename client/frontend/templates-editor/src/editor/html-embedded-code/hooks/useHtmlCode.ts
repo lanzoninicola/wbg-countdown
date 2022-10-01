@@ -1,17 +1,17 @@
 import { useMemo } from "react";
 
-import useAppContext from "../../../countdown-state-management/hooks/app/useAppContext";
-import useSettingsContext from "../../../countdown-state-management/hooks/settings/useSettingsContext";
+import useConfigContext from "../../../countdown-state-management/hooks/config/useConfigContext";
 import useThemeContext from "../../../countdown-state-management/hooks/theme/useThemeContext";
+import useWidgetContext from "../../../countdown-state-management/hooks/widget/useWidgetContext";
 import { encrypt } from "../../../countdown-state-management/utils/crypto";
 
 export default function useHtmlCode() {
   const { layout, timer, title } = useThemeContext();
-  const { targetDate, targetTimezone } = useSettingsContext();
-  const app = useAppContext();
+  const { targetDate, targetTimezone } = useWidgetContext();
+  const config = useConfigContext();
 
   return useMemo(() => {
-    const settingsEnc = encrypt(
+    const widgetEnc = encrypt(
       JSON.stringify({
         targetDate,
         targetTimezone,
@@ -26,9 +26,9 @@ export default function useHtmlCode() {
       })
     );
 
-    const appEnc = encrypt(
+    const configEnc = encrypt(
       JSON.stringify({
-        ...app,
+        ...config,
       })
     );
 
@@ -36,12 +36,12 @@ export default function useHtmlCode() {
 
     htmlCode += "<div ";
     htmlCode += 'data-element="clockdown-widget"';
-    htmlCode += `data-settings="${settingsEnc}"`;
+    htmlCode += `data-widget="${widgetEnc}"`;
     htmlCode += `data-theme="${themeEnc}"`;
-    htmlCode += `data-app="${appEnc}"`;
+    htmlCode += `data-config="${configEnc}"`;
     htmlCode += "></div>";
 
-    const BASE_ASSETS_URL = `${app.productPublicWebsiteURL}/wp-content/plugins/clockdown/client/frontend/public/clockdown-widget/assets`;
+    const BASE_ASSETS_URL = `${config.productPublicWebsiteURL}/wp-content/plugins/clockdown/client/frontend/public/clockdown-widget/assets`;
 
     // script tag
     htmlCode += `<script `;
@@ -56,5 +56,5 @@ export default function useHtmlCode() {
     htmlCode += "</div>";
 
     return htmlCode;
-  }, [app, layout, timer, title, targetDate, targetTimezone]);
+  }, [config, layout, timer, title, targetDate, targetTimezone]);
 }

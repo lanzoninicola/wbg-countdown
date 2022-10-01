@@ -1,5 +1,5 @@
 import { Box, Link, VStack } from "@chakra-ui/react";
-import { useAppContext } from "../../../../countdown-state-management";
+import { useEditorContext } from "../../../../countdown-state-management";
 
 import { BoxImage } from "../../../../global/common";
 import Teext from "../../../../global/common/layout/teext/teext";
@@ -11,7 +11,7 @@ import wordpress from "../../assets/images/wordpress.png";
 import webflow from "../../assets/images/webflow.png";
 
 export default function Platforms() {
-  const { productPublicWebsiteURL } = useAppContext();
+  const { productPublicWebsiteURL } = useEditorContext();
 
   const platforms = [
     {

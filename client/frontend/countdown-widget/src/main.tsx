@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { CountdownWidgetProvider } from "./countdown-state-management/providers/index";
+import { WidgetProvider } from "./countdown-state-management/providers/index";
 
 const env = process.env.NODE_ENV;
 
@@ -17,23 +17,19 @@ function renderWithReact(nodes: NodeListOf<HTMLDivElement>) {
   // for each widget node attach create react app
   nodes.forEach((widgetNode) => {
     // get the widget id from the iframe attribute
-    const settings = widgetNode.getAttribute("data-settings");
+    const widget = widgetNode.getAttribute("data-widget");
     const theme = widgetNode.getAttribute("data-theme");
+    const config = widgetNode.getAttribute("data-config");
 
-    console.log(settings, theme);
+    console.log(widgetNode);
 
-    if (settings && theme) {
+    if (widget && theme && config) {
       ReactDOM.createRoot(widgetNode).render(
         <React.StrictMode>
-          <CountdownWidgetProvider
-            settings={settings}
-            theme={theme}
-            config={{
-              productPublicWebsiteURL: "https://clockdown.lanzoninicola.com.br",
-            }}
-          >
+          <WidgetProvider widget={widget} theme={theme} config={config}>
             <App />
-          </CountdownWidgetProvider>
+            <div>Hello World</div>
+          </WidgetProvider>
         </React.StrictMode>
       );
     }
@@ -44,7 +40,7 @@ function createWidgetNode() {
   const widgetNode = document.createElement("div");
   widgetNode.setAttribute("data-role", "clockdown-widget");
   widgetNode.setAttribute(
-    "data-settings",
+    "data-widget",
     "eyJ0YXJnZXREYXRlIjoiMjAyMi0xMC0yOVQyMzowMCIsInRhcmdldFRpbWV6b25lIjoiRXVyb3BlL0JlcmxpbiJ9"
   );
   widgetNode.setAttribute(

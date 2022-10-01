@@ -1,6 +1,6 @@
 import { Box, Flex, VStack } from "@chakra-ui/react";
 
-import useAppSelector from "../../countdown-state-management/hooks/app/useAppSelector";
+import useEditorSelector from "../../countdown-state-management/hooks/editor/useEditorSelector";
 import CountdownWidget from "../../countdown-widget/countdown-widget";
 import HtmlEmbeddedCode from "../html-embedded-code/html-embedded-code";
 import BoxRadiusLg from "../layout/box-radius-lg/box-radius-lg";
@@ -11,7 +11,7 @@ import TabletVector from "./components/tablet-vector/tablet-vector";
 import DEFAULT_BREAKPOINTS from "./constants/default-breakpoints";
 
 export default function EditorPreview() {
-  const { currentToken } = useAppSelector();
+  const { currentToken } = useEditorSelector();
 
   return (
     <VStack position="relative" w={"100%"} data-element="editor-preview">

@@ -1,7 +1,7 @@
 import { Select, ThemingProps } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
+import useWidgetSelector from "../../../../countdown-state-management/hooks/widget/useWidgetSelector";
 
-import useSettingsSelector from "../../../../countdown-state-management/hooks/settings/useSettingsSelector";
 import PropertyWrapper from "../../components/layout/property-wrapper/property-wrapper";
 import Label from "../../components/primitives/label/label";
 import TIMEZONES_LIST from "../../constants/timezones";
@@ -12,7 +12,7 @@ interface TargetTimezoneProps {
 
 export default function TimezonePicker({ size }: TargetTimezoneProps) {
   const { t } = useTranslation();
-  const { targetTimezone, settingsDispatcher } = useSettingsSelector();
+  const { targetTimezone, widgetDispatcher } = useWidgetSelector();
 
   return (
     <PropertyWrapper firstColumnW="120px" columns={4} bg={"transparent"}>
@@ -26,8 +26,8 @@ export default function TimezonePicker({ size }: TargetTimezoneProps) {
         gridColumn={"2 / 5"}
         value={targetTimezone}
         onChange={(e) => {
-          settingsDispatcher({
-            type: "SETTINGS_ON_CHANGE_TIMEZONE",
+          widgetDispatcher({
+            type: "WIDGET_ON_CHANGE_TIMEZONE",
             payload: e.target.value,
           });
         }}

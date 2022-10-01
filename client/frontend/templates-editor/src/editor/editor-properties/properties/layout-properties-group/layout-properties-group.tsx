@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import { link } from "fs";
 import { useTranslation } from "react-i18next";
-import { useAppContext } from "../../../../countdown-state-management";
+import { useEditorContext } from "../../../../countdown-state-management";
 
 import useThemeLayoutSelector from "../../../../countdown-state-management/hooks/theme/useThemeLayoutSelector";
 import { PremiumFeatureGuard } from "../../../../premium-features";
@@ -30,7 +30,7 @@ export default function LayoutPropertiesGroup({
     linkTarget,
     themeDispatcher,
   } = useThemeLayoutSelector();
-  const { currentToken } = useAppContext();
+  const { currentToken } = useEditorContext();
   const { t } = useTranslation();
 
   return (

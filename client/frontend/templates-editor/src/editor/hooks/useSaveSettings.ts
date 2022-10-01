@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import useAppContext from "../../countdown-state-management/hooks/app/useAppContext";
+import useEditorContext from "../../countdown-state-management/hooks/editor/useEditorContext";
 
-import useSettingsContext from "../../countdown-state-management/hooks/settings/useSettingsContext";
+import useWidgetContext from "../../countdown-state-management/hooks/widget/useWidgetContext";
 import useThemeContext from "../../countdown-state-management/hooks/theme/useThemeContext";
 import { CountdownSettingsAndTheme } from "../../countdown-state-management/types";
 import { create as createCountdown } from "../../countdown-rest-api/services/countdowns";
@@ -21,7 +21,7 @@ interface UseSaveSettingsProps {
 export default function useSaveSettings({
   showNotification = true,
 }: UseSaveSettingsProps = {}) {
-  const { currentCountdown } = useAppContext();
+  const { currentCountdown } = useEditorContext();
   const { success: successnotification, error: errorNotification } =
     useNotifications();
 
@@ -32,7 +32,7 @@ export default function useSaveSettings({
 
   const { t } = useTranslation();
 
-  const settings = useSettingsContext();
+  const settings = useWidgetContext();
   const theme = useThemeContext();
   const savePayload: CountdownSettingsAndTheme = {
     ...settings,

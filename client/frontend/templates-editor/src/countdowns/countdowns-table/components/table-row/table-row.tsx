@@ -1,7 +1,7 @@
 import { HStack, Td, Tr } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import useAppSelector from "../../../../countdown-state-management/hooks/app/useAppSelector";
+import useEditorSelector from "../../../../countdown-state-management/hooks/editor/useEditorSelector";
 import { CountdownModel } from "../../../../countdown-widget/types";
 import ShortcodePreview from "../../../../global/common/shortcode-preview/shortcode-preview";
 import DeleteModal from "../../../components/modal-delete-countdown/modal-delete-countdown";
@@ -18,7 +18,7 @@ interface TableRowProps {
 export default function TableRow({ countdown }: TableRowProps) {
   const { t } = useTranslation();
   const { id, name, description } = countdown;
-  const { appDispatcher } = useAppSelector();
+  const { editorDispatcher } = useEditorSelector();
 
   /**
   const createdAt = dayjs(created_at).format("DD/MM/YYYY");
@@ -46,8 +46,8 @@ export default function TableRow({ countdown }: TableRowProps) {
           <ButtonEdit
             label={t("global.customize")}
             onClick={() => {
-              appDispatcher({
-                type: "APP_SET_CURRENT_COUNTDOWN",
+              editorDispatcher({
+                type: "EDITOR_SET_CURRENT_COUNTDOWN",
                 payload: id,
               });
             }}

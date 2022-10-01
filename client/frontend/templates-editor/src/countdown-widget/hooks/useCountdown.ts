@@ -3,7 +3,7 @@ import timezone from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
 import { useEffect, useRef, useState } from "react";
 
-import useAppSelector from "../../countdown-state-management/hooks/app/useAppSelector";
+import useEditorSelector from "../../countdown-state-management/hooks/editor/useEditorSelector";
 import { RemainingTime } from "../types";
 import padWithZeros from "../utils/padWithZeros";
 import {
@@ -38,7 +38,7 @@ export default function useCountdown({
   withZeros,
 }: UseCountdownProps): RemainingTime {
   const intervalRef = useRef<number>();
-  const { appDispatcher } = useAppSelector();
+  const { editorDispatcher } = useEditorSelector();
   const [remainingTime, setRemainingTime] = useState(DEFAULT_REMAINING_TIME);
 
   useEffect(() => {
@@ -64,8 +64,8 @@ export default function useCountdown({
     const seconds = diffInSeconds(todayLocalTime(), targetLocalTime());
     if (seconds <= 0) {
       clearInterval(intervalRef.current);
-      appDispatcher({
-        type: "APP_ON_CHANGE_IS_TIMER_EXPIRED_FLAG",
+      editorDispatcher({
+        type: "WIDGET_ON_CHANGE_IS_TIMER_EXPIRED_FLAG",
         payload: true,
       });
     }

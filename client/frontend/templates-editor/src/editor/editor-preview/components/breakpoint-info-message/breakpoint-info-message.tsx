@@ -1,12 +1,12 @@
 import { Text } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import useAppContext from "../../../../countdown-state-management/hooks/app/useAppContext";
+import useEditorContext from "../../../../countdown-state-management/hooks/editor/useEditorContext";
 import BoxRadiusLg from "../../../layout/box-radius-lg/box-radius-lg";
 
 export default function BreakpointInfoMessage() {
   const { t } = useTranslation();
-  const { currentToken } = useAppContext();
+  const { currentToken } = useEditorContext();
 
   const message = () => {
     switch (currentToken) {

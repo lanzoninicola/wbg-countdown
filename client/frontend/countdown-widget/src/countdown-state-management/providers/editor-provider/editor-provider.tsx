@@ -1,56 +1,65 @@
-import APP_INITIAL_STATE from "../../constants/app/initial-state";
-import SETTINGS_INITIAL_STATE from "../../constants/settings/initial-state";
+import EDITOR_INITIAL_STATE from "../../constants/editor/initial-state";
+import WIDGET_INITIAL_STATE from "../../constants/widget/initial-state";
 import THEME_INITIAL_STATE from "../../constants/theme/initial-state";
 import { EditorContext } from "../../context/editor-context/editor-context";
-import appReducer from "../../reducers/appReducer";
-import settingsReducer from "../../reducers/settingsReducer";
+import editorReducer from "../../reducers/editorReducer";
+import widgetReducer from "../../reducers/widgetReducer";
 import themeReducer from "../../reducers/themeReducer";
-import { AppStateData } from "../../types/app";
-import { AppStateAction } from "../../types/app/actions";
-import { SettingsStateData } from "../../types/settings";
-import { SettingsStateAction } from "../../types/settings/actions";
+import { EditorStateData } from "../../types/editor";
+import { EditorStateAction } from "../../types/editor/actions";
+import { WidgetStateData } from "../../types/widget";
+import { WidgetStateAction } from "../../types/widget/actions";
 import { ThemeStateData } from "../../types/theme";
 import { ThemeStateAction } from "../../types/theme/actions";
 import useReducerLocalStorage from "../../utils/useReducerLocalStorage";
+import CONFIG_INITIAL_STATE from "../../constants/config/initial-state";
+import configReducer from "../../reducers/configReducer";
+import { ConfigStateData } from "../../types/config";
+import { ConfigStateAction } from "../../types/config/actions";
 
 interface EditorProviderProps {
   children: React.ReactNode;
-  config: {
-    productPublicWebsiteURL: string;
-  };
+  config: ConfigStateData;
 }
 
 export default function EditorProvider({
   children,
   config,
 }: EditorProviderProps) {
-  const [appState, appDispatcher] = useReducerLocalStorage<
-    AppStateData,
-    AppStateAction
-  >("__CLOCKODWN_APP_STATE__", appReducer, {
-    ...APP_INITIAL_STATE,
-    ...config,
-  });
+  const [editorState, editorDispatcher] = useReducerLocalStorage<
+    EditorStateData,
+    EditorStateAction
+  >("__CLOCKDOWN_EDITOR_STATE__", editorReducer, EDITOR_INITIAL_STATE);
 
-  const [settingsState, settingsDispatcher] = useReducerLocalStorage<
-    SettingsStateData,
-    SettingsStateAction
-  >("__CLOCKODWN_SETTINGS_STATE__", settingsReducer, SETTINGS_INITIAL_STATE);
+  const [widgetState, widgetDispatcher] = useReducerLocalStorage<
+    WidgetStateData,
+    WidgetStateAction
+  >("__CLOCKDOWN_WIDGET_STATE__", widgetReducer, WIDGET_INITIAL_STATE);
 
   const [themeState, themeDispatcher] = useReducerLocalStorage<
     ThemeStateData,
     ThemeStateAction
-  >("__CLOCKODWN_THEME_STATE__", themeReducer, THEME_INITIAL_STATE);
+  >("__CLOCKODOWN_THEME_STATE__", themeReducer, THEME_INITIAL_STATE);
+
+  const [configState, configDispatcher] = useReducerLocalStorage<
+    ConfigStateData,
+    ConfigStateAction
+  >("__CLOCKDOWN_CONFIG_STATE__", configReducer, {
+    ...CONFIG_INITIAL_STATE,
+    ...config,
+  });
 
   return (
     <EditorContext.Provider
       value={{
-        app: appState,
-        appDispatcher,
-        settings: settingsState,
-        settingsDispatcher,
+        editor: editorState,
+        editorDispatcher,
+        widget: widgetState,
+        widgetDispatcher,
         theme: themeState,
         themeDispatcher,
+        config: configState,
+        configDispatcher,
       }}
     >
       {children}

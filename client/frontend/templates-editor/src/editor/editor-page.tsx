@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 
-import useAppSelector from "../countdown-state-management/hooks/app/useAppSelector";
+import useEditorSelector from "../countdown-state-management/hooks/editor/useEditorSelector";
 import Editor from "./components/editor/editor";
 
 export default function EditorPage() {
-  const { currentCountdown, appDispatcher } = useAppSelector();
+  const { currentCountdown, editorDispatcher } = useEditorSelector();
 
   useEffect(() => {
-    appDispatcher({
-      type: "APP_ON_CHANGE_IS_EDITOR_MODE_FLAG",
+    editorDispatcher({
+      type: "EDITOR_ON_CHANGE_IS_EDITOR_MODE_FLAG",
       payload: true,
     });
   }, []);

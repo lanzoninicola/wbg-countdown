@@ -1,8 +1,6 @@
-import { useContextSelector } from "use-context-selector";
-
-import { EditorContext } from "../../context/editor-context/editor-context";
 import { ThemeStateAction } from "../../types/theme/actions";
 import { ThemeTimerContextData } from "../../types/theme/timer";
+import useThemeContext from "./useThemeContext";
 
 export type ThemeTimerContextDataWithDispatcher = ThemeTimerContextData & {
   themeDispatcher: React.Dispatch<ThemeStateAction>;
@@ -12,11 +10,7 @@ export type ThemeTimerContextDataWithDispatcher = ThemeTimerContextData & {
  * Hook that let works with the single item of the "Timer" state.
  */
 export default function useThemeTimerSelector(): ThemeTimerContextDataWithDispatcher {
-  const timer = useContextSelector(EditorContext, (ctx) => ctx?.theme.timer);
-  const themeDispatcher = useContextSelector(
-    EditorContext,
-    (ctx) => ctx?.themeDispatcher
-  );
+  const { timer, themeDispatcher } = useThemeContext();
 
   return {
     ...timer,

@@ -1,4 +1,4 @@
-import useAppContext from "../../../countdown-state-management/hooks/app/useAppContext";
+import useConfigContext from "../../../countdown-state-management/hooks/config/useConfigContext";
 
 interface CountdownWidgetLinkProps {
   children: React.ReactNode;
@@ -7,7 +7,7 @@ interface CountdownWidgetLinkProps {
 export default function CountdownWidgetLink({
   children,
 }: CountdownWidgetLinkProps) {
-  const { productPublicWebsiteURL } = useAppContext();
+  const { productPublicWebsiteURL } = useConfigContext();
 
   if (true) {
     return <>{children}</>;

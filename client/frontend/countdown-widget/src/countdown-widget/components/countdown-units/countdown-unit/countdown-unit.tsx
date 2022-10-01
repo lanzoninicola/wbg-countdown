@@ -1,16 +1,11 @@
 import React from "react";
 
-import useThemeTimer from "../../../../countdown-state-management/hooks/theme/useThemeTimer";
 import { StringOrNumber } from "../../../types";
-import CountdownUnitNumber from "./countdown-unit-number/countdown-unit-number";
-import UnitLabel from "./countdown-unit-label/countdown-unit-label";
-import CountdownUnitSeparator from "./countdown-unit-separator/countdown-unit-separator";
 
 interface CountdownUnitProps {
-  label: string;
+  label?: string;
   value: StringOrNumber;
   isDanger?: boolean;
-  isLastUnit?: boolean;
   /** aria-label attribute for the number of timer unit */
   ariaLabelUnitNumber: string;
   /** aria-label attribute for the label of timer unit */
@@ -21,40 +16,23 @@ function CountdownUnit({
   label,
   value,
   isDanger,
-  isLastUnit,
   ariaLabelUnitNumber,
   ariaLabelUnitLabel,
 }: CountdownUnitProps) {
-  const unitNumberTheme = useThemeTimer("unit-number");
-  const unitLabelTheme = useThemeTimer("unit-label");
-  const separatorTheme = useThemeTimer("unit-separator");
-
   return (
     <div
       data-element="countdown-unit"
-      data-unit-type={`${label.toLowerCase()}`}
+      data-unit-type={ariaLabelUnitLabel.toLowerCase()}
     >
-      <CountdownUnitNumber
-        gridArea={"number"}
-        value={value}
-        isDanger={isDanger}
-        isLastUnit={isLastUnit}
-        theme={unitNumberTheme}
-        ariaLabel={ariaLabelUnitNumber}
-      />
-      <UnitLabel
-        gridArea={"label"}
-        label={label}
-        isLastUnit={isLastUnit}
-        theme={unitLabelTheme}
-        ariaLabel={ariaLabelUnitLabel}
-      />
-      {!isLastUnit && separatorTheme.showSeparator && (
-        <CountdownUnitSeparator
-          gridArea={"separator"}
-          separatorText={separatorTheme.separatorChar}
-        />
-      )}
+      <span
+        data-element="countdown-unit-number"
+        aria-label={ariaLabelUnitNumber}
+      >
+        {value}
+      </span>
+      <span data-element="countdown-unit-label" aria-label={ariaLabelUnitLabel}>
+        {label ?? ""}&nbsp;
+      </span>
     </div>
   );
 }

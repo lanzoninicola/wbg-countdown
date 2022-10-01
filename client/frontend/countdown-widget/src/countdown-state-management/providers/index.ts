@@ -1,4 +1,4 @@
 import EditorProvider from "./editor-provider/editor-provider";
-import CountdownWidgetProvider from "./countdown-widget-provider/countdown-widget-provider";
+import WidgetProvider from "./widget-provider/widget-provider";
 
-export { EditorProvider, CountdownWidgetProvider };
+export { EditorProvider, WidgetProvider };

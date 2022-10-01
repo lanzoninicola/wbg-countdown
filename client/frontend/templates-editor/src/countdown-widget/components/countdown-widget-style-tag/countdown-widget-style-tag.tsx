@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useAppContext } from "../../../countdown-state-management";
+import { useEditorContext } from "../../../countdown-state-management";
 import useThemeLayout from "../../../countdown-state-management/hooks/theme/useThemeLayout";
 import useThemeTemplate from "../../../countdown-state-management/hooks/theme/useThemeTemplate";
 import useThemeTimer from "../../../countdown-state-management/hooks/theme/useThemeTimer";
@@ -28,11 +28,14 @@ export default function CountdownWidgetStyleTag() {
   const unitLabelTheme = useThemeTimer("unit-label");
   const separatorTheme = useThemeTimer("unit-separator");
 
-  const {
-    currentToken: editorToken,
-    isEditorMode,
-    fontSizeUnit,
-  } = useAppContext();
+  // const {
+
+  //   currentToken: editorToken,
+  //   isEditorMode,
+  //   fontSizeUnit,
+  // } = useEditorContext();
+
+  const editorCtx = useEditorContext();
   const { style } = useThemeTemplate();
 
   const flex = React.useMemo(() => cssflex(), []);
@@ -149,13 +152,12 @@ export default function CountdownWidgetStyleTag() {
     color: ${unitNumberTheme.lastUnitColor};
   }`;
 
-  const unitSeparator = `
-  span[data-element="countdown-unit-separator"] {
-    marginInLine: 1rem;
-    text-rendering: optimizeSpeed;
-    grid-area: separator;
-    display: ${separatorTheme.showSeparator ? "block" : "none"};
-  }`;
+  let unitSeparator = `
+  div[data-element="countdown-unit"][data-unit-type="separator"] {
+    text-rendering: optimizeSpeed;`;
+  separatorTheme.showSeparator === false
+    ? (unitSeparator += `display: none;`)
+    : (unitSeparator += `}`);
 
   let styleArray = [
     countdownWidget,

@@ -1,4 +1,4 @@
-import useAppContext from "./hooks/app/useAppContext";
+import useEditorContext from "./hooks/editor/useEditorContext";
 import useThemeLayoutSelector from "./hooks/theme/useThemeLayoutSelector";
 
-export { useAppContext, useThemeLayoutSelector };
+export { useEditorContext, useThemeLayoutSelector };

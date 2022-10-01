@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-import useAppContext from "../../../../../countdown-state-management/hooks/app/useAppContext";
+import useEditorContext from "../../../../../countdown-state-management/hooks/editor/useEditorContext";
 import {
   ChakraToken,
   ResponsiveValue,
@@ -22,7 +22,7 @@ export default function FontSize({
   fontSizeChanged,
   onChangeFontSize,
 }: FontSizeProps) {
-  const { currentToken } = useAppContext();
+  const { currentToken } = useEditorContext();
   const [fontSize, setFontSize] = useState<number>(
     fontSizeChanged[currentToken]
   );
