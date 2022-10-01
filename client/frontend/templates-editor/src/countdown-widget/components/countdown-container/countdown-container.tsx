@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-import useThemeLayoutSelector from "../../../countdown-state-management/hooks/theme/useThemeLayoutSelector";
+import useThemeLayoutWithDispatcher from "../../../countdown-state-management/common/hooks/theme/useThemeLayoutWithDispatcher";
 import useElementSize from "../../../countdown-state-management/utils/useElementSize";
 
 interface CountdownContainerProps {
@@ -12,7 +12,7 @@ export default function CountdownContainer({
 }: CountdownContainerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const containerSize = useElementSize(containerRef);
-  const { themeDispatcher } = useThemeLayoutSelector();
+  const { themeDispatcher } = useThemeLayoutWithDispatcher();
 
   useEffect(() => {
     if (containerSize.width > 0 || containerSize.height > 0) {

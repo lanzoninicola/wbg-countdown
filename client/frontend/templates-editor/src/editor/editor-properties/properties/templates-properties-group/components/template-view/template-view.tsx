@@ -1,5 +1,7 @@
 import { Box, Tooltip } from "@chakra-ui/react";
-import { useThemeLayoutSelector } from "../../../../../../countdown-state-management";
+import { useThemeLayoutWithDispatcher } from "../../../../../../countdown-state-management";
+import useThemeTitle from "../../../../../../countdown-state-management/common/hooks/theme/useThemeTitle";
+import useThemeTitleWithDispatcher from "../../../../../../countdown-state-management/common/hooks/theme/useThemeTitleWithDispatcher";
 
 import {
   TEMPLATES,
@@ -14,7 +16,7 @@ interface TemplateProps {
 }
 
 export default function TemplateView({ src, alt, name }: TemplateProps) {
-  const { themeDispatcher } = useThemeLayoutSelector();
+  const { themeDispatcher } = useThemeLayoutWithDispatcher();
 
   return (
     <Tooltip label={name} placement="top">
@@ -22,13 +24,30 @@ export default function TemplateView({ src, alt, name }: TemplateProps) {
         maxW="300px"
         cursor={"pointer"}
         onClick={() => {
+          const template = TEMPLATES[name.toLowerCase()];
+
           themeDispatcher({
             type: "THEME_TEMPLATE_ON_CHANGE_TEMPLATE",
             payload: {
               name,
-              style: TEMPLATES[name.toLowerCase()].style,
+              style: template.style,
             },
           });
+
+          if (template?.fontFamily) {
+            themeDispatcher({
+              type: "THEME_TITLE_ON_CHANGE_FONT_FAMILY",
+              payload: template.fontFamily,
+            });
+            themeDispatcher({
+              type: "THEME_TIMER_ON_CHANGE_UNIT_LABEL_FONT_FAMILY",
+              payload: template.fontFamily,
+            });
+            themeDispatcher({
+              type: "THEME_TIMER_ON_CHANGE_UNIT_NUMBER_FONT_FAMILY",
+              payload: template.fontFamily,
+            });
+          }
         }}
       >
         <img src={`${TEMPLATES_BASE_ASSET_PATH}${src}.jpg`} alt={alt} />

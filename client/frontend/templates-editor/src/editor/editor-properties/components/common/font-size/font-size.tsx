@@ -1,11 +1,11 @@
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-import useEditorContext from "../../../../../countdown-state-management/hooks/editor/useEditorContext";
+import useEditorState from "../../../../../countdown-state-management/common/hooks/editor/useEditorState";
 import {
   ChakraToken,
   ResponsiveValue,
-} from "../../../../../countdown-state-management/types/theme/responsive";
+} from "../../../../../countdown-state-management/common/types/theme/responsive";
 import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
 import Label from "../../primitives/label/label";
 import SliderMarkTemplate from "../../primitives/slider-mark-template/slider-mark-template";
@@ -22,7 +22,7 @@ export default function FontSize({
   fontSizeChanged,
   onChangeFontSize,
 }: FontSizeProps) {
-  const { currentToken } = useEditorContext();
+  const { currentToken } = useEditorState();
   const [fontSize, setFontSize] = useState<number>(
     fontSizeChanged[currentToken]
   );

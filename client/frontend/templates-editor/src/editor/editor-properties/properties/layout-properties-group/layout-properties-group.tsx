@@ -1,9 +1,9 @@
 import { Box } from "@chakra-ui/react";
 import { link } from "fs";
 import { useTranslation } from "react-i18next";
-import { useEditorContext } from "../../../../countdown-state-management";
+import { useEditorState } from "../../../../countdown-state-management";
 
-import useThemeLayoutSelector from "../../../../countdown-state-management/hooks/theme/useThemeLayoutSelector";
+import useThemeLayoutWithDispatcher from "../../../../countdown-state-management/common/hooks/theme/useThemeLayoutWithDispatcher";
 import { PremiumFeatureGuard } from "../../../../premium-features";
 import BackgroundColor from "../../components/common/background-color/background-color";
 import PropertyGroupWrapper from "../../components/layout/property-group-wrapper/property-group-wrapper";
@@ -29,8 +29,8 @@ export default function LayoutPropertiesGroup({
     removeLink,
     linkTarget,
     themeDispatcher,
-  } = useThemeLayoutSelector();
-  const { currentToken } = useEditorContext();
+  } = useThemeLayoutWithDispatcher();
+  const { currentToken } = useEditorState();
   const { t } = useTranslation();
 
   return (

@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import useThemeTimerSelector from "../../../../countdown-state-management/hooks/theme/useThemeTimerSelector";
+import useThemeTimerWithDispatcher from "../../../../countdown-state-management/common/hooks/theme/useThemeTimerWithDispatcher";
 import PropertyGroupWrapper from "../../components/layout/property-group-wrapper/property-group-wrapper";
 import FontColor from "../../components/common/font-color/font-color";
 import FontFamily from "../../components/common/font-family/font-family";
@@ -23,7 +23,7 @@ export default function UnitLabelPropertiesGroup({
     unitLabelFontSize,
     unitLabelFontColor,
     themeDispatcher,
-  } = useThemeTimerSelector();
+  } = useThemeTimerWithDispatcher();
 
   return (
     <PropertyGroupWrapper

@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 
-import { ChakraToken } from "../../../../../countdown-state-management/types/theme/responsive";
+import { ChakraToken } from "../../../../../countdown-state-management/common/types/theme/responsive";
 import useCustomScrollbar from "../../../../../hooks/useCustomScrollbar";
 import DEFAULT_BREAKPOINTS from "../../../constants/default-breakpoints";
 

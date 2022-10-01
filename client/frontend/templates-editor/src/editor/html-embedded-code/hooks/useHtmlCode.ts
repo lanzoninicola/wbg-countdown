@@ -1,60 +1,64 @@
-import { useMemo } from "react";
-
-import useConfigContext from "../../../countdown-state-management/hooks/config/useConfigContext";
-import useThemeContext from "../../../countdown-state-management/hooks/theme/useThemeContext";
-import useWidgetContext from "../../../countdown-state-management/hooks/widget/useWidgetContext";
+import { EditorContext } from "../../../countdown-state-management";
+import useConfigState from "../../../countdown-state-management/common/hooks/config/useConfigState";
+import useThemeState from "../../../countdown-state-management/common/hooks/theme/useThemeState";
+import useTimerSettingsState from "../../../countdown-state-management/common/hooks/timer-settings/useTimerSettingsState";
 import { encrypt } from "../../../countdown-state-management/utils/crypto";
 
 export default function useHtmlCode() {
-  const { layout, timer, title } = useThemeContext();
-  const { targetDate, targetTimezone } = useWidgetContext();
-  const config = useConfigContext();
+  const { layout, timer, title, template } = useThemeState(EditorContext);
+  const { targetDate, targetTimezone } = useTimerSettingsState(EditorContext);
+  const config = useConfigState(EditorContext);
 
-  return useMemo(() => {
-    const widgetEnc = encrypt(
-      JSON.stringify({
-        targetDate,
-        targetTimezone,
-      })
-    );
+  const timerSettingsEnc = encrypt(
+    JSON.stringify({
+      targetDate,
+      targetTimezone,
+    })
+  );
 
-    const themeEnc = encrypt(
-      JSON.stringify({
-        layout,
-        timer,
-        title,
-      })
-    );
+  const themeEnc =
+    template.name.toLowerCase() !== "default"
+      ? encrypt(
+          JSON.stringify({
+            template,
+          })
+        )
+      : encrypt(
+          JSON.stringify({
+            layout,
+            timer,
+            title,
+          })
+        );
 
-    const configEnc = encrypt(
-      JSON.stringify({
-        ...config,
-      })
-    );
+  const configEnc = encrypt(
+    JSON.stringify({
+      ...config,
+    })
+  );
 
-    let htmlCode = "<div data-widget='clockdown'>";
+  let htmlCode = "<div data-widget='clockdown'>";
 
-    htmlCode += "<div ";
-    htmlCode += 'data-element="clockdown-widget"';
-    htmlCode += `data-widget="${widgetEnc}"`;
-    htmlCode += `data-theme="${themeEnc}"`;
-    htmlCode += `data-config="${configEnc}"`;
-    htmlCode += "></div>";
+  htmlCode += "<div ";
+  htmlCode += 'data-element="clockdown-widget"';
+  htmlCode += `data-timer-settings="${timerSettingsEnc}"`;
+  htmlCode += `data-theme="${themeEnc}"`;
+  htmlCode += `data-config="${configEnc}"`;
+  htmlCode += "></div>";
 
-    const BASE_ASSETS_URL = `${config.productPublicWebsiteURL}/wp-content/plugins/clockdown/client/frontend/public/clockdown-widget/assets`;
+  const BASE_ASSETS_URL = `${config.productPublicWebsiteURL}/wp-content/plugins/clockdown/client/frontend/public/clockdown-widget/assets`;
 
-    // script tag
-    htmlCode += `<script `;
-    htmlCode += `src="${BASE_ASSETS_URL}/index.js"`;
-    htmlCode += `></script>`;
+  // script tag
+  htmlCode += `<script `;
+  htmlCode += `src="${BASE_ASSETS_URL}/index.js"`;
+  htmlCode += `></script>`;
 
-    // style tag
-    htmlCode += `<link rel="stylesheet" `;
-    htmlCode += `href="${BASE_ASSETS_URL}/index.css"`;
-    htmlCode += `/>`;
+  // style tag
+  htmlCode += `<link rel="stylesheet" `;
+  htmlCode += `href="${BASE_ASSETS_URL}/index.css"`;
+  htmlCode += `/>`;
 
-    htmlCode += "</div>";
+  htmlCode += "</div>";
 
-    return htmlCode;
-  }, [config, layout, timer, title, targetDate, targetTimezone]);
+  return htmlCode;
 }

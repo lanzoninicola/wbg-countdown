@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
-import useEditorSelector from "../countdown-state-management/hooks/editor/useEditorSelector";
+import useEditorStateWithDispatcher from "../countdown-state-management/common/hooks/editor/useEditorStateWithDispatcher";
 import Editor from "./components/editor/editor";
 
 export default function EditorPage() {
-  const { currentCountdown, editorDispatcher } = useEditorSelector();
+  const { currentCountdown, editorDispatcher } = useEditorStateWithDispatcher();
 
   useEffect(() => {
     editorDispatcher({

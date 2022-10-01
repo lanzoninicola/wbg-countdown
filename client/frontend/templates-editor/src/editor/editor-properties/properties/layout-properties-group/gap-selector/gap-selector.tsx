@@ -1,13 +1,13 @@
 import { Box } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import useThemeLayoutSelector from "../../../../../countdown-state-management/hooks/theme/useThemeLayoutSelector";
+import useThemeLayoutWithDispatcher from "../../../../../countdown-state-management/common/hooks/theme/useThemeLayoutWithDispatcher";
 
 import PropertyWrapper from "../../../components/layout/property-wrapper/property-wrapper";
 import Label from "../../../components/primitives/label/label";
 import SliderMarkTemplate from "../../../components/primitives/slider-mark-template/slider-mark-template";
 
 export default function GapSelector() {
-  const { gap, themeDispatcher } = useThemeLayoutSelector();
+  const { gap, themeDispatcher } = useThemeLayoutWithDispatcher();
   const { t } = useTranslation();
 
   return (

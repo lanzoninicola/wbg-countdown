@@ -1,9 +1,9 @@
 import React from "react";
-
-import useThemeTitleSelector from "../../../countdown-state-management/hooks/theme/useThemeTitleSelector";
+import { WidgetContext } from "../../../countdown-state-management";
+import useThemeTitle from "../../../countdown-state-management/common/hooks/theme/useThemeTitle";
 
 function CountdownTitle() {
-  const { text } = useThemeTitleSelector();
+  const { text } = useThemeTitle(WidgetContext);
 
   return (
     <h2 data-element="countdown-title" aria-label={text}>

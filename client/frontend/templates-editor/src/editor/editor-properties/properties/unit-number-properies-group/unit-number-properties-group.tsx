@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import useThemeTimerSelector from "../../../../countdown-state-management/hooks/theme/useThemeTimerSelector";
+import useThemeTimerWithDispatcher from "../../../../countdown-state-management/common/hooks/theme/useThemeTimerWithDispatcher";
 import { PremiumFeatureGuard } from "../../../../premium-features";
 import FontColor from "../../components/common/font-color/font-color";
 import FontFamily from "../../components/common/font-family/font-family";
@@ -28,7 +28,7 @@ export default function UnitNumberPropertiesGroup({
     hideSeconds,
     padWithZero,
     themeDispatcher,
-  } = useThemeTimerSelector();
+  } = useThemeTimerWithDispatcher();
 
   return (
     <PropertyGroupWrapper

@@ -1,4 +1,4 @@
-import { FontSizeWithUnit } from "../../countdown-state-management/types/theme/responsive";
+import { FontSizeWithUnit } from "../types";
 
 type Unit = "px" | "rem" | "em";
 

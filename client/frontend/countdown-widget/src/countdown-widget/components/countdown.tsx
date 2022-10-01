@@ -1,22 +1,22 @@
 import { useLayoutEffect, useState } from "react";
+import { WidgetContext } from "../../countdown-state-management";
+import useThemeTimerUnitNumber from "../../countdown-state-management/common/hooks/theme/useThemeTimerUnitNumber";
 
-import useEditorContext from "../../countdown-state-management/hooks/editor/useEditorContext";
-import useWidgetContext from "../../countdown-state-management/hooks/widget/useWidgetContext";
+import useTimerSettingsState from "../../countdown-state-management/common/hooks/timer-settings/useTimerSettingsState";
 import useCountdown from "../hooks/useCountdown";
 import CountdownTitle from "./countdown-title/countdown-title";
 import CountdownUnits from "./countdown-units/countdown-units";
 import TimerSkeleton from "./timer-skeleton/timer-skeleton";
-import useThemeTimer from "../../countdown-state-management/hooks/theme/useThemeTimer";
 
 const Countdown = () => {
   const {
     targetDate: HTMLInputTargetDate,
     targetTimezone: HTMLInputTargetTimezone,
-  } = useWidgetContext();
+    isTimerExpired,
+  } = useTimerSettingsState(WidgetContext);
 
   const [isLoading, setIsLoading] = useState(true);
-  const { isTimerExpired } = useWidgetContext();
-  const { padWithZero } = useThemeTimer("unit-number");
+  const { padWithZero } = useThemeTimerUnitNumber(WidgetContext);
 
   const { days, hours, minutes, seconds } = useCountdown({
     HTMLInputTargetDate,

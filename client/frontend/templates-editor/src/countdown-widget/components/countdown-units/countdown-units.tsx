@@ -1,4 +1,5 @@
-import useThemeTimer from "../../../countdown-state-management/hooks/theme/useThemeTimer";
+import { WidgetContext } from "../../../countdown-state-management";
+import useThemeTimerSeparator from "../../../countdown-state-management/common/hooks/theme/useThemeTimerSeparator";
 import useWidgetTranslation from "../../../countdown-widget-i18n/hooks/useWidgetTranslation";
 import { RemainingTime } from "../../types";
 import CountdownUnit from "./countdown-unit/countdown-unit";
@@ -10,19 +11,16 @@ export default function Counter({
   seconds,
 }: RemainingTime) {
   const { tw } = useWidgetTranslation();
-  const { hideDays, hideHours } = useThemeTimer("unit-visible");
-  const separatorTheme = useThemeTimer("unit-separator");
+  const separatorTheme = useThemeTimerSeparator(WidgetContext);
 
   return (
     <div data-element="countdown-units">
-      {hideDays === false && (
-        <CountdownUnit
-          label={days === 1 ? tw("day") : tw("days")}
-          value={days}
-          ariaLabelUnitNumber={tw("numberDays")}
-          ariaLabelUnitLabel={tw("days")}
-        />
-      )}
+      <CountdownUnit
+        label={days === 1 ? tw("day") : tw("days")}
+        value={days}
+        ariaLabelUnitNumber={tw("numberDays")}
+        ariaLabelUnitLabel={tw("days")}
+      />
 
       {separatorTheme.showSeparator && (
         <CountdownUnit
@@ -32,14 +30,12 @@ export default function Counter({
         />
       )}
 
-      {hideHours === false && (
-        <CountdownUnit
-          label={hours === 1 ? tw("hour") : tw("hours")}
-          value={hours}
-          ariaLabelUnitNumber={tw("numberHours")}
-          ariaLabelUnitLabel={tw("hours")}
-        />
-      )}
+      <CountdownUnit
+        label={hours === 1 ? tw("hour") : tw("hours")}
+        value={hours}
+        ariaLabelUnitNumber={tw("numberHours")}
+        ariaLabelUnitLabel={tw("hours")}
+      />
 
       {separatorTheme.showSeparator && (
         <CountdownUnit

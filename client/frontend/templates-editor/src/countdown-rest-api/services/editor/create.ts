@@ -1,4 +1,4 @@
-import { CountdownSettingsAndTheme } from "../../../countdown-state-management/types";
+import { CountdownSettingsAndTheme } from "../../../countdown-state-management/common/types";
 import {
   CountdownModel,
   CountdownSettingsAndThemeModel,

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ElementSize } from "../../countdown-state-management/types/theme/layout";
+import { ElementSize } from "../common/types/theme/layout";
 
 type HTMLElement = HTMLDivElement;
 

@@ -1,7 +1,7 @@
 import { Box, Flex, FlexProps, forwardRef } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import { ChakraToken } from "../../../../countdown-state-management/types/theme/responsive";
+import { ChakraToken } from "../../../../countdown-state-management/common/types/theme/responsive";
 import PreviewWrapper from "./preview-wrapper/preview-wrapper";
 
 interface PreviewWrapperProps extends FlexProps {

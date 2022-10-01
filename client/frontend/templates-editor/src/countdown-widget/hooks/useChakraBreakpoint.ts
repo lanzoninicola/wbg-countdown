@@ -1,5 +1,6 @@
 import { useLayoutEffect, useState } from "react";
-import { ChakraToken } from "../../countdown-state-management/types/theme/responsive";
+
+import { ChakraToken } from "../../countdown-state-management/common/types/theme/responsive";
 
 type ChakraBreakpoints = Record<ChakraToken, number>;
 
@@ -14,15 +15,19 @@ const CHAKRA_BREAKPOINTS: ChakraBreakpoints = {
 const DEFAULT_FONT_SIZE = 16;
 
 /**
- * Returns the breakpoint token (based on Chakra UI) of the current viewport.
+ * Returns the breakpoint token (based on Chakra UI) of the preview container div[data-element="editor-preview-flex"]
  *
  * @returns {string} - "sm" | "md" | "lg"
  */
 export default function useChakraBreakpoint(): ChakraToken {
   const [breakpoint, setBreakpoint] = useState<ChakraToken>("md");
 
-  function closestBreakpoint(): ChakraToken {
-    const innerWidthEM = Math.round(window.innerWidth / DEFAULT_FONT_SIZE);
+  const editorPreviewWidth = document.querySelector(
+    'div[data-element="editor-preview-flex"]'
+  )?.clientWidth;
+
+  function closestBreakpoint(width: number): ChakraToken {
+    const innerWidthEM = Math.round(width / DEFAULT_FONT_SIZE);
 
     // get the closest breakpoint to the innerWidth compared to the default breakpoints
     // @ts-ignore
@@ -37,16 +42,18 @@ export default function useChakraBreakpoint(): ChakraToken {
   }
 
   useLayoutEffect(() => {
-    setBreakpoint(closestBreakpoint());
+    const width = editorPreviewWidth || window.innerWidth;
+
+    setBreakpoint(closestBreakpoint(width));
 
     const debouncedHandleResize = debounce(() => {
-      setBreakpoint(closestBreakpoint());
+      setBreakpoint(closestBreakpoint(width));
     }, 100);
     document.addEventListener("resize", debouncedHandleResize);
     return () => {
       document.removeEventListener("resize", debouncedHandleResize);
     };
-  }, []);
+  }, [editorPreviewWidth]);
 
   return breakpoint;
 }

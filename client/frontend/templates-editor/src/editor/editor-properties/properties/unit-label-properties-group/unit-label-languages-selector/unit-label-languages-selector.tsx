@@ -1,13 +1,13 @@
 import { Select } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import useThemeTimerSelector from "../../../../../countdown-state-management/hooks/theme/useThemeTimerSelector";
+import useThemeTimerWithDispatcher from "../../../../../countdown-state-management/common/hooks/theme/useThemeTimerWithDispatcher";
 import LANGUAGES from "../../../../../countdown-widget-i18n/constants/languages";
 import PropertyWrapper from "../../../components/layout/property-wrapper/property-wrapper";
 import Label from "../../../components/primitives/label/label";
 
 export default function UnitLabelLanguagesSelector() {
-  const { unitLabelLanguage, themeDispatcher } = useThemeTimerSelector();
+  const { unitLabelLanguage, themeDispatcher } = useThemeTimerWithDispatcher();
 
   const { t } = useTranslation();
 

@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import useThemeTitleSelector from "../../../../countdown-state-management/hooks/theme/useThemeTitleSelector";
+import useThemeTitleSelector from "../../../../countdown-state-management/common/hooks/theme/useThemeTitleWithDispatcher";
 import PropertyGroupWrapper from "../../components/layout/property-group-wrapper/property-group-wrapper";
 import FontColor from "../../components/common/font-color/font-color";
 import FontFamily from "../../components/common/font-family/font-family";

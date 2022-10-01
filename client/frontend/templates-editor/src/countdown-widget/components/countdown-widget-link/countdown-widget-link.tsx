@@ -1,4 +1,5 @@
-import useConfigContext from "../../../countdown-state-management/hooks/config/useConfigContext";
+import { WidgetContext } from "../../../countdown-state-management";
+import useConfigState from "../../../countdown-state-management/common/hooks/config/useConfigState";
 
 interface CountdownWidgetLinkProps {
   children: React.ReactNode;
@@ -7,14 +8,17 @@ interface CountdownWidgetLinkProps {
 export default function CountdownWidgetLink({
   children,
 }: CountdownWidgetLinkProps) {
-  const { productPublicWebsiteURL } = useConfigContext();
+  const config = useConfigState(WidgetContext);
 
-  if (true) {
+  if (!config) {
     return <>{children}</>;
   }
 
   return (
-    <a href={productPublicWebsiteURL} data-element="countdown-link-wrapper">
+    <a
+      href={config?.productPublicWebsiteURL}
+      data-element="countdown-link-wrapper"
+    >
       {children}
     </a>
   );

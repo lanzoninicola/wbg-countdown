@@ -1,9 +1,15 @@
-import React, { useEffect } from "react";
-import { useEditorContext } from "../../../countdown-state-management";
-import useThemeLayout from "../../../countdown-state-management/hooks/theme/useThemeLayout";
-import useThemeTemplate from "../../../countdown-state-management/hooks/theme/useThemeTemplate";
-import useThemeTimer from "../../../countdown-state-management/hooks/theme/useThemeTimer";
-import useThemeTitleSelector from "../../../countdown-state-management/hooks/theme/useThemeTitleSelector";
+import React from "react";
+
+import {
+  useEditorState,
+  WidgetContext,
+} from "../../../countdown-state-management";
+import useThemeLayout from "../../../countdown-state-management/common/hooks/theme/useThemeLayout";
+import useThemeTemplate from "../../../countdown-state-management/common/hooks/theme/useThemeTemplate";
+import useThemeTimerSeparator from "../../../countdown-state-management/common/hooks/theme/useThemeTimerSeparator";
+import useThemeTimerUnitLabel from "../../../countdown-state-management/common/hooks/theme/useThemeTimerUnitLabel";
+import useThemeTimerUnitNumber from "../../../countdown-state-management/common/hooks/theme/useThemeTimerUnitNumber";
+import useThemeTitle from "../../../countdown-state-management/common/hooks/theme/useThemeTitle";
 import useChakraBreakpoint from "../../hooks/useChakraBreakpoint";
 import {
   cssAlignItemsCenter,
@@ -20,20 +26,15 @@ export default function CountdownWidgetStyleTag() {
     gap,
     transparentBackground,
     backgroundColor,
-  } = useThemeLayout();
+  } = useThemeLayout(WidgetContext);
   const { fontColor, fontFamily, fontSize, fontWeight } =
-    useThemeTitleSelector();
+    useThemeTitle(WidgetContext);
   const viewportToken = useChakraBreakpoint();
-  const unitNumberTheme = useThemeTimer("unit-number");
-  const unitLabelTheme = useThemeTimer("unit-label");
-  const separatorTheme = useThemeTimer("unit-separator");
+  const unitNumberTheme = useThemeTimerUnitNumber(WidgetContext);
+  const unitLabelTheme = useThemeTimerUnitLabel(WidgetContext);
+  const separatorTheme = useThemeTimerSeparator(WidgetContext);
 
-  const {
-    currentToken: editorToken,
-    isEditorMode,
-    fontSizeUnit,
-  } = useEditorContext();
-  const { style } = useThemeTemplate();
+  const { style: TemplateStyle } = useThemeTemplate(WidgetContext);
 
   const flex = React.useMemo(() => cssflex(), []);
   const justifyContentCenter = React.useMemo(
@@ -43,6 +44,14 @@ export default function CountdownWidgetStyleTag() {
   const alignItemsCenter = React.useMemo(() => cssAlignItemsCenter(), []);
   const flexColumn = React.useMemo(() => cssFlexColumn(), []);
   const flexRow = React.useMemo(() => cssFlexRow(), []);
+
+  const countdownLinkWrapper = `
+  a[data-element="countdown-link-wrapper"] {
+    color: inherit;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+  }
+  `;
 
   const countdownWidget = `
     div[data-element="countdown-widget"] {
@@ -89,9 +98,7 @@ export default function CountdownWidgetStyleTag() {
     margin: 0;
     line-height: 1.3;
     font-family: ${fontFamily};
-    font-size: ${
-      isEditorMode ? fontSize[editorToken] : fontSize[viewportToken]
-    }${fontSizeUnit};	
+    font-size: ${fontSize[viewportToken]}px;	
     color: ${fontColor};
     font-weight: ${fontWeight};
     text-align: center;
@@ -119,11 +126,7 @@ export default function CountdownWidgetStyleTag() {
   span[data-element="countdown-unit-number"] {
     text-rendering: optimizeSpeed;
     grid-area: number;
-    font-size: ${
-      isEditorMode
-        ? unitNumberTheme.unitNumberFontSize[editorToken]
-        : unitNumberTheme.unitNumberFontSize[viewportToken]
-    }${fontSizeUnit};
+    font-size: ${unitNumberTheme.unitNumberFontSize[viewportToken]}px;
     font-weight: ${unitNumberTheme.unitNumberFontWeight};
     font-family: ${unitNumberTheme.unitNumberFontFamily};
     color: ${unitNumberTheme.unitNumberFontColor};
@@ -134,11 +137,7 @@ export default function CountdownWidgetStyleTag() {
     line-height: 1.1;
     text-rendering: optimizeSpeed;
     grid-area: label;
-     font-size: ${
-       isEditorMode
-         ? unitLabelTheme.unitLabelFontSize[editorToken]
-         : unitLabelTheme.unitLabelFontSize[viewportToken]
-     }px;
+     font-size: ${unitLabelTheme.unitLabelFontSize[viewportToken]}px;
     font-weight: ${unitLabelTheme.unitLabelFontWeight};
     font-family: ${unitLabelTheme.unitLabelFontFamily};
     color: ${unitLabelTheme.unitLabelFontColor};
@@ -156,7 +155,8 @@ export default function CountdownWidgetStyleTag() {
     ? (unitSeparator += `display: none;`)
     : (unitSeparator += `}`);
 
-  let styleArray = [
+  const styleArray = [
+    countdownLinkWrapper,
     countdownWidget,
     countdownContainer,
     countdownWrapper,
@@ -168,11 +168,13 @@ export default function CountdownWidgetStyleTag() {
     unitSeparator,
     lastUnit,
   ];
-  let widgetStyle = styleArray.join(" ");
+  const widgetStyle = styleArray.join(" ");
+
+  console.log(widgetStyle);
 
   return (
     <style data-element="countdown-widget-style-tag">
-      {style ? style : widgetStyle}
+      {TemplateStyle ? TemplateStyle : widgetStyle}
     </style>
   );
 }

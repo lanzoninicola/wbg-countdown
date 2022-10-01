@@ -1,9 +1,13 @@
-import { Box, Flex, VStack } from "@chakra-ui/react";
+import { Flex, VStack } from "@chakra-ui/react";
+import { EditorContext } from "../../countdown-state-management";
+import useConfigState from "../../countdown-state-management/common/hooks/config/useConfigState";
 
-import useEditorSelector from "../../countdown-state-management/hooks/editor/useEditorSelector";
+import useEditorStateWithDispatcher from "../../countdown-state-management/common/hooks/editor/useEditorStateWithDispatcher";
+import useThemeState from "../../countdown-state-management/common/hooks/theme/useThemeState";
+import useTimerSettingsState from "../../countdown-state-management/common/hooks/timer-settings/useTimerSettingsState";
+import { WidgetProvider } from "../../countdown-state-management/widget";
 import CountdownWidget from "../../countdown-widget/countdown-widget";
 import HtmlEmbeddedCode from "../html-embedded-code/html-embedded-code";
-import BoxRadiusLg from "../layout/box-radius-lg/box-radius-lg";
 import LaptopVector from "./components/laptop-vector/laptop-vector";
 import MobileVector from "./components/mobile-vector/mobile-vector";
 import Preview from "./components/preview/preview";
@@ -11,7 +15,10 @@ import TabletVector from "./components/tablet-vector/tablet-vector";
 import DEFAULT_BREAKPOINTS from "./constants/default-breakpoints";
 
 export default function EditorPreview() {
-  const { currentToken } = useEditorSelector();
+  const { currentToken } = useEditorStateWithDispatcher();
+  const timerSettings = useTimerSettingsState(EditorContext);
+  const theme = useThemeState(EditorContext);
+  const config = useConfigState(EditorContext);
 
   return (
     <VStack position="relative" w={"100%"} data-element="editor-preview">
@@ -25,7 +32,7 @@ export default function EditorPreview() {
           zIndex={10}
           mt={
             currentToken === "lg"
-              ? "10rem"
+              ? "12rem"
               : currentToken === "md"
               ? "15rem"
               : "10rem"
@@ -33,7 +40,14 @@ export default function EditorPreview() {
           width={DEFAULT_BREAKPOINTS[currentToken]}
           justifyContent="center"
         >
-          <CountdownWidget />
+          <WidgetProvider
+            isEditorMode={true}
+            timerSettings={timerSettings}
+            theme={theme}
+            config={config}
+          >
+            <CountdownWidget />
+          </WidgetProvider>
         </Flex>
       </Preview>
 

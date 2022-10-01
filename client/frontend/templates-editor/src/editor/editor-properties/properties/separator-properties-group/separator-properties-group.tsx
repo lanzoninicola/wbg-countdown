@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import useThemeTimerSelector from "../../../../countdown-state-management/hooks/theme/useThemeTimerSelector";
+import useThemeTimerWithDispatcher from "../../../../countdown-state-management/common/hooks/theme/useThemeTimerWithDispatcher";
 import { PremiumFeatureGuard } from "../../../../premium-features";
 import PropertyGroupWrapper from "../../components/layout/property-group-wrapper/property-group-wrapper";
 import CheckboxSingleOption from "../../components/primitives/checkbox-single-option/checkbox-single-option";
@@ -17,7 +17,7 @@ export default function SeparatorPropertiesGroup({
 }: SeparatorPropertiesGroupProps) {
   const { t } = useTranslation();
   const { showSeparator, separatorChar, themeDispatcher } =
-    useThemeTimerSelector();
+    useThemeTimerWithDispatcher();
 
   return (
     <PropertyGroupWrapper

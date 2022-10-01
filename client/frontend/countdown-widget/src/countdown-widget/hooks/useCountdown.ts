@@ -2,8 +2,10 @@ import dayjs from "dayjs";
 import timezone from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
 import { useEffect, useRef, useState } from "react";
+import { WidgetContext } from "../../countdown-state-management";
 
-import useEditorSelector from "../../countdown-state-management/hooks/editor/useEditorSelector";
+import useEditorStateWithDispatcher from "../../countdown-state-management/common/hooks/editor/useEditorStateWithDispatcher";
+import useTimerSettingsStateWithDispatcher from "../../countdown-state-management/common/hooks/timer-settings/useTimerSettingsStateWithDispatcher";
 import { RemainingTime } from "../types";
 import padWithZeros from "../utils/padWithZeros";
 import {
@@ -38,7 +40,8 @@ export default function useCountdown({
   withZeros,
 }: UseCountdownProps): RemainingTime {
   const intervalRef = useRef<number>();
-  const { editorDispatcher } = useEditorSelector();
+  const { timerSettingsDispatcher } =
+    useTimerSettingsStateWithDispatcher(WidgetContext);
   const [remainingTime, setRemainingTime] = useState(DEFAULT_REMAINING_TIME);
 
   useEffect(() => {
@@ -64,8 +67,8 @@ export default function useCountdown({
     const seconds = diffInSeconds(todayLocalTime(), targetLocalTime());
     if (seconds <= 0) {
       clearInterval(intervalRef.current);
-      editorDispatcher({
-        type: "WIDGET_ON_CHANGE_IS_TIMER_EXPIRED_FLAG",
+      timerSettingsDispatcher({
+        type: "TIMER_SETTINGS_ON_CHANGE_IS_TIMER_EXPIRED_FLAG",
         payload: true,
       });
     }

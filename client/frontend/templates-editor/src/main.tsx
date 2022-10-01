@@ -8,7 +8,7 @@ import "./style/global.css";
 import createDevRoot from "./main.dev";
 import { OnboardingProvider } from "./onboarding";
 import PremiumFeatureProvider from "./premium-features-provider/premium-features-provider";
-import { EditorProvider } from "./countdown-state-management/providers";
+import { EditorProvider } from "./countdown-state-management/editor";
 
 const env = process.env.NODE_ENV;
 

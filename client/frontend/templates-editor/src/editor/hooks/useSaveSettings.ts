@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import useEditorContext from "../../countdown-state-management/hooks/editor/useEditorContext";
+import useEditorState from "../../countdown-state-management/common/hooks/editor/useEditorState";
 
-import useWidgetContext from "../../countdown-state-management/hooks/widget/useWidgetContext";
-import useThemeContext from "../../countdown-state-management/hooks/theme/useThemeContext";
-import { CountdownSettingsAndTheme } from "../../countdown-state-management/types";
+import useTimerSettingsState from "../../countdown-state-management/common/hooks/timer-settings/useTimerSettingsState";
+import useThemeState from "../../countdown-state-management/common/hooks/theme/useThemeState";
+import { CountdownSettingsAndTheme } from "../../countdown-state-management/common/types";
 import { create as createCountdown } from "../../countdown-rest-api/services/countdowns";
 import {
   create as createCountdownSettings,
@@ -21,7 +21,7 @@ interface UseSaveSettingsProps {
 export default function useSaveSettings({
   showNotification = true,
 }: UseSaveSettingsProps = {}) {
-  const { currentCountdown } = useEditorContext();
+  const { currentCountdown } = useEditorState();
   const { success: successnotification, error: errorNotification } =
     useNotifications();
 
@@ -32,8 +32,8 @@ export default function useSaveSettings({
 
   const { t } = useTranslation();
 
-  const settings = useWidgetContext();
-  const theme = useThemeContext();
+  const settings = useTimerSettingsState();
+  const theme = useThemeState();
   const savePayload: CountdownSettingsAndTheme = {
     ...settings,
     ...theme,

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { WidgetProvider } from "./countdown-state-management/providers/index";
+import { WidgetProvider } from "./countdown-state-management/widget";
 
 const env = process.env.NODE_ENV;
 
@@ -17,18 +17,20 @@ function renderWithReact(nodes: NodeListOf<HTMLDivElement>) {
   // for each widget node attach create react app
   nodes.forEach((widgetNode) => {
     // get the widget id from the iframe attribute
-    const widget = widgetNode.getAttribute("data-widget");
+    const timerSettings = widgetNode.getAttribute("data-timer-settings");
     const theme = widgetNode.getAttribute("data-theme");
     const config = widgetNode.getAttribute("data-config");
 
-    console.log(widgetNode);
-
-    if (widget && theme && config) {
+    if (timerSettings && theme && config) {
       ReactDOM.createRoot(widgetNode).render(
         <React.StrictMode>
-          <WidgetProvider widget={widget} theme={theme} config={config}>
+          <WidgetProvider
+            timerSettings={timerSettings}
+            theme={theme}
+            config={config}
+            isEditorMode={false}
+          >
             <App />
-            <div>Hello World</div>
           </WidgetProvider>
         </React.StrictMode>
       );
@@ -38,14 +40,18 @@ function renderWithReact(nodes: NodeListOf<HTMLDivElement>) {
 
 function createWidgetNode() {
   const widgetNode = document.createElement("div");
-  widgetNode.setAttribute("data-role", "clockdown-widget");
+  widgetNode.setAttribute("data-element", "clockdown-widget");
   widgetNode.setAttribute(
-    "data-widget",
-    "eyJ0YXJnZXREYXRlIjoiMjAyMi0xMC0yOVQyMzowMCIsInRhcmdldFRpbWV6b25lIjoiRXVyb3BlL0JlcmxpbiJ9"
+    "data-timer-settings",
+    "eyJ0YXJnZXREYXRlIjoiMjAyMi0xMi0zMVQyMzowMCIsInRhcmdldFRpbWV6b25lIjoiRXVyb3BlL0JlcmxpbiJ9"
   );
   widgetNode.setAttribute(
     "data-theme",
-    "eyJsYXlvdXQiOnsiY29udGFpbmVyU2l6ZSI6eyJ3aWR0aCI6NTc4LCJoZWlnaHQiOjE2MH0sIm9yaWVudGF0aW9uIjoidmVydGljYWwiLCJnYXAiOjEsImZpdE9uU2NyZWVuIjpmYWxzZSwidHJhbnNwYXJlbnRCYWNrZ3JvdW5kIjpmYWxzZSwiYmFja2dyb3VuZENvbG9yIjoiI2ZmZmZmZiJ9LCJ0aW1lciI6eyJzaG93U2VwYXJhdG9yIjp0cnVlLCJzZXBhcmF0b3JDaGFyIjoiOiIsImhpZGVIb3VycyI6ZmFsc2UsImhpZGVTZWNvbmRzIjpmYWxzZSwicGFkV2l0aFplcm8iOmZhbHNlLCJ1bml0TnVtYmVyRm9udEZhbWlseSI6IkludGVyIiwidW5pdE51bWJlckZvbnRXZWlnaHQiOiI0MDAiLCJ1bml0TnVtYmVyRm9udFNpemUiOnsic20iOjE0LCJtZCI6MTYsImxnIjozMX0sInVuaXROdW1iZXJGb250Q29sb3IiOiIjMDAwMDAwIiwibGFzdFVuaXRDb2xvciI6IiNlMTBiMGIiLCJ1bml0TGFiZWxGb250RmFtaWx5IjoiSW50ZXIiLCJ1bml0TGFiZWxGb250V2VpZ2h0IjoiNDAwIiwidW5pdExhYmVsRm9udFNpemUiOnsic20iOjE2LCJtZCI6MzgsImxnIjozNX0sInVuaXRMYWJlbExhbmd1YWdlIjoiZW4tVVMiLCJ1bml0TGFiZWxGb250Q29sb3IiOiIjMDAwMDAwIn0sInRpdGxlIjp7InRleHQiOiJwaXBwbyIsImZvbnRGYW1pbHkiOiJJbnRlciIsImZvbnRXZWlnaHQiOiI0MDAiLCJmb250U2l6ZSI6eyJzbSI6MjUsIm1kIjoxNiwibGciOjI0fSwiZm9udENvbG9yIjoiIzAwMDAwMCJ9fQ=="
+    "eyJ0ZW1wbGF0ZSI6eyJuYW1lIjoiTW9ub3NwYWNlIiwic3R5bGUiOiJkaXZbZGF0YS1lbGVtZW50PVwiY291bnRkb3duLXdyYXBwZXJcIl0geyAgZGlzcGxheTogLXdlYmtpdC1mbGV4OyAgZGlzcGxheTogLW1zLWZsZXhib3g7ICBkaXNwbGF5OiBmbGV4OyAgLXdlYmtpdC1mbGV4LWRpcmVjdGlvbjogY29sdW1uOyAgLW1zLWZsZXgtZGlyZWN0aW9uOiBjb2x1bW47ICBmbGV4LWRpcmVjdGlvbjogY29sdW1uOyAgYmFja2dyb3VuZC1jb2xvcjogYmx1ZXZpb2xldDsgIG1heC13aWR0aDogMzc1cHg7ICBnYXA6IDAuNzVyZW07ICBmb250LWZhbWlseTogbW9ub3NwYWNlOyBwYWRkaW5nOiAxcmVtO31oMltkYXRhLWVsZW1lbnQ9XCJjb3VudGRvd24tdGl0bGVcIl0geyAgdGV4dC1hbGlnbjogY2VudGVyOyAgY29sb3I6IHdoaXRlOyAgZm9udC13ZWlnaHQ6IGJvbGQ7fWRpdltkYXRhLWVsZW1lbnQ9XCJjb3VudGRvd24tdW5pdHNcIl0geyAgZGlzcGxheTogLW1zLWdyaWQ7ICBkaXNwbGF5OiBncmlkOyAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiByZXBlYXQoNCwgMWZyKTsgIGdhcDogMC41cmVtO31kaXZbZGF0YS1lbGVtZW50PVwiY291bnRkb3duLXVuaXRcIl0geyAgZGlzcGxheTogLXdlYmtpdC1mbGV4OyAgZGlzcGxheTogLW1zLWZsZXhib3g7ICBkaXNwbGF5OiBmbGV4OyAgLXdlYmtpdC1mbGV4LWRpcmVjdGlvbjogY29sdW1uOyAgLW1zLWZsZXgtZGlyZWN0aW9uOiBjb2x1bW47ICBnYXA6IDAuMjVyZW07ICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO31zcGFuW2RhdGEtZWxlbWVudD1cImNvdW50ZG93bi11bml0LW51bWJlclwiXSB7ICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTsgIHBhZGRpbmc6IDFyZW07ICBib3JkZXItcmFkaXVzOiAxMHB4OyAgdGV4dC1hbGlnbjogY2VudGVyOyAgZm9udC1zaXplOiAxLjE1cmVtO31zcGFuW2RhdGEtZWxlbWVudD1cImNvdW50ZG93bi11bml0LWxhYmVsXCJdIHsgIHRleHQtYWxpZ246IGNlbnRlcjsgIGNvbG9yOiB3aGl0ZTt9IHNwYW5bZGF0YS1lbGVtZW50PVwiY291bnRkb3duLXVuaXQtc2VwYXJhdG9yXCJdIHsgIGRpc3BsYXk6IG5vbmU7fSJ9fQ=="
+  );
+  widgetNode.setAttribute(
+    "data-config",
+    "eyJwcm9kdWN0UHVibGljV2Vic2l0ZVVSTCI6Imh0dHBzOi8vY2xvY2tkb3duLmxhbnpvbmluaWNvbGEuY29tLmJyIn0="
   );
 
   // append countdown widget wrapper to body

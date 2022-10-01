@@ -6,7 +6,7 @@ import {
   RenderResult,
 } from "@testing-library/react";
 import React from "react";
-import EditorProvider from "../../countdown-state-management/providers/editor-provider/editor-provider";
+import EditorProvider from "../../countdown-state-management/editor/provider/editor-provider";
 
 const Wrapper = ({ children }: { children: React.ReactElement }) => {
   return <EditorProvider>{children}</EditorProvider>;

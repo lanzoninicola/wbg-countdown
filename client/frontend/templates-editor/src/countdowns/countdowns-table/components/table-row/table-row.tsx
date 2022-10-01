@@ -1,7 +1,7 @@
 import { HStack, Td, Tr } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import useEditorSelector from "../../../../countdown-state-management/hooks/editor/useEditorSelector";
+import useEditorStateWithDispatcher from "../../../../countdown-state-management/common/hooks/editor/useEditorStateWithDispatcher";
 import { CountdownModel } from "../../../../countdown-widget/types";
 import ShortcodePreview from "../../../../global/common/shortcode-preview/shortcode-preview";
 import DeleteModal from "../../../components/modal-delete-countdown/modal-delete-countdown";
@@ -18,7 +18,7 @@ interface TableRowProps {
 export default function TableRow({ countdown }: TableRowProps) {
   const { t } = useTranslation();
   const { id, name, description } = countdown;
-  const { editorDispatcher } = useEditorSelector();
+  const { editorDispatcher } = useEditorStateWithDispatcher();
 
   /**
   const createdAt = dayjs(created_at).format("DD/MM/YYYY");

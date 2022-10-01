@@ -1,16 +1,18 @@
-import useThemeTimerSelector from "../../../countdown-state-management/hooks/theme/useThemeTimerSelector";
-import useThemeTitleSelector from "../../../countdown-state-management/hooks/theme/useThemeTitleSelector";
+import { WidgetContext } from "../../../countdown-state-management";
+import useThemeTimerUnitLabel from "../../../countdown-state-management/common/hooks/theme/useThemeTimerUnitLabel";
+import useThemeTimerUnitNumber from "../../../countdown-state-management/common/hooks/theme/useThemeTimerUnitNumber";
+import useThemeTitle from "../../../countdown-state-management/common/hooks/theme/useThemeTitle";
 import GoogleFontsLinkTag from "../google-fonts-link-tag/google-fonts-link-tag";
 
 export default function CountdownWidgetGoogleFontTag() {
-  const {
-    unitNumberFontFamily,
-    unitNumberFontWeight,
-    unitLabelFontFamily,
-    unitLabelFontWeight,
-  } = useThemeTimerSelector();
+  const { unitLabelFontFamily, unitLabelFontWeight } =
+    useThemeTimerUnitLabel(WidgetContext);
+
+  const { unitNumberFontFamily, unitNumberFontWeight } =
+    useThemeTimerUnitNumber(WidgetContext);
+
   const { fontFamily: titleFontFamily, fontWeight: titleFontWeight } =
-    useThemeTitleSelector();
+    useThemeTitle(WidgetContext);
 
   return (
     <GoogleFontsLinkTag

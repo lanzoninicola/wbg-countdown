@@ -1,13 +1,13 @@
 import { Text } from "@chakra-ui/react";
 
-import useEditorContext from "../../../../../../countdown-state-management/hooks/editor/useEditorContext";
+import useEditorState from "../../../../../../countdown-state-management/common/hooks/editor/useEditorState";
 
 interface FontSizePreviewProps {
   size?: number;
 }
 
 export default function FontSizePreview({ size }: FontSizePreviewProps) {
-  const { fontSizeUnit } = useEditorContext();
+  const { fontSizeUnit } = useEditorState();
 
   return (
     <Text

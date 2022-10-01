@@ -1,8 +1,7 @@
 import { VStack } from "@chakra-ui/react";
-import BreakpointInfoMessage from "../../editor-preview/components/breakpoint-info-message/breakpoint-info-message";
+
 import BreakpointsBar from "../../editor-preview/components/breakpoints-bar/breakpoints-bar";
 import EditorPreview from "../../editor-preview/editor-preview";
-import PropertiesBar from "../../editor-properties/editor-properties-bar/components/properties-bar/properties-bar";
 import EditorPropertiesBar from "../../editor-properties/editor-properties-bar/editor-properties-bar";
 import TargetDate from "../../editor-properties/properties/target-date/target-date";
 import TimezonePicker from "../../editor-properties/properties/timezone/timezone-picker";
