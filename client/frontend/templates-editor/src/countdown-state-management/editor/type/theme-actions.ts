@@ -1,7 +1,7 @@
 import { ThemeStateData } from "../../common/types/theme";
 import { Language } from "../../../countdown-widget-i18n/types";
 import {
-  CountdownLayoutOrientation,
+  LayoutOrientation,
   ElementSize,
 } from "../../common/types/theme/layout";
 
@@ -131,7 +131,7 @@ interface ThemeLayoutOnChangeContainerSizeAction {
 
 interface ThemeLayoutOnChangeOrientationAction {
   type: "THEME_LAYOUT_ON_CHANGE_ORIENTATION";
-  payload: CountdownLayoutOrientation;
+  payload: LayoutOrientation;
 }
 
 interface ThemeLayoutOnChangeGapAction {
@@ -161,6 +161,7 @@ interface ThemeLayoutOnChangeBackgroundColorAction {
 interface ThemeTemplateOnChangeTemplateAction {
   type: "THEME_TEMPLATE_ON_CHANGE_TEMPLATE";
   payload: {
+    id: string;
     name: string;
     style: string;
   };

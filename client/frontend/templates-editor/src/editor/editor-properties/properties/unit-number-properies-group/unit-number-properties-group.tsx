@@ -42,13 +42,13 @@ export default function UnitNumberPropertiesGroup({
         fontWeight={unitNumberFontWeight}
         onSelectFontFamily={(fontFamily) => {
           themeDispatcher({
-            type: "THEME_TIMER_ON_CHANGE_UNIT_LABEL_FONT_FAMILY",
+            type: "THEME_TIMER_ON_CHANGE_UNIT_NUMBER_FONT_FAMILY",
             payload: fontFamily,
           });
         }}
         onSelectFontWeight={(fontWeight) => {
           themeDispatcher({
-            type: "THEME_TIMER_ON_CHANGE_UNIT_LABEL_FONT_WEIGHT",
+            type: "THEME_TIMER_ON_CHANGE_UNIT_NUMBER_FONT_WEIGHT",
             payload: fontWeight,
           });
         }}

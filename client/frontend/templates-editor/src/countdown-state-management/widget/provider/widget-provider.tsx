@@ -104,6 +104,8 @@ export default function WidgetProvider({
     }
   );
 
+  console.log(themeState);
+
   return (
     <WidgetContext.Provider
       value={{

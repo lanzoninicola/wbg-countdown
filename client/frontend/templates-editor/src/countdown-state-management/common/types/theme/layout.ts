@@ -5,7 +5,7 @@ export interface ThemeLayoutContextData {
   /** The URL target when click on the countdown */
   linkTarget: string;
   /** The text used for the countdown title */
-  orientation: CountdownLayoutOrientation;
+  orientation: LayoutOrientation;
   /** The space between the title and timer (1)space-evenly (2)space-around (3)space-between */
   gap: number;
   /** Fit the width of page when the countdown layout is horizontal */
@@ -16,7 +16,7 @@ export interface ThemeLayoutContextData {
   backgroundColor: string;
 }
 
-export type CountdownLayoutOrientation = "vertical" | "horizontal";
+export type LayoutOrientation = "vertical" | "horizontal";
 
 export interface ElementSize {
   width: number;

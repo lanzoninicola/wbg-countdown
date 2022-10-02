@@ -9,6 +9,7 @@ export default function useThemeTemplate<
   const theme = useThemeState(context);
 
   return {
+    id: theme.template.id,
     name: theme.template.name,
     style: theme.template.style,
   };

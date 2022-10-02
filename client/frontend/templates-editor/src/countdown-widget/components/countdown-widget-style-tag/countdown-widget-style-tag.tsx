@@ -34,7 +34,8 @@ export default function CountdownWidgetStyleTag() {
   const unitLabelTheme = useThemeTimerUnitLabel(WidgetContext);
   const separatorTheme = useThemeTimerSeparator(WidgetContext);
 
-  const { style: TemplateStyle } = useThemeTemplate(WidgetContext);
+  const { style: templateStyle, id: templateId } =
+    useThemeTemplate(WidgetContext);
 
   const flex = React.useMemo(() => cssflex(), []);
   const justifyContentCenter = React.useMemo(
@@ -54,7 +55,7 @@ export default function CountdownWidgetStyleTag() {
       width: 100%;
   }`;
 
-  const countdownContainer = `div[data-element="countdown-container"] { width: 100%; }`;
+  const countdownContainer = `div[data-element="countdown-container"] { width: 100%; ${flex} ${justifyContentCenter} }`;
 
   const countdownWrapper = `
   div[data-element="countdown-wrapper"] {
@@ -161,11 +162,11 @@ export default function CountdownWidgetStyleTag() {
   ];
   const widgetStyle = styleArray.join(" ");
 
-  console.log(TemplateStyle);
-
   return (
     <style data-element="countdown-widget-style-tag">
-      {TemplateStyle ? TemplateStyle : widgetStyle}
+      {templateId !== "default" && templateId !== undefined
+        ? templateStyle
+        : widgetStyle}
     </style>
   );
 }

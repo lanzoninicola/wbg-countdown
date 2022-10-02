@@ -264,6 +264,7 @@ export default function themeReducer(
         ...state,
         template: {
           ...state.template,
+          id: action.payload.id,
           name: action.payload.name,
           style: action.payload.style,
         },

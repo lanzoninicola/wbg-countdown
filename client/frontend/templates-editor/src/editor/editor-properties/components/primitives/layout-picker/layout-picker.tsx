@@ -8,7 +8,7 @@ import horizontalLayout from "./assets/images/horizontal-layout.png";
 import verticalLayout from "./assets/images/vertical-layout.png";
 import Label from "../label/label";
 import OptionContainer from "./option-container/option-container";
-import { CountdownLayoutOrientation } from "../../../../../countdown-state-management/common/types/theme/layout";
+import { LayoutOrientation } from "../../../../../countdown-state-management/common/types/theme/layout";
 
 export default function LayoutPicker() {
   const { t } = useTranslation();
@@ -21,7 +21,7 @@ export default function LayoutPicker() {
         onClick={(optionValue) => {
           themeDispatcher({
             type: "THEME_LAYOUT_ON_CHANGE_ORIENTATION",
-            payload: optionValue as CountdownLayoutOrientation,
+            payload: optionValue as LayoutOrientation,
           });
         }}
       >
@@ -40,7 +40,7 @@ export default function LayoutPicker() {
         onClick={(optionValue) => {
           themeDispatcher({
             type: "THEME_LAYOUT_ON_CHANGE_ORIENTATION",
-            payload: optionValue as CountdownLayoutOrientation,
+            payload: optionValue as LayoutOrientation,
           });
         }}
       >

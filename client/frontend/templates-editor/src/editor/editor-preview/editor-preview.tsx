@@ -1,4 +1,4 @@
-import { Flex, VStack } from "@chakra-ui/react";
+import { Box, Flex, VStack } from "@chakra-ui/react";
 import { EditorContext } from "../../countdown-state-management";
 import useConfigState from "../../countdown-state-management/common/hooks/config/useConfigState";
 
@@ -27,7 +27,7 @@ export default function EditorPreview() {
         {currentToken === "md" && <TabletVector />}
         {currentToken === "sm" && <MobileVector />}
 
-        <Flex
+        <Box
           data-element="editor-preview-flex"
           zIndex={10}
           mt={
@@ -39,6 +39,7 @@ export default function EditorPreview() {
           }
           width={DEFAULT_BREAKPOINTS[currentToken]}
           justifyContent="center"
+          overflow={"hidden"}
         >
           <WidgetProvider
             isEditorMode={true}
@@ -48,7 +49,7 @@ export default function EditorPreview() {
           >
             <CountdownWidget />
           </WidgetProvider>
-        </Flex>
+        </Box>
       </Preview>
 
       <HtmlEmbeddedCode />
