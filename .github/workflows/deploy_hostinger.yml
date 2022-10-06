@@ -1,14 +1,14 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Deploy to Hostinger (clockdown.xyz)
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "master" branch
   push:
-    branches: [ "master" ]
+    branches: ["hostinger"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["hostinger"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -25,12 +25,22 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Remove 'countdown-widget' countdown* folders
+        working-directory: ./client/frontend/countdown-widget
+        run: rm -r countdown*
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      # Runs a single command using the runners shell
+      - name: Build 'templates editor' frontend project
+        working-directory: ./client/frontend/templates-editor
+        run: npm run build
+
+      - name: Build 'countdown-widget' frontend project
+        working-directory: ./client/frontend/templates-editor
+        run: npm run build
+
+      - name: Sync with Hostinger (clockdown.xyz)
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          rsync --rsh='ssh -p 65002' -a \
+          --exclude="/client/frontend/countdown-widget" \
+          --exclude="/client/frontend/templates-editor" \
+          * u378434937@217.21.77.162:~/domains/clockdown.xyz/public_html/wp-content/plugins/clockdown
