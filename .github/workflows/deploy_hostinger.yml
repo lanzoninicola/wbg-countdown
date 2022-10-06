@@ -27,6 +27,8 @@ jobs:
 
       - name: Sync with Hostinger (clockdown.xyz)
         run: |
+          echo "${{secrets.DEPLOY_KEY}}" > deploy_key
+          chmod 600 ./deploy_key
           rsync --rsh='ssh -p 65002' -a \
           --exclude="/client/frontend/countdown-widget" \
           --exclude="/client/frontend/templates-editor" \
