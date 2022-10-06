@@ -27,7 +27,7 @@ jobs:
 
       - name: Remove 'countdown-widget' countdown* folders
         working-directory: ./client/frontend/countdown-widget
-        run: rm -r countdown*
+        run: rm -r /src/countdown*/
 
       # Runs a single command using the runners shell
       - name: Build 'templates editor' frontend project
