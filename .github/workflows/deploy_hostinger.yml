@@ -31,11 +31,9 @@ jobs:
           rm -rf countdown*
           ls -la
 
-      - name: Install copyfile
-        run: npm install copyfiles -g
-
       - name: Install build dependencies
-        run: npm install -g cross-env webpack webpack-cli css-minimizer-webpack-plugin mini-css-extract-plugin
+        working-directory: ./client/frontend/templates-editor
+        run: npm install -g copyfiles cross-env webpack webpack-cli css-minimizer-webpack-plugin mini-css-extract-plugin
 
       - name: Build 'templates editor' frontend project
         working-directory: ./client/frontend/templates-editor
