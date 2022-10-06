@@ -32,8 +32,10 @@ jobs:
           ls -la
 
       - name: Install copyfile
-        #working-directory: ./client/frontend/templates-editor
         run: npm install copyfiles -g
+
+      - name: Install cross-env
+        run: npm install cross-env -g
 
       - name: Build 'templates editor' frontend project
         working-directory: ./client/frontend/templates-editor
