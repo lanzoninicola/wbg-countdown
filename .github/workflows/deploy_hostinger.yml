@@ -31,6 +31,14 @@ jobs:
           rm -rf countdown*
           ls -la
 
+      - name: Install copyfile
+        working-directory: ./client/frontend/templates-editor
+        run: npm install copyfiles
+
+      - name: Build 'templates editor' frontend project
+        working-directory: ./client/frontend/templates-editor
+        run: npm run build
+
       - name: Sync with Hostinger (clockdown.xyz)
         run: |
           echo "${{secrets.DEPLOY_KEY}}" > deploy_key
