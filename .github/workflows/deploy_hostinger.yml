@@ -25,6 +25,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - name: Remove countdown* folders inside "/client/frontend/countdown-widget"
+        run: |
+          rm -r ./client/frontend/countdown-widget/src/countdown*
+
       - name: Sync with Hostinger (clockdown.xyz)
         run: |
           echo "${{secrets.DEPLOY_KEY}}" > deploy_key
