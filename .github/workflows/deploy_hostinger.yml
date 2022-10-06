@@ -6,9 +6,9 @@ name: Deploy to Hostinger (clockdown.xyz)
 on:
   # Triggers the workflow on push or pull request events but only for the "master" branch
   push:
-    branches: ["hostinger"]
-  pull_request:
-    branches: ["hostinger"]
+    branches: ["master"]
+  # pull_request:
+  # branches: ["hostinger"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -24,23 +24,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-      - name: Remove 'countdown-widget' countdown* folders
-        working-directory: ./client/frontend/countdown-widget
-        run: rm -r ./src/countdown*
-
-      # Runs a single command using the runners shell
-      - name: Build 'templates editor' frontend project
-        working-directory: ./client/frontend/templates-editor
-        run: npm run build
-
-      - name: Install copyfile
-        working-directory: ./client/frontend/templates-editor
-        run: npm install copyfiles
-
-      - name: Build 'countdown-widget' frontend project
-        working-directory: ./client/frontend/templates-editor
-        run: npm run build
 
       - name: Sync with Hostinger (clockdown.xyz)
         run: |
