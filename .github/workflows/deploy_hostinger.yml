@@ -31,12 +31,20 @@ jobs:
           rm -rf countdown*
           ls -la
 
-      - name: Install build dependencies
+      - name: Install build dependencies form 'templates editor' project
         working-directory: ./client/frontend/templates-editor
-        run: npm install -g copyfiles cross-env webpack webpack-cli css-minimizer-webpack-plugin mini-css-extract-plugin
+        run: npm install
 
       - name: Build 'templates editor' frontend project
         working-directory: ./client/frontend/templates-editor
+        run: npm run build
+
+      - name: Install build dependencies form 'countdown widget' project
+        working-directory: ./client/frontend/countdown-widget
+        run: npm install -g copyfiles cross-env webpack webpack-cli css-minimizer-webpack-plugin mini-css-extract-plugin
+
+      - name: Build 'countdown-widget' frontend project
+        working-directory: ./client/frontend/countdown-widget
         run: npm run build
 
       - name: Sync with Hostinger (clockdown.xyz)
