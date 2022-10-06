@@ -27,7 +27,8 @@ jobs:
 
       - name: Remove countdown* folders inside "/client/frontend/countdown-widget"
         run: |
-          rm -r ./client/frontend/countdown-widget/src/countdown*
+          cd ./client/frontend/countdown-widget/src/ \
+          ls
 
       - name: Sync with Hostinger (clockdown.xyz)
         run: |
