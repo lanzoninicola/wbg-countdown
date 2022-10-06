@@ -34,8 +34,8 @@ jobs:
       - name: Install copyfile
         run: npm install copyfiles -g
 
-      - name: Install cross-env
-        run: npm install cross-env -g
+      - name: Install build dependencies
+        run: npm install -g cross-env webpack webpack-cli css-minimizer-webpack-plugin mini-css-extract-plugin
 
       - name: Build 'templates editor' frontend project
         working-directory: ./client/frontend/templates-editor
