@@ -32,8 +32,8 @@ jobs:
           ls -la
 
       - name: Install copyfile
-        working-directory: ./client/frontend/templates-editor
-        run: npm install copyfiles
+        #working-directory: ./client/frontend/templates-editor
+        run: npm install copyfiles -g
 
       - name: Build 'templates editor' frontend project
         working-directory: ./client/frontend/templates-editor
@@ -47,6 +47,7 @@ jobs:
             -e 'ssh -p 65002 -i ./deploy_key -o StrictHostKeyChecking=no' \
             --exclude=".git" \
             --exclude=".github" \
+            --exclude="deploy_key" \
             --exclude="/client/frontend/countdown-widget" \
             --exclude="/client/frontend/templates-editor" \
             ./ u378434937@217.21.77.162:~/domains/clockdown.xyz/public_html/wp-content/plugins/clockdown
