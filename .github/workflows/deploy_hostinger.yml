@@ -27,12 +27,16 @@ jobs:
 
       - name: Remove 'countdown-widget' countdown* folders
         working-directory: ./client/frontend/countdown-widget
-        run: echo "$PWD"
+        run: rm -r ./src/countdown*
 
       # Runs a single command using the runners shell
       - name: Build 'templates editor' frontend project
         working-directory: ./client/frontend/templates-editor
         run: npm run build
+
+      - name: Install copyfile
+        working-directory: ./client/frontend/templates-editor
+        run: npm install copyfiles
 
       - name: Build 'countdown-widget' frontend project
         working-directory: ./client/frontend/templates-editor
