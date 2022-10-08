@@ -31,9 +31,11 @@ jobs:
           rm -rf countdown*
           ls -la
 
-      - name: Install 'copyfiles' package
+      - name: Install 'copyfiles' & 'cross-env' package
         working-directory: ./client/frontend/templates-editor
-        run: npm install copyfiles
+        run: |
+          npm install copyfiles
+          npm i cross-env
 
       - name: Install build dependencies form 'templates editor' project
         working-directory: ./client/frontend/templates-editor
