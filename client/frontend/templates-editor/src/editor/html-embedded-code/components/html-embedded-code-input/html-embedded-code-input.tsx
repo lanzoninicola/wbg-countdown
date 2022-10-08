@@ -26,7 +26,14 @@ export default function HtmlEmbeddedCodeInput() {
   const htmlCode = useHtmlCode();
 
   return (
-    <VStack gap={4} w={"100%"} position="absolute" bottom={"5rem"} zIndex={30}>
+    <VStack
+      gap={4}
+      w={"100%"}
+      position="absolute"
+      bottom={"5rem"}
+      left={"0"}
+      zIndex={30}
+    >
       <Button
         onClick={onOpen}
         leftIcon={<BiCode />}
