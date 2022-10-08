@@ -33,7 +33,7 @@ jobs:
 
       - name: Install build dependencies form 'templates editor' project
         working-directory: ./client/frontend/templates-editor
-        run: npm install -g --legacy-peer-deps copyfiles cross-env webpack webpack-cli css-minimizer-webpack-plugin mini-css-extract-plugin
+        run: npm install
 
       - name: Build 'templates editor' frontend project
         working-directory: ./client/frontend/templates-editor
