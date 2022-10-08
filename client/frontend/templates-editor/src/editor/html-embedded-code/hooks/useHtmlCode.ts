@@ -51,6 +51,7 @@ export default function useHtmlCode() {
   // script tag
   htmlCode += `<script `;
   htmlCode += `src="${BASE_ASSETS_URL}/index.js"`;
+  htmlCode += ` defer `;
   htmlCode += `></script>`;
 
   // style tag

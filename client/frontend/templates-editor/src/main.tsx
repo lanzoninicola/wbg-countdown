@@ -60,6 +60,6 @@ const ClockdownApp = () => (
 
 const withStrictMode = (children: JSX.Element) => (
   <React.StrictMode>
-    <FakeWrapper>{children}</FakeWrapper>
+    <FakeWrapper show={false}>{children}</FakeWrapper>
   </React.StrictMode>
 );
