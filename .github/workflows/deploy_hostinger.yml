@@ -34,8 +34,8 @@ jobs:
       - name: Install 'copyfiles' & 'cross-env' package
         working-directory: ./client/frontend/templates-editor
         run: |
-          npm install copyfiles
-          npm i cross-env
+          npm i -g copyfiles 
+          npm i -g cross-env
 
       - name: Install build dependencies form 'templates editor' project
         working-directory: ./client/frontend/templates-editor
@@ -46,6 +46,12 @@ jobs:
       - name: Build 'templates editor' frontend project
         working-directory: ./client/frontend/templates-editor
         run: npm run build
+
+      - name: Install build dependencies form 'countdown-widget' project
+        working-directory: ./client/frontend/countdown-widget
+        run: |
+          rm pnpm-lock.yaml
+          npm install --omit=optional
 
       - name: Build 'countdown-widget' frontend project
         working-directory: ./client/frontend/countdown-widget
