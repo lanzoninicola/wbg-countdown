@@ -25,11 +25,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Remove countdown* folders inside "/client/frontend/countdown-widget"
-        working-directory: ./client/frontend/countdown-widget/src
-        run: |
-          rm -rf countdown*
-          ls -la
+      #- name: Remove countdown* folders inside "/client/frontend/countdown-widget"
+      #working-directory: ./client/frontend/countdown-widget/src
+      #run: |
+      #rm -rf countdown*
+      #ls -la
 
       - name: Install 'copyfiles' & 'cross-env' package
         working-directory: ./client/frontend/templates-editor
