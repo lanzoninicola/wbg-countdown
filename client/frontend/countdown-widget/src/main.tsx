@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { WidgetProvider } from "./countdown-state-management/widget/index";
+import { WidgetProvider } from "./countdown-state-management/widget";
 
 const env = process.env.NODE_ENV;
 
