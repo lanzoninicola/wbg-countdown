@@ -9,7 +9,7 @@ const THEME_INITIAL_STATE: ThemeStateData = {
   },
   layout: {
     removeLink: false,
-    linkTarget: "https://clockdown.lanzoninicola.com.br",
+    linkTarget: "https://clockdown.xyz/",
     containerSize: {
       width: 0,
       height: 0,

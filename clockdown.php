@@ -69,7 +69,11 @@ function get_plugin_api_base_url() {
 }
 
 function get_plugin_public_website_url() {
-    return 'https://clockdown.lanzoninicola.com.br';
+    return 'https://clockdown.xyz/';
+}
+
+function get_commerce_api_base_url() {
+    return 'https://clockdown.xyz/';
 }
 
 register_activation_hook( __FILE__, array( 'Clockdown\Client\Config\Activator', 'activate' ) );

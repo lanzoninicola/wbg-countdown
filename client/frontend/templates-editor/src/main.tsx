@@ -31,24 +31,21 @@ const ClockdownApp = () => (
   <ChakraProvider theme={theme}>
     <OnboardingProvider
       config={{
-        productPublicWebsiteURL: "https://clockdown.lanzoninicola.com.br",
-        commercerApiURL:
-          "https://commerce.lanzoninicola.com.br/wp-json/commerce/v1",
-        termsAndConditionsURL:
-          "https://clockdown.lanzoninicola.com.br/terms-and-conditions",
-        privacyPolicyURL:
-          "https://clockdown.lanzoninicola.com.br/privacy-policy",
+        productPublicWebsiteURL: "https://clockdown.xyz/",
+        commercerApiURL: "https://clockdown.xyz/wp-json/commerce/v1",
+        termsAndConditionsURL: "https://clockdown.xyz/terms-and-conditions",
+        privacyPolicyURL: "https://clockdown.xyz/privacy-policy",
         maxFailureCount: 3,
       }}
     >
       <PremiumFeatureProvider
         config={{
-          productPublicWebsiteURL: "https://clockdown.lanzoninicola.com.br",
+          productPublicWebsiteURL: "https://clockdown.xyz/",
         }}
       >
         <EditorProvider
           config={{
-            productPublicWebsiteURL: "https://clockdown.lanzoninicola.com.br",
+            productPublicWebsiteURL: "https://clockdown.xyz/",
           }}
         >
           <App />

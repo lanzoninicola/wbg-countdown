@@ -10,6 +10,7 @@ use Clockdown\App\Services\ScriptLocalizer\ScriptPublicLocalizerService;
 use Clockdown\Client\Backend\Api\V1\CountdownSettings\CountdownSettingsControllerFactory;
 use Clockdown\Client\Backend\Api\V1\Countdowns\CountdownsControllerFactory;
 use Clockdown\Client\Backend\App\CountdownWidgetShortcode;
+use Clockdown\Client\Backend\App\TemplatesEditorShortcode;
 use Clockdown\Core\HooksLoader;
 use Clockdown\Core\PluginConfigurable;
 use Clockdown\Core\ScriptsEnqueuer;
@@ -75,6 +76,29 @@ class Configurator implements PluginConfigurable {
             array(
                 'id'   => 'clockdown-widget-style',
                 'href' => get_plugin_base_url_path() . 'client/frontend/public/clockdown-widget/assets/index.css',
+                'ver'  => '0.0.1',
+            )
+        );
+
+        $shortcodes_loader->add(
+            'templates-editor',
+            TemplatesEditorShortcode::class
+        );
+
+        $shortcodes_loader->add_inline_script(
+            'clockdown',
+            array(
+                'id'  => 'templates-editor-shortcode-script',
+                'src' => get_plugin_base_url_path() . 'client/frontend/public/templates-editor/assets/index.js',
+                'ver' => '0.0.1',
+            )
+        );
+
+        $shortcodes_loader->add_inline_stylesheet(
+            'clockdown',
+            array(
+                'id'   => 'templates-editor-shortcode-style',
+                'href' => get_plugin_base_url_path() . 'client/frontend/public/templates-editor/assets/index.css',
                 'ver'  => '0.0.1',
             )
         );
