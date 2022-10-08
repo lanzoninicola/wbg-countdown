@@ -33,7 +33,7 @@ jobs:
 
       - name: Install build dependencies form 'templates editor' project
         working-directory: ./client/frontend/templates-editor
-        run: npm install
+        run: npm install --no-optional
 
       - name: Build 'templates editor' frontend project
         working-directory: ./client/frontend/templates-editor
