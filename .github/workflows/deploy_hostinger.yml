@@ -35,7 +35,7 @@ jobs:
         working-directory: ./client/frontend/templates-editor
         run: |
           rm pnpm-lock.yaml
-          npm install --no-optional
+          npm install --omit=optional
 
       - name: Build 'templates editor' frontend project
         working-directory: ./client/frontend/templates-editor
