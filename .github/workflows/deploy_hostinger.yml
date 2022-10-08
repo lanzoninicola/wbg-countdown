@@ -31,6 +31,10 @@ jobs:
           rm -rf countdown*
           ls -la
 
+      - name: Install 'copyfiles' package
+        working-directory: ./client/frontend/templates-editor
+        run: npm install copyfiles
+
       - name: Install build dependencies form 'templates editor' project
         working-directory: ./client/frontend/templates-editor
         run: |
