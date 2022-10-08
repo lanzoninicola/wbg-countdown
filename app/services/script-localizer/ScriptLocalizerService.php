@@ -52,9 +52,16 @@ class ScriptLocalizerService {
          * wp_enqueue_script() function is the same of
          * the handle used on wp_register_script()
          */
-        wp_register_script( $this->handle, '' );
-        wp_enqueue_script( $this->handle );
 
+// wp_register_script( $this->handle, '' );
+        // wp_enqueue_script( $this->handle );
+
+        add_action( 'wp_loaded', array( $this, 'wp_register_script' ) );
+
+    }
+
+    public function wp_register_script() {
+        wp_register_script( $this->handle, '' );
     }
 
     /**
@@ -75,6 +82,9 @@ class ScriptLocalizerService {
     /**
      * Localize a script.
      * Works only if the script has already been registered.
+     *
+     * https: //developer.wordpress.org/reference/functions/wp_localize_script/
+     * IMPORTANT! wp_localize_script()  MUST be called after the script has been registered using wp_register_script()  or wp_enqueue_script() .
      *
      * @since    1.0.0
      */

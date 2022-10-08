@@ -16,7 +16,7 @@ class TemplatesEditorShortcode extends Shortcode {
         $atts = array()
     ) {
 
-        echo '<div data-role="templates-editor" data-id="' . $atts["id"] . '"></div>';
+        echo '<div data-role="templates-editor"></div>';
 
     }
 

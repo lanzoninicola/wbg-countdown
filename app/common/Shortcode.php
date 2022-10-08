@@ -193,8 +193,8 @@ abstract class Shortcode {
 
         $script = "<script type='text/javascript'>";
 
-        $script .= "/* <![CDATA[ */";
-        $script .= "var {$this->inline_localized_script_object_name} = " . wp_json_encode( $this->inline_localized_script_data ) . ';';
+        $script .= "/* <![CDATA[ */ ";
+        $script .= "var " . $this->inline_localized_script_object_name . " = " . wp_json_encode( $this->inline_localized_script_data ) . ";";
         $script .= "/* ]]> */";
         $script .= "</script>";
 

@@ -45,6 +45,8 @@ class ScriptPublicLocalizerService extends ScriptLocalizerService {
      * Enqueue the script for the public area
      *
      * The 'localize_script()' method is owned by the parent class.
+     * https: //developer.wordpress.org/reference/functions/wp_localize_script/
+     * IMPORTANT! wp_localize_script()  MUST be called after the script has been registered using wp_register_script()  or wp_enqueue_script() .
      *
      * @return void
      */
