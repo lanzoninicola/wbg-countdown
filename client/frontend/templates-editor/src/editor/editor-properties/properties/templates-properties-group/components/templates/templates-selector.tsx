@@ -1,9 +1,10 @@
-import { Box, Grid } from "@chakra-ui/react";
+import { Box, Grid, Tooltip, VStack } from "@chakra-ui/react";
 import {
   EditorContext,
   useThemeLayoutWithDispatcher,
   useThemeState,
 } from "../../../../../../countdown-state-management";
+import Teext from "../../../../../../global/common/layout/teext/teext";
 import PropertyItem from "../../../../components/layout/property-item/property-item";
 import { TEMPLATES } from "../../constants/templates";
 import TemplateView from "../template-view/template-view";
@@ -22,7 +23,7 @@ export default function TemplatesSelector() {
       >
         {Object.values(TEMPLATES).map((t) => {
           return (
-            <Box
+            <VStack
               key={t.id}
               border={"2px solid"}
               borderColor={t.id === template.id ? "yellow" : "transparent"}
@@ -75,7 +76,16 @@ export default function TemplatesSelector() {
                   id={t.id}
                 />
               </PropertyItem>
-            </Box>
+              <Teext
+                data-element="template-view-name"
+                fontSize={"xs"}
+                color={"white"}
+                fontWeight={"bold"}
+                textAlign={"center"}
+              >
+                {t.name}
+              </Teext>
+            </VStack>
           );
         })}
       </Grid>

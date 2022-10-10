@@ -20,8 +20,6 @@ export default function EditorPreview() {
   const theme = useThemeState(EditorContext);
   const config = useConfigState(EditorContext);
 
-  console.log("EditorPreview", timerSettings);
-
   return (
     <VStack
       position="relative"

@@ -1,4 +1,5 @@
 import { Box, Tooltip } from "@chakra-ui/react";
+import Teext from "../../../../../../global/common/layout/teext/teext";
 
 import {
   TEMPLATES,
@@ -17,7 +18,7 @@ interface TemplateProps {
 
 export default function TemplateView({ src, alt, name, id }: TemplateProps) {
   return (
-    <Tooltip label={name} placement="top">
+    <Tooltip label={name} placement="left">
       <Box
         data-element="template-view-box"
         w={"100%"}
