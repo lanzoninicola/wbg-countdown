@@ -86,19 +86,19 @@ class Configurator implements PluginConfigurable {
         );
 
         $shortcodes_loader->add_inline_script(
-            'clockdown',
+            'templates-editor',
             array(
                 'id'  => 'templates-editor-shortcode-script',
-                'src' => get_plugin_base_url_path() . 'client/frontend/public/templates-editor/assets/index.js',
+                'src' => get_plugin_base_url_path() . 'client/frontend/public/clockdown-editor/assets/index.js',
                 'ver' => '0.0.1',
             )
         );
 
         $shortcodes_loader->add_inline_stylesheet(
-            'clockdown',
+            'templates-editor',
             array(
                 'id'   => 'templates-editor-shortcode-style',
-                'href' => get_plugin_base_url_path() . 'client/frontend/public/templates-editor/assets/index.css',
+                'href' => get_plugin_base_url_path() . 'client/frontend/public/clockdown-editor/assets/index.css',
                 'ver'  => '0.0.1',
             )
         );
