@@ -6,17 +6,7 @@ export default function EditorWrapper({
   children: React.ReactNode;
 }) {
   return (
-    <Box
-      id="editor-wrapper"
-      w="100%"
-      h="calc(100% - 50px)"
-      position={"relative"}
-      css={`
-        & > * {
-          height: 100%;
-        }
-      `}
-    >
+    <Box data-element="editor-wrapper" w="100%" position={"relative"}>
       {children}
     </Box>
   );

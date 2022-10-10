@@ -20,8 +20,16 @@ export default function EditorPreview() {
   const theme = useThemeState(EditorContext);
   const config = useConfigState(EditorContext);
 
+  console.log("EditorPreview", timerSettings);
+
   return (
-    <VStack position="relative" w={"100%"} data-element="editor-preview">
+    <VStack
+      position="relative"
+      w={"100%"}
+      minH={"100vh"}
+      data-element="editor-preview"
+      paddingBlock={"1rem"}
+    >
       <Preview currentToken={currentToken}>
         {currentToken === "lg" && <LaptopVector />}
         {currentToken === "md" && <TabletVector />}

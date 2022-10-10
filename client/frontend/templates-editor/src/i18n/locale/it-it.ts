@@ -118,6 +118,7 @@ const itIT = {
         countdownStyle: "Stile del timer",
         propertiesBar: {
           list: "Lista dei timer",
+          settings: "Data e Timezone",
           layout: "Scegli layout",
           templates: "Scegli template",
           title: "Personalizza il titolo",
@@ -128,6 +129,17 @@ const itIT = {
         propertiesGroup: {
           list: {
             groupTitle: "Lista dei timer",
+          },
+          settings: {
+            groupTitle: "Data e Timezone",
+            targetDate: {
+              label: "Data di scadenza",
+              placeholder: "Seleziona una data",
+            },
+            timezone: {
+              label: "Timezone",
+              placeholder: "Seleziona una timezone",
+            },
           },
           layout: {
             groupTitle: "Scegli layout",

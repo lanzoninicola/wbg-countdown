@@ -5,6 +5,7 @@ import { MdTimer10 } from "@react-icons/all-files/md/MdTimer10";
 import { MdTitle } from "@react-icons/all-files/md/MdTitle";
 import { MdViewList } from "@react-icons/all-files/md/MdViewList";
 import { HiTemplate } from "@react-icons/all-files/hi/HiTemplate";
+import { GoSettings } from "@react-icons/all-files/go/GoSettings";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -20,6 +21,7 @@ import TitlePropertiesGroup from "../properties/title-properties-group/title-pro
 import PropertiesBar from "./components/properties-bar/properties-bar";
 import VerticalSeparatorIcon from "./components/vertical-separator-icon/vertical-separator-icon";
 import { PropertyBarItem } from "./types";
+import SettingsPropertiesGroup from "../properties/settings-properties-group/settings-properties-group";
 
 export default function EditorPropertiesBar() {
   const { t } = useTranslation();
@@ -28,13 +30,21 @@ export default function EditorPropertiesBar() {
   );
 
   const items = [
+    // {
+    //   label: t("editor.propertiesBar.list"),
+    //   icon: <MdViewList />,
+    //   ref: useRef(null),
+    //   title: t("editor.propertiesGroup.list.groupTitle"),
+    //   component: <Countdowns />,
+    //   isPremium: true,
+    // },
     {
-      label: t("editor.propertiesBar.list"),
-      icon: <MdViewList />,
+      label: t("editor.propertiesBar.settings"),
+      icon: <GoSettings />,
       ref: useRef(null),
-      title: t("editor.propertiesGroup.list.groupTitle"),
-      component: <Countdowns />,
-      isPremium: true,
+      title: t("editor.propertiesGroup.settings.groupTitle"),
+      component: <SettingsPropertiesGroup showGroupTitle={false} pb={5} />,
+      isPremium: false,
     },
     {
       label: t("editor.propertiesBar.layout"),
@@ -44,14 +54,7 @@ export default function EditorPropertiesBar() {
       component: <LayoutPropertiesGroup showGroupTitle={false} pb={5} />,
       isPremium: false,
     },
-    {
-      label: t("editor.propertiesBar.templates"),
-      icon: <HiTemplate />,
-      ref: useRef(null),
-      title: t("editor.propertiesGroup.templates.groupTitle"),
-      component: <TemplatesPropertiesGroup showGroupTitle={false} pb={5} />,
-      isPremium: false,
-    },
+
     {
       label: t("editor.propertiesBar.title"),
       icon: <MdTitle />,
@@ -88,7 +91,11 @@ export default function EditorPropertiesBar() {
 
   return (
     <>
-      <PropertiesBar items={items} onItemSelected={setItemSelected} />
+      <PropertiesBar
+        items={items}
+        onItemSelected={setItemSelected}
+        data-element="editor-properties-bar"
+      />
       {itemSelected && (
         <DialogWrapper
           callerRef={itemSelected?.ref}

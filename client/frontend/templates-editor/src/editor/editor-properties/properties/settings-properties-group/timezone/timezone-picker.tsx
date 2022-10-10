@@ -1,11 +1,11 @@
 import { Select, ThemingProps } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import { EditorContext } from "../../../../countdown-state-management";
-import useTimerSettingsStateWithDispatcher from "../../../../countdown-state-management/common/hooks/timer-settings/useTimerSettingsStateWithDispatcher";
+import { EditorContext } from "../../../../../countdown-state-management";
+import useTimerSettingsStateWithDispatcher from "../../../../../countdown-state-management/common/hooks/timer-settings/useTimerSettingsStateWithDispatcher";
 
-import PropertyWrapper from "../../components/layout/property-wrapper/property-wrapper";
-import Label from "../../components/primitives/label/label";
-import TIMEZONES_LIST from "../../constants/timezones";
+import PropertyWrapper from "../../../components/layout/property-wrapper/property-wrapper";
+import Label from "../../../components/primitives/label/label";
+import TIMEZONES_LIST from "../../../constants/timezones";
 
 interface TargetTimezoneProps {
   size: ThemingProps<"FormLabel">["size"] | ThemingProps<"Input">["size"];
@@ -17,7 +17,7 @@ export default function TimezonePicker({ size }: TargetTimezoneProps) {
     useTimerSettingsStateWithDispatcher(EditorContext);
 
   return (
-    <PropertyWrapper firstColumnW="120px" columns={4} bg={"transparent"}>
+    <PropertyWrapper>
       <Label size={size} htmlFor="timezone">
         {t("editor.timezone").capitalize()}
       </Label>
@@ -37,8 +37,6 @@ export default function TimezonePicker({ size }: TargetTimezoneProps) {
         fontSize={"sm !important"}
         borderRadius={"md !important"}
         bg={"white !important"}
-        borderColor={"unset !important"}
-        border={"unset !important"}
       >
         {TIMEZONES_LIST.map((tz, idx) => {
           return (

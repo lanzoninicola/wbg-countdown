@@ -12,8 +12,10 @@ export default function MainContent({
     <Box
       id="clockdown-main"
       minW={`calc(100vw - ${WP_ADMIN_SIDEBAR_WIDTH_PX})`}
-      h={`calc(100vh - ${WP_ADMIN_TOPBAR_HEIGHT_PX})`}
+      // h={`calc(100vh - ${WP_ADMIN_TOPBAR_HEIGHT_PX})`}
+      h="100vh"
       position="relative"
+      overflow={"hidden"}
     >
       {children}
     </Box>

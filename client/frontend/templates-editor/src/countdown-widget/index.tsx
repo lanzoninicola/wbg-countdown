@@ -8,7 +8,13 @@ export default function CountdownWidget() {
     <CountdownWidgetLink>
       <div data-element="countdown-widget">
         <CountdownWidgetGoogleFontTag />
-        <div data-element="countdown-container">
+        <div
+          data-element="countdown-container"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <Countdown />
         </div>
         <CountdownWidgetStyleTag />

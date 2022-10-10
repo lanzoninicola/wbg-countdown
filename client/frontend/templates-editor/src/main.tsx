@@ -17,7 +17,7 @@ if (env === "development") {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  const element = document.getElementById("clockdown");
+  const element = document.getElementById("clockdown-editor");
 
   const ReactApp =
     env === "development" ? withStrictMode(<ClockdownApp />) : <ClockdownApp />;

@@ -119,6 +119,7 @@ const esEs = {
         countdownStyle: "Estilo del contador",
         propertiesBar: {
           list: "Lista de contadores",
+          settings: "Fecha de finalización y zona horaria",
           layout: "Elegir diseño",
           templates: "Elegir Plantillas",
           title: "Personalizar titulo",
@@ -129,6 +130,17 @@ const esEs = {
         propertiesGroup: {
           list: {
             groupTitle: "Lista de contadores",
+          },
+          settings: {
+            groupTitle: "Fecha de finalización y zona horaria",
+            targetDate: {
+              label: "Fecha de finalización",
+              placeholder: "Fecha de finalización",
+            },
+            timezone: {
+              label: "Zona horaria",
+              placeholder: "Zona horaria",
+            },
           },
           layout: {
             groupTitle: "Elegir diseño",

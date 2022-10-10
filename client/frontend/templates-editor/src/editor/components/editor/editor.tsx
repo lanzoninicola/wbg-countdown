@@ -1,30 +1,42 @@
-import { VStack } from "@chakra-ui/react";
+import { Box, Flex, VStack } from "@chakra-ui/react";
+import useCustomScrollbar from "../../../hooks/useCustomScrollbar";
 
 import BreakpointsBar from "../../editor-preview/components/breakpoints-bar/breakpoints-bar";
 import EditorPreview from "../../editor-preview/editor-preview";
+import GroupTitle from "../../editor-properties/components/layout/group-title/group-title";
 import EditorPropertiesBar from "../../editor-properties/editor-properties-bar/editor-properties-bar";
-import TargetDate from "../../editor-properties/properties/target-date/target-date";
-import TimezonePicker from "../../editor-properties/properties/timezone/timezone-picker";
-import BoxRadiusLg from "../../layout/box-radius-lg/box-radius-lg";
+import TemplatesSelector from "../../editor-properties/properties/templates-properties-group/components/templates/templates-selector";
 import CenterContent from "../../layout/center-content/center-content";
 import EditorWrapper from "../../layout/editor-wrapper/editor-wrapper";
 
 export default function Editor() {
+  const scrollbar = useCustomScrollbar();
+
   return (
     <EditorWrapper>
-      <VStack position="absolute" top={5} left={5} spacing={4} zIndex={40}>
-        <EditorPropertiesBar />
-      </VStack>
-      <CenterContent>
-        <BoxRadiusLg bg={"gray.200"}>
-          <TargetDate size="sm" />
-          <TimezonePicker size="sm" />
-        </BoxRadiusLg>
-        <EditorPreview />
-      </CenterContent>
-      <VStack position="absolute" top={5} right={5} spacing={4} zIndex={40}>
-        <BreakpointsBar />
-      </VStack>
+      <Box mt={"50px"}>
+        <VStack position="absolute" top={5} left={5} zIndex={40} spacing={24}>
+          <EditorPropertiesBar />
+          <BreakpointsBar />
+        </VStack>
+        <CenterContent>
+          <EditorPreview />
+        </CenterContent>
+        <Box position="absolute" top={5} right={5} zIndex={40}>
+          <GroupTitle>Templates</GroupTitle>
+          <Flex
+            bg={"gray.500"}
+            p={"1rem"}
+            h={"700px"}
+            overflow={"auto"}
+            borderRadius={"sm"}
+            justifyContent={"center"}
+            css={scrollbar}
+          >
+            <TemplatesSelector />
+          </Flex>
+        </Box>
+      </Box>
     </EditorWrapper>
   );
 }

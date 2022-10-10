@@ -1,4 +1,4 @@
-import { Grid, VStack } from "@chakra-ui/react";
+import { Flex, Grid } from "@chakra-ui/react";
 
 interface CenterContentProps {
   children: React.ReactNode;
@@ -9,16 +9,8 @@ export default function CenterContent({
   ...props
 }: CenterContentProps) {
   return (
-    <Grid
-      gridTemplateRows={"auto 1fr"}
-      justifyItems="center"
-      rowGap={8}
-      data-element="center-content"
-      bg="gray.50"
-      maxH={"100vh"}
-      {...props}
-    >
+    <Flex justifyItems="center" data-element="center-content" {...props}>
       {children}
-    </Grid>
+    </Flex>
   );
 }

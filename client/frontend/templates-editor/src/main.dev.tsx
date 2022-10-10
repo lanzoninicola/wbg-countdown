@@ -10,7 +10,7 @@ export default function createDevRoot() {
   };
 
   const clockdownNode = document.createElement("div");
-  clockdownNode.id = "clockdown";
+  clockdownNode.id = "clockdown-editor";
   const scriptNode = document.createElement("script");
   scriptNode.type = "text/javascript";
   scriptNode.textContent = `

@@ -1,10 +1,10 @@
 import { Input, ThemingProps } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import { EditorContext } from "../../../../countdown-state-management";
-import useTimerSettingsStateWithDispatcher from "../../../../countdown-state-management/common/hooks/timer-settings/useTimerSettingsStateWithDispatcher";
+import { EditorContext } from "../../../../../countdown-state-management";
+import useTimerSettingsStateWithDispatcher from "../../../../../countdown-state-management/common/hooks/timer-settings/useTimerSettingsStateWithDispatcher";
 
-import PropertyWrapper from "../../components/layout/property-wrapper/property-wrapper";
-import Label from "../../components/primitives/label/label";
+import PropertyWrapper from "../../../components/layout/property-wrapper/property-wrapper";
+import Label from "../../../components/primitives/label/label";
 
 interface TargetDateProps {
   size: ThemingProps<"FormLabel">["size"] | ThemingProps<"Input">["size"];
@@ -16,7 +16,7 @@ export default function TargetDate({ size }: TargetDateProps) {
     useTimerSettingsStateWithDispatcher(EditorContext);
 
   return (
-    <PropertyWrapper firstColumnW="120px" columns={4} bg={"transparent"}>
+    <PropertyWrapper>
       <Label size={size}>{t("editor.targetDate").capitalize()}</Label>
       <Input
         size={size as ThemingProps<"Input">["size"]}
@@ -35,8 +35,6 @@ export default function TargetDate({ size }: TargetDateProps) {
         value={targetDate}
         bg={"white"}
         borderRadius={"md"}
-        borderColor={"unset !important"}
-        border={"unset !important"}
       />
     </PropertyWrapper>
   );

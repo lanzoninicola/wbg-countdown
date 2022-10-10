@@ -119,6 +119,7 @@ const ptBR = {
         countdownStyle: "Estilo do contador regressivo",
         propertiesBar: {
           list: "Lista de contadores regressivos",
+          settings: "Data de término e fuso horário",
           layout: "Escolha o layout",
           templates: "Escolha um modelo",
           title: "Personaliza o titulo",
@@ -129,6 +130,17 @@ const ptBR = {
         propertiesGroup: {
           list: {
             groupTitle: "Lista de contadores regressivos",
+          },
+          settings: {
+            groupTitle: "Data de término e fuso horário",
+            targetDate: {
+              label: "Data de término",
+              placeholder: "Data de término",
+            },
+            timezone: {
+              label: "Fuso horário",
+              placeholder: "Fuso horário",
+            },
           },
           layout: {
             groupTitle: "Layout",

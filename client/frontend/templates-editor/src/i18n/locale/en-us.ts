@@ -119,6 +119,7 @@ const enUS = {
         countdownStyle: "Countdown style",
         propertiesBar: {
           list: "Countdowns list",
+          settings: "Target date and timezone",
           layout: "Choose layout",
           templates: "Choose template",
           title: "Customize Title",
@@ -129,6 +130,17 @@ const enUS = {
         propertiesGroup: {
           list: {
             groupTitle: "Countdowns List",
+          },
+          settings: {
+            groupTitle: "Target date and timezone",
+            targetDate: {
+              title: "Target date",
+              description: "Set the date and time when the countdown will end.",
+            },
+            timezone: {
+              title: "Timezone",
+              description: "Set the timezone of the countdown.",
+            },
           },
           layout: {
             groupTitle: "Choose Layout",

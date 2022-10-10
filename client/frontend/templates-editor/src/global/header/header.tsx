@@ -28,7 +28,13 @@ export default function Header() {
       paddingInline="1rem"
       alignItems={"center"}
       minH="50px"
+      w={"100%"}
       columnGap={"1rem"}
+      position="fixed"
+      top={0}
+      left={0}
+      zIndex={100}
+      bg={"gray.200"}
     >
       <Logo />
       <Box>
@@ -37,6 +43,7 @@ export default function Header() {
             <LanguagesBar languages={lngs} />
             <PremiumFeatureGuard
               variant="modal"
+              hide={true}
               customText={t("premiumFeatures.modal.body.newCountdown", {
                 maxCountdowns: "one",
               })}

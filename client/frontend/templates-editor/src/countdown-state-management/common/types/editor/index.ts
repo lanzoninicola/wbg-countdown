@@ -10,8 +10,7 @@ export interface EditorStateData {
   currentCountdown: CountdownModel["id"] | null;
   /** The timer related to the theme customization */
   currentToken: ChakraToken;
-  /** Flag that tell us if the app run the countdown editor */
-  isEditorMode: boolean;
+
   /** Global unit used for the fontsize */
   fontSizeUnit: FontsizeUnit;
 }

@@ -16,7 +16,7 @@ class TemplatesEditorShortcode extends Shortcode {
         $atts = array()
     ) {
 
-        echo '<div data-role="templates-editor"></div>';
+        echo '<div id="clockdown-editor" data-role="clockdown-editor"></div>';
 
     }
 

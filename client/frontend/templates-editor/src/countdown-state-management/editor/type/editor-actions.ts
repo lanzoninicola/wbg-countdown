@@ -18,11 +18,6 @@ interface EditorOnChangeTokenLayoutResponsiveAction {
   payload: ChakraToken;
 }
 
-interface EditorOnChangeIsEditorModeFlagAction {
-  type: "EDITOR_ON_CHANGE_IS_EDITOR_MODE_FLAG";
-  payload: boolean;
-}
-
 interface EditorOnChangeFontSizeUnitUsedAction {
   type: "EDITOR_ON_CHANGE_FONT_SIZE_UNIT_USED";
   payload: FontsizeUnit;
@@ -32,5 +27,4 @@ export type EditorStateAction =
   | EditorInitStateAction
   | EditorSetCurrentCountdownAction
   | EditorOnChangeTokenLayoutResponsiveAction
-  | EditorOnChangeIsEditorModeFlagAction
   | EditorOnChangeFontSizeUnitUsedAction;
