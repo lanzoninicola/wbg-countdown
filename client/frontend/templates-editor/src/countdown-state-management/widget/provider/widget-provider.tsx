@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
+
 import CONFIG_INITIAL_STATE from "../../common/initial-states/config/initial-state";
 import THEME_INITIAL_STATE from "../../common/initial-states/theme/initial-state";
 import TIMER_INITIAL_STATE from "../../common/initial-states/timer/initial-state";
 import { ConfigStateData } from "../../common/types/config";
 import { ThemeStateData } from "../../common/types/theme";
-import { ThemeTimerStateData } from "../../common/types/theme/timer";
 import { TimerSettingsStateData } from "../../common/types/timer-settings";
-import { TimerSettingsStateAction } from "../../editor/type/timer-settings-actions";
 import { decrypt } from "../../utils/crypto";
 import { WidgetContext } from "../context/widget-context";
+import widgetReducer from "../reducer/widgetReducer";
 
 interface WidgetProviderProps {
   children: React.ReactNode;
@@ -42,77 +42,44 @@ export default function WidgetProvider({
   config,
   isEditorMode,
 }: WidgetProviderProps) {
-  let timerSettingsState = {
-    ...TIMER_INITIAL_STATE,
-  };
-
-  let themeState = {
-    ...THEME_INITIAL_STATE,
-  };
-
-  let configState = {
-    ...CONFIG_INITIAL_STATE,
-  };
-
-  if (timerSettings) {
-    const inputTimerSettings = isEditorMode
-      ? timerSettings
-      : JSON.parse(decrypt(timerSettings as string));
-
-    timerSettingsState = {
-      ...timerSettingsState,
-      ...inputTimerSettings,
-    };
-  }
-
-  if (theme) {
-    const inputTheme = isEditorMode
-      ? theme
-      : JSON.parse(decrypt(theme as string));
-
-    themeState = {
-      ...themeState,
-      ...inputTheme,
-    };
-  }
-
-  if (config) {
-    const inputConfig = isEditorMode
-      ? config
-      : JSON.parse(decrypt(config as string));
-
-    configState = {
-      ...configState,
-      ...inputConfig,
-    };
-  }
-
-  const [timerSettingsStateData, timerSettingsDispatcher] = React.useReducer(
-    (state: TimerSettingsStateData, action: any) => {
-      switch (action.type) {
-        case "TIMER_SETTINGS_ON_CHANGE_IS_TIMER_EXPIRED_FLAG":
-          return {
-            ...state,
-            isTimerExpired: true,
-          };
-        default:
-          return state;
+  const maybeDecryptState = useCallback(
+    (state: any, initialState: any) => {
+      if (isEditorMode) {
+        return {
+          ...initialState,
+          ...state,
+        };
       }
+
+      const decryptedState = JSON.parse(decrypt(state as string));
+
+      return {
+        ...initialState,
+        ...decryptedState,
+      };
     },
-    {
-      ...timerSettingsState,
-    }
+    [isEditorMode]
   );
 
-  console.log(themeState);
+  const [timerSettingsStateData, timerSettingsDispatcher] = React.useReducer(
+    widgetReducer,
+    maybeDecryptState(timerSettings, TIMER_INITIAL_STATE)
+  );
+
+  useEffect(() => {
+    timerSettingsDispatcher({
+      type: "TIMER_SETTINGS_ON_INIT",
+      payload: maybeDecryptState(timerSettings, TIMER_INITIAL_STATE),
+    });
+  }, [timerSettings, isEditorMode, maybeDecryptState]);
 
   return (
     <WidgetContext.Provider
       value={{
         timerSettings: timerSettingsStateData,
         timerSettingsDispatcher,
-        theme: themeState,
-        config: configState,
+        theme: maybeDecryptState(theme, THEME_INITIAL_STATE),
+        config: maybeDecryptState(config, CONFIG_INITIAL_STATE),
         isEditorMode,
       }}
     >

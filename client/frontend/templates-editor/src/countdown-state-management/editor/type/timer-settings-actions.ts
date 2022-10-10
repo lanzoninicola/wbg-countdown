@@ -1,7 +1,7 @@
 import { TimerSettingsStateData } from "../../common/types/timer-settings";
 
 interface TimerSettingsInitStateAction {
-  type: "TIMER_SETTINGS_INIT_STATE";
+  type: "TIMER_SETTINGS_ON_INIT";
   payload: TimerSettingsStateData;
 }
 
