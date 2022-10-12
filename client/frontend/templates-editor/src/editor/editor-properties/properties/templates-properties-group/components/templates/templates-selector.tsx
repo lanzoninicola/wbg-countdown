@@ -39,6 +39,7 @@ export default function TemplatesSelector() {
                 display={"flex"}
                 justifyContent={"center"}
                 alignItems={"center"}
+                position={"relative"}
                 onClick={() => {
                   themeDispatcher({
                     type: "THEME_TEMPLATE_ON_CHANGE_TEMPLATE",
@@ -75,16 +76,21 @@ export default function TemplatesSelector() {
                   name={t.name}
                   id={t.id}
                 />
+                <Teext
+                  data-element="template-view-name"
+                  fontSize={"xs"}
+                  color={"white"}
+                  fontWeight={"bold"}
+                  textAlign={"center"}
+                  position={"absolute"}
+                  bottom={"0"}
+                  left={"0"}
+                  right={"0"}
+                  marginInline={"auto"}
+                >
+                  {t.name}
+                </Teext>
               </PropertyItem>
-              <Teext
-                data-element="template-view-name"
-                fontSize={"xs"}
-                color={"white"}
-                fontWeight={"bold"}
-                textAlign={"center"}
-              >
-                {t.name}
-              </Teext>
             </VStack>
           );
         })}
