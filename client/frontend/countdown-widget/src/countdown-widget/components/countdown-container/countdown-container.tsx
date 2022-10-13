@@ -24,7 +24,14 @@ export default function CountdownContainer({
   }, [containerSize]);
 
   return (
-    <div ref={containerRef} data-element="countdown-container">
+    <div
+      ref={containerRef}
+      data-element="countdown-container"
+      style={{
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       {children}
     </div>
   );

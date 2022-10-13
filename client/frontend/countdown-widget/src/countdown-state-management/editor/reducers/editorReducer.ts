@@ -24,12 +24,6 @@ export default function editorReducer(
         currentCountdown: action.payload,
       };
 
-    case "EDITOR_ON_CHANGE_IS_EDITOR_MODE_FLAG":
-      return {
-        ...state,
-        isEditorMode: action.payload,
-      };
-
     case "EDITOR_ON_CHANGE_FONT_SIZE_UNIT_USED":
       return {
         ...state,

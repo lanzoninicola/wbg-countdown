@@ -22,6 +22,7 @@ export interface WidgetContextData {
   timerSettings: TimerSettingsStateData;
   theme: ThemeStateData;
   config: ConfigStateData;
+  isEditorMode: boolean;
 }
 
 /**
